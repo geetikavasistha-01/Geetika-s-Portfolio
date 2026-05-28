@@ -1,0 +1,92 @@
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--on-background);
+  height: 56px;
+  padding: 0 32px;
+  border-bottom: 3px solid var(--on-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 30;
+}
+
+.nav-logo {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
+  color: var(--tertiary-container);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
+  color: var(--surface);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--surface);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.nav-links a:hover {
+  color: var(--tertiary-container);
+}
+
+.nav-links a.active {
+  color: var(--primary-container);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-container);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.nav-links span {
+  color: var(--surface);
+}
+
+.hire-me-btn {
+  background: var(--primary-container);
+  color: var(--surface);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 10px 24px;
+  border: 3px solid var(--surface);
+  outline: 3px solid var(--on-background);
+  box-shadow: 4px 4px 0px var(--surface);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.hire-me-btn:hover {
+  box-shadow: 2px 2px 0px var(--surface);
+  transform: translate(2px, 2px);
+}
+
+.nav-hamburger {
+  display: none;
+  color: var(--primary-container);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .nav-links, .hire-me-btn {
+    display: none;
+  }
+  .nav-hamburger {
+    display: block;
+  }
+}
