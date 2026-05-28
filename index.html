@@ -1,16 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geetika Vasistha - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Be+Vietnam+Pro:wght@400;800&family=Bricolage+Grotesque:wght@500&family=Press+Start+2P&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Geetika Vasistha - Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;800&amp;family=Bricolage+Grotesque:opsz,wght@12..96,500&amp;family=Space+Mono:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "outline": "#877177",
+                        "tertiary-container": "#b7ae41",
+                        "secondary-container": "#72f7c4",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#007152",
+                        "primary-container": "#e36d9b",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-low": "#f3f3f3",
+                        "on-primary-fixed-variant": "#821f4c",
+                        "on-tertiary-container": "#454100",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#554247",
+                        "on-background": "#1a1c1c",
+                        "secondary-fixed-dim": "#55ddac",
+                        "on-tertiary-fixed": "#1f1c00",
+                        "surface-container": "#eeeeee",
+                        "surface-dim": "#dadada",
+                        "primary": "#a03865",
+                        "background": "#f9f9f9",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-tint": "#a03865",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffd9e3",
+                        "on-primary-fixed": "#3e001f",
+                        "surface-container-high": "#e8e8e8",
+                        "tertiary": "#676000",
+                        "on-primary-container": "#5e0032",
+                        "tertiary-fixed-dim": "#d3ca59",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-fixed-dim": "#ffb0ca",
+                        "on-secondary-fixed-variant": "#00513a",
+                        "on-tertiary-fixed-variant": "#4d4800",
+                        "secondary": "#006c4e",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#002115",
+                        "outline-variant": "#dac0c6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#f0e672",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#75fac7",
+                        "inverse-primary": "#ffb0ca",
+                        "surface-bright": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "stack-gap": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Space Mono"],
+                        "note-handwritten": ["Bricolage Grotesque"],
+                        "body-m": ["Be Vietnam Pro"],
+                        "headline-lg": ["Space Mono"],
+                        "headline-xl": ["Space Mono"],
+                        "nav-bold": ["Be Vietnam Pro"],
+                        "label-sm": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "note-handwritten": ["18px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-m": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "nav-bold": ["16px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Manga/Zine Utilities adhering to config limits */
+        .manga-border { border: 3px solid #1a1c1c; } /* mapping to on-surface */
+        .manga-shadow { box-shadow: 4px 4px 0px 0px #1a1c1c; }
+        .manga-shadow-hover:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px 0px #1a1c1c; }
+        .halftone-bg {
+            background-image: radial-gradient(circle, #dac0c6 2px, transparent 2.5px);
+            background-size: 10px 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-m min-h-screen flex flex-col overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-full bg-secondary border-b-4 border-outline shadow-[4px_4px_0px_0px_rgba(43,71,137,1)] transition-all">
+<div class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black text-on-secondary tracking-tighter cursor-pointer hover:scale-105 hover:rotate-1 transition-all duration-200 flex items-center">GEEKY KUNOICHI</div>
+<nav class="hidden md:flex gap-8 items-center font-nav-bold text-nav-bold uppercase">
+<a class="text-primary-container font-bold border-b-2 border-primary-container pb-1 hover:scale-105 hover:rotate-1 transition-all duration-200" href="#">ABOUT</a>
+<a class="text-on-secondary hover:text-secondary-fixed transition-colors pb-1 hover:scale-105 hover:rotate-1 transition-all duration-200" href="#">PROJECTS</a>
+<a class="text-on-secondary hover:text-secondary-fixed transition-colors pb-1 hover:scale-105 hover:rotate-1 transition-all duration-200" href="#">SKILLS</a>
+<a class="text-on-secondary hover:text-secondary-fixed transition-colors pb-1 hover:scale-105 hover:rotate-1 transition-all duration-200" href="#">CONTACT</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container font-nav-bold text-nav-bold uppercase px-6 py-2 manga-border manga-shadow manga-shadow-hover transition-all duration-200 hover:scale-105 hover:-rotate-2">
+            Hire Me
+        </button>
+</header>
+<!-- Main Hero Canvas -->
+<main class="flex-grow pt-24 pb-12 px-margin-mobile md:px-margin-desktop bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEHAYDlBnaQ7X1eQnMTZTZ3BD4CLDsmFgqa70Lb0hOWxPSjMUx1QrHmomemGH4ZjzAfBPz-3ZmuwbJXrCXEqj9QKO8pd2dhMJK0BUR3_gNe7FNGPMNssP8oM4fnfBITDXs0LgH90SJ1q-L41xTFN1ysm3xK7giqvYE8PpMYVEq0uCPC0ivrhW7ADtFG3eS-k3gvRAWGNqQai0XFJHg-Hh8U4_TMWmnnJ2VN10256K1klhmZSz5AV-mqe3p80-EwbXzvSwYpAQqHyCv')] bg-cover bg-center bg-no-repeat relative halftone-bg min-h-[90vh] flex items-center justify-center flex-1">
+<!-- The "Desk" Grid Container -->
+<div class="w-full max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
+<!-- Left Clutter (Col 1-3) -->
+<div class="hidden md:flex md:col-span-3 flex-col gap-6 relative justify-end pb-12">
+<!-- Poster -->
+<div class="bg-inverse-surface text-tertiary-fixed p-4 manga-border manga-shadow -rotate-3 hover:rotate-0 transition-transform w-4/5 self-end">
+<h3 class="font-headline-lg text-headline-lg leading-none mb-2 uppercase">CODE FOR CLIMATE</h3>
+<p class="font-label-sm text-label-sm text-surface-dim">DEPLOYING MODELS.</p>
+</div>
+<!-- Books Stack -->
+<div class="relative w-full h-40 mt-12 flex items-end">
+<div class="absolute bottom-0 left-4 w-32 h-8 bg-primary-container manga-border -rotate-2 flex items-center justify-center font-nav-bold text-nav-bold text-on-primary-container">PYTHON</div>
+<div class="absolute bottom-8 left-2 w-48 h-8 bg-inverse-surface manga-border rotate-1 flex items-center justify-center font-nav-bold text-nav-bold text-surface" style="opacity: 0;">LLM Orchestration</div>
+<div class="absolute bottom-16 left-2 w-48 h-8 bg-secondary manga-border -rotate-4 flex items-center justify-center font-nav-bold text-nav-bold text-on-secondary" style="opacity: 0;">Distributed Systems</div>
+</div>
+<!-- Sticky Note -->
+<div class="absolute -left-4 bg-tertiary-fixed text-on-tertiary-fixed p-3 w-32 h-32 manga-border manga-shadow rotate-6 font-note-handwritten text-note-handwritten flex items-center justify-center text-center hover:scale-110 transition-transform top-0">Agentic Systems</div>
+</div>
+<!-- Central CRT (Col 4-9) -->
+<div class="col-span-1 md:col-span-6 relative flex flex-col items-center justify-center z-20">
+<!-- Bezel Stickers -->
+<div class="absolute -top-4 -left-4 z-30 flex gap-2 rotate-2">
+<span class="bg-primary-container text-on-primary-container px-2 py-1 manga-border font-label-sm text-label-sm rounded-full">G</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-1 manga-border font-label-sm text-label-sm rounded-full -translate-y-2">E</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-1 manga-border font-label-sm text-label-sm rounded-full">E</span>
+</div>
+<!-- CRT Monitor Body -->
+<div class="bg-surface-container-lowest w-full max-w-2xl aspect-[4/3] manga-border manga-shadow p-6 md:p-8 flex flex-col relative">
+<!-- Screen -->
+<div class="bg-secondary flex-grow manga-border relative overflow-hidden flex flex-col p-4">
+<!-- Scanline Overlay -->
+<div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] pointer-events-none"></div>
+<div class="flex-grow flex flex-col items-center justify-center text-center z-10 -translate-y-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0ePeJat5fgDwLVDCCOEWz3QiOgMHkjwjYPS-6oBXVTt3sJIexWUi1N9VhXXBB-s8zYFo35cR_sGPIVRWZr9xVvLyviRSiOfcW8iU2nSZAA0jOvFVjyaM26my4E2SHrr-BdSvemQE_RCkgF_OrC97h4Qa-iAYNOyf_fR_O0kNI2SXPhd7mC8G9MdXhWcKKjvDlVqcjRsJ90zEvKGglOoeMcYLXNKVDElssUm7pT4vIDzxj7dksVhXpmcz9e21qtFjGF1CVfSNbwLmR" alt="Logo Watermark" class="w-32 h-32 md:w-48 md:h-48 mb-4 opacity-100">
+<h1 class="font-headline-xl text-headline-xl leading-tight text-tertiary-fixed drop-shadow-[4px_4px_0px_#1a1c1c] uppercase tracking-tighter mb-4 md:text-[56px]">
+                                GEETIKA'S<br>PORTFOLIO
+                            </h1>
+</div>
+<!-- Loading Bar -->
+<div class="mt-auto z-10 w-full">
+<div class="font-label-sm text-label-sm text-on-secondary mb-2 uppercase tracking-widest">LOADING... AI + DATA + DESIGN</div>
+<div class="w-full h-6 border-2 border-on-surface bg-surface-container-lowest p-1">
+<div class="h-full bg-primary-container w-[65%] border-r-2 border-on-surface flex items-center">
+<div class="w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_25%,rgba(255,255,255,0.2)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.2)_75%,rgba(255,255,255,0.2)_100%)] bg-[length:16px_16px]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Fake Taskbar -->
+<div class="h-10 mt-4 bg-inverse-surface manga-border flex items-center px-2 gap-2">
+<button class="bg-surface text-on-surface font-label-sm text-label-sm px-3 py-1 manga-border flex items-center gap-1 hover:bg-surface-variant active:translate-y-1">
+<span class="material-symbols-outlined text-[16px]">terminal</span> Start
+                        </button>
+<div class="h-full w-0.5 bg-on-surface mx-1"></div>
+<div class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-3 py-1 manga-border shadow-[inset_2px_2px_0px_#fff]">About</div>
+<div class="bg-inverse-surface text-surface font-label-sm text-label-sm px-3 py-1 border border-on-surface opacity-70">Projects</div>
+</div>
+</div>
+<!-- Tower Unit / Stickers below -->
+<div class="w-11/12 max-w-xl h-24 bg-surface-container-high mt-6 manga-border manga-shadow relative flex items-center justify-center gap-4 px-4 flex-wrap">
+<div class="absolute top-2 left-4 w-3 h-3 rounded-full bg-secondary-fixed manga-border"></div>
+<div class="absolute top-2 left-9 w-3 h-3 rounded-full bg-error-container manga-border"></div>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-1 manga-border -rotate-3 hover:scale-110 transition-transform cursor-pointer">AI Engineer</span>
+<span class="bg-inverse-surface text-surface font-label-sm text-label-sm px-3 py-1 manga-border rotate-2 hover:scale-110 transition-transform cursor-pointer">Data Scientist</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-3 py-1 manga-border -rotate-1 hover:scale-110 transition-transform cursor-pointer">Climate-tech</span>
+</div>
+</div>
+<!-- Right Clutter (Col 10-12) -->
+<div class="hidden md:flex md:col-span-3 flex-col gap-8 relative pt-12">
+<!-- Corkboard -->
+
+<!-- Manga Poster -->
+<div class="bg-inverse-surface text-tertiary-fixed p-4 manga-border manga-shadow -rotate-2 self-start w-5/6 relative overflow-hidden group">
+<div class="absolute inset-0 border-4 border-secondary-fixed m-2 opacity-50 border-dashed pointer-events-none"></div>
+<h3 class="font-headline-lg text-headline-lg leading-none mb-2 uppercase relative z-10 group-hover:scale-105 transition-transform origin-left">DATA IS THE NEW SOIL</h3>
+</div>
+<!-- Sticky Note -->
+<div class="absolute bottom-1/4 -right-4 bg-tertiary-fixed text-on-tertiary-fixed p-3 w-28 h-28 manga-border manga-shadow -rotate-12 font-note-handwritten text-note-handwritten flex items-center justify-center text-center hover:scale-110 transition-transform z-30">
+                    push to<br>GitHub
+                </div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+
+
+
+</body></html>
