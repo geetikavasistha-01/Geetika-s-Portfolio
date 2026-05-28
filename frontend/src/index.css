@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Custom Manga/Zine Utilities adhering to config limits */
+  .manga-border { border: 3px solid #1a1c1c; } /* mapping to on-surface */
+  .manga-shadow { box-shadow: 4px 4px 0px 0px #1a1c1c; }
+  .manga-shadow-hover:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px 0px #1a1c1c; }
+  
+  .halftone-bg {
+      background-image: radial-gradient(circle, #dac0c6 2px, transparent 2.5px);
+      background-size: 10px 10px;
+  }
+}
