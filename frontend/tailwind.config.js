@@ -54,7 +54,14 @@ export default {
         "surface-variant": "#e2e2e2",
         "secondary-fixed": "#75fac7",
         "inverse-primary": "#ffb0ca",
-        "surface-bright": "#f9f9f9"
+        "surface-bright": "#f9f9f9",
+        "royal-blue": "#2B4789",
+        "limeade": "#A0CB75",
+        "canary": "#E7DD6A",
+        "emerald": "#10B183",
+        "watermelon": "#E36D9B",
+        "dark-pink": "#c4497a",
+        "paper": "#FAFAFA"
       },
       borderRadius: {
         "DEFAULT": "0.25rem",
@@ -76,7 +83,9 @@ export default {
         "headline-lg": ["Space Mono"],
         "headline-xl": ["Space Mono"],
         "nav-bold": ["Be Vietnam Pro"],
-        "label-sm": ["Space Mono"]
+        "label-sm": ["Space Mono"],
+        "bubbly": ["DynaPuff", "cursive"],
+        "pixel": ["Silkscreen", "cursive"]
       },
       fontSize: {
         "headline-lg-mobile": ["24px", { lineHeight: "1.2", fontWeight: "700" }],

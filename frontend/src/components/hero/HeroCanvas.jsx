@@ -5,11 +5,20 @@ import CRTMonitor from './CRTMonitor';
 
 export default function HeroCanvas() {
   return (
-    <main className="flex-grow pt-24 pb-12 px-margin-mobile md:px-margin-desktop bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEHAYDlBnaQ7X1eQnMTZTZ3BD4CLDsmFgqa70Lb0hOWxPSjMUx1QrHmomemGH4ZjzAfBPz-3ZmuwbJXrCXEqj9QKO8pd2dhMJK0BUR3_gNe7FNGPMNssP8oM4fnfBITDXs0LgH90SJ1q-L41xTFN1ysm3xK7giqvYE8PpMYVEq0uCPC0ivrhW7ADtFG3eS-k3gvRAWGNqQai0XFJHg-Hh8U4_TMWmnnJ2VN10256K1klhmZSz5AV-mqe3p80-EwbXzvSwYpAQqHyCv')] bg-cover bg-center bg-no-repeat relative halftone-bg min-h-[90vh] flex items-center justify-center flex-1">
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
-        <LeftClutter />
-        <CRTMonitor />
-        <RightClutter />
+    <main id="home" className="w-full h-screen max-h-screen relative overflow-hidden page-wrapper flex justify-center items-center">
+      {/* Background Image with a minute blur effect */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-top bg-no-repeat scale-105 blur-[3px] overflow-hidden z-0"
+        style={{ backgroundImage: "url('/Background.png')" }}
+      />
+      
+      {/* Content Layer */}
+      <div className="absolute inset-0 top-[52px] overflow-hidden pointer-events-none z-10">
+        <div className="relative w-full h-full max-w-7xl mx-auto">
+          <LeftClutter />
+          <CRTMonitor />
+          <RightClutter />
+        </div>
       </div>
     </main>
   );

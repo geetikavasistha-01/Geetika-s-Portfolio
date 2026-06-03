@@ -4,10 +4,10 @@ import StickyNote from '../ui/StickyNote';
 
 export default function RightClutter() {
   return (
-    <div className="hidden md:flex md:col-span-3 flex-col gap-8 relative pt-12">
+    <div className="hidden md:block absolute inset-0 pointer-events-none z-10">
       {/* Manga Poster */}
       <motion.div 
-        className="bg-inverse-surface text-tertiary-fixed p-4 manga-border manga-shadow -rotate-2 self-start w-5/6 relative overflow-hidden group origin-left"
+        className="absolute right-[5%] top-[18%] bg-inverse-surface text-tertiary-fixed p-4 manga-border manga-shadow -rotate-2 w-[240px] origin-left pointer-events-auto group"
         whileHover={{ scale: 1.05 }}
       >
         <div className="absolute inset-0 border-4 border-secondary-fixed m-2 opacity-50 border-dashed pointer-events-none"></div>
@@ -19,7 +19,7 @@ export default function RightClutter() {
       {/* Sticky Note */}
       <StickyNote 
         text="push to<br/>GitHub" 
-        className="absolute bottom-1/4 -right-4 -rotate-12 w-28 h-28 z-30" 
+        className="absolute right-[10%] bottom-[26%] -rotate-12 w-28 h-28 z-30 pointer-events-auto" 
       />
     </div>
   );
