@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
+import { api } from '../../lib/api';
 import kunoichi from '../../assets/kunoichi.png';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import {
@@ -54,17 +55,14 @@ export default function Navbar() {
   useEffect(() => {
     const fetchNowPlaying = async () => {
       try {
-        const res = await fetch('/api/spotify/now-playing');
-        if (res.ok) {
-          const data = await res.json();
-          setTrack(data);
-        }
+        const res = await api.get('/spotify/now-playing');
+        setTrack(res.data);
       } catch (err) {
         console.error('Error fetching now playing track:', err);
       }
     };
     fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 15000);
+    const interval = setInterval(fetchNowPlaying, 10000); // 10s poll
     return () => clearInterval(interval);
   }, []);
 
@@ -155,7 +153,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute left-0 top-[32px] w-[280px] bg-navbar border border-border rounded-2xl shadow-2xl p-4 z-[9999] text-left"
+                  className="absolute left-[-20px] top-[38px] w-[300px] bg-navbar border border-border rounded-[24px] shadow-2xl p-4.5 z-[9999] text-left"
                 >
                   {/* Header: Greeting & Time */}
                   <div className="flex items-center justify-between">

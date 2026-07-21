@@ -13,6 +13,8 @@ router.get('/spotify/now-playing', async (req, res) => {
     SPOTIFY_REFRESH_TOKEN
   } = process.env;
 
+  console.log('Now Playing API called. LASTFM_API_KEY:', LASTFM_API_KEY, 'LASTFM_USERNAME:', LASTFM_USERNAME);
+
   const fallbackTrack = {
     title: 'White Ferrari',
     artist: 'Frank Ocean',

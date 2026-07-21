@@ -29,8 +29,7 @@ export default function SpotifyWidget() {
         return defaultTrack;
       }
     },
-    refetchInterval: 30000, // every 30 seconds
-    initialData: defaultTrack
+    refetchInterval: 10000, // every 10 seconds for real-time sync
   });
 
   return (
@@ -66,15 +65,15 @@ export default function SpotifyWidget() {
               {track?.isPlaying ? 'Now Playing' : 'Last Played'}
             </span>
             <a
-              href={track?.url}
+              href={track?.url || defaultTrack.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[16px] font-semibold text-text1 hover:underline truncate max-w-[280px] sm:max-w-[400px] mt-1"
             >
-              {track?.title}
+              {track?.title || defaultTrack.title}
             </a>
             <span className="text-xs text-text3 truncate max-w-[280px] sm:max-w-[400px] mt-0.5">
-              {track?.artist}
+              {track?.artist || defaultTrack.artist}
             </span>
           </div>
         </div>
