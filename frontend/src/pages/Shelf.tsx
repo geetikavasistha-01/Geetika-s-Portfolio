@@ -112,10 +112,10 @@ export default function Shelf() {
         {filteredShelf.map((item, idx) => (
           <div
             key={item._id || idx}
-            className="flex flex-col bg-white border border-zinc-200 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg select-none cursor-pointer"
+            className="flex flex-col bg-surface border border-border rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg select-none cursor-pointer"
           >
             {/* Poster Image */}
-            <div className="aspect-[2/3] w-full overflow-hidden bg-zinc-100">
+            <div className="aspect-[2/3] w-full overflow-hidden bg-surface2">
               <img
                 src={item.image}
                 alt={item.title}
@@ -125,13 +125,13 @@ export default function Shelf() {
 
             {/* Content Footer */}
             <div className="p-4 flex flex-col min-w-0">
-              <span className="text-[8px] sm:text-[9px] tracking-widest text-zinc-400 font-semibold font-mono uppercase truncate">
+              <span className="text-[8px] sm:text-[9px] tracking-widest text-text3 font-semibold font-mono uppercase truncate">
                 {item.type} · {item.label}
               </span>
-              <h3 className="text-xs sm:text-sm font-semibold text-zinc-900 mt-1 truncate">
+              <h3 className="text-xs sm:text-sm font-semibold text-text1 mt-1 truncate">
                 {item.title}
               </h3>
-              <p className="text-[10px] sm:text-xs italic text-zinc-500 mt-0.5 truncate">
+              <p className="text-[10px] sm:text-xs italic text-text2 mt-0.5 truncate">
                 {item.caption}
               </p>
             </div>

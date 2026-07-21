@@ -5,29 +5,29 @@
 @tailwind utilities;
 
 :root {
-  /* Light Mode - Sage Green Palette (#E6F2DD, #B1D3B9, #88BDA4, #659287) */
+  /* Light background (#E6F2DD) and Dark Headings (#659287) */
   --color-bg: #E6F2DD;
   --color-surface: #ffffff;
-  --color-surface2: #d8ebd0;
-  --color-border: #B1D3B9;
-  --color-text1: #1a3028;
-  --color-text2: #2e4a40;
+  --color-surface2: #d6ebce;
+  --color-border: #88BDA4;
+  --color-text1: #659287;
+  --color-text2: #2b4740;
   --color-text3: #659287;
   --color-text4: #88BDA4;
   --color-navbar: #ffffff;
 }
 
 :root.dark {
-  /* Dark Mode - Deep Sage Palette */
-  --color-bg: #121e1a;
-  --color-surface: #1a2b25;
-  --color-surface2: #253c34;
-  --color-border: #38564c;
-  --color-text1: #E6F2DD;
-  --color-text2: #B1D3B9;
-  --color-text3: #88BDA4;
-  --color-text4: #659287;
-  --color-navbar: #1a2b25;
+  /* Dark mode variant using lighter background (#E6F2DD) & dark headings (#659287) */
+  --color-bg: #dcecd2;
+  --color-surface: #ffffff;
+  --color-surface2: #cde4c7;
+  --color-border: #659287;
+  --color-text1: #659287;
+  --color-text2: #233c36;
+  --color-text3: #659287;
+  --color-text4: #88BDA4;
+  --color-navbar: #ffffff;
 }
 
 /* Base custom styles */

@@ -54,11 +54,11 @@ export default function OnLoop() {
               zIndex: 30,
               transition: { duration: 0.2 }
             }}
-            className="absolute bg-white text-zinc-900 border border-zinc-200 rounded-2xl w-[180px] sm:w-[200px] shadow-lg flex flex-col overflow-hidden cursor-pointer origin-bottom"
+            className="absolute bg-surface text-text1 border border-border rounded-2xl w-[180px] sm:w-[200px] shadow-lg flex flex-col overflow-hidden cursor-pointer origin-bottom"
             style={{ zIndex: 10 + idx }}
           >
             {/* Poster image */}
-            <div className="aspect-[2/3] w-full overflow-hidden bg-zinc-100">
+            <div className="aspect-[2/3] w-full overflow-hidden bg-surface2">
               <img
                 src={item.image}
                 alt={item.title}
@@ -68,13 +68,13 @@ export default function OnLoop() {
             
             {/* Metadata Footer */}
             <div className="p-4 flex flex-col">
-              <span className="text-[9px] tracking-widest text-zinc-400 font-semibold font-mono uppercase">
+              <span className="text-[9px] tracking-widest text-text3 font-semibold font-mono uppercase">
                 {item.category} · {item.label}
               </span>
-              <h3 className="text-[13px] font-semibold text-zinc-900 mt-1 truncate">
+              <h3 className="text-[13px] font-semibold text-text1 mt-1 truncate">
                 {item.title}
               </h3>
-              <p className="text-[11px] italic text-zinc-500 mt-0.5 truncate">
+              <p className="text-[11px] italic text-text2 mt-0.5 truncate">
                 {item.caption}
               </p>
             </div>
