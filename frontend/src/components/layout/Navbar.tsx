@@ -1,12 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Home,
+  Briefcase,
+  User,
+  Folder,
+  BookOpen,
+  Layers,
+  MessageSquare,
+  Mail,
+  LucideIcon
+} from 'lucide-react';
+
+interface NavItem {
+  name: string;
+  path: string;
+  icon: LucideIcon;
+}
 
 export default function Navbar() {
   const { theme, toggleTheme, recruiterMode } = useUIStore();
   const [time, setTime] = useState(new Date());
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -25,22 +47,30 @@ export default function Navbar() {
     return `${hours}:${minutesStr} ${ampm}`;
   };
 
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Work', path: '/work' },
-    { label: 'About', path: '/about' },
-    { label: 'Projects', path: '/projects' },
-    { label: 'Blog', path: '/blog' },
-    ...(!recruiterMode ? [{ label: 'Shelf', path: '/shelf' }] : []),
-    { label: 'AMA', path: '/ama' },
-    { label: 'Contact', path: '/contact' }
+  const navItems: NavItem[] = [
+    { name: 'Home', path: '/', icon: Home },
+    { name: 'Work', path: '/work', icon: Briefcase },
+    { name: 'About', path: '/about', icon: User },
+    { name: 'Projects', path: '/projects', icon: Folder },
+    { name: 'Blog', path: '/blog', icon: BookOpen },
+    ...(!recruiterMode ? [{ name: 'Shelf', path: '/shelf', icon: Layers }] : []),
+    { name: 'AMA', path: '/ama', icon: MessageSquare },
+    { name: 'Contact', path: '/contact', icon: Mail }
   ];
 
   return (
     <>
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6 md:px-0">
-        <div className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border/80 bg-navbar shadow-xl backdrop-blur-lg transition-all duration-300">
-          
+        <motion.div
+          className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border/80 bg-navbar shadow-xl backdrop-blur-lg relative transition-all duration-300"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20
+          }}
+        >
           {/* Live Clock (Left) */}
           <div className="text-[11px] font-mono font-medium text-text2 select-none">
             {formatTime(time)}
@@ -48,27 +78,209 @@ export default function Navbar() {
 
           {/* Desktop Navigation (Center) */}
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  cn(
-                    "text-xs px-3 py-1 rounded-full text-text2 transition-colors hover:text-text1 hover:bg-surface2/60",
-                    isActive && "text-text1 bg-surface2 font-semibold shadow-sm"
-                  )
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              const isHovered = hoveredTab === item.name;
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onMouseEnter={() => setHoveredTab(item.name)}
+                  onMouseLeave={() => setHoveredTab(null)}
+                  className={cn(
+                    "relative cursor-pointer text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300",
+                    "text-text2 hover:text-text1",
+                    isActive && "text-text1"
+                  )}
+                >
+                  {isActive && (
+                    <motion.div
+                      className="absolute inset-0 rounded-full -z-10 overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: [0.3, 0.5, 0.3],
+                        scale: [1, 1.03, 1]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Soft sage glow backgrounds */}
+                      <div className="absolute inset-0 bg-text3/15 rounded-full blur-md" />
+                      <div className="absolute inset-[-4px] bg-text3/10 rounded-full blur-xl" />
+                      <div className="absolute inset-[-8px] bg-text3/5 rounded-full blur-2xl" />
+                    </motion.div>
+                  )}
+
+                  <span className="relative z-10">{item.name}</span>
+
+                  <AnimatePresence>
+                    {isHovered && !isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className="absolute inset-0 bg-surface2/60 rounded-full -z-10"
+                      />
+                    )}
+                  </AnimatePresence>
+
+                  {isActive && (
+                    <motion.div
+                      layoutId="anime-mascot"
+                      className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none"
+                      initial={false}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30
+                      }}
+                    >
+                      <div className="relative w-12 h-12">
+                        <motion.div
+                          className="absolute w-10 h-10 bg-surface border border-border rounded-full left-1/2 -translate-x-1/2 shadow-md flex items-center justify-center"
+                          animate={
+                            hoveredTab ? {
+                              scale: [1, 1.1, 1],
+                              rotate: [0, -5, 5, 0],
+                              transition: {
+                                duration: 0.5,
+                                ease: "easeInOut"
+                              }
+                            } : {
+                              y: [0, -3, 0],
+                              transition: {
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }
+                            }
+                          }
+                        >
+                          {/* Eyes */}
+                          <motion.div
+                            className="absolute w-1.5 h-1.5 bg-text1 rounded-full"
+                            animate={
+                              hoveredTab ? {
+                                scaleY: [1, 0.2, 1],
+                                transition: {
+                                  duration: 0.2,
+                                  times: [0, 0.5, 1]
+                                }
+                              } : {}
+                            }
+                            style={{ left: '25%', top: '40%' }}
+                          />
+                          <motion.div
+                            className="absolute w-1.5 h-1.5 bg-text1 rounded-full"
+                            animate={
+                              hoveredTab ? {
+                                scaleY: [1, 0.2, 1],
+                                transition: {
+                                  duration: 0.2,
+                                  times: [0, 0.5, 1]
+                                }
+                              } : {}
+                            }
+                            style={{ right: '25%', top: '40%' }}
+                          />
+
+                          {/* Cheeks */}
+                          <motion.div
+                            className="absolute w-1.5 h-1 bg-amber/50 rounded-full"
+                            animate={{
+                              opacity: hoveredTab ? 0.9 : 0.6
+                            }}
+                            style={{ left: '15%', top: '55%' }}
+                          />
+                          <motion.div
+                            className="absolute w-1.5 h-1 bg-amber/50 rounded-full"
+                            animate={{
+                              opacity: hoveredTab ? 0.9 : 0.6
+                            }}
+                            style={{ right: '15%', top: '55%' }}
+                          />
+
+                          {/* Smile */}
+                          <motion.div
+                            className="absolute w-3.5 h-1.5 border-b-2 border-text1 rounded-full"
+                            animate={
+                              hoveredTab ? {
+                                scaleY: 1.5,
+                                y: -1
+                              } : {
+                                scaleY: 1,
+                                y: 0
+                              }
+                            }
+                            style={{ left: '30%', top: '55%' }}
+                          />
+
+                          {/* Sparkles */}
+                          <AnimatePresence>
+                            {hoveredTab && (
+                              <>
+                                <motion.div
+                                  initial={{ opacity: 0, scale: 0 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  exit={{ opacity: 0, scale: 0 }}
+                                  className="absolute -top-1 -right-1 w-2 h-2 text-amber"
+                                >
+                                  ✨
+                                </motion.div>
+                                <motion.div
+                                  initial={{ opacity: 0, scale: 0 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  exit={{ opacity: 0, scale: 0 }}
+                                  transition={{ delay: 0.1 }}
+                                  className="absolute -top-2 left-0 w-2 h-2 text-amber"
+                                >
+                                  ✨
+                                </motion.div>
+                              </>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+
+                        {/* Little Arrow point */}
+                        <motion.div
+                          className="absolute -bottom-1 left-1/2 w-3.5 h-3.5 -translate-x-1/2 border-r border-b border-border/80 bg-surface rotate-45 transform origin-center"
+                          animate={
+                            hoveredTab ? {
+                              y: [0, -3, 0],
+                              transition: {
+                                duration: 0.3,
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                              }
+                            } : {
+                              y: [0, 1, 0],
+                              transition: {
+                                duration: 1,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: 0.5
+                              }
+                            }
+                          }
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Section: Toggles & Menu */}
           <div className="flex items-center gap-3">
             {/* Recruiter indicator */}
             {recruiterMode && (
-              <span className="hidden sm:inline text-[9px] font-mono uppercase bg-amber/10 border border-amber/30 text-amber px-2 py-0.5 rounded-full">
+              <span className="hidden sm:inline text-[9px] font-mono uppercase bg-amber/10 border border-amber/30 text-text1 px-2 py-0.5 rounded-full font-semibold">
                 Recruiter Mode
               </span>
             )}
@@ -76,7 +288,7 @@ export default function Navbar() {
             {/* Dark / Light Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-1 rounded-full text-text3 hover:text-text1 hover:bg-surface2 transition-all"
+              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
@@ -85,33 +297,38 @@ export default function Navbar() {
             {/* Hamburger for mobile */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-1 rounded-full text-text3 hover:text-text1 hover:bg-surface2 transition-all"
+              className="md:hidden p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={14} /> : <Menu size={14} />}
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Mobile Dropdown Panel */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-2 p-4 rounded-2xl border border-border bg-surface/90 backdrop-blur-lg shadow-xl flex flex-col gap-2">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  cn(
-                    "text-sm px-4 py-2.5 rounded-xl text-text3 transition-colors hover:text-text1 hover:bg-surface2 flex items-center justify-between",
-                    isActive && "text-text1 bg-surface2 font-medium"
-                  )
-                }
-              >
-                {item.label}
-                {location.pathname === item.path && <span className="w-1.5 h-1.5 rounded-full bg-text1"></span>}
-              </NavLink>
-            ))}
+          <div className="md:hidden mt-2 p-4 rounded-2xl border border-border/85 bg-navbar shadow-xl flex flex-col gap-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "text-sm px-4 py-2.5 rounded-xl text-text2 transition-colors hover:text-text1 hover:bg-surface2 flex items-center justify-between",
+                    isActive && "text-text1 bg-surface2 font-bold"
+                  )}
+                >
+                  <span className="flex items-center gap-2">
+                    <Icon size={16} />
+                    {item.name}
+                  </span>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-text1"></span>}
+                </Link>
+              );
+            })}
           </div>
         )}
       </header>
