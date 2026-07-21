@@ -16,6 +16,7 @@ export default {
         text2: "var(--color-text2)",
         text3: "var(--color-text3)",
         text4: "var(--color-text4)",
+        navbar: "var(--color-navbar)",
         amber: "#d4a855",
         teal: "#4a9aba",
         rose: "#9b5a6a",

@@ -65,16 +65,16 @@ export default function Hero() {
       <div className="space-y-6 text-sm text-text2 leading-relaxed max-w-[620px]">
         <p className="flex flex-wrap items-center gap-2">
           I am an AI engineer and data scientist building intelligent systems. Currently crafting models with
-          <span className="inline-flex items-center bg-surface2 border border-border text-text2 text-xs px-2 py-0.5 rounded font-mono">
-            🐍 Python
+          <span className="inline-flex items-center gap-1.5 bg-surface2 border border-border text-text1 text-xs px-2.5 py-1 rounded-md font-mono font-medium">
+            Python
           </span>
           ,
-          <span className="inline-flex items-center bg-surface2 border border-border text-text2 text-xs px-2 py-0.5 rounded font-mono">
-            ⚡ FastAPI
+          <span className="inline-flex items-center gap-1.5 bg-surface2 border border-border text-text1 text-xs px-2.5 py-1 rounded-md font-mono font-medium">
+            FastAPI
           </span>
           , and
-          <span className="inline-flex items-center bg-surface2 border border-border text-text2 text-xs px-2 py-0.5 rounded font-mono">
-            📊 scikit-learn
+          <span className="inline-flex items-center gap-1.5 bg-surface2 border border-border text-text1 text-xs px-2.5 py-1 rounded-md font-mono font-medium">
+            scikit-learn
           </span>
           .
         </p>
@@ -85,9 +85,9 @@ export default function Hero() {
         </p>
 
         <p className="text-text3">
-          Explore my latest <Link to="/projects" className="underline hover:text-text1">projects</Link>, read my 
-          work <Link to="/work" className="underline hover:text-text1">experience</Link>, or checkout the 
-          technical <Link to="/blog" className="underline hover:text-text1">blog</Link>.
+          Explore my latest <Link to="/projects" className="underline hover:text-text1 font-medium">projects</Link>, read my 
+          work <Link to="/work" className="underline hover:text-text1 font-medium">experience</Link>, or checkout the 
+          technical <Link to="/blog" className="underline hover:text-text1 font-medium">blog</Link>.
         </p>
       </div>
 
@@ -95,7 +95,7 @@ export default function Hero() {
       <div className="mt-8">
         <a
           href="#currently-building"
-          className="inline-flex items-center gap-2 border border-border text-text2 rounded-full px-5 py-2.5 text-xs tracking-wider uppercase hover:bg-surface2 hover:text-text1 transition-all duration-300 shadow-sm"
+          className="inline-flex items-center gap-2 border border-border text-text1 bg-surface rounded-full px-5 py-2.5 text-xs font-medium tracking-wider uppercase hover:bg-surface2 transition-all duration-300 shadow-sm"
         >
           Everything at a glance <ArrowUpRight size={12} />
         </a>
@@ -104,7 +104,7 @@ export default function Hero() {
       {/* Fan of line (hidden in recruiter mode) */}
       {!recruiterMode && (
         <div className="mt-12 text-xs text-text3 italic select-none font-display">
-          fan of · 🎵 melodic OSTs and · ✍ memoir writing and · 📌 paper + systems
+          fan of · melodic OSTs and · memoir writing and · paper + systems
         </div>
       )}
     </section>

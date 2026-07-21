@@ -1,11 +1,11 @@
 import React from 'react';
 
 const buildingItems = [
-  "⚡ TokenLens — token intelligence SaaS",
-  "🛰️ ISRO AQI/HCHOSentinel-5P Sentinel pipeline",
-  "📝 GeekyKunoichi blog",
-  "👾 Locomotion gait controller",
-  "🛡️ EthicalTwin AI governance"
+  "TokenLens — token intelligence SaaS",
+  "ISRO AQI Sentinel-5P satellite pipeline",
+  "GeekyKunoichi markdown blog",
+  "Locomotion gait controller scripts",
+  "EthicalTwin AI governance framework"
 ];
 
 export default function CurrentlyBuilding() {

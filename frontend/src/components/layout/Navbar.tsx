@@ -38,11 +38,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[720px] px-6 md:px-0">
-        <div className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border bg-surface/60 backdrop-blur-md shadow-lg transition-all duration-300">
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6 md:px-0">
+        <div className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border/80 bg-navbar shadow-xl backdrop-blur-lg transition-all duration-300">
           
           {/* Live Clock (Left) */}
-          <div className="text-[11px] font-mono text-text3 select-none">
+          <div className="text-[11px] font-mono font-medium text-text2 select-none">
             {formatTime(time)}
           </div>
 
@@ -54,8 +54,8 @@ export default function Navbar() {
                 to={item.path}
                 className={({ isActive }) =>
                   cn(
-                    "text-xs px-3 py-1 rounded-full text-text3 transition-colors hover:text-text1",
-                    isActive && "text-text1 bg-surface2 font-medium"
+                    "text-xs px-3 py-1 rounded-full text-text2 transition-colors hover:text-text1 hover:bg-surface2/60",
+                    isActive && "text-text1 bg-surface2 font-semibold shadow-sm"
                   )
                 }
               >
