@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
+import kunoichi from '../../assets/kunoichi.png';
 import {
   Sun,
   Moon,
@@ -132,7 +133,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="anime-mascot"
-                      className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none"
+                      className="absolute -top-[44px] left-1/2 -translate-x-1/2 pointer-events-none z-[9999]"
                       initial={false}
                       transition={{
                         type: "spring",
@@ -140,13 +141,16 @@ export default function Navbar() {
                         damping: 30
                       }}
                     >
-                      <div className="relative w-12 h-12">
-                        <motion.div
-                          className="absolute w-10 h-10 bg-surface border border-border rounded-full left-1/2 -translate-x-1/2 shadow-md flex items-center justify-center"
+                      <div className="relative w-12 h-12 flex items-center justify-center">
+                        <motion.img
+                          src={kunoichi}
+                          alt="Kunoichi Mascot"
+                          className="w-11 h-11 object-contain drop-shadow-md"
                           animate={
                             hoveredTab ? {
-                              scale: [1, 1.1, 1],
-                              rotate: [0, -5, 5, 0],
+                              scale: [1, 1.15, 1],
+                              rotate: [0, -10, 10, 0],
+                              y: [0, -4, 0],
                               transition: {
                                 duration: 0.5,
                                 ease: "easeInOut"
@@ -160,114 +164,32 @@ export default function Navbar() {
                               }
                             }
                           }
-                        >
-                          {/* Eyes */}
-                          <motion.div
-                            className="absolute w-1.5 h-1.5 bg-text1 rounded-full"
-                            animate={
-                              hoveredTab ? {
-                                scaleY: [1, 0.2, 1],
-                                transition: {
-                                  duration: 0.2,
-                                  times: [0, 0.5, 1]
-                                }
-                              } : {}
-                            }
-                            style={{ left: '25%', top: '40%' }}
-                          />
-                          <motion.div
-                            className="absolute w-1.5 h-1.5 bg-text1 rounded-full"
-                            animate={
-                              hoveredTab ? {
-                                scaleY: [1, 0.2, 1],
-                                transition: {
-                                  duration: 0.2,
-                                  times: [0, 0.5, 1]
-                                }
-                              } : {}
-                            }
-                            style={{ right: '25%', top: '40%' }}
-                          />
-
-                          {/* Cheeks */}
-                          <motion.div
-                            className="absolute w-1.5 h-1 bg-amber/50 rounded-full"
-                            animate={{
-                              opacity: hoveredTab ? 0.9 : 0.6
-                            }}
-                            style={{ left: '15%', top: '55%' }}
-                          />
-                          <motion.div
-                            className="absolute w-1.5 h-1 bg-amber/50 rounded-full"
-                            animate={{
-                              opacity: hoveredTab ? 0.9 : 0.6
-                            }}
-                            style={{ right: '15%', top: '55%' }}
-                          />
-
-                          {/* Smile */}
-                          <motion.div
-                            className="absolute w-3.5 h-1.5 border-b-2 border-text1 rounded-full"
-                            animate={
-                              hoveredTab ? {
-                                scaleY: 1.5,
-                                y: -1
-                              } : {
-                                scaleY: 1,
-                                y: 0
-                              }
-                            }
-                            style={{ left: '30%', top: '55%' }}
-                          />
-
-                          {/* Sparkles */}
-                          <AnimatePresence>
-                            {hoveredTab && (
-                              <>
-                                <motion.div
-                                  initial={{ opacity: 0, scale: 0 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0 }}
-                                  className="absolute -top-1 -right-1 w-2 h-2 text-amber"
-                                >
-                                  ✨
-                                </motion.div>
-                                <motion.div
-                                  initial={{ opacity: 0, scale: 0 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0 }}
-                                  transition={{ delay: 0.1 }}
-                                  className="absolute -top-2 left-0 w-2 h-2 text-amber"
-                                >
-                                  ✨
-                                </motion.div>
-                              </>
-                            )}
-                          </AnimatePresence>
-                        </motion.div>
-
-                        {/* Little Arrow point */}
-                        <motion.div
-                          className="absolute -bottom-1 left-1/2 w-3.5 h-3.5 -translate-x-1/2 border-r border-b border-border/80 bg-surface rotate-45 transform origin-center"
-                          animate={
-                            hoveredTab ? {
-                              y: [0, -3, 0],
-                              transition: {
-                                duration: 0.3,
-                                repeat: Infinity,
-                                repeatType: "reverse"
-                              }
-                            } : {
-                              y: [0, 1, 0],
-                              transition: {
-                                duration: 1,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: 0.5
-                              }
-                            }
-                          }
                         />
+
+                        {/* Sparkles */}
+                        <AnimatePresence>
+                          {hoveredTab && (
+                            <>
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                className="absolute -top-1 -right-1 w-2 h-2 text-amber"
+                              >
+                                ✨
+                              </motion.div>
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                transition={{ delay: 0.1 }}
+                                className="absolute -top-2 left-0 w-2 h-2 text-amber"
+                              >
+                                ✨
+                              </motion.div>
+                            </>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </motion.div>
                   )}
