@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
 import kunoichi from '../../assets/kunoichi.png';
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import {
   Sun,
   Moon,
@@ -17,6 +18,7 @@ import {
   Layers,
   MessageSquare,
   Mail,
+  Calendar,
   LucideIcon
 } from 'lucide-react';
 
@@ -26,17 +28,58 @@ interface NavItem {
   icon: LucideIcon;
 }
 
+interface NowPlayingTrack {
+  title: string;
+  artist: string;
+  albumArt: string;
+  url: string;
+  isPlaying: boolean;
+}
+
 export default function Navbar() {
   const { theme, toggleTheme, recruiterMode } = useUIStore();
   const [time, setTime] = useState(new Date());
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [track, setTrack] = useState<NowPlayingTrack | null>(null);
   const location = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Fetch live Now Playing Last.fm track
+  useEffect(() => {
+    const fetchNowPlaying = async () => {
+      try {
+        const res = await fetch('/api/spotify/now-playing');
+        if (res.ok) {
+          const data = await res.json();
+          setTrack(data);
+        }
+      } catch (err) {
+        console.error('Error fetching now playing track:', err);
+      }
+    };
+    fetchNowPlaying();
+    const interval = setInterval(fetchNowPlaying, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Close dialog on clicking outside
+  useEffect(() => {
+    if (!dialogOpen) return;
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.clock-container')) {
+        setDialogOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [dialogOpen]);
 
   const formatTime = (date: Date) => {
     let hours = date.getHours();
@@ -46,6 +89,22 @@ export default function Navbar() {
     hours = hours ? hours : 12;
     const minutesStr = minutes < 10 ? '0' + minutes : minutes;
     return `${hours}:${minutesStr} ${ampm}`;
+  };
+
+  const getGreeting = (date: Date) => {
+    const hours = date.getHours();
+    if (hours >= 5 && hours < 12) return 'good morning';
+    if (hours >= 12 && hours < 17) return 'good afternoon';
+    if (hours >= 17 && hours < 22) return 'good evening';
+    return 'good night';
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric'
+    });
   };
 
   const navItems: NavItem[] = [
@@ -72,9 +131,139 @@ export default function Navbar() {
             damping: 20
           }}
         >
-          {/* Live Clock (Left) */}
-          <div className="text-[11px] font-mono font-medium text-text2 select-none">
-            {formatTime(time)}
+          {/* Live Clock & Spotify Dialog Box Trigger (Left) */}
+          <div className="relative clock-container">
+            <div
+              onClick={() => setDialogOpen(!dialogOpen)}
+              className="text-[11px] font-mono font-medium text-text2 select-none cursor-pointer hover:text-text1 transition-colors flex items-center gap-1.5"
+            >
+              {formatTime(time)}
+              {track?.isPlaying && (
+                <span className="flex items-center gap-1">
+                  <span className="w-1 h-1 rounded-full bg-teal animate-pulse" />
+                  <span className="max-w-[70px] sm:max-w-[100px] truncate text-[9px] text-text3">
+                    · {track.title}
+                  </span>
+                </span>
+              )}
+            </div>
+
+            <AnimatePresence>
+              {dialogOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 top-[32px] w-[280px] bg-navbar border border-border rounded-2xl shadow-2xl p-4 z-[9999] text-left"
+                >
+                  {/* Header: Greeting & Time */}
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-semibold text-text1 select-none">
+                      {getGreeting(time)}
+                    </h3>
+                    <span className="text-[10px] font-mono text-text2">
+                      {formatTime(time)}
+                    </span>
+                  </div>
+
+                  {/* Subheader: Date */}
+                  <div className="text-[10px] text-text3 font-medium select-none mt-0.5">
+                    {formatDate(time)}
+                  </div>
+
+                  <div className="h-px bg-border/60 my-2.5" />
+
+                  {/* Now Playing Area */}
+                  <div className="flex flex-col">
+                    <span className="text-[8px] font-mono tracking-widest text-text4 uppercase font-semibold">
+                      {track?.isPlaying ? '⚡ Now Playing' : '🎵 Last Played'}
+                    </span>
+                    <a
+                      href={track?.url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 mt-2 bg-surface2/30 hover:bg-surface2/50 transition-colors p-2 rounded-xl border border-border/45"
+                    >
+                      <div className="w-10 h-10 rounded-lg overflow-hidden border border-border/50 bg-surface flex-shrink-0">
+                        <img
+                          src={track?.albumArt || 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=150&h=150&q=80'}
+                          alt={track?.title || 'White Ferrari'}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-col min-w-0 flex-1">
+                        <span className="text-[11px] font-bold text-text1 truncate">
+                          {track?.title || 'White Ferrari'}
+                        </span>
+                        <span className="text-[9px] text-text3 truncate mt-0.5">
+                          {track?.artist || 'Frank Ocean'}
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div className="h-px bg-border/60 my-2.5" />
+
+                  {/* Footer: Social Icons & Theme Toggler */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://github.com/geetikavasistha-01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
+                        title="GitHub"
+                      >
+                        <FaGithub size={12} />
+                      </a>
+                      <a
+                        href="https://x.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
+                        title="Twitter"
+                      >
+                        <FaXTwitter size={12} />
+                      </a>
+                      <a
+                        href="https://linkedin.com/in/geetikavasisthampy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
+                        title="LinkedIn"
+                      >
+                        <FaLinkedin size={12} />
+                      </a>
+                      <Link
+                        to="/contact"
+                        className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all"
+                        title="Contact"
+                        onClick={() => setDialogOpen(false)}
+                      >
+                        <Mail size={12} />
+                      </Link>
+                      <Link
+                        to="/work"
+                        className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all"
+                        title="Calendar"
+                        onClick={() => setDialogOpen(false)}
+                      >
+                        <Calendar size={12} />
+                      </Link>
+                    </div>
+
+                    <button
+                      onClick={toggleTheme}
+                      className="p-1 rounded-md text-text2 hover:text-text1 hover:bg-surface2 transition-all"
+                      aria-label="Toggle Theme"
+                    >
+                      {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Desktop Navigation (Center) */}
@@ -210,7 +399,7 @@ export default function Navbar() {
             {/* Dark / Light Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all"
+              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all animate-fade-in"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
