@@ -4,6 +4,8 @@ import { useUIStore } from '../../store/uiStore';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
+import kunoichi from '../../assets/kunoichi.png';
+
 export default function Hero() {
   const { recruiterMode } = useUIStore();
 
@@ -11,11 +13,11 @@ export default function Hero() {
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
       {/* Avatar & Social Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 w-full mb-8">
-        <div className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md">
+        <div className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center">
           <img
-            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&h=150&q=80"
+            src={kunoichi}
             alt="Geetika Vasistha"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain p-1.5"
           />
         </div>
         

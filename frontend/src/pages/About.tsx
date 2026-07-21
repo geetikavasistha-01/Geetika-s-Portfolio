@@ -2,6 +2,7 @@ import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import SkillConstellation from '../components/about/SkillConstellation';
+import kunoichi from '../assets/kunoichi.png';
 
 const skillGroups = [
   {
@@ -67,11 +68,11 @@ export default function About() {
         
         {/* Left Column (Sticky info cards) */}
         <div className="flex flex-col items-center md:items-start md:sticky md:top-24 self-start gap-4">
-          <div className="w-[180px] h-[180px] rounded-xl overflow-hidden border border-border bg-surface shadow-sm">
+          <div className="w-[180px] h-[180px] rounded-xl overflow-hidden border border-border bg-surface shadow-sm flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&h=250&q=80"
+              src={kunoichi}
               alt="Geetika Vasistha"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-4"
             />
           </div>
           
