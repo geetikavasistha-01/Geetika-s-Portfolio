@@ -155,7 +155,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute left-[-20px] top-[38px] w-[300px] bg-navbar border border-border rounded-[24px] shadow-2xl p-4.5 z-[9999] text-left"
+                  className="absolute left-[-20px] top-[48px] w-[300px] bg-surface/95 backdrop-blur-xl border border-border rounded-[24px] shadow-2xl p-4.5 z-[10000] text-left"
                 >
                   {/* Header: Greeting & Time */}
                   <div className="flex items-center justify-between">
@@ -319,7 +319,7 @@ export default function Navbar() {
                     )}
                   </AnimatePresence>
 
-                  {isActive && (
+                  {isActive && !dialogOpen && (
                     <motion.div
                       layoutId="anime-mascot"
                       className="absolute -top-[44px] left-1/2 -translate-x-1/2 pointer-events-none z-[9999]"
