@@ -5,6 +5,7 @@ import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
 import { api } from '../../lib/api';
 import kunoichi from '../../assets/kunoichi.png';
+import kunoichiDark from '../../assets/kunoichi-dark.png';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import {
   Sun,
@@ -39,6 +40,7 @@ interface NowPlayingTrack {
 
 export default function Navbar() {
   const { theme, toggleTheme, recruiterMode } = useUIStore();
+  const currentMascot = theme === 'dark' ? kunoichiDark : kunoichi;
   const [time, setTime] = useState(new Date());
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -330,7 +332,7 @@ export default function Navbar() {
                     >
                       <div className="relative w-12 h-12 flex items-center justify-center">
                         <motion.img
-                          src={kunoichi}
+                          src={currentMascot}
                           alt="Kunoichi Mascot"
                           className="w-11 h-11 object-contain drop-shadow-md"
                           animate={

@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 import kunoichi from '../../assets/kunoichi.png';
+import kunoichiDark from '../../assets/kunoichi-dark.png';
 
 export default function Hero() {
-  const { recruiterMode } = useUIStore();
+  const { theme, recruiterMode } = useUIStore();
+  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
 
   return (
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
@@ -15,7 +17,7 @@ export default function Hero() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 w-full mb-8">
         <div className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center">
           <img
-            src={kunoichi}
+            src={currentAvatar}
             alt="Geetika Vasistha"
             className="w-full h-full object-contain p-1.5"
           />

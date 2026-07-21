@@ -3,6 +3,8 @@ import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import SkillConstellation from '../components/about/SkillConstellation';
 import kunoichi from '../assets/kunoichi.png';
+import kunoichiDark from '../assets/kunoichi-dark.png';
+import { useUIStore } from '../store/uiStore';
 
 const skillGroups = [
   {
@@ -47,6 +49,9 @@ const philosophyCards = [
 ];
 
 export default function About() {
+  const { theme } = useUIStore();
+  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
+
   return (
     <PageWrapper>
       {/* Page Header */}
@@ -70,7 +75,7 @@ export default function About() {
         <div className="flex flex-col items-center md:items-start md:sticky md:top-24 self-start gap-4">
           <div className="w-[180px] h-[180px] rounded-xl overflow-hidden border border-border bg-surface shadow-sm flex items-center justify-center">
             <img
-              src={kunoichi}
+              src={currentAvatar}
               alt="Geetika Vasistha"
               className="w-full h-full object-contain p-4"
             />
