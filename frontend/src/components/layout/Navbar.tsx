@@ -61,7 +61,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6 md:px-0">
+      <header className="fixed top-14 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6 md:px-0">
         <motion.div
           className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border/80 bg-navbar shadow-xl backdrop-blur-lg relative transition-all duration-300"
           initial={{ y: -20, opacity: 0 }}
