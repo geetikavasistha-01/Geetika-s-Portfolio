@@ -33,10 +33,14 @@
 /* Base custom styles */
 body {
   background-color: var(--color-bg);
-  color: var(--color-text1);
+  color: var(--color-text2);
   font-family: 'Inter', system-ui, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text1);
 }
 
 /* Custom CSS classes */
