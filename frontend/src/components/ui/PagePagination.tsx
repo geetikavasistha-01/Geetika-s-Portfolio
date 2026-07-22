@@ -37,7 +37,7 @@ export default function PagePagination() {
   const nextPage = currentIndex < pages.length - 1 ? pages[currentIndex + 1] : null;
 
   return (
-    <div className="mt-16 pt-8 border-t border-border/40 flex items-center justify-between w-full select-none">
+    <div className="mt-6 pt-6 border-t border-border/40 flex items-center justify-between w-full select-none">
       {/* Previous Button */}
       <div className="flex-1 flex justify-start">
         {prevPage ? (

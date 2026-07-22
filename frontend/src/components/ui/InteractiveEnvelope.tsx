@@ -16,7 +16,7 @@ export default function InteractiveEnvelope() {
   return (
     <Link
       to="/contact"
-      className="relative flex flex-col items-center justify-center w-full py-16 group select-none"
+      className="relative flex flex-col items-center justify-center w-full pt-12 pb-6 group select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
