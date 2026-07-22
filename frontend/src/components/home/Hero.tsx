@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 import kunoichi from '../../assets/kunoichi.png';
 import kunoichiDark from '../../assets/kunoichi-dark.png';
+import renge from '../../assets/renge.jpg';
 import { LinkPreview } from '../ui/LinkPreview';
 import SpotifyWidget from './SpotifyWidget';
 
@@ -17,13 +18,19 @@ export default function Hero() {
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
       {/* Avatar & Social Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 w-full mb-8">
-        <div className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center">
+        <a
+          href="https://nonnontv.fandom.com/wiki/Non_Non_Biyori_(manga)"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center hover:border-green transition-all duration-300 group cursor-pointer"
+          title="Non Non Biyori (manga)"
+        >
           <img
-            src={currentAvatar}
-            alt="Geetika Vasistha"
-            className="w-full h-full object-contain p-1.5"
+            src={renge}
+            alt="Renge Miyauchi"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-        </div>
+        </a>
         
         {/* Social Links */}
         <div className="flex gap-4 items-center">
