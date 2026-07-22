@@ -85,14 +85,9 @@ export default function Home() {
 
       {/* 11. Anime / Recreation shelf - Hidden in recruiter mode */}
       {!recruiterMode && (
-        <>
-          <SectionHeader
-            label="on loop"
-            rightElement={<span>recreations</span>}
-            subtext="What I keep coming back to when the monitors go dark."
-          />
+        <div className="mt-16">
           <OnLoop />
-        </>
+        </div>
       )}
       <InteractiveEnvelope />
     </PageWrapper>
