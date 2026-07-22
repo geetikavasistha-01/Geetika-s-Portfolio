@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useUIStore } from '../../store/uiStore';
-import { gsap } from 'gsap';
 
 interface Star {
   x: number;
@@ -10,6 +9,8 @@ interface Star {
   glowColor: string;
   phase: number;
   speed: number;
+  vx: number;
+  vy: number;
   glow: boolean;
 }
 
@@ -26,12 +27,14 @@ export default function StarField() {
 
     let animationFrameId: number;
     let stars: Star[] = [];
-    const starCount = 40;
+    const starCount = 140; // Dense and rich particle count
 
+    // Premium glowing colors: Cream sage, white, soft ice-blue, and violet/purple
     const colors = [
-      { rgb: '124, 58, 237', hex: '#7c3aed' }, // purple
-      { rgb: '37, 99, 235', hex: '#2563eb' },  // blue
-      { rgb: '236, 72, 153', hex: '#ec4899' }  // pink
+      { rgb: '230, 242, 221', hex: '#e6f2dd' }, // sage
+      { rgb: '255, 255, 255', hex: '#ffffff' }, // white
+      { rgb: '147, 197, 253', hex: '#93c5fd' }, // ice blue
+      { rgb: '196, 181, 253', hex: '#c4b5fd' }  // violet
     ];
 
     const resizeCanvas = () => {
@@ -44,15 +47,19 @@ export default function StarField() {
       stars = [];
       for (let i = 0; i < starCount; i++) {
         const colorObj = colors[Math.floor(Math.random() * colors.length)];
+        const radius = 0.6 + Math.random() * 1.6; // Variety of sizes (0.6px to 2.2px)
+        
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: 1 + Math.random() * 1.5, // 1 to 2.5px
+          radius,
           color: colorObj.rgb,
           glowColor: colorObj.hex,
           phase: Math.random() * Math.PI * 2,
-          speed: 0.02 + Math.random() * 0.03,
-          glow: Math.random() > 0.7 // 30% stars have glow
+          speed: 0.01 + Math.random() * 0.02,
+          vx: (Math.random() - 0.5) * 0.15, // Slow horizontal drift
+          vy: -(0.08 + Math.random() * 0.15), // Slow upward vertical drift
+          glow: Math.random() > 0.65 // 35% stars have glow
         });
       }
     };
@@ -71,21 +78,31 @@ export default function StarField() {
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const isDark = document.documentElement.classList.contains('dark');
-      const opacityScale = isDark ? 1.0 : 0.25;
+      const opacityScale = isDark ? 0.85 : 0.35; // Soften in light mode
 
       stars.forEach((star) => {
+        // Animate drift & wrap around edges
         if (!prefersReducedMotion) {
+          star.x += star.vx;
+          star.y += star.vy;
           star.phase += star.speed;
+
+          if (star.y < -10) {
+            star.y = canvas.height + 10;
+            star.x = Math.random() * canvas.width;
+          }
+          if (star.x < -10) star.x = canvas.width + 10;
+          if (star.x > canvas.width + 10) star.x = -10;
         }
 
-        const opacity = (0.2 + (Math.sin(star.phase) + 1) * 0.25) * opacityScale;
+        const opacity = (0.15 + (Math.sin(star.phase) + 1) * 0.3) * opacityScale;
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${star.color}, ${opacity})`;
 
         if (star.glow && isDark) {
-          ctx.shadowBlur = 4 + (Math.sin(star.phase) + 1) * 2;
+          ctx.shadowBlur = 3 + (Math.sin(star.phase) + 1) * 1.5;
           ctx.shadowColor = star.glowColor;
         } else {
           ctx.shadowBlur = 0;
@@ -94,7 +111,6 @@ export default function StarField() {
         ctx.fill();
       });
 
-      // We hook into GSAP's ticker or requestAnimationFrame
       animationFrameId = requestAnimationFrame(render);
     };
 
