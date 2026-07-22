@@ -20,10 +20,27 @@ export const ProductDropCard = ({
   items,
 }: ProductDropCardProps) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const itemsToShow = 3;
+  const [itemsToShow, setItemsToShow] = React.useState(5);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 480) {
+        setItemsToShow(1.5);
+      } else if (window.innerWidth < 768) {
+        setItemsToShow(2.5);
+      } else if (window.innerWidth < 1024) {
+        setItemsToShow(3.5);
+      } else {
+        setItemsToShow(5);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const canGoPrev = currentIndex > 0;
-  const canGoNext = currentIndex < items.length - itemsToShow;
+  const canGoNext = currentIndex < items.length - Math.ceil(itemsToShow);
 
   const handlePrev = () => {
     if (canGoPrev) {

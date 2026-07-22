@@ -5,8 +5,39 @@ import { ProductDropCard, DropItem } from '../ui/product-drop-card';
 import tedLasso from '../../assets/ted-lasso.jpg';
 import enolaHolmes from '../../assets/enola-holmes.jpg';
 import brooklyn99 from '../../assets/brooklyn-99.png';
+import renge from '../../assets/renge.jpg';
 
 const loopItems: DropItem[] = [
+  {
+    time: "MOVIE · SUSPENSE",
+    name: "Enola Holmes",
+    collection: "A clever, fast-paced detective mystery full of wit and sisterly rebellion.",
+    imageSrc: enolaHolmes
+  },
+  {
+    time: "ANIME · LEGENDARY",
+    name: "One Piece",
+    collection: "An epic tale of freedom, dreams, and companionship across the grand line.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg"
+  },
+  {
+    time: "ANIME · COMFORT ZONE",
+    name: "Non Non Biyori",
+    collection: "Nyanpasu! A heartwarming, peaceful slice-of-life comedy in the Japanese countryside.",
+    imageSrc: renge
+  },
+  {
+    time: "SERIES · COMFORT ZONE",
+    name: "Ted Lasso",
+    collection: "Believing in believe, leadership with kindness, and mental health in sports.",
+    imageSrc: tedLasso
+  },
+  {
+    time: "SERIES · COMEDY",
+    name: "Brooklyn Nine-Nine",
+    collection: "Nine-nine! Peak workplace humor, outstanding characters, and hot damn cold opens.",
+    imageSrc: brooklyn99
+  },
   {
     time: "THE HOUR · EP 24",
     name: "Code Geass R2",
@@ -24,30 +55,6 @@ const loopItems: DropItem[] = [
     name: "Kazuma & Takuma",
     collection: "the twins from gakuen babysitters. if you know, you know.",
     imageSrc: "https://cdn.myanimelist.net/images/anime/11/89497.jpg"
-  },
-  {
-    time: "ANIME · LEGENDARY",
-    name: "One Piece",
-    collection: "An epic tale of freedom, dreams, and companionship across the grand line.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg"
-  },
-  {
-    time: "SERIES · COMFORT ZONE",
-    name: "Ted Lasso",
-    collection: "Believing in believe, leadership with kindness, and mental health in sports.",
-    imageSrc: tedLasso
-  },
-  {
-    time: "MOVIE · SUSPENSE",
-    name: "Enola Holmes",
-    collection: "A clever, fast-paced detective mystery full of wit and sisterly rebellion.",
-    imageSrc: enolaHolmes
-  },
-  {
-    time: "SERIES · COMEDY",
-    name: "Brooklyn Nine-Nine",
-    collection: "Nine-nine! Peak workplace humor, outstanding characters, and hot damn cold opens.",
-    imageSrc: brooklyn99
   }
 ];
 
