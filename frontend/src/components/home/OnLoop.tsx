@@ -20,6 +20,36 @@ const loopItems: DropItem[] = [
     name: "Kazuma & Takuma",
     collection: "the twins from gakuen babysitters. if you know, you know.",
     imageSrc: "https://cdn.myanimelist.net/images/anime/11/89497.jpg"
+  },
+  {
+    time: "ANIME · ON LOOP",
+    name: "Sousou no Frieren",
+    collection: "Quiet melancholy, beautiful pacing, and an outstanding soundtrack.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/1015/138025.jpg"
+  },
+  {
+    time: "ANIME · CLASSIC",
+    name: "Neon Genesis Evangelion",
+    collection: "Deconstructing mech conventions, psychological depths, and human instrumentation.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/1314/111762.jpg"
+  },
+  {
+    time: "MANGA · SUSPENSE",
+    name: "Monster",
+    collection: "A masterclass in psychological tension, morality, and character writing.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/10/18793.jpg"
+  },
+  {
+    time: "ANIME · COMFORT ZONE",
+    name: "Haikyuu!!",
+    collection: "Unmatched team chemistry, growth, and high-energy animation.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/7/76014.jpg"
+  },
+  {
+    time: "ANIME · COMEDY",
+    name: "Gintama",
+    collection: "Peak satire, heart-wrenching serious arcs, and absolute character love.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/3/28761.jpg"
   }
 ];
 
