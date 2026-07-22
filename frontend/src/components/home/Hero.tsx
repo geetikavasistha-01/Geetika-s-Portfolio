@@ -7,6 +7,7 @@ import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import kunoichi from '../../assets/kunoichi.png';
 import kunoichiDark from '../../assets/kunoichi-dark.png';
 import { LinkPreview } from '../ui/LinkPreview';
+import SpotifyWidget from './SpotifyWidget';
 
 export default function Hero() {
   const { theme, recruiterMode } = useUIStore();
@@ -105,6 +106,9 @@ export default function Hero() {
           Everything at a glance <ArrowUpRight size={12} />
         </a>
       </div>
+
+      {/* Compact Spotify Status */}
+      <SpotifyWidget />
 
       {/* Fan of line (hidden in recruiter mode) */}
       {!recruiterMode && (

@@ -2,7 +2,6 @@ import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import Hero from '../components/home/Hero';
 import CurrentlyBuilding from '../components/home/CurrentlyBuilding';
-import SpotifyWidget from '../components/home/SpotifyWidget';
 import LogCards from '../components/home/LogCards';
 import GitHubHeatmap from '../components/home/GitHubHeatmap';
 import FeaturedProjects from '../components/home/FeaturedProjects';
@@ -24,13 +23,6 @@ export default function Home() {
 
       {/* 2. Currently Building Banner */}
       <CurrentlyBuilding />
-
-      {/* 3. Spotify Widget */}
-      <SectionHeader
-        label="spotify status"
-        rightElement={<span>now playing</span>}
-      />
-      <SpotifyWidget />
 
       {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
       {!recruiterMode && (

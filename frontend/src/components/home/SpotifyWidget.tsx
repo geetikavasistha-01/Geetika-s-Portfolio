@@ -5,18 +5,12 @@ import { Music, Heart } from 'lucide-react';
 import { SpotifyTrack } from '../../types';
 
 const defaultTrack: SpotifyTrack = {
-  title: 'White Ferrari',
-  artist: 'Frank Ocean',
-  albumArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=150&h=150&q=80',
+  title: 'Nothing playing right now',
+  artist: '',
+  albumArt: '',
   url: 'https://spotify.com',
   isPlaying: false
 };
-
-const rotationTracks = [
-  { title: 'Nikes', artist: 'Frank Ocean' },
-  { title: 'Introvert', artist: 'Little Simz' },
-  { title: 'Space Song', artist: 'Beach House' }
-];
 
 export default function SpotifyWidget() {
   const { data: track, isLoading } = useQuery<SpotifyTrack>({
@@ -29,76 +23,59 @@ export default function SpotifyWidget() {
         return defaultTrack;
       }
     },
-    refetchInterval: 10000, // every 10 seconds for real-time sync
+    refetchInterval: 10000,
   });
 
+  const displayTrack = track || defaultTrack;
+  const isMusicPlaying = displayTrack.isPlaying;
+
   return (
-    <div className="w-full mt-10 p-5 rounded-2xl border border-border bg-surface flex flex-col gap-6 select-none">
-      
-      {/* Currently Playing / Last Played */}
-      <div className="flex items-center justify-between w-full">
-        <div className="flex items-center gap-4">
-          <div className="relative w-[52px] h-[52px] rounded-md overflow-hidden bg-surface2 border border-border flex-shrink-0 flex items-center justify-center">
-            {isLoading ? (
-              <div className="w-full h-full bg-surface2 animate-pulse" />
-            ) : (
-              <img
-                src={track?.albumArt || defaultTrack.albumArt}
-                alt="Album Art"
-                className="w-full h-full object-cover"
-              />
-            )}
-            {track?.isPlaying && (
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <span className="flex gap-0.5 items-end justify-center h-4 w-4">
-                  <span className="w-0.5 h-3 bg-green animate-bounce [animation-delay:0.1s]" />
-                  <span className="w-0.5 h-4 bg-green animate-bounce [animation-delay:0.3s]" />
-                  <span className="w-0.5 h-2 bg-green animate-bounce [animation-delay:0.5s]" />
-                </span>
-              </div>
-            )}
-          </div>
-          
-          <div className="flex flex-col">
-            <span className="text-[10px] font-mono tracking-widest text-text3 uppercase flex items-center gap-1">
-              <Music size={10} className={track?.isPlaying ? "text-green" : ""} />
-              {track?.isPlaying ? 'Now Playing' : 'Last Played'}
-            </span>
-            <a
-              href={track?.url || defaultTrack.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[16px] font-semibold text-text1 hover:underline truncate max-w-[280px] sm:max-w-[400px] mt-1"
-            >
-              {track?.title || defaultTrack.title}
-            </a>
-            <span className="text-xs text-text3 truncate max-w-[280px] sm:max-w-[400px] mt-0.5">
-              {track?.artist || defaultTrack.artist}
+    <div className="flex items-center gap-3 p-2.5 rounded-xl border border-border bg-surface shadow-sm select-none max-w-xs mt-6 transition-all duration-300">
+      {/* Small Album Art / Music Icon */}
+      <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-surface2 border border-border flex-shrink-0 flex items-center justify-center">
+        {isLoading ? (
+          <div className="w-full h-full bg-surface2 animate-pulse" />
+        ) : displayTrack.albumArt ? (
+          <img
+            src={displayTrack.albumArt}
+            alt="Album Art"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <Music size={14} className="text-text3" />
+        )}
+        {isMusicPlaying && (
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <span className="flex gap-0.5 items-end justify-center h-3.5 w-3.5">
+              <span className="w-0.5 h-2 bg-green animate-bounce [animation-delay:0.1s]" />
+              <span className="w-0.5 h-3 bg-green animate-bounce [animation-delay:0.3s]" />
+              <span className="w-0.5 h-1.5 bg-green animate-bounce [animation-delay:0.5s]" />
             </span>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* On Rotation Section */}
-      <div className="border-t border-border/60 pt-4 flex flex-col gap-2">
-        <span className="text-[9px] font-mono tracking-widest text-text4 uppercase flex items-center gap-1">
-          <Heart size={10} className="text-rose" />
-          On Rotation
+      {/* Info text */}
+      <div className="flex flex-col min-w-0">
+        <span className="text-[8px] font-mono tracking-widest text-text4 uppercase flex items-center gap-1 select-none">
+          <span className={`w-1 h-1 rounded-full ${isMusicPlaying ? 'bg-green animate-pulse' : 'bg-text4'}`} />
+          {isMusicPlaying ? 'Now Playing' : 'Last Played'}
         </span>
-        <div className="flex flex-col gap-2">
-          {rotationTracks.map((item, idx) => (
-            <div key={idx} className="flex justify-between items-center text-xs text-text3">
-              <span className="font-medium hover:text-text1 transition-colors cursor-pointer">
-                {item.title}
-              </span>
-              <span className="text-text4 font-mono text-[10px]">
-                {item.artist}
-              </span>
-            </div>
-          ))}
-        </div>
+        {displayTrack.title === 'Nothing playing right now' ? (
+          <span className="text-xs text-text3 truncate select-none">
+            Nothing playing right now.
+          </span>
+        ) : (
+          <a
+            href={displayTrack.url || 'https://spotify.com'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-semibold text-text1 hover:underline transition-colors truncate max-w-[180px]"
+          >
+            {displayTrack.title} {displayTrack.artist && `· ${displayTrack.artist}`}
+          </a>
+        )}
       </div>
-
     </div>
   );
 }
