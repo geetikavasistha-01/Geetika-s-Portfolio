@@ -107,22 +107,15 @@ export default function Hero() {
       {/* CTA Button */}
       <div className="mt-8">
         <a
-          href="#currently-building"
+          href="#featured-work"
           className="inline-flex items-center gap-2 border border-border text-text1 bg-surface rounded-full px-5 py-2.5 text-xs font-medium tracking-wider uppercase hover:bg-surface2 transition-all duration-300 shadow-sm"
         >
-          Everything at a glance <ArrowUpRight size={12} />
+          Explore Projects <ArrowUpRight size={12} />
         </a>
       </div>
 
       {/* Compact Spotify Status */}
       <SpotifyWidget />
-
-      {/* Fan of line (hidden in recruiter mode) */}
-      {!recruiterMode && (
-        <div className="mt-12 text-xs text-text3 italic select-none font-display">
-          fan of · melodic OSTs and · memoir writing and · paper + systems
-        </div>
-      )}
     </section>
   );
 }

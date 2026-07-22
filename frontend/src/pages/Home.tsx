@@ -1,7 +1,6 @@
 import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import Hero from '../components/home/Hero';
-import CurrentlyBuilding from '../components/home/CurrentlyBuilding';
 import LogCards from '../components/home/LogCards';
 import GitHubHeatmap from '../components/home/GitHubHeatmap';
 import FeaturedProjects from '../components/home/FeaturedProjects';
@@ -21,9 +20,6 @@ export default function Home() {
     <PageWrapper>
       {/* 1. Hero Profile */}
       <Hero />
-
-      {/* 2. Currently Building Banner */}
-      <CurrentlyBuilding />
 
       {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
       {!recruiterMode && (
@@ -45,12 +41,14 @@ export default function Home() {
       <GitHubHeatmap />
 
       {/* 6. Featured Projects */}
-      <SectionHeader
-        label="featured work"
-        rightElement={<span>things built</span>}
-        subtext="Production applications, machine learning models, and open source libraries."
-      />
-      <FeaturedProjects />
+      <div id="featured-work">
+        <SectionHeader
+          label="featured work"
+          rightElement={<span>things built</span>}
+          subtext="Production applications, machine learning models, and open source libraries."
+        />
+        <FeaturedProjects />
+      </div>
 
       {/* 7. Lab Notebook screenshots - Hidden in recruiter mode */}
       {!recruiterMode && (
