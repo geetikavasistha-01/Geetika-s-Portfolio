@@ -22,7 +22,7 @@ export default function Hero() {
           href="https://nonnontv.fandom.com/wiki/Non_Non_Biyori_(manga)"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative w-[72px] h-[72px] rounded-xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center hover:border-green transition-all duration-300 group cursor-pointer"
+          className="relative w-24 h-24 rounded-2xl overflow-hidden bg-surface2 border border-border shadow-md flex items-center justify-center hover:border-green transition-all duration-300 group cursor-pointer"
           title="Non Non Biyori (manga)"
         >
           <img
