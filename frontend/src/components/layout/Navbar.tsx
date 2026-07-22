@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
 import { api } from '../../lib/api';
+import { ThemeToggle } from '../ui/ThemeToggle';
 import kunoichi from '../../assets/kunoichi.png';
 import kunoichiDark from '../../assets/kunoichi-dark.png';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
@@ -253,13 +254,12 @@ export default function Navbar() {
                       </Link>
                     </div>
 
-                    <button
-                      onClick={toggleTheme}
-                      className="p-1 rounded-md text-text2 hover:text-text1 hover:bg-surface2 transition-all"
-                      aria-label="Toggle Theme"
-                    >
-                      {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
-                    </button>
+                    <ThemeToggle
+                      variant="circle-blur"
+                      start="top-right"
+                      className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
+                      iconClassName="w-3.5 h-3.5"
+                    />
                   </div>
                 </motion.div>
               )}
@@ -397,13 +397,12 @@ export default function Navbar() {
             )}
 
             {/* Dark / Light Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all animate-fade-in"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
+            <ThemeToggle
+              variant="circle-blur"
+              start="top-right"
+              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
+              iconClassName="w-3.5 h-3.5"
+            />
 
             {/* Hamburger for mobile */}
             <button
