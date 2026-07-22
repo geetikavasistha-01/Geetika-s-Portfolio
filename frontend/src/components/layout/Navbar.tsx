@@ -40,12 +40,11 @@ interface NowPlayingTrack {
 }
 
 export default function Navbar() {
-  const { theme, toggleTheme, recruiterMode } = useUIStore();
+  const { theme, toggleTheme, recruiterMode, clockDialogOpen, setClockDialogOpen } = useUIStore();
   const currentMascot = theme === 'dark' ? kunoichiDark : kunoichi;
   const [time, setTime] = useState(new Date());
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
   const [track, setTrack] = useState<NowPlayingTrack | null>(null);
   const location = useLocation();
 
@@ -71,16 +70,16 @@ export default function Navbar() {
 
   // Close dialog on clicking outside
   useEffect(() => {
-    if (!dialogOpen) return;
+    if (!clockDialogOpen) return;
     const handleOutsideClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest('.clock-container')) {
-        setDialogOpen(false);
+        setClockDialogOpen(false);
       }
     };
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
-  }, [dialogOpen]);
+  }, [clockDialogOpen]);
 
   const formatTime = (date: Date) => {
     let hours = date.getHours();
@@ -135,7 +134,7 @@ export default function Navbar() {
           {/* Live Clock & Spotify Dialog Box Trigger (Left) */}
           <div className="relative clock-container">
             <div
-              onClick={() => setDialogOpen(!dialogOpen)}
+              onClick={() => setClockDialogOpen(!clockDialogOpen)}
               className="text-[11px] font-mono font-medium text-text2 select-none cursor-pointer hover:text-text1 transition-colors flex items-center gap-1.5"
             >
               {formatTime(time)}
@@ -150,13 +149,13 @@ export default function Navbar() {
             </div>
 
             <AnimatePresence>
-              {dialogOpen && (
+              {clockDialogOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute left-[-20px] top-[48px] w-[300px] bg-surface/95 backdrop-blur-xl border border-border rounded-[24px] shadow-2xl p-4.5 z-[10000] text-left"
+                  className="absolute left-[-20px] top-[48px] w-[260px] bg-surface border border-border rounded-[24px] shadow-2xl p-4 z-[10000] text-left"
                 >
                   {/* Header: Greeting & Time */}
                   <div className="flex items-center justify-between">
@@ -240,7 +239,7 @@ export default function Navbar() {
                         to="/contact"
                         className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all"
                         title="Contact"
-                        onClick={() => setDialogOpen(false)}
+                        onClick={() => setClockDialogOpen(false)}
                       >
                         <Mail size={12} />
                       </Link>
@@ -248,7 +247,7 @@ export default function Navbar() {
                         to="/work"
                         className="p-1 rounded-md text-text3 hover:text-text1 hover:bg-surface2 transition-all"
                         title="Calendar"
-                        onClick={() => setDialogOpen(false)}
+                        onClick={() => setClockDialogOpen(false)}
                       >
                         <Calendar size={12} />
                       </Link>
@@ -319,7 +318,7 @@ export default function Navbar() {
                     )}
                   </AnimatePresence>
 
-                  {isActive && !dialogOpen && (
+                  {isActive && !clockDialogOpen && (
                     <motion.div
                       layoutId="anime-mascot"
                       className="absolute -top-[44px] left-1/2 -translate-x-1/2 pointer-events-none z-[9999]"

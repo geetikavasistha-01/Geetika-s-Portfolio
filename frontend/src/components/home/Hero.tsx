@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 import kunoichi from '../../assets/kunoichi.png';
 import kunoichiDark from '../../assets/kunoichi-dark.png';
+import { LinkPreview } from '../ui/LinkPreview';
 
 export default function Hero() {
   const { theme, recruiterMode } = useUIStore();
@@ -85,7 +86,7 @@ export default function Hero() {
 
         <p>
           I focus on machine learning algorithms, distributed pipelines, and climate technology.
-          My background lies at the intersection of robotic vision systems (co-founding Raphson Robotics) and high-throughput data pipelines.
+          My background lies at the intersection of robotic vision systems (co-founding <LinkPreview url="https://github.com/geetikavasistha-01" previewName="Raphson Robotics">Raphson Robotics</LinkPreview>) and high-throughput data pipelines.
         </p>
 
         <p className="text-text3">

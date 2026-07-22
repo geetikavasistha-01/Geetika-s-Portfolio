@@ -5,9 +5,11 @@ interface UIState {
   cliOpen: boolean;
   cmdPaletteOpen: boolean;
   theme: 'dark' | 'light';
+  clockDialogOpen: boolean;
   toggleRecruiterMode: () => void;
   setCliOpen: (open: boolean) => void;
   setCmdPaletteOpen: (open: boolean) => void;
+  setClockDialogOpen: (open: boolean) => void;
   toggleTheme: () => void;
   initTheme: () => void;
 }
@@ -22,6 +24,8 @@ export const useUIStore = create<UIState>((set) => ({
   })(),
   cliOpen: false,
   cmdPaletteOpen: false,
+  clockDialogOpen: false,
+  setClockDialogOpen: (open) => set({ clockDialogOpen: open }),
   theme: (() => {
     try {
       return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';

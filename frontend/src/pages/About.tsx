@@ -5,6 +5,7 @@ import SkillConstellation from '../components/about/SkillConstellation';
 import kunoichi from '../assets/kunoichi.png';
 import kunoichiDark from '../assets/kunoichi-dark.png';
 import { useUIStore } from '../store/uiStore';
+import { LinkPreview } from '../components/ui/LinkPreview';
 
 const skillGroups = [
   {
@@ -104,12 +105,12 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-xs sm:text-sm text-text2 leading-relaxed">
               <p>
-                My journey into tech began at SRM Institute of Science and Technology, specializing in Data Science.
-                Early on, I realized I loved building tangible systems, which led to co-founding Raphsons Robotics,
+                My journey into tech began at <LinkPreview url="https://www.srmist.edu.in" previewName="SRM Institute">SRM Institute of Science and Technology</LinkPreview>, specializing in Data Science.
+                Early on, I realized I loved building tangible systems, which led to co-founding <LinkPreview url="https://github.com/geetikavasistha-01" previewName="Raphson Robotics">Raphsons Robotics</LinkPreview>,
                 an incubator project where I wrote on-device ML scripts for quadruped robots.
               </p>
               <p>
-                From robotics, I transitioned into high-performance web engineering and ML pipelines, doing internships at Havish M Consultancy where I designed document intelligence frameworks, and building data pipelines for Sentinel satellite telemetry.
+                From robotics, I transitioned into high-performance web engineering and ML pipelines, doing internships at Havish M Consultancy where I designed document intelligence frameworks, and building data pipelines for <LinkPreview url="https://sentinels.copernicus.eu" previewName="Sentinel Satellites">Sentinel satellite</LinkPreview> telemetry.
               </p>
               <p>
                 Besides building, I write technical memoirs and keep a micro-log diary of bugs, insights, and late-night compilation files.
