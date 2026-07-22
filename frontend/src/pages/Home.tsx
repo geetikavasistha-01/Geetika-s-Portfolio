@@ -12,6 +12,7 @@ import AMAPreview from '../components/home/AMAPreview';
 import OnLoop from '../components/home/OnLoop';
 import SectionHeader from '../components/ui/SectionHeader';
 import { useUIStore } from '../store/uiStore';
+import InteractiveEnvelope from '../components/ui/InteractiveEnvelope';
 
 export default function Home() {
   const { recruiterMode } = useUIStore();
@@ -95,6 +96,7 @@ export default function Home() {
           <OnLoop />
         </>
       )}
+      <InteractiveEnvelope />
     </PageWrapper>
   );
 }
