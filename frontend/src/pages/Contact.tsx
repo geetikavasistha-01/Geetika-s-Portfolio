@@ -214,7 +214,7 @@ export default function Contact() {
                     <SiX size={15} />
                   </a>
                   <a
-                    href="https://linkedin.com/in/geetikavasistha-01"
+                    href="https://www.linkedin.com/in/geetikavasisthampy"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
