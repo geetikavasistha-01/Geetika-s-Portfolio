@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PagePagination from '../ui/PagePagination';
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ export default function PageWrapper({ children }: PageWrapperProps) {
       className="max-w-[880px] mx-auto px-6 pt-32 pb-20 w-full z-10 relative flex flex-col"
     >
       {children}
+      <PagePagination />
     </motion.div>
   );
 }
