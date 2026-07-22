@@ -147,7 +147,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={sendMutation.isPending}
-                  className="mt-2 w-full py-3.5 rounded-xl bg-teal hover:bg-green active:bg-teal text-bg text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-teal/10 disabled:opacity-50 select-none uppercase"
+                  className="mt-2 w-full py-3.5 rounded-xl bg-green hover:bg-green/90 active:bg-green text-zinc-950 text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green/10 disabled:opacity-50 select-none uppercase"
                 >
                   {sendMutation.isPending ? (
                     <Loader2 size={12} className="animate-spin" />
@@ -183,7 +183,7 @@ export default function Contact() {
                 </span>
                 <a
                   href="mailto:contact.geetikavasistha@gmail.com"
-                  className="text-xs sm:text-sm text-teal hover:text-green hover:underline font-medium break-all transition-colors duration-300"
+                  className="text-xs sm:text-sm text-text2 hover:text-green hover:underline font-medium break-all transition-colors duration-300"
                 >
                   contact.geetikavasistha@gmail.com
                 </a>
@@ -200,7 +200,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <SiGithub size={15} />
                   </a>
@@ -209,7 +209,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Twitter/X Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <SiX size={15} />
                   </a>
@@ -218,7 +218,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <FaLinkedin size={15} />
                   </a>
@@ -227,7 +227,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Medium Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <SiMedium size={15} />
                   </a>
@@ -236,7 +236,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Substack Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <SiSubstack size={15} />
                   </a>
@@ -245,7 +245,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Hashnode Profile"
-                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-green hover:border-green/50 transition-all duration-300 flex items-center justify-center shadow-sm"
                   >
                     <SiHashnode size={15} />
                   </a>
@@ -262,7 +262,7 @@ export default function Contact() {
                     href="https://cal.com/geetikavasistha"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs sm:text-sm text-teal hover:text-green hover:underline font-medium transition-colors duration-300"
+                    className="text-xs sm:text-sm text-text2 hover:text-green hover:underline font-medium transition-colors duration-300"
                   >
                     Schedule a call
                   </a>
@@ -274,13 +274,10 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Quote Card */}
-          <div className="bg-surface2/30 border border-border/50 rounded-2xl p-4.5 shadow-sm mt-6">
-            <p className="text-xs text-text3 italic leading-relaxed">
-              &ldquo;The best way to predict the future is to invent it.&rdquo;
-            </p>
-            <p className="text-[10px] font-mono text-text4 mt-2 text-right">
-              &mdash; Alan Kay
+          {/* Statement Card */}
+          <div className="bg-surface2/30 border border-border/50 rounded-2xl p-4.5 shadow-sm mt-6 text-center">
+            <p className="text-xs font-mono text-text3">
+              Climate change is real
             </p>
           </div>
         </div>
