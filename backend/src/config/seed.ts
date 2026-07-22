@@ -46,36 +46,62 @@ const seed = async () => {
     // 2. Seed WorkExperience
     await WorkExperience.create([
       {
-        company: 'Havish M Consultancy',
-        role: 'AI Engineering Intern',
+        company: 'Aadi Art',
+        role: 'Backend & API Intern',
         type: 'intern',
-        location: 'Remote',
-        locationType: 'remote',
-        startDate: new Date('2024-10-01'),
-        endDate: new Date('2025-03-31'),
+        location: 'Delhi NCR',
+        locationType: 'hybrid',
+        startDate: new Date('2026-02-01'),
+        endDate: new Date('2026-04-30'),
         bullets: [
-          'Designed ML-driven document intelligence platform for Landmark Group, transforming unstructured logistics data into structured entries.',
-          'Configured semantic search systems using LangChain and GPT-4, decreasing manual processing overhead by 50%.',
-          'Built fast backend API gateways with FastAPI and React to visualize pipeline throughput metrics in real-time.'
+          'Designed data models and REST APIs (Django REST Framework, MongoDB) for a full-stack marketplace in a 4-member Agile team, delivering features against business requirements under launch deadlines.'
         ],
-        techStack: ['Python', 'LangChain', 'FastAPI', 'GPT-4', 'React', 'MongoDB'],
+        techStack: ['Django REST Framework', 'MongoDB', 'Python'],
         order: 1
       },
       {
-        company: 'Raphsons Robotics Ltd',
-        role: 'ML Engineer (Co-Founder)',
-        type: 'co-founder',
+        company: 'Sacred Gurukul',
+        role: 'Backend Developer Intern',
+        type: 'intern',
         location: 'Delhi NCR',
-        locationType: 'onsite',
-        startDate: new Date('2024-01-01'),
-        endDate: null,
+        locationType: 'hybrid',
+        startDate: new Date('2025-12-01'),
+        endDate: new Date('2026-02-28'),
         bullets: [
-          'Engineered core computer vision navigation models for quadruped robotics, facilitating pipeline inspection tasks.',
-          'Created low-latency image ingestion pipeline handling 1000+ frames per hour under strict power limits.',
-          'Developed telemetry models with OpenCV and TensorFlow to track joints stability during walking cycles.'
+          'Built and deployed REST APIs (TypeScript, Node.js) for two production applications, maintaining version control and deployment hygiene.'
         ],
-        techStack: ['Python', 'ROS', 'OpenCV', 'TensorFlow', 'C++'],
+        techStack: ['TypeScript', 'Node.js'],
         order: 2
+      },
+      {
+        company: 'Havish M Consultancy',
+        role: 'AI Engineering Intern – Backend & Observability',
+        type: 'intern',
+        location: 'Noida',
+        locationType: 'onsite',
+        startDate: new Date('2025-07-01'),
+        endDate: new Date('2025-12-31'),
+        bullets: [
+          'Built LLM-powered document intelligence pipelines and KPI dashboards, translating business requirements into interpretable, data-driven solutions for stakeholders.',
+          'Instrumented monitoring and logging for Python-based services, improving model and pipeline observability and contributing to a 70% improvement in on-time delivery.'
+        ],
+        techStack: ['Python', 'LLM', 'Observability tooling'],
+        order: 3
+      },
+      {
+        company: 'Raphsons Robotics Ltd',
+        role: 'Machine Learning Engineer – Data & AI Pipelines',
+        type: 'intern',
+        location: 'Ghaziabad',
+        locationType: 'onsite',
+        startDate: new Date('2025-03-01'),
+        endDate: new Date('2026-06-30'),
+        bullets: [
+          'Designed and debugged anomaly-detection ML models using Scikit-learn, applying statistical analysis to identify root causes and improve model accuracy by 40% in production.',
+          'Automated an end-to-end SQL (PostgreSQL) and Pandas data pipeline, reducing runtime by 25%, and documented model architecture and evaluation methodology for scalability and stakeholder review.'
+        ],
+        techStack: ['Scikit-learn', 'PostgreSQL', 'Pandas', 'Python'],
+        order: 4
       }
     ]);
     console.log('Seeded Work Experiences');
