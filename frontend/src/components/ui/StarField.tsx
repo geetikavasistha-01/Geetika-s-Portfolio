@@ -29,12 +29,12 @@ export default function StarField() {
     let stars: Star[] = [];
     const starCount = 140; // Dense and rich particle count
 
-    // Premium glowing colors: Cream sage, white, soft ice-blue, and violet/purple
+    // Premium glowing colors strictly matching the green palette
     const colors = [
-      { rgb: '230, 242, 221', hex: '#e6f2dd' }, // sage
-      { rgb: '255, 255, 255', hex: '#ffffff' }, // white
-      { rgb: '147, 197, 253', hex: '#93c5fd' }, // ice blue
-      { rgb: '196, 181, 253', hex: '#c4b5fd' }  // violet
+      { rgb: '230, 242, 221', hex: '#e6f2dd' }, // #E6F2DD
+      { rgb: '177, 211, 185', hex: '#b1d3b9' }, // #B1D3B9
+      { rgb: '136, 189, 164', hex: '#88bda4' }, // #88BDA4
+      { rgb: '101, 146, 135', hex: '#659287' }  // #659287
     ];
 
     const resizeCanvas = () => {

@@ -266,7 +266,7 @@ export default function Contact() {
                   >
                     Schedule a call
                   </a>
-                  <span className="ml-2.5 text-[8px] font-mono font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-1.5 py-0.5 rounded-full uppercase tracking-wider select-none animate-pulse">
+                  <span className="ml-2.5 text-[8px] font-mono font-semibold bg-green/10 text-green border border-green/20 px-1.5 py-0.5 rounded-full uppercase tracking-wider select-none animate-pulse">
                     Book now
                   </span>
                 </div>
@@ -305,7 +305,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Subscribe to my Substack newsletter"
-              className="inline-flex items-center gap-2 bg-text1 hover:bg-text2 text-bg px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
+              className="inline-flex items-center gap-2 bg-green hover:bg-green/90 text-zinc-950 px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.536 9.879H1.464V6.202h21.072v3.677zm0-6.202H1.464V0h21.072v3.677zM1.464 13.555h21.072v10.445L12 18.273 1.464 24V13.555z" />
