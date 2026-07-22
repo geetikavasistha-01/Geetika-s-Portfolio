@@ -30,9 +30,9 @@ export default function SpotifyWidget() {
   const isMusicPlaying = displayTrack.isPlaying;
 
   return (
-    <div className="flex items-center gap-3 p-2.5 rounded-xl border border-border bg-surface shadow-sm select-none max-w-xs mt-6 transition-all duration-300">
+    <div className="flex items-center gap-3.5 p-3 rounded-2xl border border-border/50 bg-surface2/20 shadow-sm select-none max-w-xs mt-8 transition-all duration-300">
       {/* Small Album Art / Music Icon */}
-      <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-surface2 border border-border flex-shrink-0 flex items-center justify-center">
+      <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-surface2/60 border border-border/60 flex-shrink-0 flex items-center justify-center">
         {isLoading ? (
           <div className="w-full h-full bg-surface2 animate-pulse" />
         ) : displayTrack.albumArt ? (
@@ -42,14 +42,14 @@ export default function SpotifyWidget() {
             className="w-full h-full object-cover"
           />
         ) : (
-          <Music size={14} className="text-text3" />
+          <Music size={15} className="text-text3" />
         )}
         {isMusicPlaying && (
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <span className="flex gap-0.5 items-end justify-center h-3.5 w-3.5">
-              <span className="w-0.5 h-2 bg-green animate-bounce [animation-delay:0.1s]" />
-              <span className="w-0.5 h-3 bg-green animate-bounce [animation-delay:0.3s]" />
-              <span className="w-0.5 h-1.5 bg-green animate-bounce [animation-delay:0.5s]" />
+              <span className="w-0.5 h-2 bg-[#34908B] animate-bounce [animation-delay:0.1s]" />
+              <span className="w-0.5 h-3 bg-[#34908B] animate-bounce [animation-delay:0.3s]" />
+              <span className="w-0.5 h-1.5 bg-[#34908B] animate-bounce [animation-delay:0.5s]" />
             </span>
           </div>
         )}
@@ -57,12 +57,12 @@ export default function SpotifyWidget() {
 
       {/* Info text */}
       <div className="flex flex-col min-w-0">
-        <span className="text-[8px] font-mono tracking-widest text-text4 uppercase flex items-center gap-1 select-none">
-          <span className={`w-1 h-1 rounded-full ${isMusicPlaying ? 'bg-green animate-pulse' : 'bg-text4'}`} />
+        <span className="text-[9px] font-mono tracking-[0.2em] text-text4 uppercase flex items-center gap-1.5 select-none">
+          <span className={`w-1.5 h-1.5 rounded-full ${isMusicPlaying ? 'bg-[#34908B] animate-pulse' : 'bg-text4/60'}`} />
           {isMusicPlaying ? 'Now Playing' : 'Last Played'}
         </span>
         {displayTrack.title === 'Nothing playing right now' ? (
-          <span className="text-xs text-text3 truncate select-none">
+          <span className="text-xs text-text3 font-medium truncate mt-1.5">
             Nothing playing right now.
           </span>
         ) : (
@@ -70,7 +70,8 @@ export default function SpotifyWidget() {
             href={displayTrack.url || 'https://spotify.com'}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold text-text1 hover:underline transition-colors truncate max-w-[180px]"
+            className="text-xs font-semibold text-text1 hover:text-[#34908B] hover:underline transition-colors truncate max-w-[190px] mt-1"
+            title={`${displayTrack.title} by ${displayTrack.artist}`}
           >
             {displayTrack.title} {displayTrack.artist && `· ${displayTrack.artist}`}
           </a>
