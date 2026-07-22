@@ -6,6 +6,8 @@ import { useMutation } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import PageWrapper from '../components/layout/PageWrapper';
 import { Send, Loader2, ArrowRight, Check } from 'lucide-react';
+import { SiGithub, SiX, SiMedium, SiSubstack, SiHashnode } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa6';
 import confetti from 'canvas-confetti';
 
 const contactSchema = z.object({
@@ -61,104 +63,106 @@ export default function Contact() {
       </div>
 
       {/* 2. Two-Column Contact & Connect Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 items-start mt-4">
-        {/* Left Column: Send a Message Form */}
-        <div className="w-full bg-surface border border-border rounded-[24px] p-6 shadow-sm flex flex-col select-none">
-          <h2 className="text-2xl font-display font-normal text-text1 mb-6">
-            Send a Message
-          </h2>
+      <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 items-stretch mt-4">
+        {/* Left Column: Send a Message Form Card */}
+        <div className="w-full bg-surface border border-border rounded-[24px] p-6 shadow-sm flex flex-col justify-between select-none">
+          <div>
+            <h2 className="text-2xl font-display font-normal text-text1 mb-6">
+              Send a Message
+            </h2>
 
-          {isSubmitted ? (
-            <div className="flex flex-col items-center justify-center p-8 text-center bg-surface2/30 rounded-2xl border border-border/50">
-              <div className="w-12 h-12 rounded-full bg-teal/10 flex items-center justify-center text-teal mb-4 border border-teal/20">
-                <Check size={20} />
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center p-8 text-center bg-surface2/30 rounded-2xl border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-teal/10 flex items-center justify-center text-teal mb-4 border border-teal/20">
+                  <Check size={20} />
+                </div>
+                <h3 className="text-base font-semibold text-text1">Message Sent!</h3>
+                <p className="text-xs text-text3 mt-1.5 max-w-[200px] leading-normal">
+                  Thank you for reaching out. I will get back to you shortly.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="mt-5 text-xs font-semibold text-teal hover:underline"
+                >
+                  Send another message
+                </button>
               </div>
-              <h3 className="text-base font-semibold text-text1">Message Sent!</h3>
-              <p className="text-xs text-text3 mt-1.5 max-w-[200px] leading-normal">
-                Thank you for reaching out. I will get back to you shortly.
-              </p>
-              <button
-                onClick={() => setIsSubmitted(false)}
-                className="mt-5 text-xs font-semibold text-teal hover:underline"
-              >
-                Send another message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4.5">
-              {/* Name */}
-              <div className="flex flex-col">
-                <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  {...register('name')}
-                  placeholder="John Doe"
-                  className="bg-surface2/40 border border-border/60 rounded-xl px-4 py-2.5 text-xs text-text2 placeholder-text4 outline-none focus:border-teal focus:bg-surface2/60 transition-all duration-300"
-                />
-                {errors.name && (
-                  <span className="text-[10px] text-rose mt-1 font-mono">
-                    {errors.name.message}
-                  </span>
-                )}
-              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4.5">
+                {/* Name */}
+                <div className="flex flex-col">
+                  <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    {...register('name')}
+                    placeholder="John Doe"
+                    className="bg-surface2/40 border border-border/60 rounded-xl px-4 py-2.5 text-xs text-text2 placeholder-text4 outline-none focus:border-teal focus:bg-surface2/60 transition-all duration-300"
+                  />
+                  {errors.name && (
+                    <span className="text-[10px] text-rose mt-1 font-mono">
+                      {errors.name.message}
+                    </span>
+                  )}
+                </div>
 
-              {/* Email */}
-              <div className="flex flex-col">
-                <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  {...register('email')}
-                  placeholder="john@example.com"
-                  className="bg-surface2/40 border border-border/60 rounded-xl px-4 py-2.5 text-xs text-text2 placeholder-text4 outline-none focus:border-teal focus:bg-surface2/60 transition-all duration-300"
-                />
-                {errors.email && (
-                  <span className="text-[10px] text-rose mt-1 font-mono">
-                    {errors.email.message}
-                  </span>
-                )}
-              </div>
+                {/* Email */}
+                <div className="flex flex-col">
+                  <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    {...register('email')}
+                    placeholder="john@example.com"
+                    className="bg-surface2/40 border border-border/60 rounded-xl px-4 py-2.5 text-xs text-text2 placeholder-text4 outline-none focus:border-teal focus:bg-surface2/60 transition-all duration-300"
+                  />
+                  {errors.email && (
+                    <span className="text-[10px] text-rose mt-1 font-mono">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </div>
 
-              {/* Message */}
-              <div className="flex flex-col">
-                <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
-                  Your Message
-                </label>
-                <textarea
-                  {...register('message')}
-                  rows={5}
-                  placeholder="Tell me about your project or just say hello!"
-                  className="bg-surface2/40 border border-border/60 rounded-xl p-4 text-xs text-text2 placeholder-text4 outline-none resize-none focus:border-teal focus:bg-surface2/60 transition-all duration-300 leading-relaxed"
-                />
-                {errors.message && (
-                  <span className="text-[10px] text-rose mt-1 font-mono">
-                    {errors.message.message}
-                  </span>
-                )}
-              </div>
+                {/* Message */}
+                <div className="flex flex-col">
+                  <label className="text-[10px] font-mono tracking-wider text-text3 uppercase mb-1.5">
+                    Your Message
+                  </label>
+                  <textarea
+                    {...register('message')}
+                    rows={5}
+                    placeholder="Tell me about your project or just say hello!"
+                    className="bg-surface2/40 border border-border/60 rounded-xl p-4 text-xs text-text2 placeholder-text4 outline-none resize-none focus:border-teal focus:bg-surface2/60 transition-all duration-300 leading-relaxed"
+                  />
+                  {errors.message && (
+                    <span className="text-[10px] text-rose mt-1 font-mono">
+                      {errors.message.message}
+                    </span>
+                  )}
+                </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={sendMutation.isPending}
-                className="mt-2 w-full py-3.5 rounded-xl bg-violet-600 hover:bg-violet-500 active:bg-violet-700 text-white text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-violet-600/10 disabled:opacity-50 select-none uppercase"
-              >
-                {sendMutation.isPending ? (
-                  <Loader2 size={12} className="animate-spin" />
-                ) : (
-                  <Send size={12} />
-                )}
-                Send Message
-              </button>
-            </form>
-          )}
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={sendMutation.isPending}
+                  className="mt-2 w-full py-3.5 rounded-xl bg-teal hover:bg-green active:bg-teal text-bg text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-teal/10 disabled:opacity-50 select-none uppercase"
+                >
+                  {sendMutation.isPending ? (
+                    <Loader2 size={12} className="animate-spin" />
+                  ) : (
+                    <Send size={12} />
+                  )}
+                  Send Message
+                </button>
+              </form>
+            )}
+          </div>
         </div>
 
-        {/* Right Column: Connect Info Panels */}
-        <div className="flex flex-col gap-8 select-none">
+        {/* Right Column: Connect Info Panels Card */}
+        <div className="w-full bg-surface border border-border rounded-[24px] p-6 shadow-sm flex flex-col justify-between select-none">
           <div className="flex flex-col gap-6">
             <h2 className="text-2xl font-display font-normal text-text1">
               Connect
@@ -169,79 +173,109 @@ export default function Contact() {
             <p className="text-xs sm:text-sm text-text2 leading-relaxed">
               Based in <span className="font-semibold text-text1">India</span>, available for projects worldwide.
             </p>
-          </div>
 
-          {/* Socials & Scheduling list */}
-          <div className="flex flex-col gap-5 pt-2">
-            {/* Email Row */}
-            <div className="flex flex-col">
-              <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-1">
-                Email
-              </span>
-              <a
-                href="mailto:mishrayashaswikumar@gmail.com"
-                className="text-xs sm:text-sm text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 hover:underline font-medium break-all"
-              >
-                mishrayashaswikumar@gmail.com
-              </a>
-            </div>
-
-            {/* Follow Me Row */}
-            <div className="flex flex-col">
-              <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-2">
-                Follow Me
-              </span>
-              <div className="flex items-center gap-4 text-xs font-medium text-text2">
+            {/* Socials & Scheduling list */}
+            <div className="flex flex-col gap-5 pt-2">
+              {/* Email Row */}
+              <div className="flex flex-col">
+                <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-1">
+                  Email
+                </span>
                 <a
-                  href="https://github.com/geetikavasistha-01"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-text1 transition-colors"
+                  href="mailto:contact.geetikavasistha@gmail.com"
+                  className="text-xs sm:text-sm text-teal hover:text-green hover:underline font-medium break-all transition-colors duration-300"
                 >
-                  GitHub
-                </a>
-                <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-text1 transition-colors"
-                >
-                  Twitter
-                </a>
-                <a
-                  href="https://linkedin.com/in/geetikavasisthampy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-text1 transition-colors"
-                >
-                  LinkedIn
+                  contact.geetikavasistha@gmail.com
                 </a>
               </div>
-            </div>
 
-            {/* Quick Meeting Row */}
-            <div className="flex flex-col">
-              <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-1">
-                Quick Meeting
-              </span>
-              <div className="flex items-center">
-                <a
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs sm:text-sm text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 hover:underline font-medium"
-                >
-                  Schedule a call
-                </a>
-                <span className="ml-2.5 text-[8px] font-mono font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-1.5 py-0.5 rounded-full uppercase tracking-wider select-none animate-pulse">
-                  Book now
+              {/* Follow Me Row with Custom Icon Buttons */}
+              <div className="flex flex-col">
+                <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-2.5">
+                  Follow Me
                 </span>
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <a
+                    href="https://github.com/geetikavasistha-01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <SiGithub size={15} />
+                  </a>
+                  <a
+                    href="https://x.com/GeetikaVasistha"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter/X Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <SiX size={15} />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/geetikavasistha-01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <FaLinkedin size={15} />
+                  </a>
+                  <a
+                    href="https://medium.com/@geetikavasistha13"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Medium Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <SiMedium size={15} />
+                  </a>
+                  <a
+                    href="https://substack.com/@augustine1301"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Substack Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <SiSubstack size={15} />
+                  </a>
+                  <a
+                    href="https://hashnode.com/@ai-for-all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Hashnode Profile"
+                    className="p-2.5 bg-surface2/40 hover:bg-surface2 border border-border/60 rounded-xl text-text2 hover:text-teal hover:border-teal/50 transition-all duration-300 flex items-center justify-center shadow-sm"
+                  >
+                    <SiHashnode size={15} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Quick Meeting Row */}
+              <div className="flex flex-col">
+                <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-1">
+                  Quick Meeting
+                </span>
+                <div className="flex items-center">
+                  <a
+                    href="https://cal.com/geetikavasistha"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs sm:text-sm text-teal hover:text-green hover:underline font-medium transition-colors duration-300"
+                  >
+                    Schedule a call
+                  </a>
+                  <span className="ml-2.5 text-[8px] font-mono font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-1.5 py-0.5 rounded-full uppercase tracking-wider select-none animate-pulse">
+                    Book now
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Quote Card */}
-          <div className="bg-surface border border-border rounded-2xl p-5 shadow-sm mt-2">
+          <div className="bg-surface2/30 border border-border/50 rounded-2xl p-4.5 shadow-sm mt-6">
             <p className="text-xs text-text3 italic leading-relaxed">
               &ldquo;The best way to predict the future is to invent it.&rdquo;
             </p>
@@ -257,7 +291,7 @@ export default function Contact() {
         <div className="relative overflow-hidden rounded-[24px] border border-border/80 bg-surface/50 p-6 md:p-8 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-6">
           {/* Decorative subtle ambient glow inside card */}
           <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
-          <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-violet-500/5 blur-3xl pointer-events-none" />
+          <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
 
           <div className="flex flex-col gap-2 z-10 max-w-lg select-none">
             <h3 className="text-xl sm:text-2xl font-display font-normal text-text1">
