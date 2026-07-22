@@ -121,24 +121,16 @@ export default function Hero() {
 
       {/* Bio Prose Block with Left Border Indent */}
       <div className="pl-4 border-l border-border/70 space-y-6 text-sm text-text2 leading-relaxed max-w-[620px] font-sans">
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-          I am an AI engineer and data scientist building intelligent systems. Currently crafting models with
-          <span className="inline-flex items-center gap-1.5 bg-surface2/60 border border-border/80 text-text1 text-xs px-2.5 py-0.5 rounded font-mono font-medium shadow-sm">
-            <FaPython className="text-[#34908B]" size={11} /> Python
-          </span>
-          ,
-          <span className="inline-flex items-center gap-1.5 bg-surface2/60 border border-border/80 text-text1 text-xs px-2.5 py-0.5 rounded font-mono font-medium shadow-sm">
-            <SiFastapi className="text-[#34908B]" size={11} /> FastAPI
-          </span>
-          , and
-          <span className="inline-flex items-center gap-1.5 bg-surface2/60 border border-border/80 text-text1 text-xs px-2.5 py-0.5 rounded font-mono font-medium shadow-sm">
-            <SiScikitlearn className="text-[#34908B]" size={11} /> scikit-learn
-          </span>
-          .
+        <p>
+          I spend most of my time building <span className="font-semibold text-text1">Agentic AI</span>, <span className="font-semibold text-text1">distributed systems</span>, and <span className="font-semibold text-text1">backend infrastructure</span> for intelligent applications.
         </p>
 
         <p>
-          I focus on <span className="font-semibold text-text1">machine learning algorithms</span>, <span className="font-semibold text-text1">distributed pipelines</span>, and <span className="font-semibold text-text1">climate technology</span>. My background lies at the intersection of <span className="font-semibold text-text1">robotic vision systems</span> (co-founding <LinkPreview url="https://github.com/geetikavasistha-01" previewName="Raphson Robotics">Raphson Robotics</LinkPreview>) and <span className="font-semibold text-text1">high-throughput data pipelines</span>.
+          I enjoy designing systems that <span className="italic text-text1">reason</span>, <span className="font-semibold text-text1">scale</span>, and remain <span className="font-semibold text-text1">reliable</span> under real-world constraints.
+        </p>
+
+        <p>
+          I care deeply about <span className="font-semibold text-text1">open source</span>, <span className="font-semibold text-text1">privacy-preserving systems</span>, and <span className="font-semibold text-text1">security-first engineering</span>.
         </p>
 
         <p className="text-text3 flex flex-wrap items-center gap-1">
