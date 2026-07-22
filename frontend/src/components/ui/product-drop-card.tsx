@@ -57,7 +57,7 @@ export const ProductDropCard = ({
   const rotations = ['rotate-[-4deg]', 'rotate-[1deg]', 'rotate-[3deg]', 'rotate-[-2deg]', 'rotate-[2deg]'];
 
   return (
-    <div className="w-full max-w-4xl mx-auto overflow-hidden select-none">
+    <div className="w-full max-w-4xl mx-auto select-none">
       {/* Header Row */}
       <div className="flex items-center justify-between mb-8">
         <div>
@@ -89,7 +89,7 @@ export const ProductDropCard = ({
       </div>
 
       {/* Carousel Viewport */}
-      <div className="overflow-hidden py-4 px-1">
+      <div className="overflow-hidden py-6 px-6 -mx-6">
         <div
           className="flex gap-6 transition-transform duration-500 ease-in-out"
           style={{ 

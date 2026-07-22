@@ -6,7 +6,6 @@ import GitHubHeatmap from '../components/home/GitHubHeatmap';
 import FeaturedProjects from '../components/home/FeaturedProjects';
 import LabNotebook from '../components/home/LabNotebook';
 import LatestWriting from '../components/home/LatestWriting';
-import Videos from '../components/home/Videos';
 import AMAPreview from '../components/home/AMAPreview';
 import OnLoop from '../components/home/OnLoop';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -69,12 +68,7 @@ export default function Home() {
       />
       <LatestWriting />
 
-      {/* 9. Videos */}
-      <SectionHeader
-        label="demonstrations"
-        rightElement={<span>videos</span>}
-      />
-      <Videos />
+
 
       {/* 10. AMA Preview */}
       <SectionHeader

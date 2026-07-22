@@ -13,7 +13,7 @@ export default function PageWrapper({ children }: PageWrapperProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
-      className="max-w-[880px] mx-auto px-6 pt-32 pb-20 w-full z-10 relative flex flex-col"
+      className="max-w-[880px] mx-auto px-6 pt-32 pb-8 w-full z-10 relative flex flex-col"
     >
       {children}
       <PagePagination />

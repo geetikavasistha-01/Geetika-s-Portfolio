@@ -11,49 +11,49 @@ const loopItems: DropItem[] = [
   {
     time: "MOVIE · SUSPENSE",
     name: "Enola Holmes",
-    collection: "A clever, fast-paced detective mystery full of wit and sisterly rebellion.",
+    collection: "clever & witty",
     imageSrc: enolaHolmes
   },
   {
     time: "ANIME · LEGENDARY",
     name: "One Piece",
-    collection: "An epic tale of freedom, dreams, and companionship across the grand line.",
+    collection: "freedom & dreams",
     imageSrc: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg"
   },
   {
     time: "ANIME · COMFORT ZONE",
     name: "Non Non Biyori",
-    collection: "Nyanpasu! A heartwarming, peaceful slice-of-life comedy in the Japanese countryside.",
+    collection: "peaceful comfort watch",
     imageSrc: renge
   },
   {
     time: "SERIES · COMFORT ZONE",
     name: "Ted Lasso",
-    collection: "Believing in believe, leadership with kindness, and mental health in sports.",
+    collection: "kindness in leadership",
     imageSrc: tedLasso
   },
   {
     time: "SERIES · COMEDY",
     name: "Brooklyn Nine-Nine",
-    collection: "Nine-nine! Peak workplace humor, outstanding characters, and hot damn cold opens.",
+    collection: "peak workplace comedy",
     imageSrc: brooklyn99
   },
   {
     time: "THE HOUR · EP 24",
     name: "Code Geass R2",
-    collection: "lelouch sets the stage for zero requiem. still my favourite hour of television.",
+    collection: "favourite hour ever",
     imageSrc: "https://cdn.myanimelist.net/images/anime/4/9391.jpg"
   },
   {
     time: "ON LOOP",
     name: "Steins;Gate",
-    collection: "gets better every rewatch. el psy congroo.",
+    collection: "el psy congroo",
     imageSrc: "https://cdn.myanimelist.net/images/anime/15/24184.jpg"
   },
   {
     time: "COMFORT CHARACTERS",
     name: "Kazuma & Takuma",
-    collection: "the twins from gakuen babysitters. if you know, you know.",
+    collection: "if you know",
     imageSrc: "https://cdn.myanimelist.net/images/anime/11/89497.jpg"
   }
 ];

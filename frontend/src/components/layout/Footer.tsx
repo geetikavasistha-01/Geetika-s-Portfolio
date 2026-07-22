@@ -10,7 +10,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-[720px] mx-auto px-6 py-12 mt-12 border-t border-border relative z-10">
+    <footer className="w-full max-w-[880px] mx-auto px-6 py-12 mt-6 border-t border-border relative z-10">
       {/* Top Links Row */}
       <div className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-xs text-text3">
         <a href="#newsletter" className="hover:text-text1 transition-colors">Newsletter</a>
