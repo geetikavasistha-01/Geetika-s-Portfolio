@@ -147,7 +147,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={sendMutation.isPending}
-                  className="mt-2 w-full py-3.5 rounded-xl bg-green hover:bg-green/90 active:bg-green text-zinc-950 text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green/10 disabled:opacity-50 select-none uppercase"
+                  className="mt-2 w-full py-3.5 rounded-xl bg-[#88BDA4] hover:bg-[#659287] active:bg-[#88BDA4] text-[#132620] hover:text-white text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#88BDA4]/10 disabled:opacity-50 select-none uppercase"
                 >
                   {sendMutation.isPending ? (
                     <Loader2 size={12} className="animate-spin" />
@@ -305,7 +305,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Subscribe to my Substack newsletter"
-              className="inline-flex items-center gap-2 bg-green hover:bg-green/90 text-zinc-950 px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
+              className="inline-flex items-center gap-2 bg-[#88BDA4] hover:bg-[#659287] text-[#132620] hover:text-white px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.536 9.879H1.464V6.202h21.072v3.677zm0-6.202H1.464V0h21.072v3.677zM1.464 13.555h21.072v10.445L12 18.273 1.464 24V13.555z" />
