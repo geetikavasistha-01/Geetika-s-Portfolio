@@ -22,34 +22,28 @@ const loopItems: DropItem[] = [
     imageSrc: "https://cdn.myanimelist.net/images/anime/11/89497.jpg"
   },
   {
-    time: "ANIME · ON LOOP",
-    name: "Sousou no Frieren",
-    collection: "Quiet melancholy, beautiful pacing, and an outstanding soundtrack.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/1015/138025.jpg"
+    time: "ANIME · LEGENDARY",
+    name: "One Piece",
+    collection: "An epic tale of freedom, dreams, and companionship across the grand line.",
+    imageSrc: "https://cdn.myanimelist.net/images/anime/1244/138851.jpg"
   },
   {
-    time: "ANIME · CLASSIC",
-    name: "Neon Genesis Evangelion",
-    collection: "Deconstructing mech conventions, psychological depths, and human instrumentation.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/1314/111762.jpg"
+    time: "SERIES · COMFORT ZONE",
+    name: "Ted Lasso",
+    collection: "Believing in believe, leadership with kindness, and mental health in sports.",
+    imageSrc: "https://images.unsplash.com/photo-1508847154043-be12a3bc4b1a?auto=format&fit=crop&w=300&h=450&q=80"
   },
   {
-    time: "MANGA · SUSPENSE",
-    name: "Monster",
-    collection: "A masterclass in psychological tension, morality, and character writing.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/10/18793.jpg"
+    time: "MOVIE · SUSPENSE",
+    name: "Enola Holmes",
+    collection: "A clever, fast-paced detective mystery full of wit and sisterly rebellion.",
+    imageSrc: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=300&h=450&q=80"
   },
   {
-    time: "ANIME · COMFORT ZONE",
-    name: "Haikyuu!!",
-    collection: "Unmatched team chemistry, growth, and high-energy animation.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/7/76014.jpg"
-  },
-  {
-    time: "ANIME · COMEDY",
-    name: "Gintama",
-    collection: "Peak satire, heart-wrenching serious arcs, and absolute character love.",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/3/28761.jpg"
+    time: "SERIES · COMEDY",
+    name: "Brooklyn Nine-Nine",
+    collection: "Nine-nine! Peak workplace humor, outstanding characters, and hot damn cold opens.",
+    imageSrc: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=300&h=450&q=80"
   }
 ];
 
