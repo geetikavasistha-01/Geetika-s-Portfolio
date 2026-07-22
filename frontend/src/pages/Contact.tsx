@@ -164,11 +164,10 @@ export default function Contact() {
               Connect
             </h2>
             <p className="text-xs sm:text-sm text-text2 leading-relaxed">
-              I’m always open to discussing new projects, creative ideas, or
-              opportunities to be part of your vision.
+              I have worked with founders, startups, and businesses to craft high-quality digital products that are fast, scalable, and user-focused. If you're looking for someone who cares about both design and development, let's connect.
             </p>
-            <p className="text-xs sm:text-sm text-text2">
-              Based in <span className="font-semibold text-text1">India</span>, but working with clients worldwide.
+            <p className="text-xs sm:text-sm text-text2 leading-relaxed">
+              Based in <span className="font-semibold text-text1">India</span>, available for projects worldwide.
             </p>
           </div>
 
