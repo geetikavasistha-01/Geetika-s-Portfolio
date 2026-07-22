@@ -164,7 +164,7 @@ export default function Hero() {
       <div className="mt-12 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text3 font-mono">
         <span className="italic select-none mr-0.5">fan of</span>
         <a
-          href="https://open.spotify.com/artist/06HL4z0CvFAxyCO2zG51vi"
+          href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
