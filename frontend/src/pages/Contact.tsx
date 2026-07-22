@@ -18,8 +18,6 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema)
@@ -47,21 +45,6 @@ export default function Contact() {
 
   const onSubmit = (data: ContactFormValues) => {
     sendMutation.mutate(data);
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail || !newsletterEmail.includes('@')) return;
-
-    // Trigger confetti for newsletter subscription
-    confetti({
-      particleCount: 80,
-      spread: 60,
-      colors: ['#88BDA4', '#659287', '#B1D3B9'],
-      origin: { y: 0.8 }
-    });
-    setIsSubscribed(true);
-    setNewsletterEmail('');
   };
 
   return (
@@ -270,47 +253,39 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* 3. Join the Newsletter glassmorphic panel */}
+      {/* 3. Substack Newsletter CTA */}
       <div className="mt-16 w-full">
         <div className="relative overflow-hidden rounded-[24px] border border-border/80 bg-surface/50 p-6 md:p-8 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-6">
           {/* Decorative subtle ambient glow inside card */}
           <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
           <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-violet-500/5 blur-3xl pointer-events-none" />
 
-          <div className="flex flex-col gap-1.5 z-10 select-none">
+          <div className="flex flex-col gap-2 z-10 max-w-lg select-none">
             <h3 className="text-xl sm:text-2xl font-display font-normal text-text1">
-              Join our newsletter
+              Newsletter
             </h3>
-            <p className="text-[11px] text-text3 max-w-sm">
-              Occasional pings on system development, algorithms, and things I learn. No spam, ever.
+            <p className="text-xs sm:text-sm text-text3 leading-relaxed">
+              I share occasional articles on software engineering, AI, web development, and lessons from building real products. Subscribe on Substack to get new posts delivered to your inbox.
             </p>
           </div>
 
-          <div className="z-10 flex-shrink-0">
-            {isSubscribed ? (
-              <div className="flex items-center gap-2 text-teal font-medium text-xs bg-teal/10 border border-teal/20 px-4 py-2.5 rounded-xl">
-                <Check size={14} />
-                <span>Subscribed! Thank you.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email"
-                  required
-                  placeholder="Your email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="bg-surface border border-border/80 rounded-xl px-4 py-2.5 text-xs text-text2 placeholder-text4 outline-none focus:border-teal min-w-[180px] sm:min-w-[240px] transition-all duration-300 shadow-inner"
-                />
-                <button
-                  type="submit"
-                  className="bg-text1 hover:bg-text2 text-bg px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 shadow-sm"
-                >
-                  <span>Subscribe</span>
-                  <ArrowRight size={12} />
-                </button>
-              </form>
-            )}
+          <div className="z-10 flex flex-col items-center md:items-start flex-shrink-0">
+            <a
+              href="https://substack.com/@augustine1301"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Subscribe to my Substack newsletter"
+              className="inline-flex items-center gap-2 bg-text1 hover:bg-text2 text-bg px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <path d="M22.536 9.879H1.464V6.202h21.072v3.677zm0-6.202H1.464V0h21.072v3.677zM1.464 13.555h21.072v10.445L12 18.273 1.464 24V13.555z" />
+              </svg>
+              <span>Subscribe on Substack</span>
+              <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <span className="text-[10px] text-text4 mt-2 select-none">
+              Free to subscribe. No spam. Unsubscribe anytime.
+            </span>
           </div>
         </div>
       </div>
