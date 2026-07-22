@@ -160,20 +160,35 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Fan of line with custom matching icons */}
+      {/* Fan of line with custom matching links & icons */}
       <div className="mt-12 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text3 font-mono">
         <span className="italic select-none mr-0.5">fan of</span>
-        <span className="inline-flex items-center gap-1 text-text2">
-          <Headphones size={13} className="text-[#34908B]" /> melodic OSTs
-        </span>
+        <a
+          href="https://open.spotify.com/artist/06HL4z0CvFAxyCO2zG51vi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
+        >
+          <Headphones size={13} className="text-[#34908B]" /> Taylor Swift
+        </a>
         <span className="select-none text-text4">,</span>
-        <span className="inline-flex items-center gap-1 text-text2">
-          <PenTool size={13} className="text-[#34908B]" /> memoir writing
-        </span>
+        <a
+          href="https://medium.com/@geetikavasistha13"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
+        >
+          <PenTool size={13} className="text-[#34908B]" /> Writing
+        </a>
         <span className="select-none italic text-text4">and</span>
-        <span className="inline-flex items-center gap-1 text-text2">
-          <BookOpen size={13} className="text-[#34908B]" /> paper + systems
-        </span>
+        <a
+          href="https://in.pinterest.com/geezxoeyy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
+        >
+          <BookOpen size={13} className="text-[#34908B]" /> pinterest boards
+        </a>
       </div>
 
       {/* Compact Spotify Status */}
