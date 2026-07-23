@@ -23,8 +23,8 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'IM Fell English'", "Georgia", "serif"],
-        body: ["'IM Fell English'", "Georgia", "serif"],
+        display: ["'Nectarine'", "sans-serif"],
+        body: ["'Nectarine'", "sans-serif"],
         mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
       animation: {
