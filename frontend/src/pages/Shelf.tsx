@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import { ArrowUpRight } from 'lucide-react';
+import { motion, useReducedMotion, useMotionValue, useTransform } from 'framer-motion';
 
 interface Book {
   title: string;
@@ -300,6 +301,167 @@ const getNewHeight = (oldHeight: string) => {
   }
 };
 
+const BookSpine = ({ 
+  book, 
+  idx, 
+  onSelect 
+}: { 
+  book: Book; 
+  idx: number; 
+  onSelect: (book: Book) => void; 
+}) => {
+  const shouldReduceMotion = useReducedMotion();
+  const x = useMotionValue(0.5);
+  const rotateY = useTransform(x, [0, 1], book.isPaper ? [-8, 8] : [-10, 10]);
+
+  // Seeded idle lean between -1.5deg and 1.5deg based on index
+  const idleRotate = ((idx % 3) - 1) * 1.5;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const relativeX = (e.clientX - rect.left) / rect.width;
+    x.set(relativeX);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0.5);
+  };
+
+  // Entrance spring animation
+  const spineVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+      rotate: idleRotate + (idx % 2 === 0 ? 8 : -8)
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate: idleRotate,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 20,
+        delay: idx * 0.04
+      }
+    }
+  };
+
+  // Pull effect state
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      onSelect(book);
+      setIsClicked(false);
+    }, 180);
+  };
+
+  if (book.isPaper) {
+    return (
+      <motion.div
+        variants={shouldReduceMotion ? undefined : spineVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+        whileHover={shouldReduceMotion ? undefined : {
+          y: -12,
+          scale: isClicked ? 1.08 : 1.02,
+          z: 10,
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)"
+        }}
+        animate={shouldReduceMotion ? undefined : {
+          scale: isClicked ? 1.08 : 1,
+          y: isClicked ? -18 : 0,
+          rotate: isClicked ? idleRotate * 0.5 : idleRotate
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 350,
+          damping: 18
+        }}
+        onMouseMove={shouldReduceMotion ? undefined : handleMouseMove}
+        onMouseLeave={shouldReduceMotion ? undefined : handleMouseLeave}
+        onClick={handleClick}
+        style={shouldReduceMotion ? undefined : {
+          rotateY,
+          transformStyle: 'preserve-3d',
+          perspective: 1000
+        }}
+        className={`relative flex flex-col justify-between w-[64px] sm:w-[92px] ${getNewHeight(book.height)} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] cursor-pointer py-4 px-2.5 flex-shrink-0 origin-bottom select-none`}
+      >
+        {/* Paper tab */}
+        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-sky-500/10 dark:bg-sky-500/20 border border-sky-400/30 text-sky-600 dark:text-sky-400 rounded px-1.5 py-0.5 text-[6.5px] sm:text-[7.5px] tracking-widest uppercase font-mono font-bold z-10 font-sans">
+          PAPER
+        </div>
+
+        {/* Paper Title (wrap horizontally) */}
+        <div className="text-[8.5px] sm:text-[11px] font-sans font-medium text-text2 leading-normal text-center break-words line-clamp-5 mt-2">
+          {book.title}
+        </div>
+
+        {/* Publisher */}
+        <div className="text-[7.5px] sm:text-[9px] font-mono font-bold text-text4 tracking-wider text-center mt-auto">
+          {book.publisher}
+        </div>
+      </motion.div>
+    );
+  } else {
+    return (
+      <motion.div
+        variants={shouldReduceMotion ? undefined : spineVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+        whileHover={shouldReduceMotion ? undefined : {
+          y: -16,
+          scale: isClicked ? 1.08 : 1.02,
+          z: 15,
+          boxShadow: "0 25px 30px -5px rgba(0, 0, 0, 0.4), 0 15px 15px -5px rgba(0, 0, 0, 0.25)"
+        }}
+        animate={shouldReduceMotion ? undefined : {
+          scale: isClicked ? 1.08 : 1,
+          y: isClicked ? -22 : 0,
+          rotate: isClicked ? idleRotate * 0.5 : idleRotate
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 350,
+          damping: 18
+        }}
+        onMouseMove={shouldReduceMotion ? undefined : handleMouseMove}
+        onMouseLeave={shouldReduceMotion ? undefined : handleMouseLeave}
+        onClick={handleClick}
+        style={shouldReduceMotion ? undefined : {
+          rotateY,
+          transformStyle: 'preserve-3d',
+          perspective: 1000
+        }}
+        className={`relative flex flex-col justify-between w-[48px] sm:w-[68px] ${getNewHeight(book.height)} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] cursor-pointer border-t border-l border-r py-5 px-2 flex-shrink-0 overflow-hidden origin-bottom select-none`}
+      >
+        {/* 3D cylindrical spine shading overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-white/5 to-black/25 pointer-events-none" />
+
+        {/* Vertically oriented title */}
+        <div 
+          style={{ writingMode: 'vertical-rl' }}
+          className="text-[10px] sm:text-[12px] font-sans font-semibold tracking-wider text-center uppercase mx-auto select-none max-h-[145px] sm:max-h-[185px] overflow-hidden truncate"
+        >
+          {book.title}
+        </div>
+
+        {/* Author at bottom */}
+        {book.author && (
+          <div className="text-[8px] sm:text-[10px] font-sans font-bold tracking-widest text-center mt-auto z-10 opacity-90 uppercase">
+            {book.author}
+          </div>
+        )}
+      </motion.div>
+    );
+  }
+};
+
 export default function Shelf() {
   const [selectedTab, setSelectedTab] = useState<'books' | 'blogs'>('books');
   const [selectedItem, setSelectedItem] = useState<Book | null>(null);
@@ -378,58 +540,14 @@ export default function Shelf() {
               <div className="relative w-full flex flex-col items-start bg-zinc-950/20 dark:bg-black/20 rounded-xl p-4 pb-0 pt-8 border border-border/30">
                 {/* Book rows container with horizontal scroll */}
                 <div className="flex items-end gap-2.5 overflow-x-auto w-full min-h-[260px] sm:min-h-[300px] pb-1 px-4 z-20 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                  {category.books.map((book, bookIdx) => {
-                    if (book.isPaper) {
-                      return (
-                        <div
-                          key={bookIdx}
-                          onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[64px] sm:w-[92px] ${getNewHeight(book.height)} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer py-4 px-2.5 flex-shrink-0 origin-bottom hover:shadow-[4px_8px_15px_0px_rgba(0,0,0,0.25)] dark:hover:shadow-[4px_8px_20px_0px_rgba(0,0,0,0.5)] hover:[transform:perspective(1000px)_rotateX(6deg)_rotateY(10deg)_translateY(-6px)]`}
-                        >
-                          {/* Paper tab */}
-                          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-sky-500/10 dark:bg-sky-500/20 border border-sky-400/30 text-sky-600 dark:text-sky-400 rounded px-1.5 py-0.5 text-[6.5px] sm:text-[7.5px] tracking-widest uppercase font-mono font-bold z-10 font-sans">
-                            PAPER
-                          </div>
-
-                          {/* Paper Title (wrap horizontally) */}
-                          <div className="text-[8.5px] sm:text-[11px] font-sans font-medium text-text2 leading-normal text-center break-words line-clamp-5 mt-2">
-                            {book.title}
-                          </div>
-
-                          {/* Publisher */}
-                          <div className="text-[7.5px] sm:text-[9px] font-mono font-bold text-text4 tracking-wider text-center mt-auto">
-                            {book.publisher}
-                          </div>
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div
-                          key={bookIdx}
-                          onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[48px] sm:w-[68px] ${getNewHeight(book.height)} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer border-t border-l border-r py-5 px-2 flex-shrink-0 overflow-hidden origin-bottom hover:shadow-[-4px_8px_18px_0px_rgba(0,0,0,0.45)] dark:hover:shadow-[-4px_8px_24px_0px_rgba(0,0,0,0.65)] hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-12deg)_translateY(-8px)]`}
-                        >
-                          {/* 3D cylindrical spine shading overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-white/5 to-black/25 pointer-events-none" />
-
-                          {/* Vertically oriented title */}
-                          <div 
-                            style={{ writingMode: 'vertical-rl' }}
-                            className="text-[10px] sm:text-[12px] font-sans font-semibold tracking-wider text-center uppercase mx-auto select-none max-h-[145px] sm:max-h-[185px] overflow-hidden truncate"
-                          >
-                            {book.title}
-                          </div>
-
-                          {/* Author at bottom */}
-                          {book.author && (
-                            <div className="text-[8px] sm:text-[10px] font-sans font-bold tracking-widest text-center mt-auto z-10 opacity-90 uppercase">
-                              {book.author}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    }
-                  })}
+                  {category.books.map((book, bookIdx) => (
+                    <BookSpine
+                      key={bookIdx}
+                      book={book}
+                      idx={bookIdx}
+                      onSelect={setSelectedItem}
+                    />
+                  ))}
                 </div>
 
                 {/* Wooden Board floor */}
