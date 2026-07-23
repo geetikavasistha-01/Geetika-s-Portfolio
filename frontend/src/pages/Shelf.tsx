@@ -284,6 +284,22 @@ const blogsData: BlogRead[] = [
   }
 ];
 
+const getNewHeight = (oldHeight: string) => {
+  switch (oldHeight) {
+    case 'h-[175px]': return 'h-[210px] sm:h-[250px]';
+    case 'h-[180px]': return 'h-[215px] sm:h-[255px]';
+    case 'h-[185px]': return 'h-[220px] sm:h-[260px]';
+    case 'h-[187px]': return 'h-[222px] sm:h-[262px]';
+    case 'h-[188px]': return 'h-[224px] sm:h-[264px]';
+    case 'h-[189px]': return 'h-[226px] sm:h-[266px]';
+    case 'h-[190px]': return 'h-[228px] sm:h-[268px]';
+    case 'h-[192px]': return 'h-[230px] sm:h-[270px]';
+    case 'h-[194px]': return 'h-[232px] sm:h-[272px]';
+    case 'h-[195px]': return 'h-[235px] sm:h-[275px]';
+    default: return 'h-[220px] sm:h-[260px]';
+  }
+};
+
 export default function Shelf() {
   const [selectedTab, setSelectedTab] = useState<'books' | 'blogs'>('books');
   const [selectedItem, setSelectedItem] = useState<Book | null>(null);
@@ -361,27 +377,27 @@ export default function Shelf() {
               {/* Wooden Shelf Container */}
               <div className="relative w-full flex flex-col items-start bg-zinc-950/20 dark:bg-black/20 rounded-xl p-4 pb-0 pt-8 border border-border/30">
                 {/* Book rows container with horizontal scroll */}
-                <div className="flex items-end gap-2 overflow-x-auto w-full min-h-[220px] pb-1 px-4 z-20 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+                <div className="flex items-end gap-2.5 overflow-x-auto w-full min-h-[260px] sm:min-h-[300px] pb-1 px-4 z-20 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
                   {category.books.map((book, bookIdx) => {
                     if (book.isPaper) {
                       return (
                         <div
                           key={bookIdx}
                           onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[44px] sm:w-[58px] ${book.height} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.3)] cursor-pointer py-4 px-2 flex-shrink-0`}
+                          className={`relative flex flex-col justify-between w-[64px] sm:w-[92px] ${getNewHeight(book.height)} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.3)] cursor-pointer py-4 px-2.5 flex-shrink-0`}
                         >
                           {/* Paper tab */}
-                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-sky-500/10 dark:bg-sky-500/20 border border-sky-400/30 text-sky-600 dark:text-sky-400 rounded px-1 py-0.5 text-[6px] tracking-widest uppercase font-mono font-bold z-10 font-sans">
+                          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-sky-500/10 dark:bg-sky-500/20 border border-sky-400/30 text-sky-600 dark:text-sky-400 rounded px-1.5 py-0.5 text-[6.5px] sm:text-[7.5px] tracking-widest uppercase font-mono font-bold z-10 font-sans">
                             PAPER
                           </div>
 
                           {/* Paper Title (wrap horizontally) */}
-                          <div className="text-[8px] font-sans font-medium text-text2 leading-normal text-center break-words line-clamp-4 mt-2">
+                          <div className="text-[8.5px] sm:text-[11px] font-sans font-medium text-text2 leading-normal text-center break-words line-clamp-5 mt-2">
                             {book.title}
                           </div>
 
                           {/* Publisher */}
-                          <div className="text-[7px] font-mono font-bold text-text4 tracking-wider text-center mt-auto">
+                          <div className="text-[7.5px] sm:text-[9px] font-mono font-bold text-text4 tracking-wider text-center mt-auto">
                             {book.publisher}
                           </div>
                         </div>
@@ -391,7 +407,7 @@ export default function Shelf() {
                         <div
                           key={bookIdx}
                           onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[36px] sm:w-[48px] ${book.height} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[5px_5px_10px_2px_rgba(0,0,0,0.5)] cursor-pointer border-t border-l border-r py-5 px-1.5 flex-shrink-0 overflow-hidden`}
+                          className={`relative flex flex-col justify-between w-[48px] sm:w-[68px] ${getNewHeight(book.height)} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[5px_5px_10px_2px_rgba(0,0,0,0.5)] cursor-pointer border-t border-l border-r py-5 px-2 flex-shrink-0 overflow-hidden`}
                         >
                           {/* 3D cylindrical spine shading overlay */}
                           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-white/5 to-black/25 pointer-events-none" />
@@ -399,14 +415,14 @@ export default function Shelf() {
                           {/* Vertically oriented title */}
                           <div 
                             style={{ writingMode: 'vertical-rl' }}
-                            className="text-[9px] sm:text-[10px] font-sans font-semibold tracking-wider text-center uppercase mx-auto select-none max-h-[120px] overflow-hidden truncate"
+                            className="text-[10px] sm:text-[12px] font-sans font-semibold tracking-wider text-center uppercase mx-auto select-none max-h-[145px] sm:max-h-[185px] overflow-hidden truncate"
                           >
                             {book.title}
                           </div>
 
                           {/* Author at bottom */}
                           {book.author && (
-                            <div className="text-[7px] sm:text-[8px] font-sans font-bold tracking-widest text-center mt-auto z-10 opacity-80 uppercase">
+                            <div className="text-[8px] sm:text-[10px] font-sans font-bold tracking-widest text-center mt-auto z-10 opacity-90 uppercase">
                               {book.author}
                             </div>
                           )}
