@@ -68,6 +68,28 @@ const transformJogruberData = (rawData: any): GitHubContributions => {
   return { totalContributions, weeks };
 };
 
+const getLevel = (color: string, count: number): number => {
+  if (color && !color.startsWith('#')) {
+    const val = parseInt(color);
+    if (!isNaN(val)) return Math.min(Math.max(val, 0), 4);
+  }
+  
+  if (color) {
+    const c = color.toLowerCase();
+    if (c === '#ebedf0' || c === '#161b22' || c === '#21262d') return 0;
+    if (c === '#9be9a8' || c === '#0e4429') return 1;
+    if (c === '#40c463' || c === '#006d32') return 2;
+    if (c === '#30a14e' || c === '#26a641') return 3;
+    if (c === '#216e39' || c === '#39d353') return 4;
+  }
+  
+  if (count === 0) return 0;
+  if (count <= 2) return 1;
+  if (count <= 4) return 2;
+  if (count <= 7) return 3;
+  return 4;
+};
+
 export default function GitHubHeatmap() {
   const [hoveredDay, setHoveredDay] = useState<{ count: number; date: string } | null>(null);
 
@@ -116,7 +138,7 @@ export default function GitHubHeatmap() {
               {data?.weeks.map((week, wIdx) => (
                 <div key={wIdx} className="flex flex-col gap-[3px]">
                   {week.contributionDays.map((day, dIdx) => {
-                    const level = Math.min(Math.max(parseInt(day.color || '0'), 0), 4);
+                    const level = getLevel(day.color || '0', day.contributionCount || 0);
                     return (
                       <div
                         key={dIdx}
