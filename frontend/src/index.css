@@ -41,17 +41,18 @@ body * {
 body {
   background-color: var(--color-bg);
   color: var(--color-text2);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'IM Fell English', Georgia, serif;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
+  font-family: 'IM Fell English', Georgia, serif;
 }
 
 /* Custom CSS classes */
 .section-label {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'IM Fell English', Georgia, serif;
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;

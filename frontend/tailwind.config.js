@@ -24,7 +24,7 @@ export default {
       },
       fontFamily: {
         display: ["'IM Fell English'", "Georgia", "serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        body: ["'IM Fell English'", "Georgia", "serif"],
         mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
       animation: {
