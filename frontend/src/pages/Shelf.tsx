@@ -384,7 +384,7 @@ export default function Shelf() {
                         <div
                           key={bookIdx}
                           onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[64px] sm:w-[92px] ${getNewHeight(book.height)} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.3)] cursor-pointer py-4 px-2.5 flex-shrink-0`}
+                          className={`relative flex flex-col justify-between w-[64px] sm:w-[92px] ${getNewHeight(book.height)} bg-surface border border-border rounded-t-md shadow-[2px_2px_4px_0px_rgba(0,0,0,0.15)] dark:shadow-[2px_2px_4px_0px_rgba(0,0,0,0.4)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer py-4 px-2.5 flex-shrink-0 origin-bottom hover:shadow-[4px_8px_15px_0px_rgba(0,0,0,0.25)] dark:hover:shadow-[4px_8px_20px_0px_rgba(0,0,0,0.5)] hover:[transform:perspective(1000px)_rotateX(6deg)_rotateY(10deg)_translateY(-6px)]`}
                         >
                           {/* Paper tab */}
                           <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-sky-500/10 dark:bg-sky-500/20 border border-sky-400/30 text-sky-600 dark:text-sky-400 rounded px-1.5 py-0.5 text-[6.5px] sm:text-[7.5px] tracking-widest uppercase font-mono font-bold z-10 font-sans">
@@ -407,7 +407,7 @@ export default function Shelf() {
                         <div
                           key={bookIdx}
                           onClick={() => setSelectedItem(book)}
-                          className={`relative flex flex-col justify-between w-[48px] sm:w-[68px] ${getNewHeight(book.height)} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[5px_5px_10px_2px_rgba(0,0,0,0.5)] cursor-pointer border-t border-l border-r py-5 px-2 flex-shrink-0 overflow-hidden`}
+                          className={`relative flex flex-col justify-between w-[48px] sm:w-[68px] ${getNewHeight(book.height)} ${book.color} rounded-t-sm shadow-[2px_2px_5px_0px_rgba(0,0,0,0.4)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer border-t border-l border-r py-5 px-2 flex-shrink-0 overflow-hidden origin-bottom hover:shadow-[-4px_8px_18px_0px_rgba(0,0,0,0.45)] dark:hover:shadow-[-4px_8px_24px_0px_rgba(0,0,0,0.65)] hover:[transform:perspective(1000px)_rotateX(8deg)_rotateY(-12deg)_translateY(-8px)]`}
                         >
                           {/* 3D cylindrical spine shading overlay */}
                           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-white/5 to-black/25 pointer-events-none" />
