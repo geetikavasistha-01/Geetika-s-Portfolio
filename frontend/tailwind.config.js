@@ -23,8 +23,8 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'League Spartan'", "sans-serif"],
-        body: ["'League Spartan'", "sans-serif"],
+        display: ["'Didact Gothic'", "sans-serif"],
+        body: ["'Didact Gothic'", "sans-serif"],
         mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
       animation: {
