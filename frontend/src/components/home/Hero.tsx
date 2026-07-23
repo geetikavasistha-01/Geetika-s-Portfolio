@@ -120,7 +120,7 @@ export default function Hero() {
       </div>
 
       {/* Bio Prose Block with Left Border Indent */}
-      <div className="pl-4 border-l border-border/70 space-y-6 text-sm text-text2 leading-relaxed max-w-[620px] font-sans">
+      <div className="pl-4 border-l border-border/70 space-y-6 text-sm text-text2 leading-relaxed w-full font-sans">
         <p>
           I spend most of my time building <span className="font-semibold text-text1">Agentic AI</span>, <span className="font-semibold text-text1">distributed systems</span>, and <span className="font-semibold text-text1">backend infrastructure</span> for intelligent applications.
         </p>
