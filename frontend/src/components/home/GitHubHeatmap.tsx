@@ -43,6 +43,31 @@ const generateMockContributions = (): GitHubContributions => {
   return { totalContributions, weeks };
 };
 
+const transformJogruberData = (rawData: any): GitHubContributions => {
+  const contributions = rawData.contributions || [];
+  
+  // Get the last 364 days (52 weeks * 7 days)
+  const lastYearContributions = contributions.slice(-364);
+  
+  const weeks: GitHubContributions['weeks'] = [];
+  let totalContributions = 0;
+  
+  for (let i = 0; i < lastYearContributions.length; i += 7) {
+    const chunk = lastYearContributions.slice(i, i + 7);
+    const contributionDays = chunk.map((day: any) => {
+      totalContributions += day.count;
+      return {
+        contributionCount: day.count,
+        date: day.date,
+        color: day.level.toString()
+      };
+    });
+    weeks.push({ contributionDays });
+  }
+  
+  return { totalContributions, weeks };
+};
+
 export default function GitHubHeatmap() {
   const [hoveredDay, setHoveredDay] = useState<{ count: number; date: string } | null>(null);
 
@@ -53,7 +78,13 @@ export default function GitHubHeatmap() {
         const res = await api.get('/github/contributions');
         return res.data;
       } catch {
-        return generateMockContributions();
+        try {
+          const res = await fetch('https://github-contributions-api.jogruber.de/v4/geetikavasistha-01');
+          const rawData = await res.json();
+          return transformJogruberData(rawData);
+        } catch {
+          return generateMockContributions();
+        }
       }
     },
     initialData: generateMockContributions()
