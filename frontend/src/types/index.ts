@@ -44,6 +44,8 @@ export interface Project {
   isFeatured?: boolean;
   isMoreWork?: boolean;
   isSideExperiment?: boolean;
+  subtitle?: string;
+  statsHighlight?: string;
 }
 
 export interface SideExperiment {

@@ -18,7 +18,9 @@ const ProjectSchema = new Schema({
   images: [{ type: String }],
   isFeatured: { type: Boolean, default: false },
   isMoreWork: { type: Boolean, default: false },
-  isSideExperiment: { type: Boolean, default: false }
+  isSideExperiment: { type: Boolean, default: false },
+  subtitle: { type: String },
+  statsHighlight: { type: String }
 });
 
 export const Project = model('Project', ProjectSchema);

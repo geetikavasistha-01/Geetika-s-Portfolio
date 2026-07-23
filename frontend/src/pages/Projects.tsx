@@ -8,28 +8,90 @@ import { Search, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-const filterCategories = ['ALL', 'ML / AI', 'DATA ENGINEERING', 'FULL STACK', 'ROBOTICS', 'RESEARCH'];
+const filterCategories = ['ALL', 'DISTRIBUTED SYSTEMS', 'STORAGE ENGINES', 'DATABASE', 'BACKEND', 'FULL STACK', 'ML / AI', 'RESEARCH'];
 
 const defaultFeatured: Project[] = [
+  {
+    slug: 'plume',
+    title: 'Plume',
+    subtitle: 'Satellite timeseries air quality prediction & hotspot detection.',
+    year: 2025,
+    language: 'Python',
+    status: 'live',
+    tags: ['ML / AI', 'DATA ENGINEERING', 'RESEARCH'],
+    description: 'Built a CNN-LSTM model on satellite time series data (Sentinel-5P, INSAT-3D, ERA5) to predict air quality and detect pollution hotspots across India. Sped up the Google Earth Engine ingestion pipeline 5x and containerized with a scheduled pre-caching service for production.',
+    statsHighlight: 'MAE 6.44 · 5x ingestion speedup with scheduled GEE pre-caching',
+    stats: [
+      { label: 'Prediction accuracy', value: '0.975 Pearson r' },
+      { label: 'Loss Metrics', value: '6.44 MAE' },
+      { label: 'Ingestion Speedup', value: '5x throughput' }
+    ],
+    longDescription: '',
+    githubUrl: 'https://github.com/geetikavasistha-01/Plume',
+    liveUrl: '',
+    featured: true,
+    order: 1,
+    featuredImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=450&q=80'
+  },
+  {
+    slug: 'teachers-mate',
+    title: "Teachers' Mate",
+    subtitle: 'Role-based assignment organization & automated grading analytics.',
+    year: 2024,
+    language: 'TypeScript',
+    status: 'live',
+    tags: ['FULL STACK', 'DATABASE'],
+    description: 'Built a full-stack platform with a React frontend and Node.js/Express REST API backend, including role-based access control and usage analytics. Streamlines assignment distribution and automated evaluation metrics for educators.',
+    statsHighlight: 'Role-based workflows with 70% improvement in task completion rate',
+    stats: [
+      { label: 'Evaluation Overhead', value: '-50% manual extraction time' },
+      { label: 'Active Workflows', value: '70% on-time task completion' }
+    ],
+    longDescription: '',
+    githubUrl: 'https://github.com/geetikavasistha-01/teachers-mate',
+    liveUrl: '',
+    featured: true,
+    order: 2,
+    featuredImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&h=450&q=80'
+  },
+  {
+    slug: 'isotherm',
+    title: 'Isotherm',
+    subtitle: 'Urban heat island detection & physics-informed cooling intervention.',
+    year: 2025,
+    language: 'Python',
+    status: 'live',
+    tags: ['ML / AI', 'RESEARCH', 'FULL STACK'],
+    description: 'Built a physics-informed PyTorch CNN-LSTM pipeline constrained by Surface Energy Balance loss to predict Land Surface Temperature within 2.0°C RMSE. Shipped a cooling-intervention recommender via a PERN-stack web app with a FastAPI model-serving layer.',
+    statsHighlight: 'Physics-informed CNN-LSTM constrained by Surface Energy Balance loss',
+    stats: [
+      { label: 'Temperature prediction', value: '2.0°C RMSE' },
+      { label: 'Model serving latency', value: '<85ms inference' }
+    ],
+    longDescription: '',
+    githubUrl: 'https://github.com/geetikavasistha-01/isotherm',
+    liveUrl: '',
+    featured: true,
+    order: 3,
+    featuredImage: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&h=450&q=80'
+  }
+];
+
+const defaultMoreWork: Project[] = [
   {
     slug: 'tokenlens',
     title: 'TokenLens',
     year: 2025,
     language: 'Python',
     status: 'wip',
-    tags: ['ML / AI', 'DATA ENGINEERING', 'FULL STACK'],
+    tags: ['ML / AI', 'DATA ENGINEERING'],
     description: 'A token intelligence SaaS platform for LLM usage tracking and forecasting.',
-    stats: [
-      { label: 'Latency', value: '<45ms overhead' },
-      { label: 'Forecasting Accuracy', value: '94% MAPE (LSTM)' },
-      { label: 'Throughput', value: '10M tokens/day' }
-    ],
+    stats: [],
     longDescription: '',
     githubUrl: 'https://github.com/geetikavasistha-01/tokenlens',
     liveUrl: 'https://tokenlens.dev',
-    featured: true,
-    order: 1,
-    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&h=260&q=80'
+    featured: false,
+    order: 4
   },
   {
     slug: 'isro-sentinel-pipeline',
@@ -39,17 +101,12 @@ const defaultFeatured: Project[] = [
     status: 'live',
     tags: ['ML / AI', 'DATA ENGINEERING', 'RESEARCH'],
     description: 'CNN-LSTM satellite pipeline digesting Sentinel-5P/TROPOMI datasets for real-time HCHO/NO2 mapping.',
-    stats: [
-      { label: 'Resolution', value: '3.5km x 5.5km' },
-      { label: 'Data ingestion speed', value: '450MB/sec' },
-      { label: 'Prediction MSE', value: '0.0024' }
-    ],
+    stats: [],
     longDescription: '',
     githubUrl: 'https://github.com/geetikavasistha-01',
     liveUrl: 'https://isro.gov.in',
-    featured: true,
-    order: 2,
-    featuredImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=400&h=260&q=80'
+    featured: false,
+    order: 5
   },
   {
     slug: 'ethicaltwin-governance',
@@ -59,20 +116,13 @@ const defaultFeatured: Project[] = [
     status: 'live',
     tags: ['ML / AI', 'RESEARCH'],
     description: 'XGBoost dual-agent AI governance framework to audit model decision parameters against compliance templates.',
-    stats: [
-      { label: 'Compliance Audit Rate', value: '150 runs/sec' },
-      { label: 'Governance Drift Detection', value: '98.5% sensitivity' }
-    ],
+    stats: [],
     longDescription: '',
     githubUrl: 'https://github.com/geetikavasistha-01',
     liveUrl: '',
-    featured: true,
-    order: 3,
-    featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&h=260&q=80'
-  }
-];
-
-const defaultMoreWork: Project[] = [
+    featured: false,
+    order: 6
+  },
   {
     slug: 'distributed-rate-limiter',
     title: 'DistributedRateLimiter',
@@ -86,7 +136,7 @@ const defaultMoreWork: Project[] = [
     githubUrl: 'https://github.com/geetikavasistha-01',
     liveUrl: '',
     featured: false,
-    order: 4
+    order: 7
   },
   {
     slug: 'geekykunoichi-blog',
@@ -96,51 +146,6 @@ const defaultMoreWork: Project[] = [
     status: 'live',
     tags: ['FULL STACK'],
     description: 'FastAPI driven markdown portfolio blog engine with SSR and SQLite cache layers.',
-    stats: [],
-    longDescription: '',
-    githubUrl: 'https://github.com/geetikavasistha-01',
-    liveUrl: '',
-    featured: false,
-    order: 5
-  },
-  {
-    slug: 'solariq-firmware',
-    title: 'SolarIQ',
-    year: 2024,
-    language: 'C++',
-    status: 'live',
-    tags: ['ROBOTICS'],
-    description: 'ESP32 firmware logging solar cell yield data via low power bluetooth protocol arrays.',
-    stats: [],
-    longDescription: '',
-    githubUrl: 'https://github.com/geetikavasistha-01',
-    liveUrl: '',
-    featured: false,
-    order: 6
-  },
-  {
-    slug: 'teachers-mate',
-    title: 'Teachers-Mate',
-    year: 2024,
-    language: 'JavaScript',
-    status: 'live',
-    tags: ['FULL STACK'],
-    description: 'Full-stack platform for teachers to organize assignments and evaluate grading indices.',
-    stats: [],
-    longDescription: '',
-    githubUrl: 'https://github.com/geetikavasistha-01',
-    liveUrl: '',
-    featured: false,
-    order: 7
-  },
-  {
-    slug: 'civillens',
-    title: 'CivilLens',
-    year: 2024,
-    language: 'Python',
-    status: 'live',
-    tags: ['ML / AI'],
-    description: 'RAG parsing pipeline turning dense public administration drafts into searchable charts.',
     stats: [],
     longDescription: '',
     githubUrl: 'https://github.com/geetikavasistha-01',
@@ -292,57 +297,101 @@ export default function Projects() {
       {/* Featured Section */}
       <SectionHeader label="featured" />
       <div className="flex flex-col gap-20 mt-8 w-full">
-        {filteredFeatured.map((project, idx) => (
-          <div
-            key={project.slug || idx}
-            className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-8 items-start border-b border-border/40 pb-12"
-          >
-            {/* Info details */}
-            <div className="flex flex-col">
-              <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest text-text3 uppercase mb-3">
-                <span>{getPaddedNumber(idx)}</span>
-                <span>·</span>
-                <span>{project.year}</span>
-                <span>·</span>
-                <span>{project.language}</span>
-                {project.status === 'wip' && (
-                  <span className="text-amber">● WIP</span>
+        {filteredFeatured.map((project, idx) => {
+          const isEven = idx % 2 === 0;
+          return (
+            <div
+              key={project.slug || idx}
+              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center border-b border-border/40 pb-16 w-full"
+            >
+              {/* Text Column (on left for even, on right for odd) */}
+              <div className={`md:col-span-7 flex flex-col ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                {/* Metadata row */}
+                <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-text3 uppercase mb-3">
+                  <span className="font-serif italic text-base text-text3/50 mr-1">{getPaddedNumber(idx)}</span>
+                  <span>·</span>
+                  <span>{project.year}</span>
+                  <span>·</span>
+                  <span>{project.language}</span>
+                  {project.status === 'wip' && (
+                    <>
+                      <span>·</span>
+                      <span className="text-amber flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber animate-pulse" />
+                        WIP
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-3xl sm:text-4xl font-display font-normal text-text1 group hover:text-text3 mb-3 flex items-center gap-2">
+                  <Link to={`/projects/${project.slug}`} className="hover:underline flex items-center gap-1.5 font-sans font-semibold">
+                    {project.title} <ArrowUpRight size={18} className="text-text4 group-hover:text-text1 transition-colors" />
+                  </Link>
+                </h3>
+
+                {/* Tagline / Subtitle */}
+                {project.subtitle && (
+                  <p className="text-base font-serif italic text-text2 mb-4 leading-relaxed">
+                    {project.subtitle}
+                  </p>
+                )}
+
+                {/* Description */}
+                <p className="text-sm text-text3 leading-relaxed mb-4">
+                  {project.description}
+                </p>
+
+                {/* Highlight Stats Block */}
+                {project.statsHighlight && (
+                  <div className="bg-amber-500/5 dark:bg-amber-400/5 border-l-2 border-amber-500 text-amber-800 dark:text-amber-300 p-3 rounded-r-lg font-mono text-[10px] leading-relaxed mb-4">
+                    {project.statsHighlight}
+                  </div>
+                )}
+
+                {/* Tech badges */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="bg-surface2 text-text3 rounded-md px-2 py-0.5 text-[9px] tracking-wider font-mono">
+                      {tag.toUpperCase()}
+                    </span>
+                  ))}
+                </div>
+
+                {/* GitHub link line */}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-xs font-mono text-text3 hover:text-text1 transition-colors mt-1"
+                  >
+                    <span className="text-text4">
+                      <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                        <path d="M5 3.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm0 2.122a2.25 2.25 0 1 0-1.5 0v5.256a2.251 2.251 0 1 0 1.5 0V5.372Zm8 5.378a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm0-2.122a2.25 2.25 0 1 0-1.5 0V5.372a2.251 2.251 0 1 0 1.5 0v3.256ZM11 3.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                      </svg>
+                    </span>
+                    <span>{project.githubUrl.replace('https://github.com/', '')} ↗</span>
+                  </a>
                 )}
               </div>
 
-              <h3 className="text-3xl sm:text-4xl font-display font-normal italic text-text1 hover:text-text3 mb-3 flex items-center gap-2">
-                <Link to={`/projects/${project.slug}`} className="hover:underline flex items-center gap-1">
-                  {project.title.toLowerCase()} <ArrowUpRight size={18} />
-                </Link>
-              </h3>
-
-              <p className="text-sm text-text3 italic leading-relaxed mb-6">
-                {project.description}
-              </p>
-
-              {project.stats && project.stats.length > 0 && (
-                <div className="border-l-2 border-border pl-4 font-mono text-[11px] text-text3 flex flex-col gap-1.5 leading-relaxed">
-                  {project.stats.map((stat, sIdx) => (
-                    <div key={sIdx}>
-                      · {stat.label.toLowerCase()}: <span className="text-text2">{stat.value}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Optional Image */}
-            {project.featuredImage && (
-              <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-border bg-surface shadow-sm">
-                <img
-                  src={project.featuredImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+              {/* Image Column (on right for even, on left for odd) */}
+              <div className={`md:col-span-5 w-full ${isEven ? 'md:order-2' : 'md:order-1'}`}>
+                {project.featuredImage && (
+                  <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-border bg-surface shadow-md hover:shadow-lg transition-all duration-300">
+                    <img
+                      src={project.featuredImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover filter saturate-[0.85] hover:saturate-100 transition-all duration-300"
+                    />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
 
       {/* More Work flat list */}

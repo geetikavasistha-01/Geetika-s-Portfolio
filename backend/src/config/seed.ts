@@ -124,6 +124,73 @@ const seed = async () => {
     // 4. Seed Projects
     await Project.create([
       {
+        slug: 'plume',
+        title: 'Plume',
+        subtitle: 'Satellite timeseries air quality prediction & hotspot detection.',
+        year: 2025,
+        language: 'Python',
+        status: 'live',
+        tags: ['ML / AI', 'DATA ENGINEERING', 'RESEARCH'],
+        description: 'Built a CNN-LSTM model on satellite time series data (Sentinel-5P, INSAT-3D, ERA5) to predict air quality and detect pollution hotspots across India. Sped up the Google Earth Engine ingestion pipeline 5x and containerized with a scheduled pre-caching service for production.',
+        statsHighlight: 'MAE 6.44 · 5x ingestion speedup with scheduled GEE pre-caching',
+        stats: [
+          { label: 'Prediction accuracy', value: '0.975 Pearson r' },
+          { label: 'Loss Metrics', value: '6.44 MAE' },
+          { label: 'Ingestion Speedup', value: '5x throughput' }
+        ],
+        longDescription: '## Overview\nPlume is a satellite timeseries air quality prediction and hotspot detection pipeline. It uses satellite observations to trace gas distributions across Indian regions.',
+        githubUrl: 'https://github.com/geetikavasistha-01/Plume',
+        liveUrl: '',
+        featured: true,
+        isFeatured: true,
+        order: 1,
+        featuredImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&h=450&q=80'
+      },
+      {
+        slug: 'teachers-mate',
+        title: "Teachers' Mate",
+        subtitle: 'Role-based assignment organization & automated grading analytics.',
+        year: 2024,
+        language: 'TypeScript',
+        status: 'live',
+        tags: ['FULL STACK', 'DATABASE'],
+        description: 'Built a full-stack platform with a React frontend and Node.js/Express REST API backend, including role-based access control and usage analytics. Streamlines assignment distribution and automated evaluation metrics for educators.',
+        statsHighlight: 'Role-based workflows with 70% improvement in task completion rate',
+        stats: [
+          { label: 'Evaluation Overhead', value: '-50% manual extraction time' },
+          { label: 'Active Workflows', value: '70% on-time task completion' }
+        ],
+        longDescription: '## Overview\nTeachers-Mate is a full-stack platform built with React, Node.js, Express, and MongoDB, delivering role-based workflows for assignment distribution and analytics.',
+        githubUrl: 'https://github.com/geetikavasistha-01/teachers-mate',
+        liveUrl: '',
+        featured: true,
+        isFeatured: true,
+        order: 2,
+        featuredImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&h=450&q=80'
+      },
+      {
+        slug: 'isotherm',
+        title: 'Isotherm',
+        subtitle: 'Urban heat island detection & physics-informed cooling intervention.',
+        year: 2025,
+        language: 'Python',
+        status: 'live',
+        tags: ['ML / AI', 'RESEARCH', 'FULL STACK'],
+        description: 'Built a physics-informed PyTorch CNN-LSTM pipeline constrained by Surface Energy Balance loss to predict Land Surface Temperature within 2.0°C RMSE. Shipped a cooling-intervention recommender via a PERN-stack web app with a FastAPI model-serving layer.',
+        statsHighlight: 'Physics-informed CNN-LSTM constrained by Surface Energy Balance loss',
+        stats: [
+          { label: 'Temperature prediction', value: '2.0°C RMSE' },
+          { label: 'Model serving latency', value: '<85ms inference' }
+        ],
+        longDescription: '## Overview\nIsotherm is a physics-informed Land Surface Temperature prediction model and recommender platform built for detecting and mitigating urban heat islands.',
+        githubUrl: 'https://github.com/geetikavasistha-01/isotherm',
+        liveUrl: '',
+        featured: true,
+        isFeatured: true,
+        order: 3,
+        featuredImage: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&h=450&q=80'
+      },
+      {
         slug: 'tokenlens',
         title: 'TokenLens',
         year: 2025,
@@ -131,24 +198,12 @@ const seed = async () => {
         status: 'wip',
         tags: ['ML / AI', 'DATA ENGINEERING'],
         description: 'A token intelligence SaaS platform for LLM usage tracking and forecasting.',
-        stats: [
-          { label: 'Latency', value: '<45ms overhead' },
-          { label: 'Forecasting Accuracy', value: '94% MAPE (LSTM)' },
-          { label: 'Throughput', value: '10M tokens/day' }
-        ],
-        longDescription: `## Overview
-TokenLens is a distributed token usage SaaS platform designed for high-throughput AI environments. It tracks precise consumption counts across multiple model API calls, caches identical requests, and predicts scaling thresholds.
-
-## Approach & Architecture
-We built an asynchronous proxy in FastAPI that intercepts prompt chunks, decodes them via fast tiktoken bindings, and pushes token statistics to a Redis time-series database.
-- **LSTM Predictor:** A background service trains on historical usage and forecasts scaling bottlenecks.
-- **Billing Sync:** Integrated with Stripe to trigger tier changes automatically.`,
+        stats: [],
+        longDescription: '## Overview\nTokenLens is a distributed token usage SaaS platform designed for high-throughput AI environments.',
         githubUrl: 'https://github.com/geetikavasistha-01/tokenlens',
         liveUrl: 'https://tokenlens.dev',
-        featured: true,
-        isFeatured: true,
-        order: 1,
-        featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=360&q=80'
+        isMoreWork: true,
+        order: 4
       },
       {
         slug: 'isro-sentinel-pipeline',
@@ -158,23 +213,12 @@ We built an asynchronous proxy in FastAPI that intercepts prompt chunks, decodes
         status: 'live',
         tags: ['ML / AI', 'DATA ENGINEERING', 'RESEARCH'],
         description: 'CNN-LSTM satellite pipeline digesting Sentinel-5P/TROPOMI datasets for real-time HCHO/NO2 mapping.',
-        stats: [
-          { label: 'Resolution', value: '3.5km x 5.5km' },
-          { label: 'Data ingestion speed', value: '450MB/sec' },
-          { label: 'Prediction MSE', value: '0.0024' }
-        ],
-        longDescription: `## Overview
-This satellite pipeline was designed for the ISRO AQI/HCHO spatial tracking competition. It digests massive NetCDF4 datasets from Sentinel-5P and trains deep learning estimators to track ozone precursors.
-
-## Architecture
-- **Ingestion Grid:** Spatial-bins coordinates into uniform grids using Python's xarray.
-- **Deep Model:** Spatio-temporal CNN-LSTM modeling the mixing ratios of HCHO.`,
+        stats: [],
+        longDescription: '## Overview\nThis satellite pipeline was designed for the ISRO AQI/HCHO spatial tracking competition.',
         githubUrl: 'https://github.com/geetikavasistha-01',
         liveUrl: 'https://isro.gov.in',
-        featured: true,
-        isFeatured: true,
-        order: 2,
-        featuredImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&h=360&q=80'
+        isMoreWork: true,
+        order: 5
       },
       {
         slug: 'ethicaltwin-governance',
@@ -184,18 +228,12 @@ This satellite pipeline was designed for the ISRO AQI/HCHO spatial tracking comp
         status: 'live',
         tags: ['ML / AI', 'RESEARCH'],
         description: 'XGBoost dual-agent AI governance framework to audit model decision parameters against compliance templates.',
-        stats: [
-          { label: 'Compliance Audit Rate', value: '150 runs/sec' },
-          { label: 'Governance Drift Detection', value: '98.5% sensitivity' }
-        ],
-        longDescription: `## Overview
-EthicalTwin is a dual-agent framework designed to monitor decision drifts in production models. It audits feature importance indices dynamically, logging drifts that violate pre-defined corporate guidelines.`,
+        stats: [],
+        longDescription: '## Overview\nEthicalTwin is a dual-agent framework designed to monitor decision drifts in production models.',
         githubUrl: 'https://github.com/geetikavasistha-01',
         liveUrl: '',
-        featured: true,
-        isFeatured: true,
-        order: 3,
-        featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&h=360&q=80'
+        isMoreWork: true,
+        order: 6
       },
       {
         slug: 'distributed-rate-limiter',
@@ -206,10 +244,10 @@ EthicalTwin is a dual-agent framework designed to monitor decision drifts in pro
         tags: ['DATA ENGINEERING'],
         description: 'Four algorithms, Prometheus monitoring, Nginx reverse proxy load balancer integration.',
         stats: [],
-        longDescription: `## Overview\nHigh performance rate limiting in Go.`,
+        longDescription: '## Overview\nHigh performance rate limiting in Go.',
         githubUrl: 'https://github.com/geetikavasistha-01',
         isMoreWork: true,
-        order: 4
+        order: 7
       },
       {
         slug: 'geekykunoichi-blog',
@@ -220,10 +258,10 @@ EthicalTwin is a dual-agent framework designed to monitor decision drifts in pro
         tags: ['FULL STACK'],
         description: 'FastAPI driven markdown portfolio blog engine with SSR and SQLite cache layers.',
         stats: [],
-        longDescription: `## Overview\nMy custom blogging engine.`,
+        longDescription: '## Overview\nMy custom blogging engine.',
         githubUrl: 'https://github.com/geetikavasistha-01',
         isMoreWork: true,
-        order: 5
+        order: 8
       }
     ]);
     console.log('Seeded Projects');
