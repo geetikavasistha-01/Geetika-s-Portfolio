@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PageWrapper from '../components/layout/PageWrapper';
 import Hero from '../components/home/Hero';
 import LogCards from '../components/home/LogCards';
@@ -38,9 +39,16 @@ export default function Home() {
       {/* 6. Featured Projects */}
       <div id="featured-work">
         <SectionHeader
-          label="featured work"
-          rightElement={<span>things built</span>}
-          subtext="Production applications, machine learning models, and open source libraries."
+          label="featured"
+          rightElement={
+            <Link 
+              to="/projects" 
+              className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
+            >
+              view all &rarr;
+            </Link>
+          }
+          subtext="Things I've built that I'm proud of."
         />
         <FeaturedProjects />
       </div>
