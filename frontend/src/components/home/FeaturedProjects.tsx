@@ -87,7 +87,7 @@ export default function FeaturedProjects() {
           {/* Title and Hover Arrow */}
           <div className="flex justify-between items-baseline mb-3">
             <h3 className="text-3xl sm:text-4xl font-display font-normal italic text-text1 group-hover:text-text3 transition-colors">
-              {project.title.toLowerCase()}
+              {project.title}
             </h3>
             <ArrowUpRight
               size={18}
@@ -102,7 +102,7 @@ export default function FeaturedProjects() {
 
           {/* Stats mono block */}
           {project.stats && project.stats.length > 0 && (
-            <div className="border-l-2 border-border pl-4 font-mono text-[11px] text-text3 flex flex-col gap-1 leading-loose">
+            <div className="border-l-2 border-border pl-4 font-mono text-[11px] text-text3 flex flex-col gap-1 leading-loose mb-4">
               {project.stats.map((stat, sIdx) => (
                 <div key={sIdx}>
                   · {stat.label.toLowerCase()}: <span className="text-text2">{stat.value}</span>
@@ -110,6 +110,34 @@ export default function FeaturedProjects() {
               ))}
             </div>
           )}
+
+          {/* Direct External Links */}
+          <div className="flex gap-4 text-[11px] font-mono mt-2">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-text3 hover:text-text1 transition-colors underline decoration-border hover:decoration-text1"
+              >
+                <span>github</span>
+                <ArrowUpRight size={12} />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-text3 hover:text-text1 transition-colors underline decoration-border hover:decoration-text1"
+              >
+                <span>live</span>
+                <ArrowUpRight size={12} />
+              </a>
+            )}
+          </div>
         </Link>
       ))}
     </div>

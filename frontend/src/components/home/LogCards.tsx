@@ -98,7 +98,7 @@ export default function LogCards() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, amount: 0.01 }}
       className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mt-6"
     >
       {logs.slice(0, 3).map((log, index) => {
