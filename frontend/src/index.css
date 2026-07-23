@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -42,17 +42,20 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text2);
   font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
   font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
 }
 
 /* Custom CSS classes */
 .section-label {
   font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
