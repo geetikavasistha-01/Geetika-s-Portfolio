@@ -23,7 +23,7 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'Instrument Serif'", "Georgia", "serif"],
+        display: ["'IM Fell English'", "Georgia", "serif"],
         body: ["Inter", "system-ui", "sans-serif"],
         mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
