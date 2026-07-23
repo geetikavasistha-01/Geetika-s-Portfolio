@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @font-face {
   font-family: 'Nectarine';
@@ -48,18 +48,18 @@ body * {
 body {
   background-color: var(--color-bg);
   color: var(--color-text2);
-  font-family: 'Nectarine', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
-  font-family: 'Nectarine', sans-serif;
+  font-family: 'League Spartan', sans-serif;
 }
 
 /* Custom CSS classes */
 .section-label {
-  font-family: 'Nectarine', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
