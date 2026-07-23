@@ -315,7 +315,7 @@ export default function Shelf() {
   }, []);
 
   return (
-    <PageWrapper>
+    <PageWrapper maxClassName="max-w-[1150px]">
       {/* Page Header */}
       <div className="flex flex-col mb-8 select-none">
         <div className="flex justify-between items-center text-[10px] font-mono tracking-widest text-text3 uppercase">
