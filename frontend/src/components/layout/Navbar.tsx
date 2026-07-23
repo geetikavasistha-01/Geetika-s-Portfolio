@@ -269,8 +269,17 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.path;
+              const cleanPath = location.pathname.replace(/\/$/, '') || '/';
+              const isActive = cleanPath === item.path;
               const isHovered = hoveredTab === item.name;
+
+              // Find current active item from navItems list to get target mascot tab
+              const activeItem = navItems.find((nav) => {
+                const p = location.pathname.replace(/\/$/, '') || '/';
+                return p === nav.path;
+              });
+              const targetMascotTab = hoveredTab || activeItem?.name;
+              const shouldRenderMascot = item.name === targetMascotTab;
 
               return (
                 <Link
@@ -318,7 +327,7 @@ export default function Navbar() {
                     )}
                   </AnimatePresence>
 
-                  {isActive && !clockDialogOpen && (
+                  {shouldRenderMascot && !clockDialogOpen && (
                     <motion.div
                       layoutId="anime-mascot"
                       className="absolute -top-[44px] left-1/2 -translate-x-1/2 pointer-events-none z-[9999]"
@@ -333,7 +342,7 @@ export default function Navbar() {
                         <motion.img
                           src={currentMascot}
                           alt="Kunoichi Mascot"
-                          className="w-11 h-11 object-contain drop-shadow-md"
+                          className="w-11 h-11 object-contain drop-shadow-md translate-x-[4.5px]"
                           animate={
                             hoveredTab ? {
                               scale: [1, 1.15, 1],
