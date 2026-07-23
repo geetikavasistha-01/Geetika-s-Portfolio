@@ -111,10 +111,19 @@ router.get('/github/contributions', async (req, res) => {
     return res.status(404).json({ message: 'GitHub token not configured' });
   }
 
+  const requestedYear = req.query.year ? parseInt(req.query.year as string) : null;
+  let from = null;
+  let to = null;
+  if (requestedYear) {
+    from = `${requestedYear}-01-01T00:00:00Z`;
+    to = `${requestedYear}-12-31T23:59:59Z`;
+  }
+
   const query = `
-    query($username: String!) {
+    query($username: String!, $from: DateTime, $to: DateTime) {
       user(login: $username) {
-        contributionsCollection {
+        contributionsCollection(from: $from, to: $to) {
+          contributionYears
           contributionCalendar {
             totalContributions
             weeks {
@@ -135,7 +144,11 @@ router.get('/github/contributions', async (req, res) => {
       'https://api.github.com/graphql',
       {
         query,
-        variables: { username: GITHUB_USERNAME || 'geetikavasistha-01' }
+        variables: { 
+          username: GITHUB_USERNAME || 'geetikavasistha-01',
+          from,
+          to
+        }
       },
       {
         headers: {
@@ -145,14 +158,16 @@ router.get('/github/contributions', async (req, res) => {
       }
     );
 
-    const calendar = response.data?.data?.user?.contributionsCollection?.contributionCalendar;
+    const collection = response.data?.data?.user?.contributionsCollection;
+    const calendar = collection?.contributionCalendar;
     if (!calendar) {
       throw new Error('Invalid GitHub response');
     }
 
     res.status(200).json({
       totalContributions: calendar.totalContributions,
-      weeks: calendar.weeks
+      weeks: calendar.weeks,
+      years: collection.contributionYears
     });
   } catch (error) {
     res.status(404).json({ message: 'GitHub proxy query failed' });

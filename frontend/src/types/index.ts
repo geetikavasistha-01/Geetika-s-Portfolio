@@ -142,4 +142,5 @@ export interface GitHubContributions {
       color: string;
     }[];
   }[];
+  years?: number[];
 }

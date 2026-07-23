@@ -33,10 +33,6 @@ export default function Home() {
       )}
 
       {/* 5. Contributions Heatmap */}
-      <SectionHeader
-        label="contributions"
-        rightElement={<span>github metrics</span>}
-      />
       <GitHubHeatmap />
 
       {/* 6. Featured Projects */}
