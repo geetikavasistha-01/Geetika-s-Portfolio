@@ -383,7 +383,7 @@ export default function Projects() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-3xl sm:text-4xl font-display font-normal text-text1 group hover:text-text3 mb-3 flex items-center gap-2">
+                <h3 className="text-2xl sm:text-3xl font-display font-normal text-text1 group hover:text-text3 mb-3 flex items-center gap-2">
                   <Link to={`/projects/${project.slug}`} className="hover:underline flex items-center gap-1.5 font-sans font-semibold">
                     {project.title} <ArrowUpRight size={18} className="text-text4 group-hover:text-text1 transition-colors" />
                   </Link>
@@ -391,13 +391,13 @@ export default function Projects() {
 
                 {/* Tagline / Subtitle */}
                 {project.subtitle && (
-                  <p className="text-base font-serif italic text-text2 mb-4 leading-relaxed">
+                  <p className="text-sm font-body text-text2 mb-4 leading-relaxed">
                     {project.subtitle}
                   </p>
                 )}
 
                 {/* Description */}
-                <p className="text-sm text-text3 leading-relaxed mb-4">
+                <p className="text-sm font-body text-text3 leading-relaxed mb-4">
                   {project.description}
                 </p>
 
