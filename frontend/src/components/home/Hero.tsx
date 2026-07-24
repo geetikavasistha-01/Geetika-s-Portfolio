@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter, FaMedium, FaPython } from 'react-icons/fa6';
 import { SiHashnode, SiSubstack, SiFastapi, SiScikitlearn } from 'react-icons/si';
 
-import renge from '../../assets/renge.jpg';
+import kunoichi from '../../assets/kunoichi.png';
+import kunoichiDark from '../../assets/kunoichi-dark.png';
 import { LinkPreview } from '../ui/LinkPreview';
 import SpotifyWidget from './SpotifyWidget';
 
 export default function Hero() {
   const { theme, recruiterMode } = useUIStore();
+  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
 
   return (
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
@@ -28,21 +30,17 @@ export default function Hero() {
           />
 
           {/* Avatar Box (Polaroid Frame) */}
-          <a
-            href="https://nonnontv.fandom.com/wiki/Non_Non_Biyori_(manga)"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block relative w-[96px] h-[108px] bg-zinc-50 dark:bg-zinc-100 p-2 pb-5 rounded shadow-md border border-zinc-200/80 hover:border-zinc-300 dark:border-zinc-300 transition-all duration-300 group cursor-pointer"
-            title="Non Non Biyori (manga)"
+          <div
+            className="block relative w-[96px] h-[108px] bg-zinc-50 dark:bg-zinc-100 p-2 pb-5 rounded shadow-md border border-zinc-200/80 dark:border-zinc-800 transition-all duration-300 group"
           >
             <div className="w-full h-[76px] overflow-hidden bg-zinc-200/50 border border-zinc-300/40 rounded-sm">
               <img
-                src={renge}
-                alt="Renge Miyauchi"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src={currentAvatar}
+                alt="Geetika Vasistha Avatar"
+                className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-          </a>
+          </div>
         </div>
 
         {/* Name and Socials */}
