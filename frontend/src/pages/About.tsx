@@ -57,7 +57,6 @@ const skillGroups: SkillGroup[] = [
     label: 'INFRASTRUCTURE',
     skills: [
       { name: 'Docker', icon: <FaDocker size={12} className="text-[#34908B]" /> },
-      { name: 'Git', icon: <FaGitAlt size={12} className="text-[#34908B]" /> },
       { name: 'GitHub Actions', icon: <SiGithubactions size={12} className="text-[#34908B]" /> },
       { name: 'GCP', icon: <SiGooglecloud size={12} className="text-[#34908B]" /> },
       { name: 'Vercel', icon: <SiVercel size={12} className="text-[#34908B]" /> },
