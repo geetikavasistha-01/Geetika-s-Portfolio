@@ -109,7 +109,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
-  font-family: 'ITC Garamond Light Narrow Italic', 'ITC Garamond', Garamond, Georgia, serif;
+  font-family: 'EB Garamond', 'ITC Garamond Light Narrow Italic', 'ITC Garamond', Garamond, Georgia, serif;
   font-style: italic;
 }
 

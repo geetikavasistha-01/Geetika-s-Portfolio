@@ -23,14 +23,14 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
-        editorial: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
+        display: ["'EB Garamond'", "'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
+        editorial: ["'EB Garamond'", "'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
         script: ["'Cherolina'", "sans-serif"],
         typewriter: ["'Elegant Typewriter'", "monospace"],
         body: ["'Didact Gothic'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
         serifClassic: ["'Times New Roman'", "Times", "serif"],
-        garamond: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
+        garamond: ["'EB Garamond'", "'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
