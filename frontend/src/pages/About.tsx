@@ -2,8 +2,7 @@ import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import SkillConstellation from '../components/about/SkillConstellation';
-import kunoichi from '../assets/kunoichi.png';
-import kunoichiDark from '../assets/kunoichi-dark.png';
+import renge from '../assets/renge.jpg';
 import { useUIStore } from '../store/uiStore';
 import { LinkPreview } from '../components/ui/LinkPreview';
 
@@ -105,8 +104,6 @@ const philosophyCards = [
 ];
 
 export default function About() {
-  const { theme } = useUIStore();
-  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
 
   return (
     <PageWrapper>
@@ -129,13 +126,19 @@ export default function About() {
         
         {/* Left Column (Sticky info cards) */}
         <div className="flex flex-col items-center md:items-start md:sticky md:top-24 self-start">
-          <div className="w-[180px] h-[180px] select-none">
+          <a
+            href="https://myanimelist.net/anime/17549/Non_Non_Biyori?q=non%20non&cat=anime"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block relative select-none flex-shrink-0 w-[180px] h-[180px] rounded-xl overflow-hidden shadow-md hover:shadow-lg border border-border/40 transition-all duration-300 group"
+            title="Renge Miyauchi (Non Non Biyori)"
+          >
             <img
-              src={currentAvatar}
+              src={renge}
               alt="Geetika Vasistha Mascot"
-              className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
-          </div>
+          </a>
         </div>
 
         {/* Right Column (Content panels) */}
