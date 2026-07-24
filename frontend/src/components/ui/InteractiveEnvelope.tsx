@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 export default function InteractiveEnvelope() {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,9 +13,9 @@ export default function InteractiveEnvelope() {
   }, []);
 
   return (
-    <Link
-      to="/contact"
-      className="relative flex flex-col items-center justify-center w-full pt-12 pb-6 group select-none"
+    <a
+      href="mailto:contact.geetikavasistha@gmail.com"
+      className="relative flex flex-col items-center justify-center w-full pt-12 pb-6 group select-none transition-transform duration-300 hover:scale-[1.01]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -28,12 +27,12 @@ export default function InteractiveEnvelope() {
         {/* 1. Envelope Backside */}
         <div className="absolute inset-0 bg-[#E6C665] rounded-2xl shadow-lg border border-[#D9B753]/40" />
 
-        {/* 2. Letter Paper (Slides up on hover) */}
+        {/* 2. Letter Paper (Permanently visible/slid out) */}
         <motion.div
           animate={{
-            y: isHovered ? -75 : 0,
-            scale: isHovered ? 1.02 : 1,
-            zIndex: isHovered ? 20 : 5
+            y: isHovered ? -82 : -75,
+            scale: isHovered ? 1.04 : 1,
+            zIndex: 20
           }}
           transition={{
             type: "spring",
@@ -45,10 +44,10 @@ export default function InteractiveEnvelope() {
           {/* Letter Lines Decoration */}
           <div className="w-full h-full border-t border-b border-dashed border-gray-200/80 flex flex-col items-center justify-center gap-2">
             <span 
-              className="text-xl sm:text-2xl text-gray-800 leading-none"
+              className="text-2xl sm:text-3xl text-gray-800 leading-none font-bold"
               style={{ fontFamily: "'Caveat', cursive" }}
             >
-              write me a mail
+              Hire Me
             </span>
             <div className="w-16 h-[1.5px] bg-[#659287]/40 rounded-full" />
           </div>
@@ -82,11 +81,11 @@ export default function InteractiveEnvelope() {
           />
         </svg>
 
-        {/* 4. Top Flap (Flips open on hover) */}
+        {/* 4. Top Flap (Permanently flipped open) */}
         <motion.div
           animate={{
-            rotateX: isHovered ? 180 : 0,
-            zIndex: isHovered ? 0 : 30
+            rotateX: 180,
+            zIndex: 0
           }}
           transition={{
             type: "spring",
@@ -116,8 +115,8 @@ export default function InteractiveEnvelope() {
 
       {/* Hover Subtext Guide */}
       <span className="text-[10px] font-mono tracking-widest text-text3 uppercase mt-6 group-hover:text-text1 transition-colors">
-        Click to open form
+        Click to email me
       </span>
-    </Link>
+    </a>
   );
 }
