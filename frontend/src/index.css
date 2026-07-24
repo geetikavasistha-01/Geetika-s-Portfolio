@@ -62,7 +62,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
   font-family: 'Perandory', Georgia, serif;
-  text-transform: uppercase;
 }
 
 /* Custom CSS classes */

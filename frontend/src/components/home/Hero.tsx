@@ -19,14 +19,14 @@ export default function Hero() {
         {/* Taped Polaroid Container */}
         <div className="relative rotate-[-3deg] hover:rotate-0 transition-all duration-300 transform origin-bottom-left select-none flex-shrink-0">
           {/* Tape Strip */}
-          <div 
+          <div
             className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-10 h-4 bg-white/20 dark:bg-white/10 backdrop-blur-[2.5px] border border-white/20 shadow-sm z-20 transform -rotate-6"
-            style={{ 
+            style={{
               clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)',
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
-            }} 
+            }}
           />
-          
+
           {/* Avatar Box (Polaroid Frame) */}
           <a
             href="https://nonnontv.fandom.com/wiki/Non_Non_Biyori_(manga)"
@@ -47,10 +47,10 @@ export default function Hero() {
 
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-text1 leading-none tracking-tight uppercase">
-            GEETIKA <span className="text-[#34908B]">VASISTHA</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-text1 leading-none tracking-tight">
+            Geetika <span className="text-[#34908B]">Vasistha</span>
           </h1>
-          
+
           {/* Social Links */}
           <div className="flex flex-wrap gap-4 items-center mt-3">
             <a
@@ -134,15 +134,15 @@ export default function Hero() {
         </p>
 
         <p className="text-text3 flex flex-wrap items-center gap-1">
-          Explore my latest 
+          Explore my latest
           <Link to="/projects" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
             <FolderGit2 size={13} /> projects
           </Link>
-          , read my 
+          , read my
           <Link to="/work" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
             <Briefcase size={13} /> experience
           </Link>
-          , or check out the 
+          , or check out the
           <Link to="/blog" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
             <FileText size={13} /> blog
           </Link>
