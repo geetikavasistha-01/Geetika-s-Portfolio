@@ -37,24 +37,6 @@ const loopItems: DropItem[] = [
     name: "Brooklyn Nine-Nine",
     collection: "peak workplace comedy",
     imageSrc: brooklyn99
-  },
-  {
-    time: "THE HOUR · EP 24",
-    name: "Code Geass R2",
-    collection: "favourite hour ever",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/4/9391.jpg"
-  },
-  {
-    time: "ON LOOP",
-    name: "Steins;Gate",
-    collection: "el psy congroo",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/15/24184.jpg"
-  },
-  {
-    time: "COMFORT CHARACTERS",
-    name: "Kazuma & Takuma",
-    collection: "if you know",
-    imageSrc: "https://cdn.myanimelist.net/images/anime/11/89497.jpg"
   }
 ];
 
