@@ -58,28 +58,19 @@ export default function Contact() {
 
   return (
     <PageWrapper>
-      {/* 1. Main Get in Touch Header */}
-      <div className="flex flex-col mb-4 select-none">
-        <h1 className="text-3xl sm:text-4xl font-display font-normal text-text1 leading-tight">
-          Get in Touch
-        </h1>
-        <p className="text-sm text-text3 mt-2 max-w-[620px] leading-relaxed">
-          Let's build something purposeful together. Whether you have a project in
-          mind or just want to connect, I'd love to hear from you.
-        </p>
-      </div>
 
-      {/* 2. Substack Newsletter CTA — top of page */}
-      <div className="w-full mb-4">
-        <div className="relative overflow-hidden rounded-[20px] border border-border/80 bg-surface/50 px-5 py-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
-          <div className="absolute -left-24 -bottom-24 w-48 h-48 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
-          <div className="flex flex-col gap-1 z-10 max-w-lg select-none">
-            <h3 className="text-base sm:text-lg font-display font-normal text-text1">
+
+      {/* Newsletter CTA — top of page */}
+      <div className="w-full mb-5">
+        <div className="relative overflow-hidden rounded-[24px] border border-border/80 bg-surface/50 px-8 py-7 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div className="absolute -right-24 -top-24 w-56 h-56 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
+          <div className="absolute -left-24 -bottom-24 w-56 h-56 rounded-full bg-teal/5 blur-3xl pointer-events-none" />
+          <div className="flex flex-col gap-2 z-10 max-w-lg select-none">
+            <h3 className="text-xl sm:text-2xl font-display font-normal text-text1">
               Newsletter
             </h3>
-            <p className="text-xs text-text3 leading-relaxed">
-              I share occasional articles on software engineering, AI, and lessons from building real products. Subscribe on Substack.
+            <p className="text-xs sm:text-sm text-text3 leading-relaxed">
+              I share occasional articles on software engineering, AI, web development, and lessons from building real products. Subscribe on Substack to get new posts delivered to your inbox.
             </p>
           </div>
           <div className="z-10 flex flex-col items-start flex-shrink-0">
@@ -88,7 +79,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Subscribe to my Substack newsletter"
-              className="inline-flex items-center gap-2 bg-[#34908B] hover:bg-[#2c7a76] text-white px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
+              className="inline-flex items-center gap-2 bg-[#34908B] hover:bg-[#2c7a76] text-white px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.536 9.879H1.464V6.202h21.072v3.677zm0-6.202H1.464V0h21.072v3.677zM1.464 13.555h21.072v10.445L12 18.273 1.464 24V13.555z" />
@@ -96,7 +87,7 @@ export default function Contact() {
               <span>Subscribe on Substack</span>
               <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <span className="text-[10px] text-text4 mt-1.5 select-none">
+            <span className="text-[10px] text-text4 mt-2 select-none">
               Free to subscribe. No spam. Unsubscribe anytime.
             </span>
           </div>
