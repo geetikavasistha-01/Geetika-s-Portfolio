@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function InteractiveEnvelope() {
   const [isHovered, setIsHovered] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Load cursive handwriting font dynamically
   useEffect(() => {
@@ -12,9 +13,22 @@ export default function InteractiveEnvelope() {
     document.head.appendChild(link);
   }, []);
 
+  const handleClick = async () => {
+    // Let the mailto: attempt happen naturally (no preventDefault).
+    // In parallel, silently copy the address as a fallback.
+    try {
+      await navigator.clipboard.writeText('contact.geetikavasistha@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unsupported or blocked (non-HTTPS, iframe, etc.) — fail silently.
+    }
+  };
+
   return (
     <a
       href="mailto:contact.geetikavasistha@gmail.com"
+      onClick={handleClick}
       className="relative flex flex-col items-center justify-center w-full pt-12 pb-6 group select-none transition-transform duration-300 hover:scale-[1.01]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -111,6 +125,26 @@ export default function InteractiveEnvelope() {
             />
           </svg>
         </motion.div>
+
+        {/* Toast: "Email copied!" — appears above the envelope, auto-dismisses after 2s */}
+        <AnimatePresence>
+          {copied && (
+            <motion.div
+              key="copied-toast"
+              initial={{ opacity: 0, y: 8, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="absolute -top-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0A3323] text-white text-[11px] font-mono tracking-wide shadow-md whitespace-nowrap pointer-events-none"
+            >
+              {/* Checkmark icon */}
+              <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="2,6 5,9 10,3" />
+              </svg>
+              Email copied!
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Hover Subtext Guide */}
