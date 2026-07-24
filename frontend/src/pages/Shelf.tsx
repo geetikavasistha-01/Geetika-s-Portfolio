@@ -249,6 +249,131 @@ const booksData: ShelfCategory[] = [
         paperUrl: 'https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi12.pdf'
       }
     ]
+  },
+  {
+    name: 'Philosophy & Literature',
+    books: [
+      {
+        title: 'The Book of Life',
+        author: 'KRISHNAMURTI',
+        color: 'bg-[#3b1f0a] text-amber-100 border-[#5c3317]',
+        height: 'h-[195px]',
+        authors: 'Jiddu Krishnamurti',
+        metadata: 'HarperOne · 1995',
+        tags: ['Philosophy', 'Self-inquiry', 'Consciousness'],
+        explanation: 'Daily meditations drawing from Krishnamurti\'s talks — questioning authority, conditioning, and the nature of the self without any system or dogma.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/94037.The_Book_of_Life',
+        amazonUrl: 'https://www.amazon.com/s?k=The+Book+of+Life+Krishnamurti'
+      },
+      {
+        title: 'Freedom From the Known',
+        author: 'KRISHNAMURTI',
+        color: 'bg-[#4a2c0a] text-orange-100 border-[#6b3f10]',
+        height: 'h-[188px]',
+        authors: 'Jiddu Krishnamurti',
+        metadata: 'HarperOne · 1969',
+        tags: ['Philosophy', 'Freedom', 'Self-inquiry'],
+        explanation: 'Krishnamurti\'s radical invitation to free the mind from accumulated knowledge, fear, and psychological time — and to see life freshly in each moment.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/143877.Freedom_from_the_Known',
+        amazonUrl: 'https://www.amazon.com/s?k=Freedom+from+the+Known+Krishnamurti'
+      },
+      {
+        title: 'The Fountainhead',
+        author: 'AYN RAND',
+        color: 'bg-[#1a1a2e] text-slate-100 border-[#2d2d44]',
+        height: 'h-[200px]',
+        authors: 'Ayn Rand',
+        metadata: 'Bobbs-Merrill · 1943',
+        tags: ['Philosophy', 'Objectivism', 'Novel', 'Individualism'],
+        explanation: 'Ayn Rand\'s seminal novel — a fierce defense of individualism through architect Howard Roark\'s uncompromising pursuit of creative integrity against a conformist world.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/2122.The_Fountainhead',
+        amazonUrl: 'https://www.amazon.com/s?k=The+Fountainhead+Ayn+Rand'
+      },
+      {
+        title: 'Atlas Shrugged',
+        author: 'AYN RAND',
+        color: 'bg-[#0d1b2a] text-sky-100 border-[#1a3346]',
+        height: 'h-[205px]',
+        authors: 'Ayn Rand',
+        metadata: 'Random House · 1957',
+        tags: ['Philosophy', 'Objectivism', 'Novel', 'Capitalism'],
+        explanation: 'Rand\'s magnum opus — a philosophical novel exploring what happens when the world\'s greatest thinkers and creators go on strike, and the Objectivist philosophy behind their choice.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/9365.Atlas_Shrugged',
+        amazonUrl: 'https://www.amazon.com/s?k=Atlas+Shrugged+Ayn+Rand'
+      },
+      {
+        title: 'Karma: Why Everything You Know Is Wrong',
+        author: 'A. PRASHANT',
+        color: 'bg-[#14532d] text-green-100 border-[#166534]',
+        height: 'h-[192px]',
+        authors: 'Acharya Prashant',
+        metadata: 'HarperCollins · 2021',
+        tags: ['Vedanta', 'Philosophy', 'Spirituality', 'Self-inquiry'],
+        explanation: 'Acharya Prashant dismantles popular misconceptions around karma using Vedanta and Upanishadic thought — calling for radical self-honesty rather than ritualistic action.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/57829766-karma',
+        amazonUrl: 'https://www.amazon.com/s?k=Karma+Acharya+Prashant'
+      },
+      {
+        title: 'Hamlets of the Mind',
+        author: 'A. PRASHANT',
+        color: 'bg-[#1c3d1c] text-lime-100 border-[#2d5a2d]',
+        height: 'h-[185px]',
+        authors: 'Acharya Prashant',
+        metadata: 'HarperCollins · 2022',
+        tags: ['Vedanta', 'Shakespeare', 'Philosophy', 'Consciousness'],
+        explanation: 'A unique dialogue between Shakespearean characters and Vedantic wisdom — Prashant uses Hamlet, Macbeth, and others as mirrors to examine the confused human mind.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/60784437-hamlets-of-the-mind',
+        amazonUrl: 'https://www.amazon.com/s?k=Hamlets+of+the+Mind+Acharya+Prashant'
+      },
+      {
+        title: 'Hamlet',
+        author: 'SHAKESPEARE',
+        color: 'bg-[#2d1b4e] text-violet-100 border-[#3d2460]',
+        height: 'h-[195px]',
+        authors: 'William Shakespeare',
+        metadata: 'Globe Theatre · c. 1600–1601',
+        tags: ['Drama', 'Classic Literature', 'Tragedy', 'Philosophy'],
+        explanation: 'The most performed play in history — a meditation on mortality, revenge, moral paralysis, and the impossibility of certainty in a corrupt world.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/1420.Hamlet',
+        amazonUrl: 'https://www.amazon.com/s?k=Hamlet+Shakespeare'
+      },
+      {
+        title: 'The Tempest',
+        author: 'SHAKESPEARE',
+        color: 'bg-[#1e3a5f] text-blue-100 border-[#2a4f7a]',
+        height: 'h-[188px]',
+        authors: 'William Shakespeare',
+        metadata: 'Globe Theatre · c. 1611',
+        tags: ['Drama', 'Classic Literature', 'Magic', 'Colonialism'],
+        explanation: 'Shakespeare\'s final romance — Prospero\'s island as a stage for power, forgiveness, and the act of letting go of control and vengeance.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/57538.The_Tempest',
+        amazonUrl: 'https://www.amazon.com/s?k=The+Tempest+Shakespeare'
+      },
+      {
+        title: 'Lyrical Ballads',
+        author: 'WORDSWORTH',
+        color: 'bg-[#713f12] text-yellow-100 border-[#92400e]',
+        height: 'h-[190px]',
+        authors: 'William Wordsworth & Samuel Taylor Coleridge',
+        metadata: 'J. & A. Arch · 1798',
+        tags: ['Poetry', 'Romanticism', 'Nature', 'Classic Literature'],
+        explanation: 'The founding text of English Romanticism — Wordsworth and Coleridge\'s landmark collaboration exploring ordinary life, nature, and the supernatural with a new democratic poetic language.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/60041.Lyrical_Ballads',
+        amazonUrl: 'https://www.amazon.com/s?k=Lyrical+Ballads+Wordsworth+Coleridge'
+      },
+      {
+        title: 'The Prelude',
+        author: 'WORDSWORTH',
+        color: 'bg-[#7c4d00] text-amber-100 border-[#9a6100]',
+        height: 'h-[185px]',
+        authors: 'William Wordsworth',
+        metadata: 'Edward Moxon · 1850',
+        tags: ['Poetry', 'Autobiography', 'Romanticism', 'Nature'],
+        explanation: 'Wordsworth\'s epic autobiographical poem — the growth of a poet\'s mind through encounters with nature, memory, and imagination across a lifetime.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/169203.The_Prelude',
+        amazonUrl: 'https://www.amazon.com/s?k=The+Prelude+Wordsworth'
+      }
+    ]
   }
 ];
 
