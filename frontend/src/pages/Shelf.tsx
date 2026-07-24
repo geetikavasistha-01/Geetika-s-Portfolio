@@ -488,7 +488,7 @@ export default function Shelf() {
               : `${blogsData.length} reads`}
           </span>
         </div>
-        <h1 className="text-5xl sm:text-6xl font-typewriter font-normal text-text1 mt-6 italic lowercase">
+        <h1 className="text-4xl sm:text-5xl font-typewriter font-normal text-text1 mt-6 uppercase tracking-widest">
           the reading rack.
         </h1>
         <p className="text-sm italic font-typewriter text-text3 mt-4 max-w-[540px] leading-relaxed">
@@ -528,7 +528,7 @@ export default function Shelf() {
             <div key={catIdx} className="flex flex-col w-full select-none">
               {/* Category Header */}
               <div className="flex items-baseline gap-2 mb-6">
-                <h3 className="font-typewriter text-lg text-text1 font-normal">
+                <h3 className="font-typewriter text-base text-text1 font-normal uppercase tracking-widest">
                   {category.name}
                 </h3>
                 <span className="text-[10px] font-mono text-text3">
