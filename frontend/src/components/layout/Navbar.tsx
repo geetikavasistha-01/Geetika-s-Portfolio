@@ -112,7 +112,6 @@ export default function Navbar() {
     { name: 'Home', path: '/', icon: Home },
     { name: 'Work', path: '/work', icon: Briefcase },
     { name: 'About', path: '/about', icon: User },
-    { name: 'Human', path: '/human', icon: Heart },
     { name: 'Projects', path: '/projects', icon: Folder },
     { name: 'Blog', path: '/blog', icon: BookOpen },
     ...(!recruiterMode ? [{ name: 'Shelf', path: '/shelf', icon: Layers }] : []),

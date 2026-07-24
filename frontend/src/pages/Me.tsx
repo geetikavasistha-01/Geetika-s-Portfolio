@@ -155,17 +155,17 @@ export default function Me() {
         <div className="flex flex-wrap gap-3 items-center justify-center mt-4">
           <Link
             to="/work"
-            className="inline-flex items-center justify-center px-6 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-bold rounded-full bg-transparent transition-colors shadow-sm hover:shadow-[0_0_12px_rgba(56,189,248,0.15)]"
+            className="inline-flex items-center justify-center px-6 py-2 border border-border/60 hover:border-text2 text-text3 hover:text-text1 text-xs font-body font-bold rounded-full bg-transparent transition-colors shadow-sm"
           >
             Full Portfolio &rarr;
           </Link>
+          <Link
+            to="/human"
+            className="inline-flex items-center justify-center px-6 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-bold rounded-full bg-transparent transition-colors shadow-sm hover:shadow-[0_0_12px_rgba(56,189,248,0.15)]"
+          >
+            Personal Side &rarr;
+          </Link>
         </div>
-        <Link
-          to="/human"
-          className="mt-4 text-xs text-text3 font-body hover:text-[#38bdf8] underline transition-colors"
-        >
-          or see the non-code side &rarr;
-        </Link>
         <span className="mt-10 text-[10px] text-text4 font-body">
           crafted with curiosity — <span className="text-[#38bdf8] font-semibold">@geekykunoichi</span>
         </span>

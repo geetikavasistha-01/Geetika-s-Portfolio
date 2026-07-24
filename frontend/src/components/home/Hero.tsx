@@ -148,12 +148,12 @@ export default function Hero() {
 
       {/* CTA Button */}
       <div className="mt-8">
-        <a
-          href="#featured-work"
+        <Link
+          to="/me"
           className="inline-flex items-center gap-2 border border-border/80 hover:border-[#34908B]/40 text-text2 hover:text-[#34908B] bg-surface2/30 rounded-full px-5 py-2 text-xs font-medium tracking-wider transition-all duration-300 shadow-sm"
         >
           Everything at a glance <ArrowUpRight size={12} />
-        </a>
+        </Link>
       </div>
 
       {/* Fan of line with custom matching links & icons */}
