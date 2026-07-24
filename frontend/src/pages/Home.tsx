@@ -53,17 +53,7 @@ export default function Home() {
       {/* 5. Contributions Heatmap */}
       <GitHubHeatmap />
 
-      {/* 7. Lab Notebook screenshots - Hidden in recruiter mode */}
-      {!recruiterMode && (
-        <>
-          <SectionHeader
-            label="lab notebook"
-            rightElement={<span>snapshots</span>}
-            subtext="Working drafts, terminal printouts, and visual notes."
-          />
-          <LabNotebook />
-        </>
-      )}
+
 
       {/* 8. Latest Article */}
       <SectionHeader
