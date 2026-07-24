@@ -24,6 +24,7 @@ import AMA from './pages/AMA';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Human from './pages/Human';
+import Me from './pages/Me';
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ export default function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/human" element={<Human />} />
+              <Route path="/me" element={<Me />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
