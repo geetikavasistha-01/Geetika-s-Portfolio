@@ -128,28 +128,13 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-12 mt-4">
         
         {/* Left Column (Sticky info cards) */}
-        <div className="flex flex-col items-center md:items-start md:sticky md:top-24 self-start gap-4">
-          <div className="w-[180px] h-[180px] rounded-xl overflow-hidden border border-border bg-surface shadow-sm flex items-center justify-center">
+        <div className="flex flex-col items-center md:items-start md:sticky md:top-24 self-start">
+          <div className="w-[180px] h-[180px] select-none">
             <img
               src={currentAvatar}
-              alt="Geetika Vasistha"
-              className="w-full h-full object-contain p-4"
+              alt="Geetika Vasistha Mascot"
+              className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
             />
-          </div>
-          
-          <div className="flex flex-col text-center md:text-left">
-            <span className="text-xs text-text3 font-mono">
-              geekykunoichi / Geetika
-            </span>
-            <span className="text-[11px] italic text-text4 mt-1 leading-normal max-w-[180px]">
-              engineering intelligence, one model at a time
-            </span>
-            <span className="text-[10px] text-text4 mt-1">
-              Delhi NCR, India
-            </span>
-            <div className="font-script text-3xl text-teal/90 mt-4 select-none rotate-[-4deg] self-center md:self-start">
-              Geetika
-            </div>
           </div>
         </div>
 
