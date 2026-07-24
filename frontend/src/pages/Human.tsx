@@ -92,7 +92,7 @@ export default function Human() {
               <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors">
                 Spotify
               </a>
-              <Link to="/work" className="px-3.5 py-1.5 rounded-full bg-[#34908B] text-white hover:bg-[#28736f] text-[11px] font-body transition-all hover:shadow-md">
+              <Link to="/me" className="px-3.5 py-1.5 rounded-full bg-[#34908B] text-white hover:bg-[#28736f] text-[11px] font-body transition-all hover:shadow-md">
                 the technical me &rarr;
               </Link>
             </div>
@@ -333,7 +333,7 @@ export default function Human() {
           <p className="mt-4 text-xs sm:text-sm text-text2 font-body max-w-md leading-relaxed">
             By day, my world consists of clean data structures, anomaly models, sat telemetry scripts, and system performance. You can read the formal logs on the other side.
           </p>
-          <Link to="/work" className="mt-6 inline-flex items-center gap-1 border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors bg-white dark:bg-zinc-900 shadow-sm">
+          <Link to="/me" className="mt-6 inline-flex items-center gap-1 border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors bg-white dark:bg-zinc-900 shadow-sm">
             <span>the technical side</span>
             <ArrowUpRight size={14} />
           </Link>
@@ -357,7 +357,7 @@ export default function Human() {
         <p className="font-editorial text-base sm:text-lg italic text-text2 max-w-md leading-relaxed">
           "quieter thoughts leave room for cleaner creations."
         </p>
-        <Link to="/work" className="mt-4 text-xs text-text3 font-body hover:text-[#34908B] underline transition-colors">
+        <Link to="/me" className="mt-4 text-xs text-text3 font-body hover:text-[#34908B] underline transition-colors">
           back to the serious stuff &rarr;
         </Link>
         <span className="mt-8 text-[10px] text-text4 font-body">
