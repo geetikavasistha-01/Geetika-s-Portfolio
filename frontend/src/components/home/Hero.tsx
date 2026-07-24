@@ -16,25 +16,19 @@ export default function Hero() {
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
       {/* Avatar & Social Header - Polaroid Taped Style */}
       <div className="flex flex-col md:flex-row md:items-center gap-6 w-full mb-8">
-        {/* Animated Gradient Frame Container */}
-        <div className="relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-xl p-[2.5px] overflow-hidden group shadow-md hover:shadow-lg transition-shadow duration-300">
-          {/* Spinning Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#34908B] via-emerald-400 to-[#659287] animate-[spin_5s_linear_infinite] rounded-xl" />
-          
-          <a
-            href="https://myanimelist.net/anime/17549/Non_Non_Biyori?q=non%20non&cat=anime"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full h-full bg-bg rounded-[10px] overflow-hidden relative z-10"
-            title="Renge Miyauchi (Non Non Biyori)"
-          >
-            <img
-              src={renge}
-              alt="Renge Miyauchi Avatar"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </a>
-        </div>
+        <a
+          href="https://myanimelist.net/anime/17549/Non_Non_Biyori?q=non%20non&cat=anime"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shadow-md hover:shadow-lg border border-border/40 transition-all duration-300 group"
+          title="Renge Miyauchi (Non Non Biyori)"
+        >
+          <img
+            src={renge}
+            alt="Renge Miyauchi Avatar"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </a>
 
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
