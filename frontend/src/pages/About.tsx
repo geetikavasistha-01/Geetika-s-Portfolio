@@ -52,7 +52,7 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.06,
     }
   }
 };
@@ -76,12 +76,12 @@ interface StickerProps {
   title: string;
   className: string;
   children: React.ReactNode;
-  styleType?: 'default' | 'note' | 'bracket';
+  colorType?: 'cream' | 'cyan' | 'lime';
   baseRotate: number;
   customDelay: number;
 }
 
-function Sticker({ title, className, children, styleType = 'default', baseRotate, customDelay }: StickerProps) {
+function Sticker({ title, className, children, colorType = 'cream', baseRotate, customDelay }: StickerProps) {
   const shouldReduceMotion = useReducedMotion();
   
   // Staggered spring entrance, plus subtle continuous idle sway
@@ -106,41 +106,53 @@ function Sticker({ title, className, children, styleType = 'default', baseRotate
   };
 
   const getStyleClasses = () => {
-    switch (styleType) {
-      case 'note':
-        return 'bg-amber-50/90 dark:bg-amber-950/15 border border-amber-200/50 dark:border-amber-900/30 rounded-lg p-3.5 shadow-sm text-text1';
-      case 'bracket':
-        return 'bg-surface border-l-4 border-l-teal border-y border-r border-border/80 rounded-r-xl rounded-l-sm p-3 shadow-sm text-text2';
+    switch (colorType) {
+      case 'cyan':
+        return 'bg-heroCyan text-white rounded-2xl p-4 shadow-sm border-0';
+      case 'lime':
+        return 'bg-heroLime text-heroDark rounded-2xl p-4 shadow-sm border-0';
       default:
-        return 'bg-surface border border-border/80 rounded-xl p-3 shadow-sm text-text2';
+        return 'bg-heroCream text-heroDark rounded-2xl p-4 shadow-sm border-0';
+    }
+  };
+
+  const getLabelColor = () => {
+    switch (colorType) {
+      case 'cyan':
+        return 'text-white/80';
+      case 'lime':
+        return 'text-heroDark/70';
+      default:
+        return 'text-heroPink/90';
     }
   };
 
   const getTapeAccent = () => {
-    if (styleType === 'note') {
-      // Washi-tape strip
-      return (
-        <div 
-          className="absolute -top-3 left-1/4 w-12 h-3.5 bg-teal/20 dark:bg-teal/15 border-x border-dashed border-teal/30 transform rotate-[-4deg] z-10 select-none pointer-events-none"
-          style={{ clipPath: 'polygon(5% 0%, 95% 2%, 90% 98%, 10% 100%)' }}
-        />
-      );
+    switch (colorType) {
+      case 'cyan':
+        // Lime tape strip
+        return (
+          <div 
+            className="absolute -top-3 left-1/4 w-12 h-3.5 bg-heroLime/55 border-x border-dashed border-heroLime/35 transform rotate-[-4deg] z-10 select-none pointer-events-none"
+            style={{ clipPath: 'polygon(5% 0%, 95% 2%, 90% 98%, 10% 100%)' }}
+          />
+        );
+      case 'lime':
+        // Cream tape strip (folded look)
+        return (
+          <div 
+            className="absolute -top-2.5 right-2 w-10 h-3 bg-heroCream/75 border-y border-dashed border-heroCream/45 transform rotate-[15deg] z-10 select-none pointer-events-none"
+          />
+        );
+      default:
+        // Cyan tape strip
+        return (
+          <div 
+            className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-8 h-3.5 bg-heroCyan/45 backdrop-blur-[1px] border border-heroCyan/25 shadow-[0_1px_1px_rgba(0,0,0,0.03)] z-10 transform -rotate-3 select-none pointer-events-none"
+            style={{ clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)' }}
+          />
+        );
     }
-    if (styleType === 'bracket') {
-      // Folded corner style
-      return (
-        <div 
-          className="absolute -top-2.5 right-2 w-8 h-2.5 bg-rose/25 dark:bg-rose/15 border-y border-dashed border-rose/30 transform rotate-[15deg] z-10 select-none pointer-events-none"
-        />
-      );
-    }
-    // Default tape strip
-    return (
-      <div 
-        className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-8 h-3.5 bg-text3/10 dark:bg-white/5 backdrop-blur-[1px] border border-text3/10 shadow-[0_1px_1px_rgba(0,0,0,0.03)] z-10 transform -rotate-3 select-none pointer-events-none"
-        style={{ clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)' }}
-      />
-    );
   };
 
   return (
@@ -149,11 +161,11 @@ function Sticker({ title, className, children, styleType = 'default', baseRotate
       variants={stickerVariants}
       animate={swayAnimation}
       whileHover={hoverAnimation}
-      className={`relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-none md:absolute transition-shadow duration-300 hover:shadow-md hover:border-green/45 pointer-events-auto ${getStyleClasses()} ${className}`}
+      className={`relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-none md:absolute transition-shadow duration-300 hover:shadow-md pointer-events-auto ${getStyleClasses()} ${className}`}
     >
       {getTapeAccent()}
       <div className="flex flex-col gap-1 mt-1">
-        <span className="text-[9px] font-mono tracking-widest text-text4 uppercase font-bold">
+        <span className={`text-[9px] font-mono tracking-widest uppercase font-bold ${getLabelColor()}`}>
           {title}
         </span>
         <div className="text-xs leading-relaxed font-body">
@@ -165,7 +177,7 @@ function Sticker({ title, className, children, styleType = 'default', baseRotate
 }
 
 // Decorative background collage elements
-function AccentStar({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+function AccentStar({ className, shouldReduceMotion, color = 'text-heroLime' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
   return (
     <motion.svg
       animate={shouldReduceMotion ? {} : {
@@ -177,7 +189,7 @@ function AccentStar({ className, shouldReduceMotion }: { className: string; shou
         repeat: Infinity,
         ease: "linear"
       }}
-      className={`hidden md:block absolute w-4 h-4 text-amber/60 pointer-events-none ${className}`}
+      className={`hidden md:block absolute w-5 h-5 ${color} pointer-events-none ${className}`}
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -186,7 +198,7 @@ function AccentStar({ className, shouldReduceMotion }: { className: string; shou
   );
 }
 
-function AccentSquiggle({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+function AccentSquiggle({ className, shouldReduceMotion, color = 'text-heroCream/60' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
   return (
     <motion.svg
       animate={shouldReduceMotion ? {} : {
@@ -197,11 +209,11 @@ function AccentSquiggle({ className, shouldReduceMotion }: { className: string; 
         repeat: Infinity,
         ease: "easeInOut"
       }}
-      className={`hidden md:block absolute w-8 h-4 text-teal/40 pointer-events-none ${className}`}
+      className={`hidden md:block absolute w-10 h-5 ${color} pointer-events-none ${className}`}
       viewBox="0 0 24 10"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="2.5"
       strokeLinecap="round"
     >
       <path d="M2 5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
@@ -209,7 +221,7 @@ function AccentSquiggle({ className, shouldReduceMotion }: { className: string; 
   );
 }
 
-function AccentHeart({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+function AccentHeart({ className, shouldReduceMotion, color = 'text-heroCyan/70' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
   return (
     <motion.svg
       animate={shouldReduceMotion ? {} : {
@@ -220,7 +232,7 @@ function AccentHeart({ className, shouldReduceMotion }: { className: string; sho
         repeat: Infinity,
         ease: "easeInOut"
       }}
-      className={`hidden md:block absolute w-4 h-4 text-rose/60 pointer-events-none ${className}`}
+      className={`hidden md:block absolute w-5 h-5 ${color} pointer-events-none ${className}`}
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -281,19 +293,19 @@ export default function About() {
         </p>
       </div>
 
-      {/* Scattered Collage Hero / Zine Ref Sheet */}
-      <div className="flex flex-col items-center w-full md:relative md:h-[640px] md:flex-row md:justify-center md:items-center mt-12 mb-16 overflow-visible">
+      {/* Saturated Color-block Poster Hero */}
+      <div className="w-full bg-heroPink rounded-[32px] p-6 md:p-12 md:relative md:h-[640px] flex flex-col items-center justify-center mt-12 mb-16 overflow-hidden">
         
-        {/* Accent squiggles and stars */}
-        <AccentStar className="left-[23%] top-[10%]" shouldReduceMotion={shouldReduceMotion} />
-        <AccentSquiggle className="left-[22%] bottom-[15%]" shouldReduceMotion={shouldReduceMotion} />
-        <AccentHeart className="right-[22%] top-[8%]" shouldReduceMotion={shouldReduceMotion} />
-        <AccentStar className="right-[24%] bottom-[12%]" shouldReduceMotion={shouldReduceMotion} />
+        {/* Accent squiggles, hearts, and stars */}
+        <AccentStar className="left-[23%] top-[10%] text-heroLime" shouldReduceMotion={shouldReduceMotion} />
+        <AccentSquiggle className="left-[22%] bottom-[15%] text-heroCream/70" shouldReduceMotion={shouldReduceMotion} />
+        <AccentHeart className="right-[22%] top-[8%] text-heroCyan" shouldReduceMotion={shouldReduceMotion} />
+        <AccentStar className="right-[24%] bottom-[12%] text-heroCream" shouldReduceMotion={shouldReduceMotion} />
 
         {/* Central Avatar card */}
         <motion.div
           animate={avatarFloat.animate}
-          className="w-[240px] h-[240px] md:w-[350px] md:h-[350px] rounded-2xl overflow-hidden border border-border bg-surface shadow-md flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative"
+          className="w-[240px] h-[240px] md:w-[350px] md:h-[350px] rounded-3xl overflow-hidden bg-heroCream/10 backdrop-blur-[2px] border border-heroCream/20 shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative"
         >
           <AnimatePresence mode="wait">
             <motion.img
@@ -309,7 +321,7 @@ export default function About() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Scattered Sticker Layer */}
+        {/* Scattered Color-block Stickers Layer */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -319,41 +331,44 @@ export default function About() {
           {/* Identity */}
           <Sticker 
             title="👋 Identity" 
-            className="rotate-[-1.5deg] md:rotate-[-4deg] md:left-[2%] md:top-[2%] md:w-[190px]"
+            className="rotate-[-1.5deg] md:rotate-[-4deg] md:left-[4%] md:top-[4%] md:w-[190px]"
+            colorType="cream"
             baseRotate={-4}
-            customDelay={0.08}
+            customDelay={0.06}
           >
-            <span className="font-semibold text-text1">Geetika Vasistha</span>
-            <span className="block text-[10px] text-text3 font-mono mt-0.5">@geekykunoichi</span>
+            <span className="font-bold text-inherit">Geetika Vasistha</span>
+            <span className="block text-[10px] text-inherit/80 font-mono mt-0.5">@geekykunoichi</span>
           </Sticker>
 
           {/* Focus */}
           <Sticker 
             title="✨ Focus" 
-            className="rotate-[2deg] md:rotate-[2deg] md:left-[3%] md:top-[17%] md:w-[200px]"
-            styleType="note"
+            className="rotate-[2deg] md:rotate-[2deg] md:left-[6%] md:top-[19%] md:w-[200px]"
+            colorType="cyan"
             baseRotate={2}
-            customDelay={0.16}
+            customDelay={0.12}
           >
-            <span className="italic text-text2">"engineering intelligence, one model at a time"</span>
+            <span className="italic text-inherit">"engineering intelligence, one model at a time"</span>
           </Sticker>
 
           {/* ML & DS Skills */}
           <Sticker 
             title="🤖 ML & DS" 
-            className="rotate-[-2deg] md:rotate-[3deg] md:left-[1%] md:top-[38%] md:w-[210px]"
+            className="rotate-[-2deg] md:rotate-[3deg] md:left-[3%] md:top-[39%] md:w-[210px]"
+            colorType="lime"
             baseRotate={3}
-            customDelay={0.24}
+            customDelay={0.18}
           >
-            <span className="text-text2">Python, scikit-learn, XGBoost, LangChain, HuggingFace</span>
+            <span className="text-inherit font-medium">Python, scikit-learn, XGBoost, LangChain, HuggingFace</span>
           </Sticker>
 
           {/* Currently Listening */}
           <Sticker 
             title={track?.isPlaying ? '⚡ Now Playing' : '🎵 Last Played'} 
-            className="rotate-[-1deg] md:rotate-[-3deg] md:left-[3%] md:bottom-[4%] md:w-[210px]"
+            className="rotate-[-1deg] md:rotate-[-3deg] md:left-[5%] md:bottom-[6%] md:w-[210px]"
+            colorType="cream"
             baseRotate={-3}
-            customDelay={0.32}
+            customDelay={0.24}
           >
             <a
               href={track?.url || '#'}
@@ -364,13 +379,13 @@ export default function About() {
               <img
                 src={track?.albumArt || 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=150&h=150&q=80'}
                 alt={track?.title || 'White Ferrari'}
-                className="w-8 h-8 rounded object-cover border border-border"
+                className="w-8 h-8 rounded object-cover border border-heroDark/15"
               />
               <div className="flex flex-col min-w-0">
-                <span className="font-semibold text-text1 truncate group-hover/track:text-green group-hover/track:underline transition-colors text-[11px]">
+                <span className="font-semibold text-inherit truncate group-hover/track:underline transition-colors text-[11px]">
                   {track?.title || 'White Ferrari'}
                 </span>
-                <span className="text-[10px] text-text3 truncate">
+                <span className="text-[10px] text-inherit/80 truncate">
                   {track?.artist || 'Frank Ocean'}
                 </span>
               </div>
@@ -380,12 +395,12 @@ export default function About() {
           {/* On Loop Favorites */}
           <Sticker 
             title="🎬 On Loop" 
-            className="rotate-[-2deg] md:rotate-[-2deg] md:left-[26%] md:top-[2%] md:w-[180px]"
-            styleType="bracket"
+            className="rotate-[-2deg] md:rotate-[-2deg] md:left-[28%] md:top-[4%] md:w-[180px]"
+            colorType="cyan"
             baseRotate={-2}
-            customDelay={0.4}
+            customDelay={0.3}
           >
-            <ul className="flex flex-col gap-1 text-[11px] text-text2 font-sans list-none">
+            <ul className="flex flex-col gap-1 text-[11px] text-inherit font-sans list-none font-medium">
               <li>🎬 Enola Holmes</li>
               <li>🏴‍☠️ One Piece</li>
               <li>⚽ Ted Lasso</li>
@@ -396,11 +411,12 @@ export default function About() {
           {/* Reading / Shelf List */}
           <Sticker 
             title="📚 On the Shelf" 
-            className="rotate-[1deg] md:rotate-[3deg] md:right-[26%] md:top-[2%] md:w-[200px]"
+            className="rotate-[1deg] md:rotate-[3deg] md:right-[28%] md:top-[4%] md:w-[200px]"
+            colorType="lime"
             baseRotate={3}
-            customDelay={0.48}
+            customDelay={0.36}
           >
-            <ul className="flex flex-col gap-1 text-[10px] text-text2 font-sans list-none leading-tight">
+            <ul className="flex flex-col gap-1 text-[10px] text-inherit font-sans list-none leading-tight font-medium">
               <li>• Designing ML Systems</li>
               <li>• Designing Data-Intensive Apps</li>
               <li>• Generative Agents Paper</li>
@@ -410,23 +426,24 @@ export default function About() {
           {/* Frontend Skills */}
           <Sticker 
             title="⚙️ Frontend" 
-            className="rotate-[1.5deg] md:rotate-[-5deg] md:right-[2%] md:top-[5%] md:w-[195px]"
+            className="rotate-[1.5deg] md:rotate-[-5deg] md:right-[4%] md:top-[6%] md:w-[195px]"
+            colorType="cream"
             baseRotate={-5}
-            customDelay={0.56}
+            customDelay={0.42}
           >
-            <span className="text-text2">React, TypeScript, Tailwind CSS, HTMX</span>
+            <span className="text-inherit font-medium">React, TypeScript, Tailwind CSS, HTMX</span>
           </Sticker>
 
           {/* Philosophy Card */}
           <Sticker 
             title="💡 Philosophy" 
-            className="rotate-[0.5deg] md:rotate-[2deg] md:right-[1%] md:top-[21%] md:w-[210px]"
-            styleType="note"
+            className="rotate-[0.5deg] md:rotate-[2deg] md:right-[3%] md:top-[22%] md:w-[210px]"
+            colorType="cyan"
             baseRotate={2}
-            customDelay={0.64}
+            customDelay={0.48}
           >
-            <span className="font-semibold text-text1 block">Precision over speed</span>
-            <span className="text-[11px] text-text3 mt-0.5 block leading-normal">
+            <span className="font-bold text-inherit block">Precision over speed</span>
+            <span className="text-[11px] text-inherit/80 mt-0.5 block leading-normal font-medium">
               Stable systems are premium. Build things that work under pressure.
             </span>
           </Sticker>
@@ -434,11 +451,12 @@ export default function About() {
           {/* Climate Tech */}
           <Sticker 
             title="🌍 Climate Tech" 
-            className="rotate-[-2deg] md:rotate-[-2deg] md:right-[1%] md:top-[43%] md:w-[210px]"
+            className="rotate-[-2deg] md:rotate-[-2deg] md:right-[2%] md:top-[44%] md:w-[210px]"
+            colorType="lime"
             baseRotate={-2}
-            customDelay={0.72}
+            customDelay={0.54}
           >
-            <span className="text-text2">
+            <span className="text-inherit font-medium">
               Urban heat island detection & physics-informed cooling intervention.
             </span>
           </Sticker>
@@ -446,12 +464,13 @@ export default function About() {
           {/* Location */}
           <Sticker 
             title="📍 Location" 
-            className="rotate-[1deg] md:rotate-[4deg] md:right-[4%] md:bottom-[4%] md:w-[190px]"
+            className="rotate-[1deg] md:rotate-[4deg] md:right-[5%] md:bottom-[6%] md:w-[190px]"
+            colorType="cream"
             baseRotate={4}
-            customDelay={0.8}
+            customDelay={0.6}
           >
-            <span className="font-medium text-text1">Delhi NCR, India</span>
-            <span className="block text-[10px] text-text4 mt-0.5 font-mono">available worldwide</span>
+            <span className="font-bold text-inherit">Delhi NCR, India</span>
+            <span className="block text-[10px] text-inherit/80 mt-0.5 font-mono">available worldwide</span>
           </Sticker>
         </motion.div>
       </div>

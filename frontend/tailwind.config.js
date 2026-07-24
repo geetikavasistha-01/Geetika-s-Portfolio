@@ -21,6 +21,11 @@ export default {
         teal: "#659287",
         rose: "#B1D3B9",
         green: "#88BDA4",
+        heroPink: '#E53B8C',
+        heroCream: '#FEF9E7',
+        heroCyan: '#12B3E7',
+        heroLime: '#99D613',
+        heroDark: '#121614',
       },
       fontFamily: {
         display: ["'Westfalia'", "sans-serif"],
