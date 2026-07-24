@@ -5,27 +5,31 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter, FaMedium, FaPython } from 'react-icons/fa6';
 import { SiHashnode, SiSubstack, SiFastapi, SiScikitlearn } from 'react-icons/si';
 
-import kunoichi from '../../assets/kunoichi.png';
-import kunoichiDark from '../../assets/kunoichi-dark.png';
+import renge from '../../assets/renge.jpg';
 import { LinkPreview } from '../ui/LinkPreview';
 import SpotifyWidget from './SpotifyWidget';
 
 export default function Hero() {
-  const { theme, recruiterMode } = useUIStore();
-  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
+  const { recruiterMode } = useUIStore();
 
   return (
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
       {/* Avatar & Social Header - Polaroid Taped Style */}
       <div className="flex flex-col md:flex-row md:items-center gap-6 w-full mb-8">
-        {/* Frameless Avatar Container */}
-        <div className="relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28">
+        {/* Frameless Avatar Link Container */}
+        <a
+          href="https://myanimelist.net/anime/17549/Non_Non_Biyori?q=non%20non&cat=anime"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shadow-md hover:shadow-lg border border-border/40 transition-all duration-300 group"
+          title="Renge Miyauchi (Non Non Biyori)"
+        >
           <img
-            src={currentAvatar}
-            alt="Geetika Vasistha Avatar"
-            className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+            src={renge}
+            alt="Renge Miyauchi Avatar"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-        </div>
+        </a>
 
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
