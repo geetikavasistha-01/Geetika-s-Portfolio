@@ -58,7 +58,14 @@ export default function Home() {
       {/* 8. Latest Article */}
       <SectionHeader
         label="writing"
-        rightElement={<span>blog feed</span>}
+        rightElement={
+          <Link 
+            to="/blog" 
+            className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
+          >
+            view blog &rarr;
+          </Link>
+        }
       />
       <LatestWriting />
 
@@ -67,7 +74,14 @@ export default function Home() {
       {/* 10. AMA Preview */}
       <SectionHeader
         label="questions & answers"
-        rightElement={<span>ama preview</span>}
+        rightElement={
+          <Link 
+            to="/ama" 
+            className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
+          >
+            ask questions &rarr;
+          </Link>
+        }
       />
       <AMAPreview />
 
