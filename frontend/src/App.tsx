@@ -23,6 +23,7 @@ import Shelf from './pages/Shelf';
 import AMA from './pages/AMA';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Human from './pages/Human';
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ export default function App() {
               <Route path="/ama" element={<AMA />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/human" element={<Human />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

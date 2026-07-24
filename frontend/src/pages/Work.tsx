@@ -5,7 +5,8 @@ import { api } from '../lib/api';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import { WorkExperience, Education } from '../types';
-import { FileText, ArrowUpRight } from 'lucide-react';
+import { FileText, ArrowUpRight, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const defaultExperiences: WorkExperience[] = [
   {
@@ -169,7 +170,6 @@ export default function Work() {
             GITHUB <ArrowUpRight size={10} />
           </a>
 
-          {/* PLACEHOLDER: Need real Hashnode URL from Geetika */}
           <a
             href="https://hashnode.com/@geetikavasistha"
             target="_blank"
@@ -178,6 +178,13 @@ export default function Work() {
           >
             HASHNODE <ArrowUpRight size={10} />
           </a>
+
+          <Link
+            to="/human"
+            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-[#34908B] hover:text-[#28736f] transition-colors"
+          >
+            <Heart size={10} /> THE QUIETER SIDE &rarr;
+          </Link>
 
           {/* PLACEHOLDER: Need real Medium URL from Geetika */}
           <a
