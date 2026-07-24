@@ -4,7 +4,7 @@ import { api } from '../lib/api';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import { BlogPost } from '../types';
-import { Search, Calendar, Clock } from 'lucide-react';
+import { Search, Calendar, Clock, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const defaultPosts: BlogPost[] = [
@@ -123,6 +123,28 @@ export default function Blog() {
             className="bg-transparent border-none outline-none w-full text-xs text-text2 placeholder-text4"
           />
         </div>
+      </div>
+
+      {/* External Blog Promotion Card */}
+      <div className="w-full bg-surface border border-border rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6 select-none relative overflow-hidden group">
+        {/* Soft decorative background glow */}
+        <div className="absolute inset-0 bg-text3/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="flex flex-col min-w-0 z-10">
+          <span className="text-[9px] font-mono tracking-widest text-text3 uppercase mb-1.5">EXTERNAL JOURNAL</span>
+          <h2 className="text-xl sm:text-2xl font-display font-normal text-text1">GeekyKunoichi Blog</h2>
+          <p className="text-xs sm:text-sm text-text2 italic mt-1.5 max-w-[500px]">
+            My external technical blog hosted at geekykunoichi.onrender.com where I write about deep backend mechanics, ML systems, and robotics.
+          </p>
+        </div>
+        <a
+          href="https://geekykunoichi.onrender.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-shrink-0 z-10 flex items-center gap-2 bg-text1 text-bg hover:bg-text3 transition-colors px-4 py-2.5 rounded-full text-xs font-mono font-semibold tracking-wider uppercase"
+        >
+          <span>Read on Blog</span>
+          <ArrowUpRight size={14} />
+        </a>
       </div>
 
       {/* Blog Feed */}

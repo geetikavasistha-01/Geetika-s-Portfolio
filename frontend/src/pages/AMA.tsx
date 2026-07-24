@@ -11,20 +11,44 @@ import { MessageSquare, HelpCircle, Loader2 } from 'lucide-react';
 
 const defaultAmas: AMAEntry[] = [
   {
-    question: "How do you think about ethical AI versus speed of deployment in climate projects?",
+    question: "do you actually enjoy working on climate tech, or is it just another way to get funding?",
     askedBy: 'ANONYMOUS',
-    answer: "In climate tech, correctness is safety. A model predicting emissions or air quality indexes that hallucinates can mislead policy. Perfect is the enemy of raw velocity, but robust cross-validation isn't a speed bump — it's the foundation. Deploy rapidly, but benchmark relentlessly.",
+    answer: "Honestly? A bit of both, but mostly because the engineering problems are incredibly real. In climate tech, if your ML model hallucinated a 10% reduction in emissions, that is not a minor bug — it translates to actual policy failure and wasted resources. It's high-stakes, which keeps the work engaging.",
     pinned: true,
     answered: true,
-    date: '2026-06-20T00:00:00.000Z'
+    date: '2026-07-24T00:00:00.000Z'
   },
   {
-    question: "What's the story behind co-founding Raphson Robotics?",
+    question: "why robots though? that seems like such a random pivot from pure data science.",
     askedBy: 'ANONYMOUS',
-    answer: "Raphson grew out of SRM Incubator labs. We wanted to build rugged quadrupeds for hazardous pipeline checking. My role was designing low-latency CV models that run on-device. It taught me systems optimization under resource constraints.",
+    answer: "It was totally organic. We started in the SRM Incubator labs wanting to solve a very dirty, hazardous problem: pipeline inspection. Pure software is nice, but when you have to write low-latency computer vision that runs on an embedded chip on a physical, vibrating robot claw, the constraints force you to be a much better system designer.",
     pinned: true,
     answered: true,
-    date: '2026-06-10T00:00:00.000Z'
+    date: '2026-07-22T00:00:00.000Z'
+  },
+  {
+    question: "do you actually enjoy the AI hype or are you just along for the ride?",
+    askedBy: 'ANONYMOUS',
+    answer: "The hype is exhausting, to be real. Sorting through a hundred wrapper startups isn't fun. But the core engineering — compiling models to run efficiently on small devices, building deterministic pipelines out of probabilistic LLMs — that stuff is a blast. I ignore the hype cycle and focus on the systems side.",
+    pinned: true,
+    answered: true,
+    date: '2026-07-19T00:00:00.000Z'
+  },
+  {
+    question: "how many hours of sleep did you get while building this portfolio?",
+    askedBy: 'ANONYMOUS',
+    answer: "Let's just say my Last.fm activity logs are the only things keeping regular hours. Between tweaking custom shaders, writing Go rate limiters, and finding the perfect vintage postcards aesthetic, sleep was definitely secondary. Worth it, though.",
+    pinned: true,
+    answered: true,
+    date: '2026-07-14T00:00:00.000Z'
+  },
+  {
+    question: "what is the most overrated tool in the modern data stack?",
+    askedBy: 'ANONYMOUS',
+    answer: "Heavyweight orchestrators for simple scripts. I've seen teams spin up complex Kubernetes structures for tasks that could literally be a cron job and a clean Python script. Keep it simple until it actually breaks.",
+    pinned: true,
+    answered: true,
+    date: '2026-07-09T00:00:00.000Z'
   }
 ];
 

@@ -26,6 +26,7 @@ export default {
         display: ["Old Money", "Georgia", "serif"],
         body: ["Didact Gothic", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
+        serifClassic: ["'Times New Roman'", "Times", "serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

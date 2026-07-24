@@ -488,7 +488,7 @@ export default function Shelf() {
               : `${blogsData.length} reads`}
           </span>
         </div>
-        <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6 font-serif italic lowercase">
+        <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6 font-serifClassic italic lowercase">
           the reading rack.
         </h1>
         <p className="text-sm italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
@@ -528,7 +528,7 @@ export default function Shelf() {
             <div key={catIdx} className="flex flex-col w-full select-none">
               {/* Category Header */}
               <div className="flex items-baseline gap-2 mb-6">
-                <h3 className="font-serif text-lg text-text1 font-normal">
+                <h3 className="font-serifClassic text-lg text-text1 font-normal">
                   {category.name}
                 </h3>
                 <span className="text-[10px] font-mono text-text3">
@@ -624,7 +624,7 @@ export default function Shelf() {
             </span>
 
             {/* Title */}
-            <h2 className="font-serif text-xl sm:text-2xl text-text1 font-normal leading-snug mt-3">
+            <h2 className="font-serifClassic text-xl sm:text-2xl text-text1 font-normal leading-snug mt-3">
               {selectedItem.title}
             </h2>
 
@@ -661,7 +661,7 @@ export default function Shelf() {
 
             {/* Explanation / Caption description */}
             {selectedItem.explanation && (
-              <p className="text-text2 bg-bg p-3.5 rounded-xl border border-border font-serif italic text-[11px] sm:text-xs leading-relaxed mt-1">
+              <p className="text-text2 bg-bg p-3.5 rounded-xl border border-border font-serifClassic italic text-[11px] sm:text-xs leading-relaxed mt-1">
                 "{selectedItem.explanation}"
               </p>
             )}

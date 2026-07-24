@@ -76,7 +76,7 @@ const defaultEducation: Education[] = [
     location: 'Delhi NCR',
     startYear: 2021,
     endYear: 2025,
-    gpa: '8.3 / 10.0',
+    gpa: '8.5 / 10',
     order: 1
   }
 ];
@@ -148,8 +148,9 @@ export default function Work() {
           Roles listed in order of recency.
         </p>
 
-        {/* Resume PDF link */}
-        <div className="mt-6">
+        {/* Links row */}
+        <div className="flex flex-wrap gap-x-6 gap-y-3 mt-6">
+          {/* TODO: replace with real resume PDF URL once uploaded */}
           <a
             href="https://cloudinary.com" // Cloudinary resume link placeholder
             target="_blank"
@@ -157,6 +158,35 @@ export default function Work() {
             className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-text3 hover:text-text1 transition-colors"
           >
             <FileText size={12} /> RESUME <ArrowUpRight size={10} />
+          </a>
+
+          <a
+            href="https://github.com/geetikavasistha-01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-text3 hover:text-text1 transition-colors"
+          >
+            GITHUB <ArrowUpRight size={10} />
+          </a>
+
+          {/* PLACEHOLDER: Need real Hashnode URL from Geetika */}
+          <a
+            href="https://hashnode.com/@geetikavasistha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-text3 hover:text-text1 transition-colors"
+          >
+            HASHNODE <ArrowUpRight size={10} />
+          </a>
+
+          {/* PLACEHOLDER: Need real Medium URL from Geetika */}
+          <a
+            href="https://medium.com/@geetikavasistha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-text3 hover:text-text1 transition-colors"
+          >
+            MEDIUM <ArrowUpRight size={10} />
           </a>
         </div>
       </div>
@@ -201,19 +231,23 @@ export default function Work() {
                   <span>{exp.location} ({exp.locationType})</span>
                 </div>
 
-                {/* Company & Role Heading */}
-                <h3 className="font-display text-2xl sm:text-3xl text-text1 leading-snug">
-                  <span className="italic font-normal">{exp.company}</span>{' '}
-                  <span className="not-italic text-text3 text-lg sm:text-xl font-light">
-                     — {exp.role}
+                {/* Role / Job Title & Company Name */}
+                <div className="flex flex-col gap-1 mb-2">
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-text1 leading-snug">
+                    {exp.role}
+                  </h3>
+                  <span className="text-sm font-semibold text-text2 italic">
+                    {exp.company}
                   </span>
-                </h3>
+                </div>
 
                 {/* Bullet points */}
                 <ul className="flex flex-col gap-3 my-4">
                   {exp.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex gap-3 text-sm text-text2 leading-relaxed">
-                      <span className="text-text3 select-none">—</span>
+                    <li key={bIdx} className="flex gap-3 text-sm text-text2 leading-relaxed items-start">
+                      <svg className="w-2.5 h-2.5 text-text3 mt-1.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z" />
+                      </svg>
                       <span>{bullet}</span>
                     </li>
                   ))}

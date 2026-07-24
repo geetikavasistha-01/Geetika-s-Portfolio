@@ -152,6 +152,36 @@ const defaultMoreWork: Project[] = [
     liveUrl: '',
     featured: false,
     order: 8
+  },
+  {
+    slug: 'civillens',
+    title: 'CivilLens',
+    year: 2025,
+    language: 'Python',
+    status: 'wip',
+    tags: ['ML / AI', 'FULL STACK'],
+    description: '[PLACEHOLDER NEEDING REVIEW] An AI-driven pipeline for analyzing municipal infrastructure and evaluating physical damage from community uploads.',
+    stats: [],
+    longDescription: '',
+    githubUrl: 'https://github.com/geetikavasistha-01/CivilLens',
+    liveUrl: '',
+    featured: false,
+    order: 9
+  },
+  {
+    slug: 'greentrack',
+    title: 'GreenTrack',
+    year: 2025,
+    language: 'TypeScript',
+    status: 'wip',
+    tags: ['FULL STACK', 'DATABASE'],
+    description: '[PLACEHOLDER NEEDING REVIEW] A decentralized system for monitoring corporate carbon footprint and automated offset auditing across supply chains.',
+    stats: [],
+    longDescription: '',
+    githubUrl: 'https://github.com/geetikavasistha-01/GreenTrack-placeholder',
+    liveUrl: '',
+    featured: false,
+    order: 10
   }
 ];
 
@@ -173,6 +203,34 @@ const defaultExperiments: SideExperiment[] = [
     description: 'Standalone LSTM sequences model helper optimized for spatial air quality datasets.',
     githubUrl: 'https://github.com/geetikavasistha-01',
     order: 3
+  }
+];
+
+const gamesList = [
+  {
+    title: 'Dino Game',
+    icon: '🦖',
+    description: 'Dodge obstacles as a running pixel dinosaur. A classic recreation.'
+  },
+  {
+    title: 'Tic Tac Toe',
+    icon: '❌',
+    description: 'The classic grid of X\'s and O\'s with custom minimalist styling.'
+  },
+  {
+    title: 'Slot Machine',
+    icon: '🎰',
+    description: 'Match vintage icons and test your luck on a virtual reel.'
+  },
+  {
+    title: 'Snake',
+    icon: '🐍',
+    description: 'Grow longer by eating food without running into walls.'
+  },
+  {
+    title: 'Pong',
+    icon: '🏓',
+    description: 'Vintage table tennis arcade game against a simple CPU.'
   }
 ];
 
@@ -465,6 +523,42 @@ export default function Projects() {
             </a>
           );
         })}
+      </div>
+
+      {/* Games Subsection */}
+      <SectionHeader
+        label="arcade"
+        subtext="Mini-games and playables built as engineering experiments. Placeholders only for now."
+      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 w-full mb-12 select-none">
+        {gamesList.map((game, idx) => (
+          <div
+            key={idx}
+            className="group bg-surface border border-border rounded-xl p-5 hover:border-text2 transition-all duration-300 flex flex-col justify-between min-h-[160px] relative overflow-hidden"
+          >
+            {/* Soft decorative background pattern */}
+            <div className="absolute -right-4 -bottom-4 text-text3/5 group-hover:scale-110 transition-transform duration-300">
+              <span className="text-8xl select-none font-display font-normal">{game.icon}</span>
+            </div>
+            
+            <div className="flex flex-col z-10">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">{game.icon}</span>
+                <h4 className="text-sm font-semibold text-text1">
+                  {game.title}
+                </h4>
+              </div>
+              <p className="text-xs text-text3 italic mt-1 leading-relaxed max-w-[200px]">
+                {game.description}
+              </p>
+            </div>
+
+            <div className="mt-4 z-10 flex items-center justify-between">
+              <span className="text-[9px] font-mono tracking-widest text-text4 uppercase">PLACEHOLDER</span>
+              <span className="text-[10px] font-mono text-text3 group-hover:text-text1 transition-colors">Coming soon &rarr;</span>
+            </div>
+          </div>
+        ))}
       </div>
     </PageWrapper>
   );

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
-import nodemailer from 'nodemailer';
+import { getTransporter } from '../utils/mailer';
 
 const router = Router();
 
@@ -19,19 +19,11 @@ router.post('/contact', contactLimiter, async (req, res) => {
   // Audit line fallback
   console.log(`[Contact Submission] from ${name} (${email}): ${message}`);
 
+  const transporter = getTransporter();
   const emailUser = process.env.EMAIL_USER;
-  const emailPass = process.env.EMAIL_PASS;
 
-  if (emailUser && emailPass) {
+  if (transporter && emailUser) {
     try {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: emailUser,
-          pass: emailPass // Must be 16-character Gmail App Password
-        }
-      });
-
       await transporter.sendMail({
         from: `"${name}" <${emailUser}>`,
         replyTo: email,

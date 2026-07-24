@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { AMAEntry } from '../models/AMAEntry';
 import { protect } from '../middleware/auth';
 import rateLimit from 'express-rate-limit';
+import { sendDiscordNotification, sendTelegramNotification } from '../utils/notifications';
+import { getTransporter } from '../utils/mailer';
 
 const router = Router();
 
@@ -40,6 +42,31 @@ router.post('/ama/ask', askLimiter, async (req, res) => {
       askedBy: askedBy || 'ANONYMOUS',
       answered: false
     });
+
+    // Fire notifications asynchronously (best-effort/non-blocking)
+    sendDiscordNotification(question, askedBy || 'ANONYMOUS');
+    sendTelegramNotification(question, askedBy || 'ANONYMOUS');
+
+    const transporter = getTransporter();
+    const emailUser = process.env.EMAIL_USER;
+    if (transporter && emailUser) {
+      transporter.sendMail({
+        from: `"Portfolio AMA" <${emailUser}>`,
+        to: emailUser,
+        subject: `[Portfolio AMA] New Question from ${askedBy || 'ANONYMOUS'}`,
+        text: `A new question has been submitted to your AMA queue:\n\nAsked By: ${askedBy || 'ANONYMOUS'}\nQuestion: ${question}`,
+        html: `
+          <h3>New AMA Question Received</h3>
+          <p><strong>Asked By:</strong> ${askedBy || 'ANONYMOUS'}</p>
+          <p><strong>Question:</strong> ${question}</p>
+        `
+      }).then(() => {
+        console.log('[AMA Email Sent] Notification email successfully sent.');
+      }).catch(err => {
+        console.error('[AMA Email Error] Failed to send notification email:', err);
+      });
+    }
+
     res.status(201).json(entry);
   } catch (error) {
     res.status(500).json({ message: 'Error submitting question' });
