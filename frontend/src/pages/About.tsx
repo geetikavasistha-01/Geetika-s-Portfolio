@@ -52,7 +52,7 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.06,
+      staggerChildren: 0.08,
     }
   }
 };
@@ -71,175 +71,6 @@ const stickerVariants = {
     }
   })
 };
-
-interface StickerProps {
-  title: string;
-  className: string;
-  children: React.ReactNode;
-  colorType?: 'cream' | 'cyan' | 'lime';
-  baseRotate: number;
-  customDelay: number;
-}
-
-function Sticker({ title, className, children, colorType = 'cream', baseRotate, customDelay }: StickerProps) {
-  const shouldReduceMotion = useReducedMotion();
-  
-  // Staggered spring entrance, plus subtle continuous idle sway
-  const swayAnimation = shouldReduceMotion
-    ? { rotate: baseRotate }
-    : {
-        rotate: [baseRotate - 0.8, baseRotate + 0.8, baseRotate - 0.8],
-        transition: {
-          duration: 5 + Math.random() * 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: Math.random() * 1.5
-        }
-      };
-
-  // Lifts, scales up slightly, and straightens to 0 degrees on hover
-  const hoverAnimation = shouldReduceMotion ? {} : {
-    y: -6,
-    rotate: 0,
-    scale: 1.02,
-    transition: { type: "spring", stiffness: 300, damping: 20 }
-  };
-
-  const getStyleClasses = () => {
-    switch (colorType) {
-      case 'cyan':
-        return 'bg-heroCyan text-white rounded-2xl p-4 shadow-sm border-0';
-      case 'lime':
-        return 'bg-heroLime text-heroDark rounded-2xl p-4 shadow-sm border-0';
-      default:
-        return 'bg-heroCream text-heroDark rounded-2xl p-4 shadow-sm border-0';
-    }
-  };
-
-  const getLabelColor = () => {
-    switch (colorType) {
-      case 'cyan':
-        return 'text-white/80';
-      case 'lime':
-        return 'text-heroDark/70';
-      default:
-        return 'text-heroPink/90';
-    }
-  };
-
-  const getTapeAccent = () => {
-    switch (colorType) {
-      case 'cyan':
-        // Lime tape strip
-        return (
-          <div 
-            className="absolute -top-3 left-1/4 w-12 h-3.5 bg-heroLime/55 border-x border-dashed border-heroLime/35 transform rotate-[-4deg] z-10 select-none pointer-events-none"
-            style={{ clipPath: 'polygon(5% 0%, 95% 2%, 90% 98%, 10% 100%)' }}
-          />
-        );
-      case 'lime':
-        // Cream tape strip (folded look)
-        return (
-          <div 
-            className="absolute -top-2.5 right-2 w-10 h-3 bg-heroCream/75 border-y border-dashed border-heroCream/45 transform rotate-[15deg] z-10 select-none pointer-events-none"
-          />
-        );
-      default:
-        // Cyan tape strip
-        return (
-          <div 
-            className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-8 h-3.5 bg-heroCyan/45 backdrop-blur-[1px] border border-heroCyan/25 shadow-[0_1px_1px_rgba(0,0,0,0.03)] z-10 transform -rotate-3 select-none pointer-events-none"
-            style={{ clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)' }}
-          />
-        );
-    }
-  };
-
-  return (
-    <motion.div
-      custom={customDelay}
-      variants={stickerVariants}
-      animate={swayAnimation}
-      whileHover={hoverAnimation}
-      className={`relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-none md:absolute transition-shadow duration-300 hover:shadow-md pointer-events-auto ${getStyleClasses()} ${className}`}
-    >
-      {getTapeAccent()}
-      <div className="flex flex-col gap-1 mt-1">
-        <span className={`text-[9px] font-mono tracking-widest uppercase font-bold ${getLabelColor()}`}>
-          {title}
-        </span>
-        <div className="text-xs leading-relaxed font-body">
-          {children}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// Decorative background collage elements
-function AccentStar({ className, shouldReduceMotion, color = 'text-heroLime' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
-  return (
-    <motion.svg
-      animate={shouldReduceMotion ? {} : {
-        rotate: 360,
-        scale: [1, 1.15, 1],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "linear"
-      }}
-      className={`hidden md:block absolute w-5 h-5 ${color} pointer-events-none ${className}`}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-    </motion.svg>
-  );
-}
-
-function AccentSquiggle({ className, shouldReduceMotion, color = 'text-heroCream/60' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
-  return (
-    <motion.svg
-      animate={shouldReduceMotion ? {} : {
-        y: [0, -3, 0],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}
-      className={`hidden md:block absolute w-10 h-5 ${color} pointer-events-none ${className}`}
-      viewBox="0 0 24 10"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    >
-      <path d="M2 5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
-    </motion.svg>
-  );
-}
-
-function AccentHeart({ className, shouldReduceMotion, color = 'text-heroCyan/70' }: { className: string; shouldReduceMotion: boolean; color?: string }) {
-  return (
-    <motion.svg
-      animate={shouldReduceMotion ? {} : {
-        scale: [1, 1.15, 1],
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}
-      className={`hidden md:block absolute w-5 h-5 ${color} pointer-events-none ${className}`}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-    </motion.svg>
-  );
-}
 
 export default function About() {
   const { theme } = useUIStore();
@@ -277,6 +108,11 @@ export default function About() {
     }
   };
 
+  const nowPlayingTitle = track?.isPlaying ? track.title : "cardigan";
+  const nowPlayingArtist = track?.isPlaying ? track.artist : "Taylor Swift";
+  const nowPlayingAlbum = track?.isPlaying ? (track.album || "folklore") : "folklore";
+  const nowPlayingArt = track?.isPlaying ? track.albumArt : "https://i.scdn.co/image/ab67616d0000b27395f2e53b8c3d8985cf9c07cf";
+
   return (
     <PageWrapper>
       {/* Page Header */}
@@ -294,18 +130,49 @@ export default function About() {
       </div>
 
       {/* Saturated Color-block Poster Hero */}
-      <div className="w-full bg-heroPink rounded-[32px] p-6 md:p-12 md:relative md:h-[640px] flex flex-col items-center justify-center mt-12 mb-16 overflow-hidden">
+      <div className="w-full bg-heroPink rounded-[32px] p-6 md:p-12 md:relative md:h-[640px] flex flex-col items-center justify-center mt-12 mb-16 overflow-hidden select-none">
         
-        {/* Accent squiggles, hearts, and stars */}
-        <AccentStar className="left-[23%] top-[10%] text-heroLime" shouldReduceMotion={shouldReduceMotion} />
-        <AccentSquiggle className="left-[22%] bottom-[15%] text-heroCream/70" shouldReduceMotion={shouldReduceMotion} />
-        <AccentHeart className="right-[22%] top-[8%] text-heroCyan" shouldReduceMotion={shouldReduceMotion} />
-        <AccentStar className="right-[24%] bottom-[12%] text-heroCream" shouldReduceMotion={shouldReduceMotion} />
+        {/* Right side static/animated bold stars */}
+        <div className="hidden md:block absolute right-[4%] top-[10%] z-0 pointer-events-none">
+          <motion.svg
+            animate={shouldReduceMotion ? {} : { rotate: 360, scale: [1, 1.1, 1] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 text-heroLime"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
+          </motion.svg>
+        </div>
+
+        <div className="hidden md:block absolute right-[6%] top-[45%] z-0 pointer-events-none">
+          <motion.svg
+            animate={shouldReduceMotion ? {} : { rotate: -360, scale: [1, 1.08, 1] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="w-12 h-12 text-heroLime"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
+          </motion.svg>
+        </div>
+
+        <div className="hidden md:block absolute right-[4%] bottom-[10%] z-0 pointer-events-none">
+          <motion.svg
+            animate={shouldReduceMotion ? {} : { rotate: 360, scale: [1, 1.12, 1] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 text-heroLime"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
+          </motion.svg>
+        </div>
 
         {/* Central Avatar card */}
         <motion.div
           animate={avatarFloat.animate}
-          className="w-[240px] h-[240px] md:w-[350px] md:h-[350px] rounded-3xl overflow-hidden bg-heroCream/10 backdrop-blur-[2px] border border-heroCream/20 shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative"
+          className="w-[240px] h-[340px] md:w-[350px] md:h-[500px] flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative"
         >
           <AnimatePresence mode="wait">
             <motion.img
@@ -316,7 +183,7 @@ export default function About() {
               transition={{ duration: 0.4, ease: "easeInOut" }}
               src={currentAvatar}
               alt="Geetika Vasistha"
-              className="w-full h-full object-contain p-6"
+              className="w-full h-full object-contain"
             />
           </AnimatePresence>
         </motion.div>
@@ -328,150 +195,163 @@ export default function About() {
           animate="visible"
           className="flex flex-wrap gap-4 justify-center w-full md:absolute md:inset-0 md:pointer-events-none"
         >
-          {/* Identity */}
-          <Sticker 
-            title="👋 Identity" 
-            className="rotate-[-1.5deg] md:rotate-[-4deg] md:left-[4%] md:top-[4%] md:w-[190px]"
-            colorType="cream"
-            baseRotate={-4}
-            customDelay={0.06}
+          {/* Card 1: Tech Stack */}
+          <motion.div
+            variants={stickerVariants}
+            custom={0.08}
+            animate={shouldReduceMotion ? { rotate: -2 } : {
+              rotate: [-2.5, -1.5, -2.5],
+              transition: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            whileHover={{ y: -6, rotate: 0, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+            className="bg-heroCream text-heroDark rounded-3xl p-5 shadow-sm md:absolute md:left-[4%] md:top-[6%] md:w-[320px] pointer-events-auto"
           >
-            <span className="font-bold text-inherit">Geetika Vasistha</span>
-            <span className="block text-[10px] text-inherit/80 font-mono mt-0.5">@geekykunoichi</span>
-          </Sticker>
-
-          {/* Focus */}
-          <Sticker 
-            title="✨ Focus" 
-            className="rotate-[2deg] md:rotate-[2deg] md:left-[6%] md:top-[19%] md:w-[200px]"
-            colorType="cyan"
-            baseRotate={2}
-            customDelay={0.12}
-          >
-            <span className="italic text-inherit">"engineering intelligence, one model at a time"</span>
-          </Sticker>
-
-          {/* ML & DS Skills */}
-          <Sticker 
-            title="🤖 ML & DS" 
-            className="rotate-[-2deg] md:rotate-[3deg] md:left-[3%] md:top-[39%] md:w-[210px]"
-            colorType="lime"
-            baseRotate={3}
-            customDelay={0.18}
-          >
-            <span className="text-inherit font-medium">Python, scikit-learn, XGBoost, LangChain, HuggingFace</span>
-          </Sticker>
-
-          {/* Currently Listening */}
-          <Sticker 
-            title={track?.isPlaying ? '⚡ Now Playing' : '🎵 Last Played'} 
-            className="rotate-[-1deg] md:rotate-[-3deg] md:left-[5%] md:bottom-[6%] md:w-[210px]"
-            colorType="cream"
-            baseRotate={-3}
-            customDelay={0.24}
-          >
-            <a
-              href={track?.url || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 group/track"
-            >
-              <img
-                src={track?.albumArt || 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=150&h=150&q=80'}
-                alt={track?.title || 'White Ferrari'}
-                className="w-8 h-8 rounded object-cover border border-heroDark/15"
-              />
-              <div className="flex flex-col min-w-0">
-                <span className="font-semibold text-inherit truncate group-hover/track:underline transition-colors text-[11px]">
-                  {track?.title || 'White Ferrari'}
+            <span className="text-[10px] font-mono tracking-widest text-heroPink font-bold flex items-center gap-1.5 uppercase mb-3">
+              TECH STACK 💻
+            </span>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {['Python', 'SQL', 'R', 'Pandas', 'Scikit-learn', 'PyTorch', 'React', 'Next.js', 'Tailwind CSS', 'PostgreSQL'].map((tech) => (
+                <span key={tech} className="border border-heroDark/15 bg-heroCream rounded-full px-2.5 py-0.5 text-[10px] font-mono font-semibold shadow-xs">
+                  {tech}
                 </span>
-                <span className="text-[10px] text-inherit/80 truncate">
-                  {track?.artist || 'Frank Ocean'}
+              ))}
+            </div>
+            <p className="text-xs text-heroDark/80 font-medium">
+              Turning data into decisions. 💖
+            </p>
+          </motion.div>
+
+          {/* Card 2: Philosophy */}
+          <motion.div
+            variants={stickerVariants}
+            custom={0.16}
+            animate={shouldReduceMotion ? { rotate: 3 } : {
+              rotate: [2.5, 3.5, 2.5],
+              transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+            }}
+            whileHover={{ y: -6, rotate: 0, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+            className="bg-heroLime text-heroDark rounded-3xl p-5 shadow-sm md:absolute md:right-[15%] md:top-[8%] md:w-[260px] pointer-events-auto"
+          >
+            <span className="text-[10px] font-mono tracking-widest text-heroDark/70 font-bold flex items-center gap-1.5 uppercase mb-3">
+              ✨ PHILOSOPHY
+            </span>
+            <div className="text-xs leading-relaxed font-semibold flex flex-col gap-1 text-heroDark/90">
+              <p>Curious by nature.</p>
+              <p>Driven by purpose.</p>
+              <p>Building things that create impact. 💖</p>
+            </div>
+          </motion.div>
+
+          {/* Card 3: Now Playing */}
+          <motion.div
+            variants={stickerVariants}
+            custom={0.24}
+            animate={shouldReduceMotion ? { rotate: 2 } : {
+              rotate: [1.5, 2.5, 1.5],
+              transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.0 }
+            }}
+            whileHover={{ y: -6, rotate: 0, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+            className="bg-heroCyan text-white rounded-3xl p-5 shadow-sm md:absolute md:left-[2%] md:top-[38%] md:w-[320px] pointer-events-auto"
+          >
+            <span className="text-[10px] font-mono tracking-widest text-white/80 font-bold flex items-center gap-1.5 uppercase mb-3">
+              🎵 NOW PLAYING
+            </span>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={nowPlayingArt}
+                alt={nowPlayingTitle}
+                className="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-xs flex-shrink-0"
+              />
+              <div className="flex flex-col min-w-0 text-white">
+                <span className="font-bold text-sm truncate leading-snug">
+                  {nowPlayingTitle}
+                </span>
+                <span className="text-[11px] text-white/85 truncate mt-0.5">
+                  {nowPlayingArtist}
+                </span>
+                <span className="text-[10px] text-white/70 truncate">
+                  {nowPlayingAlbum}
                 </span>
               </div>
-            </a>
-          </Sticker>
+            </div>
+            
+            {/* Music Player Bar */}
+            <div className="flex items-center gap-2 mt-2">
+              <button className="text-white hover:scale-105 transition-transform flex-shrink-0">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+              </button>
+              <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden relative">
+                <div className="absolute left-0 top-0 bottom-0 w-[40%] bg-white rounded-full" />
+              </div>
+              <span className="text-[10px] font-mono text-white/85">
+                1:32 / 3:59
+              </span>
+            </div>
+          </motion.div>
 
-          {/* On Loop Favorites */}
-          <Sticker 
-            title="🎬 On Loop" 
-            className="rotate-[-2deg] md:rotate-[-2deg] md:left-[28%] md:top-[4%] md:w-[180px]"
-            colorType="cyan"
-            baseRotate={-2}
-            customDelay={0.3}
+          {/* Card 4: On Loop */}
+          <motion.div
+            variants={stickerVariants}
+            custom={0.32}
+            animate={shouldReduceMotion ? { rotate: -2 } : {
+              rotate: [-2.5, -1.5, -2.5],
+              transition: { duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+            }}
+            whileHover={{ y: -6, rotate: 0, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+            className="bg-heroCyan text-white rounded-3xl p-5 shadow-sm md:absolute md:left-[6%] md:bottom-[4%] md:w-[300px] pointer-events-auto"
           >
-            <ul className="flex flex-col gap-1 text-[11px] text-inherit font-sans list-none font-medium">
-              <li>🎬 Enola Holmes</li>
-              <li>🏴‍☠️ One Piece</li>
-              <li>⚽ Ted Lasso</li>
-              <li>⏱️ Steins;Gate</li>
-            </ul>
-          </Sticker>
-
-          {/* Reading / Shelf List */}
-          <Sticker 
-            title="📚 On the Shelf" 
-            className="rotate-[1deg] md:rotate-[3deg] md:right-[28%] md:top-[4%] md:w-[200px]"
-            colorType="lime"
-            baseRotate={3}
-            customDelay={0.36}
-          >
-            <ul className="flex flex-col gap-1 text-[10px] text-inherit font-sans list-none leading-tight font-medium">
-              <li>• Designing ML Systems</li>
-              <li>• Designing Data-Intensive Apps</li>
-              <li>• Generative Agents Paper</li>
-            </ul>
-          </Sticker>
-
-          {/* Frontend Skills */}
-          <Sticker 
-            title="⚙️ Frontend" 
-            className="rotate-[1.5deg] md:rotate-[-5deg] md:right-[4%] md:top-[6%] md:w-[195px]"
-            colorType="cream"
-            baseRotate={-5}
-            customDelay={0.42}
-          >
-            <span className="text-inherit font-medium">React, TypeScript, Tailwind CSS, HTMX</span>
-          </Sticker>
-
-          {/* Philosophy Card */}
-          <Sticker 
-            title="💡 Philosophy" 
-            className="rotate-[0.5deg] md:rotate-[2deg] md:right-[3%] md:top-[22%] md:w-[210px]"
-            colorType="cyan"
-            baseRotate={2}
-            customDelay={0.48}
-          >
-            <span className="font-bold text-inherit block">Precision over speed</span>
-            <span className="text-[11px] text-inherit/80 mt-0.5 block leading-normal font-medium">
-              Stable systems are premium. Build things that work under pressure.
+            <span className="text-[10px] font-mono tracking-widest text-white/80 font-bold flex items-center gap-1.5 uppercase mb-3">
+              ♻️ ONLOOP
             </span>
-          </Sticker>
+            <div className="flex flex-col gap-3">
+              {[
+                { title: 'Saturn', artist: 'SZA', art: 'https://i.scdn.co/image/ab67616d0000b27376a917b2f6ef539cc233d6b0' },
+                { title: 'Somebody Else', artist: 'The 1975', art: 'https://i.scdn.co/image/ab67616d0000b273f08b340026e63283287313a5' },
+                { title: 'Stick Season', artist: 'Noah Kahan', art: 'https://i.scdn.co/image/ab67616d0000b273b74b889a7f3408e06385cf83' }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <img src={item.art} alt={item.title} className="w-10 h-10 rounded-lg object-cover border border-white/10" />
+                  <div className="flex flex-col min-w-0 text-white">
+                    <span className="font-bold text-xs truncate">{item.title}</span>
+                    <span className="text-[10px] text-white/85 truncate mt-0.5">{item.artist}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-          {/* Climate Tech */}
-          <Sticker 
-            title="🌍 Climate Tech" 
-            className="rotate-[-2deg] md:rotate-[-2deg] md:right-[2%] md:top-[44%] md:w-[210px]"
-            colorType="lime"
-            baseRotate={-2}
-            customDelay={0.54}
+          {/* Card 5: Shelf */}
+          <motion.div
+            variants={stickerVariants}
+            custom={0.4}
+            animate={shouldReduceMotion ? { rotate: -1.5 } : {
+              rotate: [-2, -1, -2],
+              transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.0 }
+            }}
+            whileHover={{ y: -6, rotate: 0, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+            className="bg-heroLime text-heroDark rounded-3xl p-5 shadow-sm md:absolute md:right-[12%] md:bottom-[6%] md:w-[300px] pointer-events-auto"
           >
-            <span className="text-inherit font-medium">
-              Urban heat island detection & physics-informed cooling intervention.
+            <span className="text-[10px] font-mono tracking-widest text-heroDark/70 font-bold flex items-center gap-1.5 uppercase mb-3">
+              📖 SHELF
             </span>
-          </Sticker>
-
-          {/* Location */}
-          <Sticker 
-            title="📍 Location" 
-            className="rotate-[1deg] md:rotate-[4deg] md:right-[5%] md:bottom-[6%] md:w-[190px]"
-            colorType="cream"
-            baseRotate={4}
-            customDelay={0.6}
-          >
-            <span className="font-bold text-inherit">Delhi NCR, India</span>
-            <span className="block text-[10px] text-inherit/80 mt-0.5 font-mono">available worldwide</span>
-          </Sticker>
+            <div className="flex flex-col gap-3">
+              {[
+                { title: 'Atomic Habits', author: 'James Clear', art: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1655988390i/40121378.jpg' },
+                { title: 'Deep Work', author: 'Cal Newport', art: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1447957962i/25744928.jpg' },
+                { title: 'The Psychology of Money', author: 'Morgan Housel', art: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1584113775i/51884877.jpg' }
+              ].map((book, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <img src={book.art} alt={book.title} className="w-9 h-12 rounded object-cover border border-heroDark/10 shadow-2xs" />
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-bold text-xs truncate text-heroDark">{book.title}</span>
+                    <span className="text-[10px] text-heroDark/80 truncate mt-0.5">{book.author}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
