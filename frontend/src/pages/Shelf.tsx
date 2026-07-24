@@ -362,16 +362,16 @@ const booksData: ShelfCategory[] = [
         amazonUrl: 'https://www.amazon.com/s?k=Bhagavad+Gita'
       },
       {
-        title: 'Truth Love Beauty',
+        title: 'Truth Without Apology',
         author: 'A. PRASHANT',
         color: 'bg-[#0f4c3a] text-emerald-100 border-[#155232]',
         height: 'h-[192px]',
         authors: 'Acharya Prashant',
-        metadata: 'HarperCollins · 2023',
+        metadata: 'Advaita Life Media · 2022',
         tags: ['Vedanta', 'Philosophy', 'Self-inquiry', 'Consciousness'],
-        explanation: 'Acharya Prashant explores the three eternal values — Sat, Chit, Ananda — and how Truth, Love, and Beauty are not three separate things but one unified understanding of the liberated mind.',
-        goodreadsUrl: 'https://www.goodreads.com/search?q=Truth+Love+Beauty+Acharya+Prashant',
-        amazonUrl: 'https://www.amazon.com/s?k=Truth+Love+Beauty+Acharya+Prashant'
+        explanation: 'Acharya Prashant speaks on living with uncompromising truth, dismantling societal expectations, layers of conditioning, and reclaiming raw authenticity without apologizing to the world.',
+        goodreadsUrl: 'https://www.goodreads.com/search?q=Truth+Without+Apology+Acharya+Prashant',
+        amazonUrl: 'https://www.amazon.com/s?k=Truth+Without+Apology+Acharya+Prashant'
       },
       {
         title: 'Bijak: The Witness',
