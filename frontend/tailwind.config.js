@@ -23,7 +23,7 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'Didact Gothic'", "sans-serif"],
+        display: ["'Perandory'", "Georgia", "serif"],
         body: ["'Didact Gothic'", "sans-serif"],
         mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
