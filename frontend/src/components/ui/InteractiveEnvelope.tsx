@@ -25,7 +25,7 @@ export default function InteractiveEnvelope() {
         style={{ perspective: '1000px' }}
       >
         {/* 1. Envelope Backside */}
-        <div className="absolute inset-0 bg-[#E6C665] rounded-2xl shadow-lg border border-[#D9B753]/40" />
+        <div className="absolute inset-0 bg-[#0A3323] rounded-2xl shadow-lg border border-[#1a5c3a]/60" />
 
         {/* 2. Letter Paper (Permanently visible/slid out) */}
         <motion.div
@@ -49,7 +49,7 @@ export default function InteractiveEnvelope() {
             >
               Hire Me
             </span>
-            <div className="w-16 h-[1.5px] bg-[#659287]/40 rounded-full" />
+            <div className="w-16 h-[1.5px] bg-[#0A3323]/40 rounded-full" />
           </div>
         </motion.div>
 
@@ -61,22 +61,22 @@ export default function InteractiveEnvelope() {
           {/* Left Fold */}
           <polygon
             points="0,0 160,100 0,200"
-            fill="#F2D172"
-            stroke="#D9B753"
+            fill="#1a5c3a"
+            stroke="#0d4029"
             strokeWidth="0.5"
           />
           {/* Right Fold */}
           <polygon
             points="300,0 140,100 300,200"
-            fill="#F2D172"
-            stroke="#D9B753"
+            fill="#1a5c3a"
+            stroke="#0d4029"
             strokeWidth="0.5"
           />
           {/* Bottom Fold */}
           <polygon
             points="0,200 150,95 300,200"
-            fill="#EAD07C"
-            stroke="#D2B04E"
+            fill="#0f4a2e"
+            stroke="#0d4029"
             strokeWidth="0.5"
           />
         </svg>
@@ -105,8 +105,8 @@ export default function InteractiveEnvelope() {
           >
             <polygon
               points="0,0 150,105 300,0"
-              fill="#E2C165"
-              stroke="#D2B04E"
+              fill="#155232"
+              stroke="#0d4029"
               strokeWidth="0.5"
             />
           </svg>
