@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { useMutation } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import PageWrapper from '../components/layout/PageWrapper';
-import { Send, Loader2, ArrowRight, Check } from 'lucide-react';
+import { Send, Loader2, ArrowRight, Check, Copy } from 'lucide-react';
 import { SiGithub, SiX, SiMedium, SiSubstack, SiHashnode } from 'react-icons/si';
 import { FaLinkedin } from 'react-icons/fa6';
 import confetti from 'canvas-confetti';
@@ -20,6 +20,13 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('contact.geetikavasistha@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema)
@@ -181,12 +188,34 @@ export default function Contact() {
                 <span className="text-[9px] font-mono tracking-widest text-text4 uppercase mb-1">
                   Email
                 </span>
-                <a
-                  href="mailto:contact.geetikavasistha@gmail.com"
-                  className="text-xs sm:text-sm text-text2 hover:text-green hover:underline font-medium break-all transition-colors duration-300"
-                >
-                  contact.geetikavasistha@gmail.com
-                </a>
+                <div className="flex items-center gap-2 group/email">
+                  <a
+                    href="mailto:contact.geetikavasistha@gmail.com"
+                    className="text-xs sm:text-sm text-text2 hover:text-green hover:underline font-medium break-all transition-colors duration-300"
+                  >
+                    contact.geetikavasistha@gmail.com
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="p-1 rounded-md text-text3 hover:text-green hover:bg-surface2 transition-all duration-300 flex items-center justify-center relative"
+                    title="Copy email to clipboard"
+                    aria-label="Copy email address"
+                  >
+                    {copied ? (
+                      <Check size={13} className="text-green animate-scale-up" />
+                    ) : (
+                      <Copy size={13} className="opacity-60 group-hover/email:opacity-100 transition-opacity" />
+                    )}
+                    
+                    {/* Tooltip */}
+                    {copied && (
+                      <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-green/10 border border-green/30 text-green text-[9px] font-mono uppercase px-2 py-0.5 rounded-md shadow-md animate-fade-in whitespace-nowrap z-50">
+                        Copied!
+                      </span>
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Follow Me Row with Custom Icon Buttons */}
