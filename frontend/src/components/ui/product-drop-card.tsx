@@ -61,10 +61,10 @@ export const ProductDropCard = ({
       {/* Header Row */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="text-xl sm:text-2xl font-display font-normal text-text1 uppercase tracking-wider">
+          <h2 className="text-xl sm:text-2xl font-body font-bold text-text1 uppercase tracking-wider">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-text3 italic mt-1 font-editorial leading-relaxed">
+          <p className="text-xs sm:text-sm text-text3 italic mt-1 font-body leading-relaxed">
             {subtitle}
           </p>
         </div>
@@ -140,7 +140,7 @@ export const ProductDropCard = ({
                       <h3 className="font-semibold text-zinc-800 dark:text-zinc-900 text-xs sm:text-sm truncate">
                         {item.name}
                       </h3>
-                      <p className="text-[10px] sm:text-xs text-zinc-500 italic mt-0.5 leading-relaxed line-clamp-2 font-editorial">
+                      <p className="text-[10px] sm:text-xs text-zinc-500 italic mt-0.5 leading-relaxed line-clamp-2 font-body">
                         {item.collection}
                       </p>
                     </div>

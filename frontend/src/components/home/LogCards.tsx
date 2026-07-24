@@ -117,7 +117,7 @@ export default function LogCards() {
 
             {/* Header Row */}
             <div className="flex items-center justify-between w-full relative z-10">
-              <span className="text-[9px] tracking-[0.25em] font-typewriter font-bold text-text3 uppercase select-none">
+              <span className="text-[9px] tracking-[0.25em] font-body font-bold text-text3 uppercase select-none">
                 LOG
               </span>
               {/* Small accent dot */}
@@ -131,7 +131,7 @@ export default function LogCards() {
 
             {/* Date at the bottom-right */}
             <div className="flex justify-end w-full mt-auto relative z-10">
-              <span className="text-[9px] font-typewriter text-text3 font-medium select-none">
+              <span className="text-[9px] font-body text-text3 font-medium select-none">
                 {formatDate(log.date)}
               </span>
             </div>
