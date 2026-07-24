@@ -254,18 +254,6 @@ const booksData: ShelfCategory[] = [
     name: 'Philosophy & Literature',
     books: [
       {
-        title: 'The Book of Life',
-        author: 'KRISHNAMURTI',
-        color: 'bg-[#3b1f0a] text-amber-100 border-[#5c3317]',
-        height: 'h-[195px]',
-        authors: 'Jiddu Krishnamurti',
-        metadata: 'HarperOne · 1995',
-        tags: ['Philosophy', 'Self-inquiry', 'Consciousness'],
-        explanation: 'Daily meditations drawing from Krishnamurti\'s talks — questioning authority, conditioning, and the nature of the self without any system or dogma.',
-        goodreadsUrl: 'https://www.goodreads.com/book/show/94037.The_Book_of_Life',
-        amazonUrl: 'https://www.amazon.com/s?k=The+Book+of+Life+Krishnamurti'
-      },
-      {
         title: 'Freedom From the Known',
         author: 'KRISHNAMURTI',
         color: 'bg-[#4a2c0a] text-orange-100 border-[#6b3f10]',
@@ -314,18 +302,6 @@ const booksData: ShelfCategory[] = [
         amazonUrl: 'https://www.amazon.com/s?k=Karma+Acharya+Prashant'
       },
       {
-        title: 'Hamlets of the Mind',
-        author: 'A. PRASHANT',
-        color: 'bg-[#1c3d1c] text-lime-100 border-[#2d5a2d]',
-        height: 'h-[185px]',
-        authors: 'Acharya Prashant',
-        metadata: 'HarperCollins · 2022',
-        tags: ['Vedanta', 'Shakespeare', 'Philosophy', 'Consciousness'],
-        explanation: 'A unique dialogue between Shakespearean characters and Vedantic wisdom — Prashant uses Hamlet, Macbeth, and others as mirrors to examine the confused human mind.',
-        goodreadsUrl: 'https://www.goodreads.com/book/show/60784437-hamlets-of-the-mind',
-        amazonUrl: 'https://www.amazon.com/s?k=Hamlets+of+the+Mind+Acharya+Prashant'
-      },
-      {
         title: 'Hamlet',
         author: 'SHAKESPEARE',
         color: 'bg-[#2d1b4e] text-violet-100 border-[#3d2460]',
@@ -372,6 +348,42 @@ const booksData: ShelfCategory[] = [
         explanation: 'Wordsworth\'s epic autobiographical poem — the growth of a poet\'s mind through encounters with nature, memory, and imagination across a lifetime.',
         goodreadsUrl: 'https://www.goodreads.com/book/show/169203.The_Prelude',
         amazonUrl: 'https://www.amazon.com/s?k=The+Prelude+Wordsworth'
+      },
+      {
+        title: 'Bhagavad Gita',
+        author: 'VED VYASA',
+        color: 'bg-[#7f1d1d] text-orange-50 border-[#991b1b]',
+        height: 'h-[200px]',
+        authors: 'Ved Vyasa (trans. Swami Prabhupada / various)',
+        metadata: 'c. 400 BCE – 200 CE',
+        tags: ['Vedanta', 'Philosophy', 'Spirituality', 'Hinduism'],
+        explanation: 'The eternal dialogue between Arjuna and Krishna on the battlefield of Kurukshetra — a profound treatise on duty, the self, action without attachment, and the nature of ultimate reality.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/99944.Bhagavad_Gita_As_It_Is',
+        amazonUrl: 'https://www.amazon.com/s?k=Bhagavad+Gita'
+      },
+      {
+        title: 'Truth Love Beauty',
+        author: 'A. PRASHANT',
+        color: 'bg-[#0f4c3a] text-emerald-100 border-[#155232]',
+        height: 'h-[192px]',
+        authors: 'Acharya Prashant',
+        metadata: 'HarperCollins · 2023',
+        tags: ['Vedanta', 'Philosophy', 'Self-inquiry', 'Consciousness'],
+        explanation: 'Acharya Prashant explores the three eternal values — Sat, Chit, Ananda — and how Truth, Love, and Beauty are not three separate things but one unified understanding of the liberated mind.',
+        goodreadsUrl: 'https://www.goodreads.com/search?q=Truth+Love+Beauty+Acharya+Prashant',
+        amazonUrl: 'https://www.amazon.com/s?k=Truth+Love+Beauty+Acharya+Prashant'
+      },
+      {
+        title: 'Bijak: The Witness',
+        author: 'KABIR DAS',
+        color: 'bg-[#312e81] text-indigo-100 border-[#3730a3]',
+        height: 'h-[190px]',
+        authors: 'Kabir Das (trans. Linda Hess & Shukdev Singh)',
+        metadata: 'c. 15th century CE',
+        tags: ['Poetry', 'Mysticism', 'Bhakti', 'Spirituality'],
+        explanation: 'Kabir\'s verses — sharp, irreverent, deeply compassionate — cut through religious dogma and social hierarchy to point directly at the formless truth within every human being.',
+        goodreadsUrl: 'https://www.goodreads.com/book/show/1315093.The_Bijak_of_Kabir',
+        amazonUrl: 'https://www.amazon.com/s?k=Bijak+Kabir+Das'
       }
     ]
   }
@@ -749,7 +761,7 @@ export default function Shelf() {
             </span>
 
             {/* Title */}
-            <h2 className="font-serifClassic text-xl sm:text-2xl text-text1 font-normal leading-snug mt-3">
+            <h2 className="font-body text-xl sm:text-2xl text-text1 font-semibold leading-snug mt-3">
               {selectedItem.title}
             </h2>
 
