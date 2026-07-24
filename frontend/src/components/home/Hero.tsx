@@ -18,29 +18,13 @@ export default function Hero() {
     <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
       {/* Avatar & Social Header - Polaroid Taped Style */}
       <div className="flex flex-col md:flex-row md:items-center gap-6 w-full mb-8">
-        {/* Taped Polaroid Container */}
-        <div className="relative rotate-[-3deg] hover:rotate-0 transition-all duration-300 transform origin-bottom-left select-none flex-shrink-0">
-          {/* Tape Strip */}
-          <div
-            className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-10 h-4 bg-white/20 dark:bg-white/10 backdrop-blur-[2.5px] border border-white/20 shadow-sm z-20 transform -rotate-6"
-            style={{
-              clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)',
-              boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
-            }}
+        {/* Frameless Avatar Container */}
+        <div className="relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28">
+          <img
+            src={currentAvatar}
+            alt="Geetika Vasistha Avatar"
+            className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
           />
-
-          {/* Avatar Box (Polaroid Frame) */}
-          <div
-            className="block relative w-[96px] h-[108px] bg-zinc-50 dark:bg-zinc-100 p-2 pb-5 rounded shadow-md border border-zinc-200/80 dark:border-zinc-800 transition-all duration-300 group"
-          >
-            <div className="w-full h-[76px] overflow-hidden bg-zinc-200/50 border border-zinc-300/40 rounded-sm">
-              <img
-                src={currentAvatar}
-                alt="Geetika Vasistha Avatar"
-                className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
         </div>
 
         {/* Name and Socials */}
