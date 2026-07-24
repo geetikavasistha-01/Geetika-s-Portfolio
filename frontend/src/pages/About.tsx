@@ -1,3 +1,12 @@
+import React from 'react';
+import PageWrapper from '../components/layout/PageWrapper';
+import SectionHeader from '../components/ui/SectionHeader';
+import SkillConstellation from '../components/about/SkillConstellation';
+import kunoichi from '../assets/kunoichi.png';
+import kunoichiDark from '../assets/kunoichi-dark.png';
+import { useUIStore } from '../store/uiStore';
+import { LinkPreview } from '../components/ui/LinkPreview';
+
 import { 
   FaPython, FaDocker, FaReact, FaGitAlt 
 } from 'react-icons/fa6';
