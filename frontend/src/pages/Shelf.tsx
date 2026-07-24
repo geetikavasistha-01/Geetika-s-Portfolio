@@ -711,7 +711,7 @@ export default function Shelf() {
                 </span>
 
                 {/* Blog Title */}
-                <h4 className="text-lg font-serifClassic text-text1 group-hover:text-text3 transition-colors mb-2">
+                <h4 className="text-sm font-typewriter uppercase tracking-widest text-text1 group-hover:text-text3 transition-colors mb-2">
                   {blog.title}
                 </h4>
 
