@@ -14,6 +14,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Westfalia';
+  src: url('/fonts/Westfalia-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,7 +68,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
-  font-family: 'Old Money', Georgia, serif;
+  font-family: 'Westfalia', sans-serif;
 }
 
 /* Custom CSS classes */

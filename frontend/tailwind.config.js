@@ -23,7 +23,7 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["Old Money", "Georgia", "serif"],
+        display: ["'Westfalia'", "sans-serif"],
         body: ["Didact Gothic", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         serifClassic: ["'Times New Roman'", "Times", "serif"],
