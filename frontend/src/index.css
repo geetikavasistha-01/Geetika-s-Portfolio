@@ -8,8 +8,8 @@
 }
 
 @font-face {
-  font-family: 'Perandory';
-  src: url('/fonts/Perandory.otf') format('opentype');
+  font-family: 'Old Money';
+  src: url('/fonts/OldMoney.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -61,7 +61,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text1);
-  font-family: 'Perandory', Georgia, serif;
+  font-family: 'Old Money', Georgia, serif;
 }
 
 /* Custom CSS classes */
