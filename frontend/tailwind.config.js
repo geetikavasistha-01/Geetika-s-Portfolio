@@ -23,8 +23,8 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'Nectarine'", "serif"],
-        editorial: ["'Old Money'", "serif"],
+        display: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
+        editorial: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
         script: ["'Cherolina'", "sans-serif"],
         typewriter: ["'Elegant Typewriter'", "monospace"],
         body: ["'Didact Gothic'", "sans-serif"],

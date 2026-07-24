@@ -103,10 +103,10 @@ export default function About() {
           
           {/* Journey Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               My Journey
             </h2>
-            <div className="space-y-4 text-xs sm:text-sm text-text2 leading-relaxed font-garamond italic">
+            <div className="space-y-4 text-xs sm:text-sm text-text2 leading-relaxed font-body">
               <p>
                 My journey into tech began at <LinkPreview url="https://www.srmist.edu.in" previewName="SRM Institute">SRM Institute of Science and Technology</LinkPreview>, specializing in Data Science.
                 Early on, I realized I loved building tangible systems, which led to co-founding <LinkPreview url="https://github.com/geetikavasistha-01" previewName="Raphson Robotics">Raphsons Robotics</LinkPreview>,
@@ -123,7 +123,7 @@ export default function About() {
 
           {/* Skill Constellation Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               Skill Graph
             </h2>
             <SkillConstellation />
@@ -131,7 +131,7 @@ export default function About() {
 
           {/* Stack & Style Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               Stack & Style
             </h2>
             <div className="flex flex-col gap-4">
@@ -150,7 +150,7 @@ export default function About() {
 
           {/* Philosophy Section */}
           <section className="flex flex-col mb-4">
-            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               Philosophy
             </h2>
             <p className="text-xs sm:text-sm text-text2 leading-relaxed mb-6">
