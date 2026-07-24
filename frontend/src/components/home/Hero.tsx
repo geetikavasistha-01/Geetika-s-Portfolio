@@ -47,9 +47,20 @@ export default function Hero() {
 
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-body font-bold text-text1 leading-none">
-            Geetika <span className="text-[#34908B]">Vasistha</span>
-          </h1>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-body font-bold text-text1 leading-none">
+              Geetika <span className="text-[#34908B]">Vasistha</span>
+            </h1>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.geetikavasistha@gmail.com&su=Hire%20Me%20%E2%80%94%20Saw%20your%20portfolio!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#34908B] text-white hover:bg-[#28736f] text-xs font-bold shadow-sm transition-all duration-300 select-none md:mt-2"
+            >
+              <span>Hire Me</span>
+              <ArrowUpRight size={12} />
+            </a>
+          </div>
 
           {/* Social Links */}
           <div className="flex flex-wrap gap-4 items-center mt-3">
