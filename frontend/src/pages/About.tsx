@@ -3,7 +3,7 @@ import PageWrapper from '../components/layout/PageWrapper';
 import SkillConstellation from '../components/about/SkillConstellation';
 import { useUIStore } from '../store/uiStore';
 import { LinkPreview } from '../components/ui/LinkPreview';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { api } from '../lib/api';
 
 const skillGroups = [
@@ -52,45 +52,111 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     }
   }
 };
 
 const stickerVariants = {
   hidden: { opacity: 0, scale: 0.8, y: 15 },
-  visible: { 
+  visible: (customDelay: number) => ({ 
     opacity: 1, 
     scale: 1, 
     y: 0,
-    transition: { type: "spring", stiffness: 80, damping: 14 }
-  }
+    transition: { 
+      type: "spring", 
+      stiffness: 85, 
+      damping: 13,
+      delay: customDelay
+    }
+  })
 };
 
 interface StickerProps {
   title: string;
   className: string;
   children: React.ReactNode;
+  styleType?: 'default' | 'note' | 'bracket';
+  baseRotate: number;
+  customDelay: number;
 }
 
-function Sticker({ title, className, children }: StickerProps) {
+function Sticker({ title, className, children, styleType = 'default', baseRotate, customDelay }: StickerProps) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  // Staggered spring entrance, plus subtle continuous idle sway
+  const swayAnimation = shouldReduceMotion
+    ? { rotate: baseRotate }
+    : {
+        rotate: [baseRotate - 0.8, baseRotate + 0.8, baseRotate - 0.8],
+        transition: {
+          duration: 5 + Math.random() * 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: Math.random() * 1.5
+        }
+      };
+
+  // Lifts, scales up slightly, and straightens to 0 degrees on hover
+  const hoverAnimation = shouldReduceMotion ? {} : {
+    y: -6,
+    rotate: 0,
+    scale: 1.02,
+    transition: { type: "spring", stiffness: 300, damping: 20 }
+  };
+
+  const getStyleClasses = () => {
+    switch (styleType) {
+      case 'note':
+        return 'bg-amber-50/90 dark:bg-amber-950/15 border border-amber-200/50 dark:border-amber-900/30 rounded-lg p-3.5 shadow-sm text-text1';
+      case 'bracket':
+        return 'bg-surface border-l-4 border-l-teal border-y border-r border-border/80 rounded-r-xl rounded-l-sm p-3 shadow-sm text-text2';
+      default:
+        return 'bg-surface border border-border/80 rounded-xl p-3 shadow-sm text-text2';
+    }
+  };
+
+  const getTapeAccent = () => {
+    if (styleType === 'note') {
+      // Washi-tape strip
+      return (
+        <div 
+          className="absolute -top-3 left-1/4 w-12 h-3.5 bg-teal/20 dark:bg-teal/15 border-x border-dashed border-teal/30 transform rotate-[-4deg] z-10 select-none pointer-events-none"
+          style={{ clipPath: 'polygon(5% 0%, 95% 2%, 90% 98%, 10% 100%)' }}
+        />
+      );
+    }
+    if (styleType === 'bracket') {
+      // Folded corner style
+      return (
+        <div 
+          className="absolute -top-2.5 right-2 w-8 h-2.5 bg-rose/25 dark:bg-rose/15 border-y border-dashed border-rose/30 transform rotate-[15deg] z-10 select-none pointer-events-none"
+        />
+      );
+    }
+    // Default tape strip
+    return (
+      <div 
+        className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-8 h-3.5 bg-text3/10 dark:bg-white/5 backdrop-blur-[1px] border border-text3/10 shadow-[0_1px_1px_rgba(0,0,0,0.03)] z-10 transform -rotate-3 select-none pointer-events-none"
+        style={{ clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)' }}
+      />
+    );
+  };
+
   return (
     <motion.div
+      custom={customDelay}
       variants={stickerVariants}
-      className={`relative bg-surface border border-border/80 rounded-xl p-3 shadow-sm select-none transition-all duration-300 hover:scale-[1.03] hover:rotate-0 hover:z-30 hover:border-green/45 w-full max-w-[280px] sm:max-w-[340px] md:max-w-none pointer-events-auto ${className}`}
+      animate={swayAnimation}
+      whileHover={hoverAnimation}
+      className={`relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-none md:absolute transition-shadow duration-300 hover:shadow-md hover:border-green/45 pointer-events-auto ${getStyleClasses()} ${className}`}
     >
-      {/* Tape Strip Accent */}
-      <div 
-        className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-8 h-3.5 bg-text3/10 dark:bg-white/5 backdrop-blur-[1px] border border-text3/10 shadow-[0_1px_1px_rgba(0,0,0,0.03)] z-20 transform -rotate-3 select-none pointer-events-none"
-        style={{ 
-          clipPath: 'polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%)',
-        }} 
-      />
+      {getTapeAccent()}
       <div className="flex flex-col gap-1 mt-1">
         <span className="text-[9px] font-mono tracking-widest text-text4 uppercase font-bold">
           {title}
         </span>
-        <div className="text-xs text-text2 leading-relaxed font-body">
+        <div className="text-xs leading-relaxed font-body">
           {children}
         </div>
       </div>
@@ -98,8 +164,74 @@ function Sticker({ title, className, children }: StickerProps) {
   );
 }
 
+// Decorative background collage elements
+function AccentStar({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+  return (
+    <motion.svg
+      animate={shouldReduceMotion ? {} : {
+        rotate: 360,
+        scale: [1, 1.15, 1],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear"
+      }}
+      className={`hidden md:block absolute w-4 h-4 text-amber/60 pointer-events-none ${className}`}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </motion.svg>
+  );
+}
+
+function AccentSquiggle({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+  return (
+    <motion.svg
+      animate={shouldReduceMotion ? {} : {
+        y: [0, -3, 0],
+      }}
+      transition={{
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className={`hidden md:block absolute w-8 h-4 text-teal/40 pointer-events-none ${className}`}
+      viewBox="0 0 24 10"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
+      <path d="M2 5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
+    </motion.svg>
+  );
+}
+
+function AccentHeart({ className, shouldReduceMotion }: { className: string; shouldReduceMotion: boolean }) {
+  return (
+    <motion.svg
+      animate={shouldReduceMotion ? {} : {
+        scale: [1, 1.15, 1],
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className={`hidden md:block absolute w-4 h-4 text-rose/60 pointer-events-none ${className}`}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </motion.svg>
+  );
+}
+
 export default function About() {
   const { theme } = useUIStore();
+  const shouldReduceMotion = useReducedMotion();
   const currentAvatar = "/illustration - about page Background Removed.png";
   const [track, setTrack] = useState<any>(null);
 
@@ -121,6 +253,18 @@ export default function About() {
     };
   }, []);
 
+  // Avatar Floating Animation
+  const avatarFloat = shouldReduceMotion ? {} : {
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <PageWrapper>
       {/* Page Header */}
@@ -137,17 +281,33 @@ export default function About() {
         </p>
       </div>
 
-      {/* Scattered Collage Hero */}
-      <div className="flex flex-col items-center w-full md:relative md:h-[540px] md:flex-row md:justify-center md:items-center mt-12 mb-16">
+      {/* Scattered Collage Hero / Zine Ref Sheet */}
+      <div className="flex flex-col items-center w-full md:relative md:h-[640px] md:flex-row md:justify-center md:items-center mt-12 mb-16 overflow-visible">
         
+        {/* Accent squiggles and stars */}
+        <AccentStar className="left-[23%] top-[10%]" shouldReduceMotion={shouldReduceMotion} />
+        <AccentSquiggle className="left-[22%] bottom-[15%]" shouldReduceMotion={shouldReduceMotion} />
+        <AccentHeart className="right-[22%] top-[8%]" shouldReduceMotion={shouldReduceMotion} />
+        <AccentStar className="right-[24%] bottom-[12%]" shouldReduceMotion={shouldReduceMotion} />
+
         {/* Central Avatar card */}
-        <div className="w-[240px] h-[240px] md:w-[330px] md:h-[330px] rounded-2xl overflow-hidden border border-border bg-surface shadow-md flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative">
-          <img
-            src={currentAvatar}
-            alt="Geetika Vasistha"
-            className="w-full h-full object-contain p-6"
-          />
-        </div>
+        <motion.div
+          animate={avatarFloat.animate}
+          className="w-[240px] h-[240px] md:w-[350px] md:h-[350px] rounded-2xl overflow-hidden border border-border bg-surface shadow-md flex items-center justify-center z-10 transition-all duration-300 hover:scale-[1.01] mb-6 md:mb-0 relative"
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={theme}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              src={currentAvatar}
+              alt="Geetika Vasistha"
+              className="w-full h-full object-contain p-6"
+            />
+          </AnimatePresence>
+        </motion.div>
 
         {/* Scattered Sticker Layer */}
         <motion.div
@@ -157,36 +317,43 @@ export default function About() {
           className="flex flex-wrap gap-4 justify-center w-full md:absolute md:inset-0 md:pointer-events-none"
         >
           {/* Identity */}
-          <Sticker title="👋 Identity" className="rotate-[-1.5deg] md:rotate-[-4deg] md:left-[2%] md:top-[5%] md:w-[200px]">
+          <Sticker 
+            title="👋 Identity" 
+            className="rotate-[-1.5deg] md:rotate-[-4deg] md:left-[2%] md:top-[2%] md:w-[190px]"
+            baseRotate={-4}
+            customDelay={0.08}
+          >
             <span className="font-semibold text-text1">Geetika Vasistha</span>
             <span className="block text-[10px] text-text3 font-mono mt-0.5">@geekykunoichi</span>
           </Sticker>
 
-          {/* Location */}
-          <Sticker title="📍 Location" className="rotate-[1deg] md:rotate-[4deg] md:right-[6%] md:bottom-[10%] md:w-[185px]">
-            <span className="font-medium text-text1">Delhi NCR, India</span>
-            <span className="block text-[10px] text-text4 mt-0.5">available worldwide</span>
-          </Sticker>
-
           {/* Focus */}
-          <Sticker title="✨ Focus" className="rotate-[2deg] md:rotate-[2deg] md:right-[-2%] md:top-[32%] md:w-[210px]">
+          <Sticker 
+            title="✨ Focus" 
+            className="rotate-[2deg] md:rotate-[2deg] md:left-[3%] md:top-[17%] md:w-[200px]"
+            styleType="note"
+            baseRotate={2}
+            customDelay={0.16}
+          >
             <span className="italic text-text2">"engineering intelligence, one model at a time"</span>
           </Sticker>
 
           {/* ML & DS Skills */}
-          <Sticker title="🤖 ML & DS" className="rotate-[-2deg] md:rotate-[3deg] md:left-[-2%] md:top-[32%] md:w-[210px]">
+          <Sticker 
+            title="🤖 ML & DS" 
+            className="rotate-[-2deg] md:rotate-[3deg] md:left-[1%] md:top-[38%] md:w-[210px]"
+            baseRotate={3}
+            customDelay={0.24}
+          >
             <span className="text-text2">Python, scikit-learn, XGBoost, LangChain, HuggingFace</span>
           </Sticker>
 
-          {/* Frontend Skills */}
-          <Sticker title="⚙️ Frontend" className="rotate-[1.5deg] md:rotate-[-5deg] md:right-[2%] md:top-[5%] md:w-[200px]">
-            <span className="text-text2">React, TypeScript, Tailwind CSS, HTMX</span>
-          </Sticker>
-
-          {/* Now Playing */}
+          {/* Currently Listening */}
           <Sticker 
             title={track?.isPlaying ? '⚡ Now Playing' : '🎵 Last Played'} 
-            className="rotate-[-1deg] md:rotate-[-3deg] md:left-[4%] md:bottom-[10%] md:w-[220px]"
+            className="rotate-[-1deg] md:rotate-[-3deg] md:left-[3%] md:bottom-[4%] md:w-[210px]"
+            baseRotate={-3}
+            customDelay={0.32}
           >
             <a
               href={track?.url || '#'}
@@ -210,8 +377,54 @@ export default function About() {
             </a>
           </Sticker>
 
-          {/* Philosophy */}
-          <Sticker title="💡 Philosophy" className="rotate-[0.5deg] md:rotate-[1deg] md:left-[32%] md:top-[-30px] md:w-[240px]">
+          {/* On Loop Favorites */}
+          <Sticker 
+            title="🎬 On Loop" 
+            className="rotate-[-2deg] md:rotate-[-2deg] md:left-[26%] md:top-[2%] md:w-[180px]"
+            styleType="bracket"
+            baseRotate={-2}
+            customDelay={0.4}
+          >
+            <ul className="flex flex-col gap-1 text-[11px] text-text2 font-sans list-none">
+              <li>🎬 Enola Holmes</li>
+              <li>🏴‍☠️ One Piece</li>
+              <li>⚽ Ted Lasso</li>
+              <li>⏱️ Steins;Gate</li>
+            </ul>
+          </Sticker>
+
+          {/* Reading / Shelf List */}
+          <Sticker 
+            title="📚 On the Shelf" 
+            className="rotate-[1deg] md:rotate-[3deg] md:right-[26%] md:top-[2%] md:w-[200px]"
+            baseRotate={3}
+            customDelay={0.48}
+          >
+            <ul className="flex flex-col gap-1 text-[10px] text-text2 font-sans list-none leading-tight">
+              <li>• Designing ML Systems</li>
+              <li>• Designing Data-Intensive Apps</li>
+              <li>• Generative Agents Paper</li>
+            </ul>
+          </Sticker>
+
+          {/* Frontend Skills */}
+          <Sticker 
+            title="⚙️ Frontend" 
+            className="rotate-[1.5deg] md:rotate-[-5deg] md:right-[2%] md:top-[5%] md:w-[195px]"
+            baseRotate={-5}
+            customDelay={0.56}
+          >
+            <span className="text-text2">React, TypeScript, Tailwind CSS, HTMX</span>
+          </Sticker>
+
+          {/* Philosophy Card */}
+          <Sticker 
+            title="💡 Philosophy" 
+            className="rotate-[0.5deg] md:rotate-[2deg] md:right-[1%] md:top-[21%] md:w-[210px]"
+            styleType="note"
+            baseRotate={2}
+            customDelay={0.64}
+          >
             <span className="font-semibold text-text1 block">Precision over speed</span>
             <span className="text-[11px] text-text3 mt-0.5 block leading-normal">
               Stable systems are premium. Build things that work under pressure.
@@ -219,10 +432,26 @@ export default function About() {
           </Sticker>
 
           {/* Climate Tech */}
-          <Sticker title="🌍 Climate Tech" className="rotate-[-2deg] md:rotate-[-2deg] md:left-[34%] md:bottom-[-30px] md:w-[240px]">
+          <Sticker 
+            title="🌍 Climate Tech" 
+            className="rotate-[-2deg] md:rotate-[-2deg] md:right-[1%] md:top-[43%] md:w-[210px]"
+            baseRotate={-2}
+            customDelay={0.72}
+          >
             <span className="text-text2">
               Urban heat island detection & physics-informed cooling intervention.
             </span>
+          </Sticker>
+
+          {/* Location */}
+          <Sticker 
+            title="📍 Location" 
+            className="rotate-[1deg] md:rotate-[4deg] md:right-[4%] md:bottom-[4%] md:w-[190px]"
+            baseRotate={4}
+            customDelay={0.8}
+          >
+            <span className="font-medium text-text1">Delhi NCR, India</span>
+            <span className="block text-[10px] text-text4 mt-0.5 font-mono">available worldwide</span>
           </Sticker>
         </motion.div>
       </div>
