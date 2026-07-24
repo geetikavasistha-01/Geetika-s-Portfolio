@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import SkillConstellation from '../components/about/SkillConstellation';
-import kunoichi from '../assets/kunoichi.png';
-import kunoichiDark from '../assets/kunoichi-dark.png';
 import { useUIStore } from '../store/uiStore';
 import { LinkPreview } from '../components/ui/LinkPreview';
 import { motion } from 'framer-motion';
@@ -102,7 +100,7 @@ function Sticker({ title, className, children }: StickerProps) {
 
 export default function About() {
   const { theme } = useUIStore();
-  const currentAvatar = theme === 'dark' ? kunoichiDark : kunoichi;
+  const currentAvatar = "/illustration - about page Background Removed.png";
   const [track, setTrack] = useState<any>(null);
 
   useEffect(() => {
