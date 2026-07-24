@@ -28,6 +28,7 @@ export default {
         mono: ["JetBrains Mono", "monospace"],
         serifClassic: ["'Times New Roman'", "Times", "serif"],
         typewriter: ["'Elegant Typewriter'", "monospace"],
+        cherolina: ["'Cherolina'", "sans-serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
