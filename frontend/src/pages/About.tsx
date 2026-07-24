@@ -2,7 +2,7 @@ import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import SectionHeader from '../components/ui/SectionHeader';
 import SkillConstellation from '../components/about/SkillConstellation';
-import renge from '../assets/renge.jpg';
+import renge from '../assets/renge.png';
 import { useUIStore } from '../store/uiStore';
 import { LinkPreview } from '../components/ui/LinkPreview';
 

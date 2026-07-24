@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter, FaMedium, FaPython } from 'react-icons/fa6';
 import { SiHashnode, SiSubstack, SiFastapi, SiScikitlearn } from 'react-icons/si';
 
-import renge from '../../assets/renge.jpg';
+import renge from '../../assets/renge.png';
 import { LinkPreview } from '../ui/LinkPreview';
 import SpotifyWidget from './SpotifyWidget';
 
