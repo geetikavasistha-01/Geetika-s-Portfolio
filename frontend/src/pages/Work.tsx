@@ -143,7 +143,7 @@ export default function Work() {
         <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           Things I've done.
         </h1>
-        <p className="text-sm italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
           Distributed systems, AI agents, and backend pipelines.
           Roles listed in order of recency.
         </p>
@@ -214,10 +214,10 @@ export default function Work() {
 
               {/* Left Column: Date Range / Metadata (Visible on desktop) */}
               <div className="hidden md:flex flex-col pr-6 text-right pt-1 select-none">
-                <span className="text-[10px] tracking-[0.18em] font-mono text-text3 font-semibold uppercase leading-normal">
+                <span className="text-[10px] tracking-[0.18em] font-typewriter text-text3 font-semibold uppercase leading-normal">
                   {formatDateRange(exp.startDate, exp.endDate)}
                 </span>
-                <span className="text-[9px] text-text4 font-mono uppercase mt-1">
+                <span className="text-[9px] text-text4 font-typewriter uppercase mt-1">
                   {exp.location} · {exp.locationType}
                 </span>
               </div>
@@ -225,7 +225,7 @@ export default function Work() {
               {/* Right Column (or full-width on mobile): Content */}
               <div className="flex flex-col">
                 {/* Mobile Meta (hidden on desktop) */}
-                <div className="md:hidden flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] tracking-[0.18em] font-mono text-text3 uppercase mb-2">
+                <div className="md:hidden flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] tracking-[0.18em] font-typewriter text-text3 uppercase mb-2">
                   <span>{formatDateRange(exp.startDate, exp.endDate)}</span>
                   <span>·</span>
                   <span>{exp.location} ({exp.locationType})</span>
@@ -233,7 +233,7 @@ export default function Work() {
 
                 {/* Role / Job Title & Company Name */}
                 <div className="flex flex-col gap-1 mb-2">
-                  <h3 className="text-lg sm:text-xl font-display font-bold text-text1 leading-snug">
+                  <h3 className="text-lg sm:text-xl font-editorial font-bold text-text1 leading-snug">
                     {exp.role}
                   </h3>
                   <span className="text-sm font-semibold text-text2 italic">
@@ -258,7 +258,7 @@ export default function Work() {
                   {exp.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="border border-border rounded-full px-3 py-0.5 text-[9px] font-mono tracking-wider text-text3 bg-transparent uppercase"
+                      className="border border-border rounded-full px-3 py-0.5 text-[9px] font-typewriter tracking-wider text-text3 bg-transparent uppercase"
                     >
                       {tech}
                     </span>
@@ -276,7 +276,7 @@ export default function Work() {
         {education.map((edu, idx) => (
           <div key={edu._id || idx} className="flex flex-col w-full">
             {/* Education meta */}
-            <div className="text-[10px] tracking-[0.18em] font-mono text-text3 uppercase mb-3 flex items-center justify-between">
+            <div className="text-[10px] tracking-[0.18em] font-typewriter text-text3 uppercase mb-3 flex items-center justify-between">
               <span>{edu.startYear} — {edu.endYear} · {edu.location}</span>
               {edu.gpa && (
                 <span className="text-amber font-semibold">

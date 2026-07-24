@@ -60,8 +60,7 @@ export default function InteractiveEnvelope() {
           {/* Letter Lines Decoration */}
           <div className="w-full h-full border-t border-b border-dashed border-gray-200/80 flex flex-col items-center justify-center gap-2">
             <span 
-              className="text-2xl sm:text-3xl text-gray-800 leading-none font-bold"
-              style={{ fontFamily: "'Caveat', cursive" }}
+              className="text-3xl sm:text-4xl text-gray-800 leading-none font-bold font-script"
             >
               Hire Me
             </span>

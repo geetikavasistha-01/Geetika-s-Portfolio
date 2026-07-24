@@ -22,7 +22,7 @@ export default function SectionHeader({ label, rightElement, subtext, className 
         )}
       </div>
       {subtext && (
-        <p className="mt-2 text-xs italic text-text3 font-display">
+        <p className="mt-2 text-xs italic text-text3 font-editorial leading-relaxed">
           {subtext}
         </p>
       )}

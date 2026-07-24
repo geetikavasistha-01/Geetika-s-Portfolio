@@ -61,7 +61,7 @@ export default function About() {
           <span>ABOUT</span>
           <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
         </div>
-        <h1 className="text-4xl font-sans font-semibold text-text1 mt-2">
+        <h1 className="text-4xl sm:text-5xl font-display font-normal text-text1 mt-2">
           About Me
         </h1>
         <p className="text-sm text-text3 mt-2">
@@ -92,6 +92,9 @@ export default function About() {
             <span className="text-[10px] text-text4 mt-1">
               Delhi NCR, India
             </span>
+            <div className="font-script text-3xl text-teal/90 mt-4 select-none rotate-[-4deg] self-center md:self-start">
+              Geetika
+            </div>
           </div>
         </div>
 
@@ -100,7 +103,7 @@ export default function About() {
           
           {/* Journey Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl font-sans font-semibold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
               My Journey
             </h2>
             <div className="space-y-4 text-xs sm:text-sm text-text2 leading-relaxed">
@@ -120,7 +123,7 @@ export default function About() {
 
           {/* Skill Constellation Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl font-sans font-semibold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
               Skill Graph
             </h2>
             <SkillConstellation />
@@ -128,7 +131,7 @@ export default function About() {
 
           {/* Stack & Style Section */}
           <section className="flex flex-col">
-            <h2 className="text-xl font-sans font-semibold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
               Stack & Style
             </h2>
             <div className="flex flex-col gap-4">
@@ -147,7 +150,7 @@ export default function About() {
 
           {/* Philosophy Section */}
           <section className="flex flex-col mb-4">
-            <h2 className="text-xl font-sans font-semibold text-text1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-text1 mb-4">
               Philosophy
             </h2>
             <p className="text-xs sm:text-sm text-text2 leading-relaxed mb-6">

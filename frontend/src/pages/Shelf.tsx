@@ -625,10 +625,10 @@ export default function Shelf() {
               : `${blogsData.length} reads`}
           </span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-typewriter font-normal text-text1 mt-6 uppercase tracking-widest">
+        <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           the reading rack.
         </h1>
-        <p className="text-sm italic font-typewriter text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
           {selectedTab === 'books' 
             ? 'books and papers, currently on the rack.' 
             : 'engineering blogs from teams building at serious scale.'}
@@ -665,7 +665,7 @@ export default function Shelf() {
             <div key={catIdx} className="flex flex-col w-full select-none">
               {/* Category Header */}
               <div className="flex items-baseline gap-2 mb-6">
-                <h3 className="font-typewriter text-base text-text1 font-normal uppercase tracking-widest">
+                <h3 className="font-editorial text-lg sm:text-xl text-text1 font-semibold tracking-wide">
                   {category.name}
                 </h3>
                 <span className="text-[10px] font-mono text-text3">
@@ -711,7 +711,7 @@ export default function Shelf() {
                 </span>
 
                 {/* Blog Title */}
-                <h4 className="text-base sm:text-lg font-typewriter uppercase tracking-widest text-text1 group-hover:text-text3 transition-colors mb-2">
+                <h4 className="text-base sm:text-lg font-editorial font-bold text-text1 group-hover:text-text3 transition-colors mb-2">
                   {blog.title}
                 </h4>
 

@@ -147,7 +147,7 @@ export default function CLITerminal() {
       <div className="absolute inset-0" onClick={() => setCliOpen(false)} />
 
       {/* Terminal Window */}
-      <div className="relative bg-[#0a0a0a] border border-zinc-800 rounded-xl p-5 w-full max-w-[560px] shadow-2xl flex flex-col h-[380px] z-10 text-green-400 font-mono text-[12px] sm:text-xs">
+      <div className="relative bg-[#0a0a0a] border border-zinc-800 rounded-xl p-5 w-full max-w-[560px] shadow-2xl flex flex-col h-[380px] z-10 text-green-400 font-typewriter text-[12px] sm:text-xs">
         {/* Terminal Header */}
         <div className="flex justify-between items-center border-b border-zinc-900 pb-3 mb-4 select-none">
           <div className="flex items-center gap-2 text-zinc-400">
@@ -188,7 +188,7 @@ export default function CLITerminal() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="bg-transparent border-none outline-none text-zinc-200 w-full font-mono text-xs"
+            className="bg-transparent border-none outline-none text-zinc-200 w-full font-typewriter text-xs"
             autoFocus
           />
         </form>

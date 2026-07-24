@@ -23,12 +23,13 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'Westfalia'", "sans-serif"],
-        body: ["Didact Gothic", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
-        serifClassic: ["'Times New Roman'", "Times", "serif"],
+        display: ["'Nectarine'", "serif"],
+        editorial: ["'Old Money'", "serif"],
+        script: ["'Cherolina'", "sans-serif"],
         typewriter: ["'Elegant Typewriter'", "monospace"],
-        cherolina: ["'Cherolina'", "sans-serif"],
+        body: ["'Didact Gothic'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
+        serifClassic: ["'Times New Roman'", "Times", "serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
