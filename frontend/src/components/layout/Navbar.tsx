@@ -288,7 +288,7 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredTab(item.name)}
                   onMouseLeave={() => setHoveredTab(null)}
                   className={cn(
-                    "relative cursor-pointer text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300",
+                    "relative cursor-pointer text-sm font-semibold px-3.5 py-2 rounded-full transition-all duration-300",
                     "text-text2 hover:text-text1",
                     isActive && "text-text1"
                   )}
@@ -435,7 +435,7 @@ export default function Navbar() {
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "text-sm px-4 py-2.5 rounded-xl text-text2 transition-colors hover:text-text1 hover:bg-surface2 flex items-center justify-between",
+                    "text-base px-4 py-3 rounded-xl text-text2 transition-colors hover:text-text1 hover:bg-surface2 flex items-center justify-between",
                     isActive && "text-text1 bg-surface2 font-bold"
                   )}
                 >

@@ -23,7 +23,8 @@
 
 @font-face {
   font-family: 'Cherolina';
-  src: url('/fonts/Cherolina.ttf') format('truetype');
+  src: url('/fonts/Cherolina.otf') format('opentype'),
+       url('/fonts/Cherolina.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
