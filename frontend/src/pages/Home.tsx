@@ -23,7 +23,11 @@ export default function Home() {
 
       {/* 6. Featured Projects */}
       <div id="featured-work">
+        <h2 className="text-xl sm:text-2xl font-body font-bold text-text1 uppercase tracking-wider mt-16">
+          Projects
+        </h2>
         <SectionHeader
+          className="mt-4"
           label="featured"
           rightElement={
             <Link 
