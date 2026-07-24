@@ -21,21 +21,6 @@ export default function Home() {
       {/* 1. Hero Profile */}
       <Hero />
 
-      {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
-      {!recruiterMode && (
-        <>
-          <SectionHeader
-            label="log journal"
-            rightElement={<span>micro drops</span>}
-            subtext="Stray thoughts, technical discoveries, and things I chew on."
-          />
-          <LogCards />
-        </>
-      )}
-
-      {/* 5. Contributions Heatmap */}
-      <GitHubHeatmap />
-
       {/* 6. Featured Projects */}
       <div id="featured-work">
         <SectionHeader
@@ -52,6 +37,21 @@ export default function Home() {
         />
         <FeaturedProjects />
       </div>
+
+      {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
+      {!recruiterMode && (
+        <>
+          <SectionHeader
+            label="log journal"
+            rightElement={<span>micro drops</span>}
+            subtext="Stray thoughts, technical discoveries, and things I chew on."
+          />
+          <LogCards />
+        </>
+      )}
+
+      {/* 5. Contributions Heatmap */}
+      <GitHubHeatmap />
 
       {/* 7. Lab Notebook screenshots - Hidden in recruiter mode */}
       {!recruiterMode && (
