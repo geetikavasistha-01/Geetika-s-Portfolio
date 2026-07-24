@@ -27,6 +27,7 @@ export default {
         body: ["Didact Gothic", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         serifClassic: ["'Times New Roman'", "Times", "serif"],
+        typewriter: ["'Elegant Typewriter'", "monospace"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
