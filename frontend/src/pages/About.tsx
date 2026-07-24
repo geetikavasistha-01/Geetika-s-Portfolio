@@ -1,32 +1,78 @@
-import React from 'react';
-import PageWrapper from '../components/layout/PageWrapper';
-import SectionHeader from '../components/ui/SectionHeader';
-import SkillConstellation from '../components/about/SkillConstellation';
-import kunoichi from '../assets/kunoichi.png';
-import kunoichiDark from '../assets/kunoichi-dark.png';
-import { useUIStore } from '../store/uiStore';
-import { LinkPreview } from '../components/ui/LinkPreview';
+import { 
+  FaPython, FaDocker, FaReact, FaGitAlt 
+} from 'react-icons/fa6';
+import { 
+  SiScikitlearn, SiHuggingface, SiFastapi, SiSqlite, 
+  SiMongodb, SiRedis, SiGithubactions, SiGooglecloud, 
+  SiVercel, SiTypescript, SiTailwindcss, SiHtmx 
+} from 'react-icons/si';
+import { 
+  BookOpen, Brain, Database, Cpu, Terminal 
+} from 'lucide-react';
 
-const skillGroups = [
+interface SkillItem {
+  name: string;
+  icon: React.ReactNode;
+}
+
+interface SkillGroup {
+  label: string;
+  skills: SkillItem[];
+}
+
+const skillGroups: SkillGroup[] = [
   {
     label: 'ML & DATA SCIENCE',
-    skills: 'Python, scikit-learn, XGBoost, LSTM, LangChain, HuggingFace, BERT'
+    skills: [
+      { name: 'Python', icon: <FaPython size={12} className="text-[#34908B]" /> },
+      { name: 'scikit-learn', icon: <SiScikitlearn size={12} className="text-[#34908B]" /> },
+      { name: 'XGBoost', icon: <Cpu size={12} className="text-[#34908B]" /> },
+      { name: 'LSTM', icon: <Brain size={12} className="text-[#34908B]" /> },
+      { name: 'LangChain', icon: <Terminal size={12} className="text-[#34908B]" /> },
+      { name: 'HuggingFace', icon: <SiHuggingface size={12} className="text-[#34908B]" /> },
+      { name: 'BERT', icon: <Brain size={12} className="text-[#34908B]" /> }
+    ]
   },
   {
     label: 'DATA ENGINEERING',
-    skills: 'FastAPI, Pandas, NumPy, Streamlit, SQLite, MongoDB, Redis'
+    skills: [
+      { name: 'FastAPI', icon: <SiFastapi size={12} className="text-[#34908B]" /> },
+      { name: 'Pandas', icon: <Database size={12} className="text-[#34908B]" /> },
+      { name: 'NumPy', icon: <Database size={12} className="text-[#34908B]" /> },
+      { name: 'Streamlit', icon: <Cpu size={12} className="text-[#34908B]" /> },
+      { name: 'SQLite', icon: <SiSqlite size={12} className="text-[#34908B]" /> },
+      { name: 'MongoDB', icon: <SiMongodb size={12} className="text-[#34908B]" /> },
+      { name: 'Redis', icon: <SiRedis size={12} className="text-[#34908B]" /> }
+    ]
   },
   {
     label: 'INFRASTRUCTURE',
-    skills: 'Docker, Git, GitHub Actions, GCP, Vercel, Railway'
+    skills: [
+      { name: 'Docker', icon: <FaDocker size={12} className="text-[#34908B]" /> },
+      { name: 'Git', icon: <FaGitAlt size={12} className="text-[#34908B]" /> },
+      { name: 'GitHub Actions', icon: <SiGithubactions size={12} className="text-[#34908B]" /> },
+      { name: 'GCP', icon: <SiGooglecloud size={12} className="text-[#34908B]" /> },
+      { name: 'Vercel', icon: <SiVercel size={12} className="text-[#34908B]" /> },
+      { name: 'Railway', icon: <Terminal size={12} className="text-[#34908B]" /> }
+    ]
   },
   {
     label: 'FRONTEND',
-    skills: 'React, TypeScript, Tailwind CSS, HTMX, Jinja2'
+    skills: [
+      { name: 'React', icon: <FaReact size={12} className="text-[#34908B]" /> },
+      { name: 'TypeScript', icon: <SiTypescript size={12} className="text-[#34908B]" /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss size={12} className="text-[#34908B]" /> },
+      { name: 'HTMX', icon: <SiHtmx size={12} className="text-[#34908B]" /> },
+      { name: 'Jinja2', icon: <Terminal size={12} className="text-[#34908B]" /> }
+    ]
   },
   {
     label: 'RESEARCH & WRITING',
-    skills: 'Technical blogs, Memoir writing, Research papers (ICMCE 2026)'
+    skills: [
+      { name: 'Technical blogs', icon: <BookOpen size={12} className="text-[#34908B]" /> },
+      { name: 'Memoir writing', icon: <BookOpen size={12} className="text-[#34908B]" /> },
+      { name: 'Research papers (ICMCE 2026)', icon: <BookOpen size={12} className="text-[#34908B]" /> }
+    ]
   }
 ];
 
@@ -106,7 +152,7 @@ export default function About() {
             <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               My Journey
             </h2>
-            <div className="space-y-4 text-xs sm:text-sm text-text2 leading-relaxed font-body">
+            <div className="space-y-4 text-sm sm:text-base text-text2 leading-relaxed font-body">
               <p>
                 My journey into tech began at <LinkPreview url="https://www.srmist.edu.in" previewName="SRM Institute">SRM Institute of Science and Technology</LinkPreview>, specializing in Data Science.
                 Early on, I realized I loved building tangible systems, which led to co-founding <LinkPreview url="https://github.com/geetikavasistha-01" previewName="Raphson Robotics">Raphsons Robotics</LinkPreview>,
@@ -134,15 +180,23 @@ export default function About() {
             <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               Stack & Style
             </h2>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6">
               {skillGroups.map((group) => (
-                <div key={group.label} className="flex flex-col border-b border-border/40 pb-3">
-                  <span className="text-[9px] tracking-[0.2em] font-semibold text-text3 mb-1.5 uppercase font-mono">
+                <div key={group.label} className="flex flex-col border-b border-border/40 pb-4">
+                  <span className="text-[9px] tracking-[0.2em] font-semibold text-text3 mb-3 uppercase font-mono">
                     {group.label}
                   </span>
-                  <p className="text-xs sm:text-sm text-text2 leading-normal">
-                    {group.skills}
-                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <span 
+                        key={skill.name} 
+                        className="inline-flex items-center gap-1.5 bg-surface2/40 text-text2 border border-border/40 rounded-full px-3 py-1 text-xs select-none hover:bg-surface2 transition-colors duration-200"
+                      >
+                        {skill.icon}
+                        <span className="font-body">{skill.name}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -153,7 +207,7 @@ export default function About() {
             <h2 className="text-xl sm:text-2xl font-editorial font-normal text-text1 mb-4">
               Philosophy
             </h2>
-            <p className="text-xs sm:text-sm text-text2 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-text2 leading-relaxed mb-6">
               Engineering is not just writing code — it is organizing systems to resolve human ambiguities. These core anchors guide my building decisions:
             </p>
 
@@ -163,7 +217,7 @@ export default function About() {
                   <h3 className="text-xs sm:text-sm font-semibold text-text1 mb-1">
                     {card.title}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-text3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-text3 leading-relaxed">
                     {card.description}
                   </p>
                 </div>
