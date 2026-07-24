@@ -574,12 +574,12 @@ export default function Shelf() {
                 </span>
 
                 {/* Blog Title */}
-                <h4 className="text-base font-semibold text-text1 group-hover:text-text3 transition-colors mb-2">
+                <h4 className="text-lg font-serifClassic text-text1 group-hover:text-text3 transition-colors mb-2">
                   {blog.title}
                 </h4>
 
                 {/* Summary */}
-                <p className="text-xs italic text-text2 leading-relaxed mb-4">
+                <p className="text-xs italic font-serifClassic text-text2 leading-relaxed mb-4">
                   {blog.description}
                 </p>
 
