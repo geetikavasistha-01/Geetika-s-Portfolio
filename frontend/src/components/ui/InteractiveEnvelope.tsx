@@ -27,7 +27,9 @@ export default function InteractiveEnvelope() {
 
   return (
     <a
-      href="mailto:contact.geetikavasistha@gmail.com"
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.geetikavasistha@gmail.com&su=Hire%20Me%20%E2%80%94%20Saw%20your%20portfolio!"
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={handleClick}
       className="relative flex flex-col items-center justify-center w-full pt-12 pb-6 group select-none transition-transform duration-300 hover:scale-[1.01]"
       onMouseEnter={() => setIsHovered(true)}
@@ -149,7 +151,7 @@ export default function InteractiveEnvelope() {
 
       {/* Hover Subtext Guide */}
       <span className="text-[10px] font-mono tracking-widest text-text3 uppercase mt-6 group-hover:text-text1 transition-colors">
-        Click to email me
+        Opens Gmail compose
       </span>
     </a>
   );
