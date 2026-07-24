@@ -47,8 +47,8 @@ export default function Hero() {
 
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-text1 leading-none tracking-tight">
-            Geetika <span className="text-[#34908B]">Vasistha</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-normal text-text1 leading-none tracking-tight uppercase">
+            GEETIKA <span className="text-[#34908B]">VASISTHA</span>
           </h1>
           
           {/* Social Links */}

@@ -23,9 +23,9 @@ export default {
         green: "#88BDA4",
       },
       fontFamily: {
-        display: ["'Perandory'", "Georgia", "serif"],
-        body: ["'Didact Gothic'", "sans-serif"],
-        mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
+        display: ["Perandory", "Georgia", "serif"],
+        body: ["Didact Gothic", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
