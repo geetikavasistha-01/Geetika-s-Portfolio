@@ -137,7 +137,7 @@ export const ProductDropCard = ({
 
                     {/* Name & Collection Info */}
                     <div className="select-none min-h-[48px] flex flex-col justify-start">
-                      <h3 className="font-semibold text-zinc-800 dark:text-zinc-900 text-xs sm:text-sm truncate">
+                      <h3 className="font-body font-semibold text-zinc-800 dark:text-zinc-900 text-xs sm:text-sm truncate">
                         {item.name}
                       </h3>
                       <p className="text-[10px] sm:text-xs text-zinc-500 italic mt-0.5 leading-relaxed line-clamp-2 font-body">
