@@ -30,6 +30,7 @@ export default {
         body: ["'Didact Gothic'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
         serifClassic: ["'Times New Roman'", "Times", "serif"],
+        garamond: ["'ITC Garamond Light Narrow Italic'", "'ITC Garamond'", "Garamond", "Georgia", "serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
