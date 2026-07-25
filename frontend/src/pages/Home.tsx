@@ -11,91 +11,97 @@ import AMAPreview from '../components/home/AMAPreview';
 import OnLoop from '../components/home/OnLoop';
 import SectionHeader from '../components/ui/SectionHeader';
 import { useUIStore } from '../store/uiStore';
-import InteractiveEnvelope from '../components/ui/InteractiveEnvelope';
+import HomeEnvelopeFooter from '../components/home/HomeEnvelopeFooter';
 
 export default function Home() {
   const { recruiterMode } = useUIStore();
 
   return (
-    <PageWrapper>
-      {/* 1. Hero Profile */}
-      <Hero />
+    <div className="w-full flex flex-col relative">
+      <PageWrapper>
+        {/* 1. Hero Profile */}
+        <Hero />
 
-      {/* 6. Featured Projects */}
-      <div id="featured-work">
-        <h2 className="text-xl sm:text-2xl font-body font-bold text-text1 uppercase tracking-wider mt-16">
-          Projects
-        </h2>
+        {/* 6. Featured Projects */}
+        <div id="featured-work">
+          <h2 className="text-xl sm:text-2xl font-daffeniy text-text1 uppercase tracking-wider mt-16">
+            Projects
+          </h2>
+          <SectionHeader
+            className="mt-4"
+            label="featured"
+            rightElement={
+              <Link 
+                to="/projects" 
+                className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
+              >
+                view all &rarr;
+              </Link>
+            }
+            subtext="Things I've built that I'm proud of."
+          />
+          <FeaturedProjects />
+        </div>
+
+        {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
+        {!recruiterMode && (
+          <>
+            <SectionHeader
+              label="log journal"
+              rightElement={<span>micro drops</span>}
+              subtext="Stray thoughts, technical discoveries, and things I chew on."
+            />
+            <LogCards />
+            <hr className="border-t border-border/60 my-16" />
+          </>
+        )}
+
+        {/* 5. Contributions Heatmap */}
+        <GitHubHeatmap />
+
+
+
+        {/* 8. Latest Article */}
         <SectionHeader
-          className="mt-4"
-          label="featured"
+          label="writing"
           rightElement={
             <Link 
-              to="/projects" 
+              to="/blog" 
               className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
             >
-              view all &rarr;
+              view blog &rarr;
             </Link>
           }
-          subtext="Things I've built that I'm proud of."
         />
-        <FeaturedProjects />
-      </div>
-
-      {/* 4. Log Cards (Micro-journal) - Hidden in recruiter mode */}
-      {!recruiterMode && (
-        <>
-          <SectionHeader
-            label="log journal"
-            rightElement={<span>micro drops</span>}
-            subtext="Stray thoughts, technical discoveries, and things I chew on."
-          />
-          <LogCards />
-        </>
-      )}
-
-      {/* 5. Contributions Heatmap */}
-      <GitHubHeatmap />
+        <LatestWriting />
 
 
 
-      {/* 8. Latest Article */}
-      <SectionHeader
-        label="writing"
-        rightElement={
-          <Link 
-            to="/blog" 
-            className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
-          >
-            view blog &rarr;
-          </Link>
-        }
-      />
-      <LatestWriting />
+        {/* 10. AMA Preview */}
+        <SectionHeader
+          label="questions & answers"
+          labelClassName="font-daffeniy"
+          rightElement={
+            <Link 
+              to="/ama" 
+              className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
+            >
+              ask questions &rarr;
+            </Link>
+          }
+        />
+        <AMAPreview />
 
+        <hr className="border-t border-border/60 my-16" />
 
-
-      {/* 10. AMA Preview */}
-      <SectionHeader
-        label="questions & answers"
-        rightElement={
-          <Link 
-            to="/ama" 
-            className="flex items-center gap-0.5 hover:text-text1 transition-colors uppercase tracking-widest text-[9.5px] font-mono"
-          >
-            ask questions &rarr;
-          </Link>
-        }
-      />
-      <AMAPreview />
-
-      {/* 11. Anime / Recreation shelf - Hidden in recruiter mode */}
-      {!recruiterMode && (
-        <div className="mt-16">
-          <OnLoop />
-        </div>
-      )}
-      <InteractiveEnvelope />
-    </PageWrapper>
+        {/* 11. Anime / Recreation shelf - Hidden in recruiter mode */}
+        {!recruiterMode && (
+          <div className="mt-16">
+            <OnLoop limit={3} />
+          </div>
+        )}
+      </PageWrapper>
+      <HomeEnvelopeFooter />
+    </div>
   );
 }

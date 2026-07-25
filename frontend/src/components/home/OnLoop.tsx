@@ -40,17 +40,23 @@ const loopItems: DropItem[] = [
   }
 ];
 
-export default function OnLoop() {
+interface OnLoopProps {
+  limit?: number;
+}
+
+export default function OnLoop({ limit }: OnLoopProps) {
   const { recruiterMode } = useUIStore();
 
   if (recruiterMode) return null;
+
+  const items = limit ? loopItems.slice(0, limit) : loopItems;
 
   return (
     <div className="w-full py-6">
       <ProductDropCard
         title="On Loop"
         subtitle="What I keep coming back to."
-        items={loopItems}
+        items={items}
       />
     </div>
   );

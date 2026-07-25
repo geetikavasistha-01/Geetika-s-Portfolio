@@ -5,13 +5,14 @@ interface SectionHeaderProps {
   rightElement?: React.ReactNode;
   subtext?: string;
   className?: string;
+  labelClassName?: string;
 }
 
-export default function SectionHeader({ label, rightElement, subtext, className }: SectionHeaderProps) {
+export default function SectionHeader({ label, rightElement, subtext, className, labelClassName }: SectionHeaderProps) {
   return (
     <div className={`w-full mt-16 mb-6 flex flex-col select-none ${className || ''}`}>
       <div className="flex items-center justify-between gap-4 w-full">
-        <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-text3 whitespace-nowrap">
+        <span className={`text-[10px] font-semibold tracking-[0.25em] uppercase text-text3 whitespace-nowrap ${labelClassName || ''}`}>
           {label}
         </span>
         <div className="h-px flex-1 bg-border" />

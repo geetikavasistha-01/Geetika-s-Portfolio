@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useUIStore } from './store/uiStore';
 
@@ -10,6 +10,7 @@ import StarField from './components/ui/StarField';
 import CLITerminal from './components/ui/CLITerminal';
 import CommandPalette from './components/ui/CommandPalette';
 import RecruiterToggle from './components/ui/RecruiterToggle';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -28,6 +29,12 @@ import Me from './pages/Me';
 
 const queryClient = new QueryClient();
 
+function ConditionalFooter() {
+  const location = useLocation();
+  if (location.pathname === '/') return null;
+  return <Footer />;
+}
+
 export default function App() {
   const { initTheme } = useUIStore();
 
@@ -38,6 +45,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen relative bg-bg text-text1">
           {/* Ambient particle canvas */}
           <StarField />
@@ -66,7 +74,7 @@ export default function App() {
           </main>
 
           {/* Shared footer */}
-          <Footer />
+          <ConditionalFooter />
 
           {/* Interactive overlays */}
           <CLITerminal />

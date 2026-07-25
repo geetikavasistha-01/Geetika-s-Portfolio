@@ -33,7 +33,7 @@ export default function Hero() {
         {/* Name and Socials */}
         <div className="flex flex-col justify-center">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-body font-bold text-text1 leading-none not-italic">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-daffeniy text-text1 leading-none not-italic">
               Geetika <span className="text-[#34908B]">Vasistha</span>
             </h1>
             <a
@@ -150,9 +150,9 @@ export default function Hero() {
       <div className="mt-8">
         <Link
           to="/me"
-          className="inline-flex items-center gap-2 border border-border/80 hover:border-[#34908B]/40 text-text2 hover:text-[#34908B] bg-surface2/30 rounded-full px-5 py-2 text-xs font-medium tracking-wider transition-all duration-300 shadow-sm"
+          className="inline-flex items-center gap-2 bg-[#34908B] hover:bg-[#28736f] text-white font-bold rounded-full px-6 py-2.5 text-xs sm:text-sm tracking-wider shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 select-none"
         >
-          Everything at a glance <ArrowUpRight size={12} />
+          Everything at a glance <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
 

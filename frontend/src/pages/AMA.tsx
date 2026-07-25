@@ -177,8 +177,8 @@ export default function AMA() {
               <HelpCircle size={10} />
               <span>Question Nº{idx + 1}</span>
             </div>
-            <h4 className="text-base sm:text-lg italic font-display text-text1 leading-relaxed">
-              "{item.question}"
+            <h4 className="text-base sm:text-lg font-display text-text1 leading-relaxed">
+              {item.question}
             </h4>
             <span className="text-[9px] tracking-widest text-text3 font-semibold font-mono uppercase mt-2">
               — {item.askedBy || 'ANONYMOUS'}

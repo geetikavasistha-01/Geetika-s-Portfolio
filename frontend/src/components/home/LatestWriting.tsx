@@ -35,23 +35,39 @@ export default function LatestWriting() {
 
   return (
     <div className="w-full mt-6 select-none">
-      <div className="flex flex-col items-start max-w-[620px]">
-        <span className="text-[10px] font-mono tracking-widest text-text3 uppercase mb-3">
-          {post.category || 'ARTICLE'} · {post.readTime} min read
-        </span>
-        <h3 className="text-2xl font-display font-normal text-text1 hover:text-text3 transition-colors">
-          <Link to={`/blog/${post.slug}`}>
-            {post.title}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 w-full">
+        {/* Left Side: Article Info */}
+        <div className="flex-1 min-w-0 flex flex-col items-start">
+          <span className="text-[10px] font-mono tracking-widest text-text3 uppercase mb-3">
+            {post.category || 'ARTICLE'} · {post.readTime} min read
+          </span>
+          <h3 className="text-2xl font-display font-normal text-text1 hover:text-[#34908B] transition-colors leading-tight">
+            <Link to={`/blog/${post.slug}`}>
+              {post.title}
+            </Link>
+          </h3>
+          <p className="text-sm text-text2 italic mt-3 leading-relaxed">
+            {post.excerpt}
+          </p>
+          <Link
+            to={`/blog/${post.slug}`}
+            className="text-xs font-mono text-text3 hover:text-text1 transition-colors uppercase tracking-wider mt-5"
+          >
+            Read Post &rarr;
           </Link>
-        </h3>
-        <p className="text-sm text-text2 italic mt-3 leading-relaxed">
-          {post.excerpt}
-        </p>
+        </div>
+
+        {/* Right Side: Gradient Placeholder Image */}
         <Link
           to={`/blog/${post.slug}`}
-          className="text-xs font-mono text-text3 hover:text-text1 transition-colors uppercase tracking-wider mt-5"
+          className="w-full md:w-56 h-32 md:h-32 rounded-2xl overflow-hidden flex-shrink-0 relative border border-border/30 shadow-sm bg-gradient-to-tr from-teal/20 via-border/10 to-rose/10 flex items-center justify-center hover:shadow-md transition-all duration-300 group"
         >
-          Read Post &rarr;
+          <span className="text-[10px] font-mono font-medium tracking-widest text-text3 uppercase select-none p-4 text-center leading-snug">
+            {post.category || 'ARTICLE'}
+          </span>
+          <div className="absolute inset-0 bg-black/5 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-text1 font-bold text-xs uppercase tracking-widest">read</span>
+          </div>
         </Link>
       </div>
     </div>

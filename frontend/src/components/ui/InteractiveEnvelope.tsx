@@ -43,10 +43,10 @@ export default function InteractiveEnvelope() {
         {/* 1. Envelope Backside */}
         <div className="absolute inset-0 bg-[#0A3323] rounded-2xl shadow-lg border border-[#1a5c3a]/60" />
 
-        {/* 2. Letter Paper (Permanently visible/slid out) */}
+        {/* 2. Letter Paper (Permanently visible/slid out - slightly shortened) */}
         <motion.div
           animate={{
-            y: isHovered ? -82 : -75,
+            y: isHovered ? -75 : -65,
             scale: isHovered ? 1.04 : 1,
             zIndex: 20
           }}
@@ -55,7 +55,7 @@ export default function InteractiveEnvelope() {
             stiffness: 260,
             damping: 22
           }}
-          className="absolute left-[15px] top-[15px] w-[270px] h-[170px] bg-white rounded-lg shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center"
+          className="absolute left-[15px] top-[15px] w-[270px] h-[155px] bg-white rounded-lg shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center"
         >
           {/* Letter Lines Decoration */}
           <div className="w-full h-full border-t border-b border-dashed border-gray-200/80 flex flex-col items-center justify-center gap-2">
@@ -67,6 +67,17 @@ export default function InteractiveEnvelope() {
             <div className="w-16 h-[1.5px] bg-[#0A3323]/40 rounded-full" />
           </div>
         </motion.div>
+
+        {/* Floating "Click Me" label with stars beside the envelope */}
+        <div className="absolute right-[-45px] top-[120px] md:right-[-60px] flex items-center gap-1 text-[10px] font-mono italic text-text3/60 select-none rotate-6">
+          <svg className="w-2.5 h-2.5 text-[#34908B] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+          </svg>
+          <span>click me</span>
+          <svg className="w-2 h-2 text-[#34908B] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+          </svg>
+        </div>
 
         {/* 3. Envelope Front Folds (Triangular Overlays) */}
         <svg

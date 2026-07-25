@@ -177,11 +177,11 @@ export default function GitHubHeatmap() {
   };
 
   const colorLevels = [
-    'bg-surface2 border border-border/50',
-    'bg-green-900/40 border border-green-800/10 dark:bg-[#166534]',
-    'bg-green-700/60 border border-green-600/10 dark:bg-[#15803d]',
-    'bg-green-500/80 border border-green-400/10 dark:bg-[#22c55e]',
-    'bg-green-400 border border-green-300/10 dark:bg-[#4ade80]'
+    'bg-zinc-100/80 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/30',
+    'bg-emerald-950/20 dark:bg-emerald-950/30 border border-emerald-900/10',
+    'bg-emerald-800/40 dark:bg-emerald-800/40 border border-emerald-700/10',
+    'bg-emerald-500/70 dark:bg-emerald-600/70 border border-emerald-500/20',
+    'bg-emerald-500 dark:bg-emerald-400 border border-emerald-400/20 shadow-[0_0_8px_rgba(16,185,129,0.35)]'
   ];
 
   const availableYears = data?.years && data.years.length > 0
