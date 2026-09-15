@@ -94,7 +94,7 @@ export default function Blog() {
         <h1 className="text-5xl sm:text-6xl font-display font-light text-text1 leading-tight mt-2">
           Geetika's <span className="italic font-normal">blog</span>.
         </h1>
-        <p className="text-sm italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base sm:text-lg italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
           engineering lessons, in plain words.
         </p>
       </div>
@@ -147,7 +147,7 @@ export default function Blog() {
                   {featuredPost.title}
                 </Link>
               </h3>
-              <p className="text-sm sm:text-base text-text2 italic mt-4 leading-relaxed max-w-[580px]">
+              <p className="text-base sm:text-lg text-text2 italic mt-4 leading-relaxed max-w-[580px]">
                 {featuredPost.excerpt}
               </p>
               <div className="flex flex-wrap gap-1.5 mt-4">
@@ -220,7 +220,7 @@ export default function Blog() {
                           {post.title}
                         </Link>
                       </h3>
-                      <p className="text-xs sm:text-sm text-text2 italic leading-relaxed mt-2.5 max-w-[620px]">
+                      <p className="text-base text-text2 italic leading-relaxed mt-2.5 max-w-[620px]">
                         {post.excerpt}
                       </p>
                       <div className="flex flex-wrap gap-1.5 mt-3">
@@ -233,7 +233,7 @@ export default function Blog() {
                       <div className="mt-4">
                         <Link
                           to={`/blog/${post.slug}`}
-                          className="text-xs font-mono text-[#34908B] hover:text-text1 transition-colors uppercase font-medium"
+                          className="text-xs font-mono text-accent hover:text-text1 transition-colors uppercase font-medium"
                         >
                           Read Article &rarr;
                         </Link>
@@ -263,7 +263,7 @@ export default function Blog() {
         <div className="flex flex-col min-w-0 z-10">
           <span className="text-[9px] font-mono tracking-widest text-text3 uppercase mb-1.5">EXTERNAL JOURNALS</span>
           <h2 className="text-xl sm:text-2xl font-display font-normal text-text1">GeekyKunoichi Blog</h2>
-          <p className="text-xs sm:text-sm text-text2 italic mt-1.5 max-w-[500px]">
+          <p className="text-sm sm:text-base text-text2 italic mt-1.5 max-w-[500px] leading-relaxed">
             My external technical writeups. You can find me sharing thoughts, systems engineering deep-dives, and tutorials across these publications:
           </p>
           {/* Expanded link row */}

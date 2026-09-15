@@ -9,14 +9,6 @@ export default function HomeEnvelopeFooter() {
   const [isHovered, setIsHovered] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Load cursive handwriting font dynamically
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-  }, []);
-
   const handleCliClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setCliOpen(true);
@@ -48,14 +40,14 @@ export default function HomeEnvelopeFooter() {
         {/* Click me badge above the envelope */}
         <div 
           className="absolute -top-12 flex items-center gap-1.5 text-text3 font-bold select-none rotate-2"
-          style={{ fontFamily: "'Caveat', cursive", fontSize: '20px' }}
+          style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: '20px' }}
         >
           {/* Twinkling star SVG path */}
-          <svg className="w-4 h-4 text-[#34908B] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-4 h-4 text-accent animate-pulse" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
           </svg>
           <span>click me</span>
-          <svg className="w-3.5 h-3.5 text-[#34908B] animate-pulse delay-100" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-3.5 h-3.5 text-accent animate-pulse delay-100" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
           </svg>
         </div>
@@ -206,7 +198,7 @@ export default function HomeEnvelopeFooter() {
           onClick={handleCopyEmail}
           className="hover:text-text1 transition-colors flex items-center gap-1.5"
         >
-          Email {copied ? <Check size={12} className="text-[#34908B]" /> : <Copy size={11} />}
+          Email {copied ? <Check size={12} className="text-accent" /> : <Copy size={11} />}
         </button>
         <button
           onClick={handleCliClick}

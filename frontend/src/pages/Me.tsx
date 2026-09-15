@@ -13,75 +13,88 @@ import {
 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
+import starfieldBg from '../assets/starfield-bg.jpg';
+import failingForwardDaily from '../assets/failing-forward-daily.png';
+
 export default function Me() {
   const { theme, toggleTheme } = useUIStore();
 
   return (
-    <PageWrapper>
-      {/* SECTION 1 — PROFILE HEADER */}
-      <div className="relative w-full rounded-2xl overflow-hidden bg-[#111318] border border-border/30 shadow-sm mb-16 select-none">
-        
-        {/* Cover Banner */}
-        <div className="h-44 sm:h-64 w-full bg-gradient-to-r from-cyan-950 via-zinc-900 to-indigo-950 relative border-b border-border/10">
-          <div className="absolute top-4 right-4 z-30">
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 rounded-full border border-border/60 hover:border-[#38bdf8] text-text3 hover:text-text1 transition-colors bg-black/40 backdrop-blur-sm focus:outline-none"
-              title="Toggle Theme"
+    <div 
+      className="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-scroll sm:bg-fixed relative"
+      style={{ backgroundImage: `url(${starfieldBg})` }}
+    >
+      {/* Subtle backdrop overlay for contrast */}
+      <div className="w-full min-h-screen bg-bg/85 dark:bg-bg/90 backdrop-blur-[0.5px]">
+        <PageWrapper>
+          {/* SECTION 1 — PROFILE HEADER */}
+          <div className="relative w-full rounded-2xl overflow-hidden bg-surface border border-border shadow-sm mb-16 select-none">
+            
+            {/* Cover Banner */}
+            <div 
+              className="h-44 sm:h-64 w-full bg-cover bg-center bg-no-repeat relative border-b border-border/20"
+              style={{ backgroundImage: `url(${failingForwardDaily})` }}
             >
-              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
-          </div>
-        </div>
+              <div className="absolute inset-0 bg-black/10 dark:bg-black/25 pointer-events-none" />
+              <div className="absolute top-4 right-4 z-30">
+                <button
+                  onClick={toggleTheme}
+                  className="p-1.5 rounded-full border border-border/60 hover:border-accent text-text3 hover:text-text1 transition-colors bg-surface/75 backdrop-blur-sm focus:outline-none"
+                  title="Toggle Theme"
+                >
+                  {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                </button>
+              </div>
+            </div>
 
-        {/* Profile Details Container */}
-        <div className="px-6 pb-6 pt-0 relative flex flex-col items-start">
-          
-          {/* Circular-Square Avatar (Overlapping) */}
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border-4 border-[#111318] overflow-hidden shadow-lg -mt-12 sm:-mt-16 bg-zinc-900 flex items-center justify-center relative z-20">
-            <img src={renge} alt="Avatar" className="w-full h-full object-cover" />
-          </div>
+            {/* Profile Details Container */}
+            <div className="px-6 pb-6 pt-0 relative flex flex-col items-start">
+              
+              {/* Circular-Square Avatar (Overlapping) */}
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border-4 border-surface overflow-hidden shadow-lg -mt-12 sm:-mt-16 bg-surface flex items-center justify-center relative z-20">
+                <img src={renge} alt="Avatar" className="w-full h-full object-cover" />
+              </div>
 
-          {/* Name & Handle row */}
-          <div className="mt-4 flex flex-wrap items-baseline gap-2">
-            <h1 className="text-3xl sm:text-4xl font-editorial font-normal text-text1 leading-tight not-italic">
-              Geetika Vasistha
-            </h1>
-            <span className="text-xs sm:text-sm text-text3 font-body">
-              @geekykunoichi
-            </span>
-          </div>
+              {/* Name & Handle row */}
+              <div className="mt-4 flex flex-wrap items-baseline gap-2">
+                <h1 className="text-3xl sm:text-4xl font-editorial font-normal text-text1 leading-tight not-italic">
+                  Geetika Vasistha
+                </h1>
+                <span className="text-xs sm:text-sm text-text3 font-body">
+                  @geekykunoichi
+                </span>
+              </div>
 
-          {/* Role/Tagline */}
-          <span className="text-xs sm:text-sm text-[#38bdf8] font-body font-semibold mt-1">
-            Backend & API Architect · AI Observability Engineer
-          </span>
+              {/* Role/Tagline */}
+              <span className="text-xs sm:text-sm text-accent font-body font-semibold mt-1">
+                Backend & API Architect · AI Observability Engineer
+              </span>
 
-          {/* Bio */}
-          <p className="mt-3 text-xs sm:text-sm text-text2 font-body max-w-xl leading-relaxed select-text">
-            Designing highly optimized database queries, telemetry pipelines, and LLM orchestration layers. 
-            Focused on distributed caching, API scale, and clean codebase architectures.
-          </p>
+              {/* Bio */}
+              <p className="mt-3 text-sm sm:text-base text-text2 font-body max-w-xl leading-relaxed select-text">
+                Designing highly optimized database queries, telemetry pipelines, and LLM orchestration layers. 
+                Focused on distributed caching, API scale, and clean codebase architectures.
+              </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-2.5 mt-5">
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.geetikavasistha@gmail.com&su=Let's%20Talk%20%E2%80%94%20Saw%20your%20developer%20profile!"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full bg-[#38bdf8] text-zinc-950 font-body font-bold text-xs shadow-sm hover:shadow-md hover:bg-[#38bdf8]/85 transition-all select-none"
-            >
-              <Calendar size={12} />
-              <span>Let's talk</span>
-            </a>
-            <a
-              href="mailto:contact.geetikavasistha@gmail.com"
-              className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full border border-border/60 hover:border-text2 text-text2 hover:text-text1 font-body font-bold text-xs transition-colors select-none"
-            >
-              <Mail size={12} />
-              <span>Drop a mail</span>
-            </a>
-          </div>
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-3 mt-5">
+                <a
+                  href="https://cal.com/geetikavasistha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-accent text-bg font-body font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all select-none min-h-[42px]"
+                >
+                  <Calendar size={14} />
+                  <span>Let's talk</span>
+                </a>
+                <a
+                  href="mailto:contact.geetikavasistha@gmail.com"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-full border border-border/80 hover:border-text1 text-text1 font-body font-bold text-xs sm:text-sm transition-all hover:scale-[1.02] active:scale-[0.98] bg-surface/60 backdrop-blur-sm select-none min-h-[42px]"
+                >
+                  <Mail size={14} />
+                  <span>Drop a mail</span>
+                </a>
+              </div>
 
           {/* Find Me On The Internet */}
           <div className="mt-6 w-full">
@@ -89,15 +102,15 @@ export default function Me() {
               Find me on the internet
             </span>
             <div className="flex flex-wrap gap-2 items-center">
-              <a href="https://github.com/geetikavasistha-01" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/40 border border-border/30 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
+              <a href="https://github.com/geetikavasistha-01" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface2/50 border border-border/40 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
                 <FaGithub size={12} />
                 <span>GitHub</span>
               </a>
-              <a href="https://linkedin.com/in/geetikavasistha" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/40 border border-border/30 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
+              <a href="https://linkedin.com/in/geetikavasistha" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface2/50 border border-border/40 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
                 <FaLinkedin size={12} />
                 <span>LinkedIn</span>
               </a>
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/40 border border-border/30 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface2/50 border border-border/40 hover:border-text3 text-text3 hover:text-text1 text-[10px] font-body transition-colors">
                 <FaXTwitter size={12} />
                 <span>Twitter</span>
               </a>
@@ -111,8 +124,8 @@ export default function Me() {
             </span>
             <div className="flex flex-wrap gap-2 items-center">
               {['Rust', 'TypeScript', 'Python', 'Django', 'FastAPI', 'React', 'MongoDB', 'Docker'].map((tech) => (
-                <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-800/40 border border-border/30 text-text2 text-[10px] font-body">
-                  <Terminal size={10} className="text-[#38bdf8]" />
+                <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface2/50 border border-border/40 text-text2 text-[10px] font-body">
+                  <Terminal size={10} className="text-accent" />
                   {tech}
                 </span>
               ))}
@@ -161,15 +174,17 @@ export default function Me() {
           </Link>
           <Link
             to="/human"
-            className="inline-flex items-center justify-center px-6 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-bold rounded-full bg-transparent transition-colors shadow-sm hover:shadow-[0_0_12px_rgba(56,189,248,0.15)]"
+            className="inline-flex items-center justify-center px-6 py-2 bg-[#F9C5D5] hover:bg-[#F4AFC3] text-zinc-900 text-xs font-body font-bold rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
           >
             Personal Side &rarr;
           </Link>
         </div>
         <span className="mt-10 text-[10px] text-text4 font-body">
-          crafted with curiosity — <span className="text-[#38bdf8] font-semibold">@geekykunoichi</span>
+          crafted with curiosity — <span className="text-accent font-semibold">@geekykunoichi</span>
         </span>
       </section>
-    </PageWrapper>
+        </PageWrapper>
+      </div>
+    </div>
   );
 }

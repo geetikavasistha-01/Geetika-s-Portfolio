@@ -42,13 +42,13 @@ export default function AMAPreview() {
       <div className="flex flex-col gap-10">
         {amas.slice(0, 3).map((item, idx) => (
           <div key={idx} className="flex flex-col items-start border-l border-border/40 pl-6">
-            <h4 className="text-sm sm:text-base font-sans not-italic font-semibold text-text1 leading-relaxed">
+            <h4 className="text-base sm:text-lg font-sans not-italic font-semibold text-text1 leading-relaxed">
               "{item.question}"
             </h4>
             <span className="text-[9px] tracking-widest text-text3 font-semibold font-mono uppercase mt-2">
               — {item.askedBy || 'ANONYMOUS'}
             </span>
-            <p className="text-xs sm:text-sm text-text2 leading-relaxed mt-4">
+            <p className="text-sm sm:text-base text-text2 leading-relaxed mt-4">
               {item.answer}
             </p>
           </div>

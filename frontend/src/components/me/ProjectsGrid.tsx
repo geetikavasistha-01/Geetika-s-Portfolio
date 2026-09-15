@@ -35,10 +35,10 @@ export default function ProjectsGrid() {
         {projects.map((proj) => (
           <div
             key={proj.name}
-            className="group bg-[#111318] border border-border/30 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+            className="group bg-surface border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
           >
             {/* Aspect image container */}
-            <div className="aspect-[16/9] w-full bg-zinc-800 overflow-hidden relative border-b border-border/10">
+            <div className="aspect-[16/9] w-full bg-surface2 overflow-hidden relative border-b border-border/10">
               <img
                 src={proj.image}
                 alt={proj.name}
@@ -62,7 +62,7 @@ export default function ProjectsGrid() {
               <div className="flex items-center justify-between mt-4 select-none">
                 <Link
                   to={`/projects/${proj.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-body font-bold text-[#38bdf8] hover:text-[#38bdf8]/80 transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-body font-bold text-accent hover:opacity-80 transition-opacity"
                 >
                   View Project <ArrowUpRight size={13} />
                 </Link>
@@ -70,7 +70,7 @@ export default function ProjectsGrid() {
                   {proj.tags.map(t => (
                     <span
                       key={t}
-                      className="bg-zinc-800/60 text-text3 text-[8px] tracking-wider uppercase px-2 py-0.5 rounded font-body"
+                      className="bg-surface2/60 text-text3 text-[8px] tracking-wider uppercase px-2 py-0.5 rounded font-body border border-border/40"
                     >
                       {t}
                     </span>
@@ -85,7 +85,7 @@ export default function ProjectsGrid() {
       <div className="flex justify-center mt-4">
         <Link
           to="/projects"
-          className="inline-flex items-center justify-center px-5 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
+          className="inline-flex items-center justify-center px-5 py-2 border border-accent/60 hover:border-accent text-accent hover:opacity-85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
         >
           Explore all projects &rarr;
         </Link>

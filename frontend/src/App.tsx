@@ -35,6 +35,50 @@ function ConditionalFooter() {
   return <Footer />;
 }
 
+function AppLayout() {
+  const location = useLocation();
+  const isHuman = location.pathname === '/human';
+  const isHome = location.pathname === '/';
+
+  return (
+    <div className={`flex flex-col min-h-screen relative text-text1 ${isHuman || isHome ? 'bg-transparent' : 'bg-bg'}`}>
+      {/* Ambient particle canvas (on pages other than personal side with video & home with custom starry background) */}
+      {!isHuman && !isHome && <StarField />}
+
+      {/* Navigation bar */}
+      <Navbar />
+
+      {/* Page Routing */}
+      <main className="flex-1 w-full flex flex-col">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/shelf" element={<Shelf />} />
+          <Route path="/ama" element={<AMA />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/human" element={<Human />} />
+          <Route path="/me" element={<Me />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
+      {/* Shared footer */}
+      <ConditionalFooter />
+
+      {/* Interactive overlays */}
+      <CLITerminal />
+      <CommandPalette />
+      <RecruiterToggle />
+    </div>
+  );
+}
+
 export default function App() {
   const { initTheme } = useUIStore();
 
@@ -46,41 +90,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen relative bg-bg text-text1">
-          {/* Ambient particle canvas */}
-          <StarField />
-
-          {/* Navigation bar */}
-          <Navbar />
-
-          {/* Page Routing */}
-          <main className="flex-1 w-full flex flex-col">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/:slug" element={<ProjectPage />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/shelf" element={<Shelf />} />
-              <Route path="/ama" element={<AMA />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/human" element={<Human />} />
-              <Route path="/me" element={<Me />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
-
-          {/* Shared footer */}
-          <ConditionalFooter />
-
-          {/* Interactive overlays */}
-          <CLITerminal />
-          <CommandPalette />
-          <RecruiterToggle />
-        </div>
+        <AppLayout />
       </BrowserRouter>
     </QueryClientProvider>
   );

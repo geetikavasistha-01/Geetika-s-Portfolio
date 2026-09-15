@@ -190,7 +190,7 @@ export default function GitHubHeatmap() {
 
   return (
     <div className="w-full mt-6 select-none relative">
-      <div className="p-5 rounded-2xl border border-border bg-surface flex flex-col gap-4">
+      <div className="p-5 rounded-2xl border border-border/50 bg-surface2/25 flex flex-col gap-4">
         {/* Title & Years Row */}
         <div className="flex items-center justify-between gap-4 mb-2 select-none">
           <div className="flex items-center gap-3 flex-grow">

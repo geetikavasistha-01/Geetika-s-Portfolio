@@ -69,7 +69,7 @@ export default function Contact() {
             <h3 className="text-xl sm:text-2xl font-display font-normal text-text1">
               Newsletter
             </h3>
-            <p className="text-xs sm:text-sm text-text3 leading-relaxed">
+            <p className="text-sm sm:text-base text-text3 leading-relaxed">
               I share occasional articles on software engineering, AI, web development, and lessons from building real products. Subscribe on Substack to get new posts delivered to your inbox.
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Subscribe to my Substack newsletter"
-              className="inline-flex items-center gap-2 bg-[#34908B] hover:bg-[#2c7a76] text-white px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
+              className="inline-flex items-center gap-2 bg-accent hover:opacity-90 text-bg px-5 py-3 rounded-xl text-xs font-semibold transition-all duration-300 shadow-md group"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.536 9.879H1.464V6.202h21.072v3.677zm0-6.202H1.464V0h21.072v3.677zM1.464 13.555h21.072v10.445L12 18.273 1.464 24V13.555z" />
@@ -179,7 +179,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={sendMutation.isPending}
-                  className="mt-2 w-full py-3.5 rounded-xl bg-[#34908B] hover:bg-[#2c7a76] active:bg-[#34908B] text-white text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#34908B]/10 disabled:opacity-50 select-none uppercase"
+                  className="mt-2 w-full py-3.5 rounded-xl bg-accent hover:opacity-90 active:opacity-100 text-bg text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-accent/10 disabled:opacity-50 select-none uppercase"
                 >
                   {sendMutation.isPending ? (
                     <Loader2 size={12} className="animate-spin" />
@@ -199,10 +199,10 @@ export default function Contact() {
             <h2 className="text-2xl font-display font-normal text-text1">
               Connect
             </h2>
-            <p className="text-xs sm:text-sm text-text2 leading-relaxed">
+            <p className="text-sm sm:text-base text-text2 leading-relaxed">
               I have worked with founders, startups, and businesses to craft high-quality digital products that are fast, scalable, and user-focused. If you're looking for someone who cares about both design and development, let's connect.
             </p>
-            <p className="text-xs sm:text-sm text-text2 leading-relaxed">
+            <p className="text-sm sm:text-base text-text2 leading-relaxed">
               Based in <span className="font-semibold text-text1">India</span>, available for projects worldwide.
             </p>
 

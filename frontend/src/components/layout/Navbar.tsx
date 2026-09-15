@@ -5,6 +5,7 @@ import { useUIStore } from '../../store/uiStore';
 import { cn } from '../../lib/utils';
 import { api } from '../../lib/api';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { ThemePicker } from '../ui/ThemePicker';
 import kunoichi from '../../assets/kunoichi.png';
 import kunoichiDark from '../../assets/kunoichi-dark.png';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
@@ -121,7 +122,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-14 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6 md:px-0">
+      <header className="fixed top-10 sm:top-12 left-1/2 -translate-x-1/2 z-50 w-full max-w-[880px] px-6">
         <motion.div
           className="flex items-center justify-between w-full px-5 py-2.5 rounded-full border border-border/80 bg-navbar shadow-xl backdrop-blur-lg relative transition-all duration-300"
           initial={{ y: -20, opacity: 0 }}
@@ -405,13 +406,8 @@ export default function Navbar() {
               </span>
             )}
 
-            {/* Dark / Light Toggle */}
-            <ThemeToggle
-              variant="circle-blur"
-              start="top-right"
-              className="p-1.5 rounded-full text-text2 hover:text-text1 hover:bg-surface2 transition-all flex items-center justify-center"
-              iconClassName="w-3.5 h-3.5"
-            />
+            {/* Theme Picker */}
+            <ThemePicker />
 
             {/* Hamburger for mobile */}
             <button

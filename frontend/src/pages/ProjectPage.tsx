@@ -133,7 +133,7 @@ export default function ProjectPage() {
       <h1 className="text-4xl sm:text-5xl font-display font-normal italic text-text1">
         {project.title.toLowerCase()}
       </h1>
-      <p className="text-base text-text3 italic mt-3 leading-relaxed">
+      <p className="text-lg sm:text-xl text-text3 italic mt-3 leading-relaxed">
         {project.description}
       </p>
 
@@ -152,11 +152,11 @@ export default function ProjectPage() {
       <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-12 mt-12 items-start">
         
         {/* Markdown Long Description (Left) */}
-        <div className="prose prose-invert max-w-none text-xs sm:text-sm text-text2 leading-relaxed space-y-6">
+        <div className="prose prose-invert max-w-none text-base sm:text-lg text-text2 leading-relaxed space-y-6">
           <ReactMarkdown
             components={{
-              h2: ({ ...props }) => <h2 className="text-lg font-sans font-semibold text-text1 mt-10 mb-4" {...props} />,
-              h3: ({ ...props }) => <h3 className="text-sm font-sans font-semibold text-text1 mt-6 mb-2" {...props} />,
+              h2: ({ ...props }) => <h2 className="text-xl font-sans font-semibold text-text1 mt-10 mb-4" {...props} />,
+              h3: ({ ...props }) => <h3 className="text-base font-sans font-semibold text-text1 mt-6 mb-2" {...props} />,
               p: ({ ...props }) => <p className="mb-4 text-text2 leading-relaxed" {...props} />,
               li: ({ ...props }) => <li className="mb-2 list-disc list-inside ml-2" {...props} />,
               ul: ({ ...props }) => <ul className="mb-4" {...props} />,

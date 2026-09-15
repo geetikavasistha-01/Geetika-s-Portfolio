@@ -10,7 +10,6 @@ interface ExperienceItem {
   duration: string;
   location: string;
   bullets: string[];
-  obfuscated?: boolean;
 }
 
 const experiences: ExperienceItem[] = [
@@ -41,9 +40,20 @@ const experiences: ExperienceItem[] = [
     duration: 'Jul 2025 - Dec 2025',
     location: 'Noida (Onsite)',
     bullets: [
-      'Developed LLM pipelines and observability dashboards, improving pipeline uptime and debugging efficiency.'
-    ],
-    obfuscated: true // Example obfuscated item
+      'Built LLM-powered document intelligence pipelines and observability dashboards, translating business requirements into data-driven solutions.',
+      'Instrumented monitoring and logging for Python-based services, improving pipeline uptime and debugging efficiency.'
+    ]
+  },
+  {
+    company: 'Raphsons Robotics Ltd',
+    role: 'Machine Learning Engineer Intern',
+    type: 'Internship',
+    duration: 'Mar 2025 - Jun 2026',
+    location: 'Ghaziabad (Onsite)',
+    bullets: [
+      'Designed and debugged anomaly-detection ML models using Scikit-learn, applying statistical analysis to improve model accuracy by 40% in production.',
+      'Automated an end-to-end SQL and Pandas data pipeline, reducing runtime by 25%.'
+    ]
   }
 ];
 
@@ -61,7 +71,7 @@ export default function ExperienceSection() {
         return (
           <div
             key={idx}
-            className="w-full bg-[#111318] border border-border/30 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300"
+            className="w-full bg-surface border border-border rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300"
           >
             <div
               onClick={() => toggleOpen(idx)}
@@ -69,14 +79,10 @@ export default function ExperienceSection() {
             >
               <div className="flex flex-col gap-1.5 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span 
-                    className={`font-body font-bold text-xs sm:text-sm text-text1 transition-colors group-hover:text-[#38bdf8] ${
-                      exp.obfuscated ? 'blur-[4px] select-none' : ''
-                    }`}
-                  >
+                  <span className="font-body font-bold text-xs sm:text-sm text-text1 transition-colors group-hover:text-accent">
                     {exp.company}
                   </span>
-                  <span className="bg-zinc-800/60 text-text3 text-[9px] tracking-wider uppercase px-2 py-0.5 rounded font-body">
+                  <span className="bg-surface2/60 text-text3 text-[9px] tracking-wider uppercase px-2 py-0.5 rounded font-body border border-border/40">
                     {exp.type}
                   </span>
                 </div>
@@ -97,9 +103,9 @@ export default function ExperienceSection() {
                   </span>
                 </div>
                 {isOpen ? (
-                  <ChevronUp size={14} className="text-text3 group-hover:text-[#38bdf8]" />
+                  <ChevronUp size={14} className="text-text3 group-hover:text-accent" />
                 ) : (
-                  <ChevronDown size={14} className="text-text3 group-hover:text-[#38bdf8]" />
+                  <ChevronDown size={14} className="text-text3 group-hover:text-accent" />
                 )}
               </div>
             </div>
@@ -127,7 +133,7 @@ export default function ExperienceSection() {
       <div className="flex justify-center mt-4">
         <Link
           to="/work"
-          className="inline-flex items-center justify-center px-5 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
+          className="inline-flex items-center justify-center px-5 py-2 border border-accent/60 hover:border-accent text-accent hover:opacity-85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
         >
           View full experience &rarr;
         </Link>

@@ -628,7 +628,7 @@ export default function Shelf() {
         <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           the reading rack.
         </h1>
-        <p className="text-base font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base sm:text-lg font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
           {selectedTab === 'books' 
             ? 'books and papers, currently on the rack.' 
             : 'engineering blogs from teams building at serious scale.'}
@@ -695,7 +695,7 @@ export default function Shelf() {
         </div>
       ) : (
         <div className="flex flex-col gap-8 w-full mt-4 select-none">
-          <p className="text-sm text-text3 italic leading-relaxed max-w-[620px]">
+          <p className="text-base sm:text-lg text-text3 italic leading-relaxed max-w-[620px]">
             I pick engineering blogs from companies building at serious scale and read them thoroughly — taking notes, digging into the design decisions, and if something's cool enough, implementing it myself. This is my running list.
           </p>
 
@@ -716,7 +716,7 @@ export default function Shelf() {
                 </h4>
 
                 {/* Summary */}
-                <p className="text-xs italic font-serifClassic text-text2 leading-relaxed mb-4">
+                <p className="text-sm sm:text-base italic font-serifClassic text-text2 leading-relaxed mb-4">
                   {blog.description}
                 </p>
 
@@ -798,7 +798,7 @@ export default function Shelf() {
 
             {/* Explanation / Caption description */}
             {selectedItem.explanation && (
-              <p className="text-text2 bg-bg p-3.5 rounded-xl border border-border font-serifClassic italic text-[11px] sm:text-xs leading-relaxed mt-1">
+              <p className="text-text2 bg-bg p-3.5 rounded-xl border border-border font-serifClassic italic text-sm sm:text-base leading-relaxed mt-1">
                 "{selectedItem.explanation}"
               </p>
             )}

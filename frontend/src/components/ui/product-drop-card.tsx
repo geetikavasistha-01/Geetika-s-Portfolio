@@ -72,7 +72,7 @@ export const ProductDropCard = ({
           <button
             onClick={handlePrev}
             disabled={!canGoPrev}
-            className="inline-flex items-center justify-center rounded-lg border border-border/60 bg-surface2/30 hover:bg-surface2 text-text2 hover:text-[#34908B] disabled:opacity-30 disabled:hover:text-text2 transition-all duration-300 w-8 h-8"
+            className="inline-flex items-center justify-center rounded-lg border border-border/60 bg-surface2/30 hover:bg-surface2 text-text2 hover:text-accent disabled:opacity-30 disabled:hover:text-text2 transition-all duration-300 w-8 h-8"
             aria-label="Previous drop"
           >
             <ChevronLeft size={16} />
@@ -80,7 +80,7 @@ export const ProductDropCard = ({
           <button
             onClick={handleNext}
             disabled={!canGoNext}
-            className="inline-flex items-center justify-center rounded-lg border border-border/60 bg-surface2/30 hover:bg-surface2 text-text2 hover:text-[#34908B] disabled:opacity-30 disabled:hover:text-text2 transition-all duration-300 w-8 h-8"
+            className="inline-flex items-center justify-center rounded-lg border border-border/60 bg-surface2/30 hover:bg-surface2 text-text2 hover:text-accent disabled:opacity-30 disabled:hover:text-text2 transition-all duration-300 w-8 h-8"
             aria-label="Next drop"
           >
             <ChevronRight size={16} />

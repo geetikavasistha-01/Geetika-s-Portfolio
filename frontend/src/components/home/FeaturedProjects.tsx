@@ -163,17 +163,11 @@ export default function FeaturedProjects() {
                   <span>{project.year}</span>
                   <span>·</span>
                   <span>{project.language?.toLowerCase()}</span>
-                  {project.stars !== undefined && (
-                    <>
-                      <span>·</span>
-                      <span className="text-[#34908B] font-semibold">⭐ {project.stars}</span>
-                    </>
-                  )}
                   {project.status === 'wip' && (
                     <>
                       <span>·</span>
-                      <span className="text-[#eab308] flex items-center gap-1 font-bold uppercase tracking-widest text-[9.5px]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#eab308] animate-pulse" />
+                      <span className="text-accent flex items-center gap-1 font-bold uppercase tracking-widest text-[9.5px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                         WIP
                       </span>
                     </>
@@ -182,7 +176,7 @@ export default function FeaturedProjects() {
 
                 {/* Title & Diagonal Arrow */}
                 <div className="flex justify-between items-baseline w-full mb-1">
-                  <h3 className="font-serif text-3xl sm:text-[38px] font-normal text-text1 leading-tight group-hover:text-[#34908B] transition-colors tracking-wide">
+                  <h3 className="font-serif text-3xl sm:text-[38px] font-normal text-text1 leading-tight group-hover:text-accent transition-colors tracking-wide">
                     {project.title}
                   </h3>
                   <ArrowUpRight
@@ -192,13 +186,13 @@ export default function FeaturedProjects() {
                 </div>
 
                 {/* Description */}
-                <p className="font-sans text-text3 text-[14px] sm:text-[15px] leading-relaxed max-w-[640px] mb-4 font-light">
+                <p className="font-sans text-text3 text-base sm:text-lg leading-relaxed max-w-[640px] mb-4 font-normal">
                   {project.description}
                 </p>
 
                 {/* Stats Block */}
                 {statsString && (
-                  <div className="border-l border-border/80 pl-4 font-mono text-[11px] sm:text-xs text-text3/70 py-1 leading-relaxed max-w-[700px]">
+                  <div className="border-l border-border/80 pl-4 font-mono text-xs sm:text-sm text-text3/70 py-1 leading-relaxed max-w-[700px]">
                     {statsString}
                   </div>
                 )}

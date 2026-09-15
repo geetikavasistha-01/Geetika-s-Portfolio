@@ -41,12 +41,12 @@ export default function LatestWriting() {
           <span className="text-[10px] font-mono tracking-widest text-text3 uppercase mb-3">
             {post.category || 'ARTICLE'} · {post.readTime} min read
           </span>
-          <h3 className="text-2xl font-display font-normal text-text1 hover:text-[#34908B] transition-colors leading-tight">
+          <h3 className="text-2xl font-display font-normal text-text1 hover:text-accent transition-colors leading-tight">
             <Link to={`/blog/${post.slug}`}>
               {post.title}
             </Link>
           </h3>
-          <p className="text-sm text-text2 italic mt-3 leading-relaxed">
+          <p className="text-base sm:text-lg text-text2 italic mt-3 leading-relaxed">
             {post.excerpt}
           </p>
           <Link

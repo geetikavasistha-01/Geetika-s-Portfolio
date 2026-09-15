@@ -44,7 +44,7 @@ export default function Footer() {
           onClick={handleCopyEmail}
           className="hover:text-text1 transition-colors flex items-center gap-1.5"
         >
-          Email {copied ? <Check size={12} className="text-[#34908B]" /> : <Copy size={11} />}
+          Email {copied ? <Check size={12} className="text-accent" /> : <Copy size={11} />}
         </button>
         <button
           onClick={handleCliClick}

@@ -144,7 +144,7 @@ export default function Work() {
         <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           Things I've done.
         </h1>
-        <p className="text-base font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-lg font-editorial text-text3 mt-4 max-w-[540px] leading-relaxed">
           Distributed systems, AI agents, and backend pipelines.
           Roles listed in order of recency.
         </p>
@@ -181,7 +181,7 @@ export default function Work() {
 
           <Link
             to="/human"
-            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-[#34908B] hover:text-[#28736f] transition-colors"
+            className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-accent hover:opacity-80 transition-opacity"
           >
             <Heart size={10} /> THE QUIETER SIDE &rarr;
           </Link>
@@ -215,8 +215,8 @@ export default function Work() {
               className="relative pl-8 md:pl-0 md:grid md:grid-cols-[150px_1fr] md:gap-10 group"
             >
               {/* Timeline Marker Dot */}
-              <div className="absolute -left-[9px] md:-left-[159px] md:translate-x-[150px] top-1.5 md:top-2 w-[18px] h-[18px] rounded-full bg-zinc-900 border-2 border-border dark:bg-zinc-900 flex items-center justify-center z-10 transition-colors group-hover:border-text2 duration-300">
-                <div className="w-2 h-2 rounded-full bg-[#34908B] group-hover:scale-125 transition-transform duration-300" />
+              <div className="absolute -left-[9px] md:-left-[159px] md:translate-x-[150px] top-1.5 md:top-2 w-[18px] h-[18px] rounded-full bg-surface border-2 border-border flex items-center justify-center z-10 transition-colors group-hover:border-text2 duration-300">
+                <div className="w-2 h-2 rounded-full bg-accent group-hover:scale-125 transition-transform duration-300" />
               </div>
 
               {/* Left Column: Date Range / Metadata (Visible on desktop) */}
@@ -251,7 +251,7 @@ export default function Work() {
                 {/* Bullet points */}
                 <ul className="flex flex-col gap-3 my-4">
                   {exp.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex gap-3 text-sm text-text2 leading-relaxed items-start">
+                    <li key={bIdx} className="flex gap-3 text-base text-text2 leading-relaxed items-start">
                       <svg className="w-2.5 h-2.5 text-text3 mt-1.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z" />
                       </svg>
@@ -298,7 +298,7 @@ export default function Work() {
             </h3>
 
             {/* Degree details */}
-            <p className="text-xs sm:text-sm text-text2 mt-1.5 leading-relaxed">
+            <p className="text-sm sm:text-base text-text2 mt-1.5 leading-relaxed">
               {edu.degree} ({edu.field}).
             </p>
           </div>

@@ -41,20 +41,20 @@ export default function BlogList() {
           <Link
             to={`/blog/${post.slug}`}
             key={post.title}
-            className={`flex items-center gap-4 bg-[#111318] border p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group ${
+            className={`flex items-center gap-4 bg-surface border p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group ${
               post.featured 
-                ? 'border-[#38bdf8] shadow-[0_0_12px_rgba(56,189,248,0.1)]' 
-                : 'border-border/30'
+                ? 'border-accent shadow-sm' 
+                : 'border-border/40'
             }`}
           >
             {/* Thumbnail */}
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-zinc-800 overflow-hidden flex-shrink-0 border border-border/10">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-surface2 overflow-hidden flex-shrink-0 border border-border/10">
               <img src={post.image} alt={post.title} className="w-full h-full object-cover" loading="lazy" />
             </div>
 
             {/* Content info */}
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h3 className="font-editorial text-sm sm:text-base font-normal text-text1 group-hover:text-[#38bdf8] transition-colors leading-snug line-clamp-1">
+              <h3 className="font-editorial text-sm sm:text-base font-normal text-text1 group-hover:text-accent transition-colors leading-snug line-clamp-1">
                 {post.title}
               </h3>
               
@@ -71,7 +71,7 @@ export default function BlogList() {
                 {post.tags.map(t => (
                   <span
                     key={t}
-                    className="bg-zinc-800/60 text-text3 text-[8px] tracking-wider uppercase px-2 py-0.5 rounded font-body"
+                    className="bg-surface2/60 text-text3 text-[8px] tracking-wider uppercase px-2 py-0.5 rounded font-body border border-border/40"
                   >
                     {t}
                   </span>
@@ -80,7 +80,7 @@ export default function BlogList() {
             </div>
 
             {/* Right arrow */}
-            <ArrowUpRight size={18} className="text-text4 group-hover:text-[#38bdf8] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 ml-2" />
+            <ArrowUpRight size={18} className="text-text4 group-hover:text-accent transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 ml-2" />
           </Link>
         ))}
       </div>
@@ -88,7 +88,7 @@ export default function BlogList() {
       <div className="flex justify-center mt-4">
         <Link
           to="/blog"
-          className="inline-flex items-center justify-center px-5 py-2 border border-[#38bdf8]/60 hover:border-[#38bdf8] text-[#38bdf8] hover:text-[#38bdf8]/85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
+          className="inline-flex items-center justify-center px-5 py-2 border border-accent/60 hover:border-accent text-accent hover:opacity-85 text-xs font-body font-semibold rounded-full bg-transparent transition-colors shadow-sm"
         >
           Read all posts &rarr;
         </Link>
@@ -96,9 +96,9 @@ export default function BlogList() {
 
       {/* Pagination indicators (Decorative) */}
       <div className="flex items-center justify-center gap-1.5 mt-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
-        <span className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
-        <span className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
+        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+        <span className="w-1.5 h-1.5 rounded-full bg-border" />
+        <span className="w-1.5 h-1.5 rounded-full bg-border" />
       </div>
     </div>
   );

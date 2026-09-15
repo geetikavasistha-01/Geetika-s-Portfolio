@@ -18,7 +18,7 @@ export default function PostEmbed({ post }: { post: PostEmbedItem }) {
     : post.content;
 
   return (
-    <div className="w-full bg-white dark:bg-zinc-900 border border-border/40 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="w-full bg-surface border border-border rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300">
       {/* Header */}
       <div className="flex items-center justify-between w-full mb-3">
         <div className="flex items-center gap-3">
@@ -34,7 +34,7 @@ export default function PostEmbed({ post }: { post: PostEmbedItem }) {
                 {post.name}
               </span>
               {post.isVerified && (
-                <Award size={13} className="text-[#34908B] fill-[#34908B]" />
+                <Award size={13} className="text-accent fill-accent" />
               )}
             </div>
             <span className="text-[10px] text-text3 font-body">
@@ -53,7 +53,7 @@ export default function PostEmbed({ post }: { post: PostEmbedItem }) {
         {isLong && (
           <button 
             onClick={() => setShowMore(!showMore)} 
-            className="text-[#34908B] font-semibold hover:underline block mt-1 focus:outline-none"
+            className="text-accent font-semibold hover:underline block mt-1 focus:outline-none"
           >
             {showMore ? 'Show less' : 'Show more'}
           </button>
@@ -74,11 +74,11 @@ export default function PostEmbed({ post }: { post: PostEmbedItem }) {
           <Heart size={14} className={isLiked ? 'fill-red-500' : ''} />
           <span>{likes}</span>
         </button>
-        <div className="flex items-center gap-1.5 hover:text-[#34908B] cursor-pointer transition-colors">
+        <div className="flex items-center gap-1.5 hover:text-accent cursor-pointer transition-colors">
           <MessageCircle size={14} />
           <span>{post.replies} Reply</span>
         </div>
-        <div className="flex items-center gap-1.5 hover:text-[#34908B] cursor-pointer transition-colors">
+        <div className="flex items-center gap-1.5 hover:text-accent cursor-pointer transition-colors">
           <Share size={14} />
           <span>Copy link</span>
         </div>

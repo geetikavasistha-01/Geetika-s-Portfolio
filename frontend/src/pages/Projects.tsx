@@ -312,7 +312,7 @@ export default function Projects() {
         <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           Things I've built.
         </h1>
-        <p className="text-sm italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base sm:text-lg italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
           ML pipelines, SaaS platforms, robotics firmware, and the engineering details in between.
         </p>
       </div>
@@ -391,13 +391,13 @@ export default function Projects() {
 
                 {/* Tagline / Subtitle */}
                 {project.subtitle && (
-                  <p className="text-sm font-body text-text2 mb-4 leading-relaxed">
+                  <p className="text-base sm:text-lg font-body text-text2 mb-4 leading-relaxed">
                     {project.subtitle}
                   </p>
                 )}
 
                 {/* Description */}
-                <p className="text-sm font-body text-text3 leading-relaxed mb-4">
+                <p className="text-base sm:text-lg font-body text-text3 leading-relaxed mb-4">
                   {project.description}
                 </p>
 
@@ -465,7 +465,7 @@ export default function Projects() {
               <span className="text-sm font-semibold text-text1 group-hover:text-text3 transition-colors">
                 {project.title}
               </span>
-              <span className="text-xs italic text-text3 mt-1 truncate max-w-[280px] sm:max-w-[450px]">
+              <span className="text-sm italic text-text3 mt-1 truncate max-w-[280px] sm:max-w-[450px]">
                 {project.description}
               </span>
             </div>
@@ -517,7 +517,7 @@ export default function Projects() {
                 </div>
                 <ArrowUpRight size={12} className="text-text4" />
               </div>
-              <p className="text-xs text-text3 mt-3 leading-relaxed">
+              <p className="text-sm text-text3 mt-3 leading-relaxed">
                 {exp.description}
               </p>
             </a>
@@ -548,7 +548,7 @@ export default function Projects() {
                   {game.title}
                 </h4>
               </div>
-              <p className="text-xs text-text3 italic mt-1 leading-relaxed max-w-[200px]">
+              <p className="text-sm text-text3 italic mt-1 leading-relaxed max-w-[200px]">
                 {game.description}
               </p>
             </div>

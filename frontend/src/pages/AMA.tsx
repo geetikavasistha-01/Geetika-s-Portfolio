@@ -111,7 +111,7 @@ export default function AMA() {
         <h1 className="text-5xl sm:text-6xl font-display font-normal text-text1 mt-6">
           Ask me anything.
         </h1>
-        <p className="text-sm italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
+        <p className="text-base sm:text-lg italic font-display text-text3 mt-4 max-w-[540px] leading-relaxed">
           Stray queries, engineering details, career routes, or philosophical inquiries. Pinned answers below.
         </p>
       </div>
@@ -177,13 +177,13 @@ export default function AMA() {
               <HelpCircle size={10} />
               <span>Question Nº{idx + 1}</span>
             </div>
-            <h4 className="text-base sm:text-lg font-display text-text1 leading-relaxed">
+            <h4 className="text-lg sm:text-xl font-display text-text1 leading-relaxed">
               {item.question}
             </h4>
             <span className="text-[9px] tracking-widest text-text3 font-semibold font-mono uppercase mt-2">
               — {item.askedBy || 'ANONYMOUS'}
             </span>
-            <p className="text-xs sm:text-sm text-text2 leading-relaxed mt-4">
+            <p className="text-base sm:text-lg text-text2 leading-relaxed mt-4">
               {item.answer}
             </p>
           </div>

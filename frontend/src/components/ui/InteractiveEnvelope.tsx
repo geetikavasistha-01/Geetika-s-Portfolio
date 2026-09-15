@@ -5,14 +5,6 @@ export default function InteractiveEnvelope() {
   const [isHovered, setIsHovered] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Load cursive handwriting font dynamically
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-  }, []);
-
   const handleClick = async () => {
     // Let the mailto: attempt happen naturally (no preventDefault).
     // In parallel, silently copy the address as a fallback.
@@ -70,11 +62,11 @@ export default function InteractiveEnvelope() {
 
         {/* Floating "Click Me" label with stars beside the envelope */}
         <div className="absolute right-[-45px] top-[120px] md:right-[-60px] flex items-center gap-1 text-[10px] font-mono italic text-text3/60 select-none rotate-6">
-          <svg className="w-2.5 h-2.5 text-[#34908B] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-2.5 h-2.5 text-accent animate-pulse" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
           </svg>
           <span>click me</span>
-          <svg className="w-2 h-2 text-[#34908B] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-2 h-2 text-accent animate-pulse" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
           </svg>
         </div>

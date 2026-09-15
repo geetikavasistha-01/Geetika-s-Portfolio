@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '../store/uiStore';
@@ -16,7 +16,8 @@ import {
   journalEntries, 
   smallTruths 
 } from '../data/humanData';
-import renge from '../assets/renge.png';
+import renge from '../assets/human-renge.jpg';
+import keepGoing from '../assets/keep-going.jpg';
 import { 
   Moon, Sun, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp, Star 
 } from 'lucide-react';
@@ -25,6 +26,22 @@ export default function Human() {
   const { theme, toggleTheme } = useUIStore();
   const [watchFilter, setWatchFilter] = useState<'all' | 'movie' | 'series' | 'anime'>('all');
   const [openJournalIdx, setOpenJournalIdx] = useState<number | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      if (prefersReducedMotion) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch((err) => {
+          console.warn('Background video autoplay was prevented:', err);
+        });
+      }
+    }
+  }, []);
 
   const filteredWatchItems = watchItems.filter(item => 
     watchFilter === 'all' || item.type === watchFilter
@@ -35,28 +52,53 @@ export default function Human() {
   };
 
   return (
-    <PageWrapper>
-      {/* SECTION 1 — HEADER */}
-      <div className="relative w-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-border/40 shadow-sm mb-16 select-none">
-        {/* Banner with theme toggle */}
-        <div className="h-32 sm:h-44 w-full bg-gradient-to-r from-teal/10 via-[#34908B]/10 to-rose/10 relative">
-          <div className="absolute top-4 right-4">
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 rounded-full border border-border/60 hover:border-text2 text-text3 hover:text-text1 transition-colors bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm focus:outline-none"
-              title="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
-          </div>
-        </div>
+    <div className="homepage-root w-full flex flex-col relative">
+      {/* 1. Background Video */}
+      <video
+        ref={videoRef}
+        className="bg-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/videos/homepage-bg-poster.jpg"
+      >
+        <source src="/videos/Create_a_clean_bright_whimsi.mp4" type="video/mp4" />
+        <source src="/videos/homepage-bg.mp4" type="video/mp4" />
+        <source src="/videos/homepage-bg.webm" type="video/webm" />
+      </video>
 
-        {/* Profile Content Wrapper */}
-        <div className="px-6 pb-6 pt-0 relative flex flex-col items-start">
-          {/* Avatar (Overlapping) */}
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-white dark:border-zinc-900 overflow-hidden shadow-md -mt-10 sm:-mt-12 bg-white dark:bg-zinc-800 flex items-center justify-center relative z-20">
-            <img src={renge} alt="Mascot Avatar" className="w-full h-full object-cover" />
-          </div>
+      {/* 2. Contrast Overlay */}
+      <div className="bg-overlay" />
+
+      {/* 3. Page Content */}
+      <div className="homepage-content w-full flex flex-col">
+        <PageWrapper>
+          {/* SECTION 1 — HEADER */}
+          <div className="relative w-full rounded-2xl overflow-hidden bg-surface border border-border shadow-sm mb-16 select-none">
+            {/* Banner with theme toggle */}
+            <div 
+              className="h-36 sm:h-52 w-full bg-cover bg-center bg-no-repeat relative border-b border-border/20"
+              style={{ backgroundImage: `url(${keepGoing})` }}
+            >
+              <div className="absolute inset-0 bg-black/10 dark:bg-black/20 pointer-events-none" />
+              <div className="absolute top-4 right-4 z-30">
+                <button
+                  onClick={toggleTheme}
+                  className="p-1.5 rounded-full border border-border/60 hover:border-text2 text-text3 hover:text-text1 transition-colors bg-surface/75 backdrop-blur-sm focus:outline-none"
+                  title="Toggle Theme"
+                >
+                  {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Profile Content Wrapper */}
+            <div className="px-6 pb-6 pt-0 relative flex flex-col items-start">
+              {/* Avatar (Overlapping) */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-4 border-surface overflow-hidden shadow-md -mt-10 sm:-mt-12 bg-surface flex items-center justify-center relative z-20">
+                <img src={renge} alt="Mascot Avatar" className="w-full h-full object-cover" />
+              </div>
 
           {/* Name & Tagline */}
           <div className="mt-4 flex flex-col">
@@ -72,7 +114,7 @@ export default function Human() {
           </div>
 
           {/* Warm Bio */}
-          <p className="mt-4 text-sm sm:text-base text-text2 font-body max-w-xl leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-text2 font-body max-w-xl leading-relaxed">
             I engineer software and data pipelines by day, and seek out quiet, analog spaces by night.
             This page is a repository of the music I play, the books I read, and the small, sensory truths I chew on.
           </p>
@@ -92,7 +134,7 @@ export default function Human() {
               <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors">
                 Spotify
               </a>
-              <Link to="/me" className="px-3.5 py-1.5 rounded-full bg-[#34908B] text-white hover:bg-[#28736f] text-[11px] font-body transition-all hover:shadow-md">
+              <Link to="/me" className="px-3.5 py-1.5 rounded-full bg-accent text-bg hover:opacity-90 text-[11px] font-body transition-all hover:shadow-md">
                 the technical me &rarr;
               </Link>
             </div>
@@ -100,7 +142,7 @@ export default function Human() {
 
           {/* Anonymous Question Link */}
           <div className="mt-5">
-            <Link to="/ama" className="text-xs text-text3 font-body hover:text-[#34908B] underline transition-colors">
+            <Link to="/ama" className="text-xs text-text3 font-body hover:text-accent underline transition-colors">
               send an anonymous question to my inbox
             </Link>
           </div>
@@ -131,7 +173,7 @@ export default function Human() {
                 onClick={() => setWatchFilter(type)}
                 className={`rounded-full px-4 py-1.5 text-[10px] tracking-wider uppercase transition-all duration-200 border ${
                   isActive
-                    ? 'bg-[#34908B] text-white border-[#34908B]'
+                    ? 'bg-accent text-bg border-accent font-semibold'
                     : 'border-border/60 text-text3 hover:border-text3 hover:text-text1'
                 }`}
               >
@@ -152,10 +194,10 @@ export default function Human() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
                 key={item.title}
-                className="group relative bg-white dark:bg-zinc-900 border border-border/40 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="group relative bg-surface border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 {/* Poster Container */}
-                <div className="aspect-[2/3] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
+                <div className="aspect-[2/3] w-full bg-surface2 overflow-hidden relative">
                   <img
                     src={item.posterUrl}
                     alt={item.title}
@@ -163,12 +205,12 @@ export default function Human() {
                     loading="lazy"
                   />
                   {/* Category Badge (Top-Left) */}
-                  <span className="absolute top-3 left-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm text-text1 text-[9px] tracking-wider uppercase px-2 py-0.5 rounded font-mono">
+                  <span className="absolute top-3 left-3 bg-surface/80 backdrop-blur-sm text-text1 text-[9px] tracking-wider uppercase px-2 py-0.5 rounded font-mono border border-border/50">
                     {item.type}
                   </span>
                   {/* Rating Badge (Top-Right) */}
-                  <span className="absolute top-3 right-3 bg-[#34908B]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
-                    <Star size={10} className="fill-white" />
+                  <span className="absolute top-3 right-3 bg-accent text-bg text-[9px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+                    <Star size={10} className="fill-bg" />
                     {item.rating}
                   </span>
                 </div>
@@ -200,12 +242,12 @@ export default function Human() {
       {/* SECTION 5 — LATELY */}
       <section className="mb-16">
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-1 h-3.5 bg-[#34908B] rounded-full" />
+          <div className="w-1 h-3.5 bg-accent rounded-full" />
           <span className="text-[9px] tracking-[0.2em] font-semibold text-text3 uppercase font-mono">
             lately
           </span>
         </div>
-        <div className="w-full max-w-2xl bg-white dark:bg-zinc-900 border border-border/40 rounded-2xl p-6 shadow-sm">
+        <div className="w-full max-w-2xl bg-surface border border-border rounded-2xl p-6 shadow-sm">
           <div className="flex flex-col gap-4 font-body text-xs sm:text-sm">
             <div className="flex flex-col sm:flex-row sm:justify-between border-b border-border/30 pb-3 gap-1">
               <span className="text-text3 italic">listening to</span>
@@ -230,8 +272,8 @@ export default function Human() {
         {/* Featured books grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           {featuredBooks.map((book) => (
-            <div key={book.title} className="flex gap-4 items-center bg-white dark:bg-zinc-900 border border-border/40 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="w-16 h-20 rounded bg-zinc-100 dark:bg-zinc-800 overflow-hidden shadow-sm flex-shrink-0">
+            <div key={book.title} className="flex gap-4 items-center bg-surface border border-border p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-16 h-20 rounded bg-surface2 overflow-hidden shadow-sm flex-shrink-0">
                 <img src={book.coverUrl} alt={book.title} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="flex flex-col justify-center min-w-0">
@@ -251,31 +293,31 @@ export default function Human() {
           <span className="text-[9px] font-mono tracking-widest text-text3 uppercase block mb-4">
             papers i keep returning to
           </span>
-          <div className="flex flex-col gap-3 bg-white dark:bg-zinc-900 border border-border/40 rounded-2xl p-4 shadow-sm">
+          <div className="flex flex-col gap-3 bg-surface border border-border rounded-2xl p-4 shadow-sm">
             {returningPapers.map((paper) => (
               <a
                 href={paper.url}
                 key={paper.title}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between py-2 border-b border-border/30 last:border-b-0 hover:text-[#34908B] transition-colors group"
+                className="flex items-center justify-between py-2 border-b border-border/30 last:border-b-0 hover:text-accent transition-colors group"
               >
                 <div className="flex flex-col min-w-0">
-                  <span className="font-body font-bold text-xs sm:text-sm text-text1 group-hover:text-[#34908B] transition-colors truncate">
+                  <span className="font-body font-bold text-xs sm:text-sm text-text1 group-hover:text-accent transition-colors truncate">
                     {paper.title}
                   </span>
                   <span className="text-[10px] text-text3 font-body mt-0.5">
                     {paper.author} · {paper.date}
                   </span>
                 </div>
-                <ExternalLink size={14} className="text-text4 group-hover:text-[#34908B] transition-colors flex-shrink-0 ml-4" />
+                <ExternalLink size={14} className="text-text4 group-hover:text-accent transition-colors flex-shrink-0 ml-4" />
               </a>
             ))}
           </div>
         </div>
 
         <div className="flex justify-center mt-8">
-          <Link to="/shelf" className="inline-flex items-center gap-1 bg-white dark:bg-zinc-900 border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors shadow-sm">
+          <Link to="/shelf" className="inline-flex items-center gap-1 bg-surface border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors shadow-sm">
             <span>see the full shelf</span>
             <ArrowUpRight size={14} />
           </Link>
@@ -285,7 +327,7 @@ export default function Human() {
       {/* SECTION 7 — THINKING OUT LOUD (Accordion entries) */}
       <section className="mb-16">
         <SectionHeader label="thinking out loud" />
-        <div className="flex flex-col gap-3 mt-8 bg-white dark:bg-zinc-900 border border-border/40 rounded-2xl p-4 shadow-sm">
+        <div className="flex flex-col gap-3 mt-8 bg-surface border border-border rounded-2xl p-4 shadow-sm">
           {journalEntries.map((entry, idx) => {
             const isOpen = openJournalIdx === idx;
             return (
@@ -295,7 +337,7 @@ export default function Human() {
                   className="w-full flex items-center justify-between text-left focus:outline-none py-2 group"
                 >
                   <div className="flex flex-col">
-                    <span className="font-body font-bold text-xs sm:text-sm text-text1 group-hover:text-[#34908B] transition-colors">
+                    <span className="font-body font-bold text-xs sm:text-sm text-text1 group-hover:text-accent transition-colors">
                       {entry.title}
                     </span>
                     <span className="text-[10px] text-text3 font-body mt-0.5">
@@ -303,9 +345,9 @@ export default function Human() {
                     </span>
                   </div>
                   {isOpen ? (
-                    <ChevronUp size={16} className="text-text3 group-hover:text-[#34908B]" />
+                    <ChevronUp size={16} className="text-text3 group-hover:text-accent" />
                   ) : (
-                    <ChevronDown size={16} className="text-text3 group-hover:text-[#34908B]" />
+                    <ChevronDown size={16} className="text-text3 group-hover:text-accent" />
                   )}
                 </button>
                 {isOpen && (
@@ -313,7 +355,7 @@ export default function Human() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-2 text-xs sm:text-sm text-text2 leading-relaxed pl-1 pb-2 font-body select-text"
+                    className="mt-2 text-sm sm:text-base text-text2 leading-relaxed pl-1 pb-2 font-body select-text"
                   >
                     {entry.body}
                   </motion.div>
@@ -330,10 +372,10 @@ export default function Human() {
           <p className="font-editorial text-lg sm:text-xl italic text-text1 leading-relaxed">
             "i spend my daytime crafting distributed systems and training neural nodes."
           </p>
-          <p className="mt-4 text-xs sm:text-sm text-text2 font-body max-w-md leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-text2 font-body max-w-md leading-relaxed">
             By day, my world consists of clean data structures, anomaly models, sat telemetry scripts, and system performance. You can read the formal logs on the other side.
           </p>
-          <Link to="/me" className="mt-6 inline-flex items-center gap-1 border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors bg-white dark:bg-zinc-900 shadow-sm">
+          <Link to="/me" className="mt-6 inline-flex items-center gap-1 border border-border/60 hover:border-text2 text-text3 hover:text-text1 px-5 py-2 rounded-full text-xs font-body transition-colors bg-surface shadow-sm">
             <span>the technical side</span>
             <ArrowUpRight size={14} />
           </Link>
@@ -345,7 +387,7 @@ export default function Human() {
         <SectionHeader label="small truths" />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
           {smallTruths.map((truth, idx) => (
-            <div key={idx} className="bg-white dark:bg-zinc-900 border border-border/40 p-5 rounded-2xl shadow-sm text-xs sm:text-sm text-text3 leading-relaxed font-body italic flex items-center justify-center text-center">
+            <div key={idx} className="bg-surface border border-border p-5 rounded-2xl shadow-sm text-sm sm:text-base text-text3 leading-relaxed font-body italic flex items-center justify-center text-center">
               "{truth}"
             </div>
           ))}
@@ -357,13 +399,15 @@ export default function Human() {
         <p className="font-editorial text-base sm:text-lg italic text-text2 max-w-md leading-relaxed">
           "quieter thoughts leave room for cleaner creations."
         </p>
-        <Link to="/me" className="mt-4 text-xs text-text3 font-body hover:text-[#34908B] underline transition-colors">
+        <Link to="/me" className="mt-4 text-xs text-text3 font-body hover:text-accent underline transition-colors">
           back to the serious stuff &rarr;
         </Link>
         <span className="mt-8 text-[10px] text-text4 font-body">
-          with love, <span className="text-[#34908B] font-semibold">@geekykunoichi</span>
+          with love, <span className="text-accent font-semibold">@geekykunoichi</span>
         </span>
       </section>
-    </PageWrapper>
+        </PageWrapper>
+      </div>
+    </div>
   );
 }

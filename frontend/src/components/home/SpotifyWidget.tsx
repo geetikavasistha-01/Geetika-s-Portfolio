@@ -47,9 +47,9 @@ export default function SpotifyWidget() {
         {isMusicPlaying && (
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <span className="flex gap-0.5 items-end justify-center h-3.5 w-3.5">
-              <span className="w-0.5 h-2 bg-[#34908B] animate-bounce [animation-delay:0.1s]" />
-              <span className="w-0.5 h-3 bg-[#34908B] animate-bounce [animation-delay:0.3s]" />
-              <span className="w-0.5 h-1.5 bg-[#34908B] animate-bounce [animation-delay:0.5s]" />
+              <span className="w-0.5 h-2 bg-accent animate-bounce [animation-delay:0.1s]" />
+              <span className="w-0.5 h-3 bg-accent animate-bounce [animation-delay:0.3s]" />
+              <span className="w-0.5 h-1.5 bg-accent animate-bounce [animation-delay:0.5s]" />
             </span>
           </div>
         )}
@@ -58,7 +58,7 @@ export default function SpotifyWidget() {
       {/* Info text */}
       <div className="flex flex-col min-w-0">
         <span className="text-[9px] font-mono tracking-[0.2em] text-text4 uppercase flex items-center gap-1.5 select-none">
-          <span className={`w-1.5 h-1.5 rounded-full ${isMusicPlaying ? 'bg-[#34908B] animate-pulse' : 'bg-text4/60'}`} />
+          <span className={`w-1.5 h-1.5 rounded-full ${isMusicPlaying ? 'bg-accent animate-pulse' : 'bg-text4/60'}`} />
           {isMusicPlaying ? 'Now Playing' : 'Last Played'}
         </span>
         {displayTrack.title === 'Nothing playing right now' ? (
@@ -70,7 +70,7 @@ export default function SpotifyWidget() {
             href={displayTrack.url || 'https://spotify.com'}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold text-text1 hover:text-[#34908B] hover:underline transition-colors truncate max-w-[190px] mt-1"
+            className="text-xs font-semibold text-text1 hover:text-accent hover:underline transition-colors truncate max-w-[190px] mt-1"
             title={`${displayTrack.title} by ${displayTrack.artist}`}
           >
             {displayTrack.title} {displayTrack.artist && `· ${displayTrack.artist}`}

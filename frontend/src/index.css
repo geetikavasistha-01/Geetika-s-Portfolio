@@ -1,141 +1,123 @@
-/*
- * LICENSE NOTICE: All four custom fonts (Cherolina, ELEGANT TYPEWRITER, Nectarine, OldMoney) 
- * are licensed for personal use only. This is a portfolio site that may be considered 
- * commercial/professional use — verify licensing status with each foundry before deploying to production.
- */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
-
-@font-face {
-  font-family: 'Nectarine';
-  src: url('/fonts/Nectarine.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Old Money';
-  src: url('/fonts/OldMoney.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Westfalia';
-  src: url('/fonts/Westfalia-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Cherolina';
-  src: url('/fonts/Cherolina.otf') format('opentype'),
-       url('/fonts/Cherolina.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Elegant Typewriter';
-  src: url('/fonts/ElegantTypewriter-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Elegant Typewriter';
-  src: url('/fonts/ElegantTypewriter-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Elegant Typewriter';
-  src: url('/fonts/ElegantTypewriter-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Elegant Typewriter';
-  src: url('/fonts/ElegantTypewriter-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Daffeniy-8OerD';
-  src: url('/fonts/Daffeniy-8OerD.ttf') format('truetype'),
-       url('/fonts/Daffeniy-8OerD.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Norway';
-  src: url('./assets/fonts/Norway-rvVR7.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Light Mode - Audited for WCAG AA/AAA Contrast */
-  --color-bg: #eef7eb;
-  --color-surface: #ffffff;
-  --color-surface2: #e0ecd9;
-  --color-border: #b1d3b9;
-  --color-text1: #132620; /* Dark forest green for high contrast headings (~13.5:1 ratio) */
-  --color-text2: #223c33; /* Readable dark body text (~8.5:1 ratio) */
-  --color-text3: #335c4e; /* Muted titles and primary actions (~5.4:1 ratio) */
-  --color-text4: #406c5f; /* Accent and subtext (~4.5:1 ratio) */
-  --color-navbar: #ffffff;
+/* Universal cascade for Instrument Serif */
+html,
+body,
+*,
+*::before,
+*::after,
+button,
+input,
+optgroup,
+select,
+textarea,
+dialog {
+  font-family: 'Instrument Serif', Georgia, serif !important;
 }
 
-:root.dark {
-  /* Dark Mode - Deep Forest Sage with Audited WCAG AA Contrast */
-  --color-bg: #0b1411;       /* Near-black forest green */
-  --color-surface: #12211c;  /* Visibly lighter cards */
-  --color-surface2: #1a2d26; /* Hover states */
-  --color-border: #2d4f43;   /* Muted borders */
-  --color-text1: #e2eedc;    /* Pale cream/sage titles (~17.8:1 ratio) */
-  --color-text2: #b8ceb8;    /* Soft mint/sage body text (~12.4:1 ratio) */
-  --color-text3: #88bda4;    /* Medium green secondary labels (~7.6:1 ratio) */
-  --color-text4: #659287;    /* Deep sage teal muted labels (~4.6:1 ratio) */
-  --color-navbar: #162a22;   /* Lighter step floating navbar */
+:root {
+  --font-size-base: 18px;
+  --text-base: 1.125rem;
+  --font-sans: 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Instrument Serif', Georgia, serif;
+}
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 1. Theme Definitions */
+:root,
+[data-theme="linen"] {
+  --bg: #FAF6EE;
+  --surface: #F3EDE0;
+  --text: #1E1B16;
+  --text-muted: #6B6558;
+  --accent: #B5602F;
+  --border: #E3DACB;
+}
+
+[data-theme="mist"] {
+  --bg: #F7F6FA;
+  --surface: #EEECF4;
+  --text: #1C1B22;
+  --text-muted: #67667A;
+  --accent: #8C8FC9;
+  --border: #DEDCE9;
+}
+
+[data-theme="midnight"] {
+  --bg: #0D0D10;
+  --surface: #17171B;
+  --text: #EDEDEF;
+  --text-muted: #9A9AA2;
+  --accent: #E3A8AE;
+  --border: #26262C;
+}
+
+[data-theme="harbor"] {
+  --bg: #10121C;
+  --surface: #191C2A;
+  --text: #ECECEF;
+  --text-muted: #9294A6;
+  --accent: #E0B65C;
+  --border: #262A3C;
+}
+
+/* Variable mapping to guarantee backward compatibility with existing component styles */
+:root {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface);
+  --color-border: var(--border);
+  --color-text1: var(--text);
+  --color-text2: var(--text);
+  --color-text3: var(--text-muted);
+  --color-text4: var(--text-muted);
+  --color-navbar: var(--surface);
 }
 
 /* Base custom styles with smooth theme transitions */
 body,
-body * {
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
+body *,
+[data-theme],
+[data-theme] * {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text2);
-  font-family: -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-size: 1rem; /* 18px base */
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
+p {
+  line-height: 1.65;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-text1);
-  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--text);
+  font-family: 'Instrument Serif', Georgia, serif !important;
 }
 
 /* Custom CSS classes */
 .section-label {
-  font-family: -apple-system, 'Segoe UI', Roboto, system-ui, sans-serif;
+  font-family: 'Instrument Serif', Georgia, serif !important;
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: var(--color-text3);
+  color: var(--text-muted);
 }
 
 .section-rule {
@@ -148,19 +130,31 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   height: 1px;
   flex: 1;
-  background-color: var(--color-border);
+  background-color: var(--border);
 }
 
 .mono-block {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Instrument Serif', Georgia, serif !important;
   font-size: 12px;
-  color: var(--color-text3);
+  color: var(--text-muted);
   border-left-width: 2px;
-  border-color: var(--color-border);
+  border-color: var(--border);
   padding-left: 16px;
   padding-top: 4px;
   padding-bottom: 4px;
   line-height: 1.6;
+}
+
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.instrument-serif-italic {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .card-log {
@@ -178,13 +172,53 @@ h1, h2, h3, h4, h5, h6 {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: var(--border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text4);
+  background: var(--text-muted);
+}
+
+/* Fixed Background Video for Homepage */
+.homepage-root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(250, 246, 238, 0.35);
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+[data-theme="midnight"] .bg-overlay,
+[data-theme="harbor"] .bg-overlay,
+.dark .bg-overlay {
+  background: rgba(13, 13, 16, 0.45);
+}
+
+.homepage-content {
+  position: relative;
+  z-index: 2;
 }

@@ -160,7 +160,7 @@ export default function BlogPostPage() {
         <h1 className="text-4xl sm:text-5xl font-display font-normal text-text1 leading-tight">
           {post.title}
         </h1>
-        <p className="text-base text-text3 italic mt-3 leading-relaxed max-w-[600px]">
+        <p className="text-lg sm:text-xl text-text3 italic mt-3 leading-relaxed max-w-[600px]">
           {post.excerpt}
         </p>
 
@@ -168,20 +168,20 @@ export default function BlogPostPage() {
         <div className="h-px bg-border/40 w-full my-8" />
 
         {/* Content */}
-        <div className="prose prose-invert max-w-none text-xs sm:text-sm text-text2 leading-relaxed space-y-6">
+        <div className="prose prose-invert max-w-none text-base sm:text-lg text-text2 leading-relaxed space-y-6">
           <ReactMarkdown
             components={{
-              h2: ({ ...props }) => <h2 className="text-lg font-sans font-semibold text-text1 mt-10 mb-4" {...props} />,
-              h3: ({ ...props }) => <h3 className="text-sm font-sans font-semibold text-text1 mt-6 mb-2" {...props} />,
-              p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
-              li: ({ ...props }) => <li className="mb-2 list-disc list-inside ml-2" {...props} />,
+              h2: ({ ...props }) => <h2 className="text-xl sm:text-2xl font-sans font-semibold text-text1 mt-10 mb-4" {...props} />,
+              h3: ({ ...props }) => <h3 className="text-base sm:text-lg font-sans font-semibold text-text1 mt-6 mb-2" {...props} />,
+              p: ({ ...props }) => <p className="mb-5 leading-relaxed text-base sm:text-lg" {...props} />,
+              li: ({ ...props }) => <li className="mb-2 list-disc list-inside ml-2 text-base sm:text-lg" {...props} />,
               ul: ({ ...props }) => <ul className="mb-4" {...props} />,
-              code: ({ ...props }) => <code className="font-mono bg-surface2 px-1 py-0.5 rounded text-xs text-green" {...props} />,
+              code: ({ ...props }) => <code className="font-mono bg-surface2 px-1.5 py-0.5 rounded text-sm text-green" {...props} />,
               pre: ({ node, ...props }) => {
                 // If it is a block container, we render our custom CodeBlock with copy button
                 return <CodeBlock>{props.children}</CodeBlock>;
               },
-              blockquote: ({ ...props }) => <blockquote className="border-l-2 border-border pl-4 italic text-text3" {...props} />
+              blockquote: ({ ...props }) => <blockquote className="border-l-2 border-border pl-4 italic text-text3 text-base sm:text-lg" {...props} />
             }}
           >
             {post.content}

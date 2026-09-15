@@ -1,194 +1,197 @@
 import React from 'react';
-import { ArrowUpRight, FolderGit2, Briefcase, FileText, Headphones, PenTool, BookOpen } from 'lucide-react';
+import { ArrowUpRight, FolderGit2, Briefcase, FileText, Headphones, PenTool, BookOpen, Sun, Moon } from 'lucide-react';
 import { useUIStore } from '../../store/uiStore';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaXTwitter, FaMedium, FaPython } from 'react-icons/fa6';
-import { SiHashnode, SiSubstack, SiFastapi, SiScikitlearn } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaXTwitter, FaMedium } from 'react-icons/fa6';
+import { SiHashnode, SiSubstack } from 'react-icons/si';
 
 import renge from '../../assets/renge.png';
-import { LinkPreview } from '../ui/LinkPreview';
+import keepGoing from '../../assets/keep-going.jpg';
 import SpotifyWidget from './SpotifyWidget';
 
 export default function Hero() {
-  const { recruiterMode } = useUIStore();
+  const { theme, toggleTheme } = useUIStore();
 
   return (
-    <section className="pt-24 pb-12 w-full flex flex-col items-start relative z-10">
-      {/* Avatar & Social Header - Polaroid Taped Style */}
-      <div className="flex flex-col md:flex-row md:items-center gap-6 w-full mb-8">
-        <a
-          href="https://myanimelist.net/anime/17549/Non_Non_Biyori?q=non%20non&cat=anime"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block relative select-none flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shadow-md hover:shadow-lg border border-border/40 transition-all duration-300 group"
-          title="Renge Miyauchi (Non Non Biyori)"
-        >
-          <img
-            src={renge}
-            alt="Renge Miyauchi Avatar"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </a>
+    <div className="w-full flex flex-col items-start relative select-none">
+      {/* 1. Cover Banner with Theme Toggle */}
+      <div 
+        className="h-36 sm:h-52 w-full bg-cover bg-center bg-no-repeat relative border-b border-border/20"
+        style={{ backgroundImage: `url(${keepGoing})` }}
+      >
+        <div className="absolute inset-0 bg-black/10 dark:bg-black/20 pointer-events-none" />
+        <div className="absolute top-4 right-4 z-30">
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-full border border-border/60 hover:border-text2 text-text3 hover:text-text1 transition-colors bg-surface/75 backdrop-blur-sm focus:outline-none"
+            title="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+        </div>
+      </div>
 
-        {/* Name and Socials */}
-        <div className="flex flex-col justify-center">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-daffeniy text-text1 leading-none not-italic">
-              Geetika <span className="text-[#34908B]">Vasistha</span>
+      {/* 2. Profile Details Container */}
+      <div className="px-6 sm:px-8 pb-6 pt-0 relative flex flex-col items-start select-text w-full">
+        {/* Mascot Avatar (Overlapping Banner) */}
+        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-4 border-surface overflow-hidden shadow-md -mt-10 sm:-mt-12 bg-surface flex items-center justify-center relative z-20 select-none">
+          <img src={renge} alt="Renge Avatar" className="w-full h-full object-cover" />
+        </div>
+
+        {/* Name & Title */}
+        <div className="mt-4 flex flex-col">
+          <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal text-text1 leading-tight not-italic">
+              hey, i'm geetika
             </h1>
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.geetikavasistha@gmail.com&su=Hire%20Me%20%E2%80%94%20Saw%20your%20portfolio!"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#34908B] text-white hover:bg-[#28736f] text-xs font-bold shadow-sm transition-all duration-300 select-none md:mt-2"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-accent text-bg hover:opacity-90 text-xs font-bold shadow-sm transition-all duration-300 select-none md:mt-1"
             >
               <span>Hire Me</span>
               <ArrowUpRight size={12} />
             </a>
           </div>
+          <span className="text-[11px] text-text3 font-mono mt-1">
+            @geekykunoichi
+          </span>
+        </div>
 
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-4 items-center mt-3">
+        {/* Bio Text */}
+        <div className="mt-4 space-y-3.5 text-base sm:text-lg text-text2 leading-relaxed max-w-2xl font-body">
+          <p>
+            I spend most of my time building <span className="font-semibold text-text1">Agentic AI</span>, <span className="font-semibold text-text1">distributed systems</span>, and <span className="font-semibold text-text1">backend infrastructure</span> for intelligent applications.
+          </p>
+          <p>
+            I enjoy designing systems that <span className="italic text-text1">reason</span>, <span className="font-semibold text-text1">scale</span>, and remain <span className="font-semibold text-text1">reliable</span> under real-world constraints.
+          </p>
+          <p>
+            I care deeply about <span className="font-semibold text-text1">open source</span>, <span className="font-semibold text-text1">privacy-preserving systems</span>, and <span className="font-semibold text-text1">security-first engineering</span>.
+          </p>
+          <p className="text-text3 flex flex-wrap items-center gap-1 text-sm sm:text-base">
+            Explore my latest{' '}
+            <Link to="/projects" className="inline-flex items-center gap-0.5 underline hover:text-accent font-medium transition-colors">
+              <FolderGit2 size={14} /> projects
+            </Link>
+            , read my{' '}
+            <Link to="/work" className="inline-flex items-center gap-0.5 underline hover:text-accent font-medium transition-colors">
+              <Briefcase size={14} /> experience
+            </Link>
+            , or check out the{' '}
+            <Link to="/blog" className="inline-flex items-center gap-0.5 underline hover:text-accent font-medium transition-colors">
+              <FileText size={14} /> blog
+            </Link>
+            .
+          </p>
+        </div>
+
+        {/* Elsewhere Pills + CTAs */}
+        <div className="mt-6 w-full">
+          <span className="text-[9px] font-mono tracking-widest text-text3 uppercase block mb-3">
+            ELSEWHERE
+          </span>
+          <div className="flex flex-wrap gap-2 items-center">
+            <a 
+              href="https://github.com/geetikavasistha-01" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              GitHub
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/geetikavasisthampy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a 
+              href="https://x.com/GeetikaVasistha" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              Twitter/X
+            </a>
+            <a 
+              href="https://medium.com/@geetikavasistha13" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              Medium
+            </a>
+            <a 
+              href="https://hashnode.com/@ai-for-all" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              Hashnode
+            </a>
+            <a 
+              href="https://substack.com/@augustine1301" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3.5 py-1.5 rounded-full border border-border/60 hover:border-text3 text-text3 hover:text-text1 text-[11px] font-body transition-colors"
+            >
+              Substack
+            </a>
+            <Link 
+              to="/me" 
+              className="px-3.5 py-1.5 rounded-full bg-accent text-bg hover:opacity-90 text-[11px] font-body transition-all hover:shadow-md font-medium"
+            >
+              Everything at a glance &rarr;
+            </Link>
+            <Link 
+              to="/human" 
+              className="px-3.5 py-1.5 rounded-full bg-[#F9C5D5] hover:bg-[#F4AFC3] text-zinc-900 text-[11px] font-body transition-all hover:shadow-md font-medium"
+            >
+              Personal Side &rarr;
+            </Link>
+          </div>
+        </div>
+
+        {/* Fan of + Spotify status bar */}
+        <div className="mt-6 pt-5 border-t border-border/40 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-text3 font-mono">
+            <span className="italic select-none mr-0.5">fan of</span>
             <a
-              href="https://github.com/geetikavasistha-01"
+              href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="GitHub"
+              className="inline-flex items-center gap-1 text-text2 hover:text-accent hover:underline transition-colors"
             >
-              <FaGithub size={18} />
+              <Headphones size={13} className="text-accent" /> Taylor Swift
             </a>
-            <a
-              href="https://www.linkedin.com/in/geetikavasisthampy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="LinkedIn"
-            >
-              <FaLinkedin size={18} />
-            </a>
-            <a
-              href="https://x.com/GeetikaVasistha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="Twitter/X"
-            >
-              <FaXTwitter size={18} />
-            </a>
+            <span className="select-none text-text4">,</span>
             <a
               href="https://medium.com/@geetikavasistha13"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="Medium"
+              className="inline-flex items-center gap-1 text-text2 hover:text-accent hover:underline transition-colors"
             >
-              <FaMedium size={18} />
+              <PenTool size={13} className="text-accent" /> Writing
             </a>
+            <span className="select-none italic text-text4">and</span>
             <a
-              href="https://hashnode.com/@ai-for-all"
+              href="https://in.pinterest.com/geezxoeyy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="Hashnode"
+              className="inline-flex items-center gap-1 text-text2 hover:text-accent hover:underline transition-colors"
             >
-              <SiHashnode size={17} />
-            </a>
-            <a
-              href="https://substack.com/@augustine1301"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text3 hover:text-[#34908B] transition-colors"
-              title="Substack"
-            >
-              <SiSubstack size={16} />
+              <BookOpen size={13} className="text-accent" /> pinterest boards
             </a>
           </div>
+
+          {/* Spotify Status */}
+          <SpotifyWidget />
         </div>
       </div>
-
-      {/* Name and Alias Divider Line */}
-      <div className="flex items-center gap-3 w-full mb-8">
-        <span className="text-xs text-text3 font-mono italic select-none">
-          geekykunoichi
-        </span>
-        <div className="h-px flex-1 bg-border/40" />
-      </div>
-
-      {/* Bio Prose Block with Left Border Indent */}
-      <div className="pl-4 border-l border-border/70 space-y-6 text-sm text-text2 leading-relaxed w-full font-sans">
-        <p>
-          I spend most of my time building <span className="font-semibold text-text1">Agentic AI</span>, <span className="font-semibold text-text1">distributed systems</span>, and <span className="font-semibold text-text1">backend infrastructure</span> for intelligent applications.
-        </p>
-
-        <p>
-          I enjoy designing systems that <span className="italic text-text1">reason</span>, <span className="font-semibold text-text1">scale</span>, and remain <span className="font-semibold text-text1">reliable</span> under real-world constraints.
-        </p>
-
-        <p>
-          I care deeply about <span className="font-semibold text-text1">open source</span>, <span className="font-semibold text-text1">privacy-preserving systems</span>, and <span className="font-semibold text-text1">security-first engineering</span>.
-        </p>
-
-        <p className="text-text3 flex flex-wrap items-center gap-1">
-          Explore my latest
-          <Link to="/projects" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
-            <FolderGit2 size={13} /> projects
-          </Link>
-          , read my
-          <Link to="/work" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
-            <Briefcase size={13} /> experience
-          </Link>
-          , or check out the
-          <Link to="/blog" className="inline-flex items-center gap-0.5 underline hover:text-[#34908B] font-medium transition-colors">
-            <FileText size={13} /> blog
-          </Link>
-          .
-        </p>
-      </div>
-
-      {/* CTA Button */}
-      <div className="mt-8">
-        <Link
-          to="/me"
-          className="inline-flex items-center gap-2 bg-[#34908B] hover:bg-[#28736f] text-white font-bold rounded-full px-6 py-2.5 text-xs sm:text-sm tracking-wider shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 select-none"
-        >
-          Everything at a glance <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </Link>
-      </div>
-
-      {/* Fan of line with custom matching links & icons */}
-      <div className="mt-12 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text3 font-mono">
-        <span className="italic select-none mr-0.5">fan of</span>
-        <a
-          href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
-        >
-          <Headphones size={13} className="text-[#34908B]" /> Taylor Swift
-        </a>
-        <span className="select-none text-text4">,</span>
-        <a
-          href="https://medium.com/@geetikavasistha13"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
-        >
-          <PenTool size={13} className="text-[#34908B]" /> Writing
-        </a>
-        <span className="select-none italic text-text4">and</span>
-        <a
-          href="https://in.pinterest.com/geezxoeyy/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-text2 hover:text-[#34908B] hover:underline transition-colors"
-        >
-          <BookOpen size={13} className="text-[#34908B]" /> pinterest boards
-        </a>
-      </div>
-
-      {/* Compact Spotify Status */}
-      <SpotifyWidget />
-    </section>
+    </div>
   );
 }
