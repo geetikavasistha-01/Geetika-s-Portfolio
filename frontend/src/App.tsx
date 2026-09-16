@@ -26,12 +26,13 @@ import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Human from './pages/Human';
 import Me from './pages/Me';
+import Story from './pages/Story';
 
 const queryClient = new QueryClient();
 
 function ConditionalFooter() {
   const location = useLocation();
-  if (location.pathname === '/') return null;
+  if (location.pathname === '/' || location.pathname === '/story' || location.pathname === '/world') return null;
   return <Footer />;
 }
 
@@ -39,11 +40,12 @@ function AppLayout() {
   const location = useLocation();
   const isHuman = location.pathname === '/human';
   const isHome = location.pathname === '/';
+  const isStory = location.pathname === '/story' || location.pathname === '/world';
 
   return (
-    <div className={`flex flex-col min-h-screen relative text-text1 ${isHuman || isHome ? 'bg-transparent' : 'bg-bg'}`}>
-      {/* Ambient particle canvas (on pages other than personal side with video & home with custom starry background) */}
-      {!isHuman && !isHome && <StarField />}
+    <div className={`flex flex-col min-h-screen relative text-text1 ${isHuman || isHome || isStory ? 'bg-transparent' : 'bg-bg'}`}>
+      {/* Ambient particle canvas (on pages other than personal side with video & home with custom background) */}
+      {!isHuman && !isHome && !isStory && <StarField />}
 
       {/* Navigation bar */}
       <Navbar />
@@ -52,6 +54,8 @@ function AppLayout() {
       <main className="flex-1 w-full flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/story" element={<Story />} />
+          <Route path="/world" element={<Story />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
