@@ -9,7 +9,6 @@ import Footer from './components/layout/Footer';
 import StarField from './components/ui/StarField';
 import CLITerminal from './components/ui/CLITerminal';
 import CommandPalette from './components/ui/CommandPalette';
-import RecruiterToggle from './components/ui/RecruiterToggle';
 import ScrollToTop from './components/layout/ScrollToTop';
 
 // Pages
@@ -78,7 +77,6 @@ function AppLayout() {
       {/* Interactive overlays */}
       <CLITerminal />
       <CommandPalette />
-      <RecruiterToggle />
     </div>
   );
 }

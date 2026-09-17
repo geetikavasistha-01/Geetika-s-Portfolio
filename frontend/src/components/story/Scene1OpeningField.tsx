@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowUpRight, ArrowDown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { SiSubstack } from 'react-icons/si';
@@ -19,7 +19,7 @@ export default function Scene1OpeningField({ progress }: Scene1OpeningFieldProps
       {/* Central Hero Content Layer */}
       <div className="relative z-10 w-full max-w-xl px-6 sm:px-8 flex flex-col items-center text-center select-text">
         {/* Crisp Frosted Paper Backing */}
-        <div className="w-full bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-md border border-border/40 flex flex-col items-center">
+        <div className="w-full bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-3xl p-6 sm:p-8 shadow-md border border-[#E3DACB] dark:border-[#26262C] flex flex-col items-center">
           
           {/* Mascot Avatar */}
           <div className="relative mb-4 select-none group">
@@ -119,18 +119,6 @@ export default function Scene1OpeningField({ progress }: Scene1OpeningFieldProps
         </div>
       </div>
 
-      {/* Scroll Down Hint */}
-      <motion.div
-        className="absolute bottom-6 flex flex-col items-center gap-1 text-text3/70 select-none z-10 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0.4, 0.9, 0.4] }}
-        transition={prefersReducedMotion ? { duration: 0 } : { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <span className="text-[10px] font-mono tracking-widest uppercase">
-          scroll to explore
-        </span>
-        <ArrowDown size={13} className={prefersReducedMotion ? '' : 'animate-bounce'} />
-      </motion.div>
     </div>
   );
 }
