@@ -34,7 +34,7 @@ export default function Scene6GoldenHour({ progress, opacity }: Scene6GoldenHour
   return (
     <div className="relative z-10 w-full max-w-3xl px-4 sm:px-6 py-6 flex flex-col items-center select-text">
       {/* Editorial Header Banner */}
-      <div className="bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-2xl px-6 py-3 border border-border/40 shadow-sm flex flex-col items-center mb-5 text-center select-none">
+      <div className="bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-2xl px-6 py-3 border border-[#E3DACB] dark:border-[#26262C] shadow-sm flex flex-col items-center mb-5 text-center select-none">
         <span className="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase mb-1">
           CHAPTER V · GOLDEN HOUR · VALUES
         </span>
@@ -50,7 +50,7 @@ export default function Scene6GoldenHour({ progress, opacity }: Scene6GoldenHour
           return (
             <div
               key={val.title}
-              className="bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-border/40 flex flex-col gap-2"
+              className="bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-2xl p-5 shadow-sm border border-[#E3DACB] dark:border-[#26262C] flex flex-col gap-2"
             >
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-accent/15 text-accent flex items-center justify-center">

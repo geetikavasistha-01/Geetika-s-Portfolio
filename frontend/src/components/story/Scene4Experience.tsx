@@ -4,8 +4,8 @@ import { Briefcase, Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Scene4ExperienceProps {
-  progress: number;
-  opacity: number;
+  progress?: number;
+  opacity?: number;
 }
 
 const experiences = [
@@ -39,16 +39,11 @@ const experiences = [
   },
 ];
 
-interface Scene4ExperienceProps {
-  progress?: number;
-  opacity?: number;
-}
-
 export default function Scene4Experience({ progress, opacity }: Scene4ExperienceProps) {
   return (
     <div className="relative z-10 w-full max-w-3xl px-4 sm:px-6 py-6 flex flex-col items-center select-text">
       {/* Main Experience Container with Timeline */}
-      <div className="w-full bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-md border border-border/40 relative flex flex-col">
+      <div className="w-full bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-3xl p-6 sm:p-8 shadow-md border border-[#E3DACB] dark:border-[#26262C] relative flex flex-col">
         {/* Chapter Tag & Heading Inside Card for Maximum Legibility */}
         <div className="flex flex-col items-center text-center mb-6 select-none">
           <span className="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase mb-2">

@@ -45,7 +45,7 @@ export default function Scene3Workshop({ progress, opacity }: Scene3WorkshopProp
   return (
     <div className="relative z-10 w-full max-w-4xl px-4 sm:px-6 py-6 flex flex-col items-center select-text">
       {/* Editorial Header Banner */}
-      <div className="bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-2xl px-6 py-3 border border-border/40 shadow-sm flex flex-col items-center mb-5 text-center select-none">
+      <div className="bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-2xl px-6 py-3 border border-[#E3DACB] dark:border-[#26262C] shadow-sm flex flex-col items-center mb-5 text-center select-none">
         <span className="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase mb-1">
           CHAPTER II · THE WORKSHOP · PROJECTS
         </span>
@@ -59,7 +59,7 @@ export default function Scene3Workshop({ progress, opacity }: Scene3WorkshopProp
         {projects.map((proj, idx) => (
           <div
             key={proj.title}
-            className="group relative bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-md border border-border/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            className="group relative bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-2xl p-5 sm:p-6 shadow-md border border-[#E3DACB] dark:border-[#26262C] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             style={{
               transform: prefersReducedMotion ? 'none' : `rotate(${proj.rotation})`,
             }}

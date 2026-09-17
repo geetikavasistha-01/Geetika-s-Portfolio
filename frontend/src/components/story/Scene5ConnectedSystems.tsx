@@ -61,9 +61,9 @@ export default function Scene5ConnectedSystems({ progress = 0.5, opacity }: Scen
 
       {/* 2. Editorial Systems Thinking Statement */}
       <div className="relative z-10 w-full max-w-xl px-6 sm:px-8 py-6 flex flex-col items-center text-center select-text pointer-events-auto">
-        <div className="w-full bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-md border border-border/40 flex flex-col items-center">
+        <div className="w-full bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-3xl p-6 sm:p-8 shadow-md border border-[#E3DACB] dark:border-[#26262C] flex flex-col items-center">
           <div className="flex items-center gap-2 mb-3 select-none">
-            <span className="px-3 py-1 rounded-full bg-accent/20 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase shadow-sm">
+            <span className="px-3 py-1 rounded-full bg-accent/15 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase shadow-sm">
               CHAPTER IV · CONNECTED SYSTEMS
             </span>
           </div>

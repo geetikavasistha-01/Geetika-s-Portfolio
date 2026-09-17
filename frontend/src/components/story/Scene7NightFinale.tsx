@@ -43,10 +43,10 @@ export default function Scene7NightFinale({ progress, opacity }: Scene7NightFina
 
       {/* Epilogue Content Card */}
       <div className="relative z-10 w-full max-w-2xl px-4 sm:px-6 py-6 flex flex-col items-center select-text">
-        <div className="w-full bg-surface/92 dark:bg-surface/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-md border border-border/40 flex flex-col items-center text-center">
+        <div className="w-full bg-[#FAF6EE]/96 dark:bg-[#17171B]/96 rounded-3xl p-6 sm:p-8 shadow-md border border-[#E3DACB] dark:border-[#26262C] flex flex-col items-center text-center">
           
           <div className="flex items-center gap-2 mb-3 select-none">
-            <span className="px-3 py-1 rounded-full bg-accent/20 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase shadow-sm">
+            <span className="px-3 py-1 rounded-full bg-accent/15 text-accent text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase shadow-sm">
               EPILOGUE · THE HORIZON
             </span>
           </div>
@@ -83,7 +83,7 @@ export default function Scene7NightFinale({ progress, opacity }: Scene7NightFina
 
           {/* Currently Section Row */}
           <div className="w-full pt-5 border-t border-border/30 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left mb-6">
-            <div className="p-3 rounded-xl bg-surface2/25 border border-border/30 flex items-start gap-2.5">
+            <div className="p-3 rounded-xl bg-[#F3EDE0]/80 dark:bg-[#1F1F24] border border-[#E3DACB] dark:border-[#26262C] flex items-start gap-2.5">
               <Coffee size={15} className="text-accent mt-0.5 flex-shrink-0" />
               <div>
                 <span className="text-[10px] font-mono text-text3 uppercase block">Currently Building</span>
@@ -91,7 +91,7 @@ export default function Scene7NightFinale({ progress, opacity }: Scene7NightFina
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-surface2/25 border border-border/30 flex items-start gap-2.5">
+            <div className="p-3 rounded-xl bg-[#F3EDE0]/80 dark:bg-[#1F1F24] border border-[#E3DACB] dark:border-[#26262C] flex items-start gap-2.5">
               <BookOpen size={15} className="text-accent mt-0.5 flex-shrink-0" />
               <div>
                 <span className="text-[10px] font-mono text-text3 uppercase block">Currently Reading</span>
